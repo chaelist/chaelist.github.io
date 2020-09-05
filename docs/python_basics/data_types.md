@@ -17,13 +17,13 @@ nav_order: 1
 
 ---
 
-## Numbers 
+## 1. Numbers 
 1.  Integer(정수) - ex. -2, 0, 1
 1.  Float(소수) - 1.1, 3.14
 1.  Bolean - True or False
-<br/>
+<br/><br/>
 
-## type( ) 함수
+### *type( ) 함수
 : 각각 variable의 type을 확인하는 방법
 ```python
 # type() 함수로 각각의 type을 체크
@@ -38,7 +38,7 @@ a: <class 'float'> b: <class 'int'> c: <class 'bool'>
 ```
 <br/>
 
-## 산술 연산자 (Arithmetic Operators)
+### *산술 연산자 (Arithmetic Operators)
 
 ```python
 # 연산 예시
@@ -61,3 +61,24 @@ print(a ** b) # exponentiation (지수. 제곱) (ex. 3**5는 3의 5제곱을 의
 2
 125
 ```
+<br/><br/>
+
+## 2. List
+a = ['python', 1, 5] 와 같이, [ ]로 표현됨
+<br/><br/>
+
+### *빈 리스트 생성
+```python
+# 빈 리스트를 만드는 방법
+a = []
+b = list()
+print(a, b) # 두 방법 모두 동일
+```
+
+```python
+[] []
+```
+
+### *Indexing & Slicing
+
+
