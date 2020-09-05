@@ -1,12 +1,13 @@
 ---
 layout: default
-title: Data Handling
+title: Python 기초
 nav_order: 1
 has_children: true
-permalink: /docs/data_handling
+permalink: /docs/python_basics
 ---
 
-# Data Handling
+# Python 기초
 
-python data handling 기초
+python 기초
+
 {: .fs-6 .fw-300 }
