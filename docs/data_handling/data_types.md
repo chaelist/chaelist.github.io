@@ -39,8 +39,7 @@ print('a:', type(a), 'b:', type(b), 'c:', type(c))  # type() 함수로 각각의
 ```python
 a: <class 'float'> b: <class 'int'> c: <class 'bool'>
 ```
-
-
+<br/>
 ```python
 # Arithmetic Operators
 a = 5 
@@ -52,7 +51,6 @@ print(a / b) # division (소수점으로 나옴)
 print(a % b) # modulus. 나머지를 return. (ex. 5 % 3 = 2)
 print(a ** b) # exponentiation (지수. 제곱) (ex. 3**5는 3의 5제곱을 의미)
 ```
-<br/>
 ```python
 8
 2
