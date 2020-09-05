@@ -1,8 +1,33 @@
 //
 // Typography
 //
+@font-face {
+	font-family: "NanumSquareLight";
+	src: url(/assets/font/NanumSquareL.woff) format('woff');
+}
 
-$body-font-family: -apple-system, BlinkMacSystemFont, "helvetica neue",
+@font-face {
+	font-family: "NanumSquare";
+	src: url(/assets/font/NanumSquareR.woff) format('woff');
+}
+
+@font-face {
+	font-family: "NanumSquareB";
+	src: url(/assets/font/NanumSquareB.woff) format('woff');
+}
+
+@font-face {
+	font-family: "NanumSquareEB";
+	src: url(/assets/font/NanumSquareEB.woff) format('woff');
+}
+
+@font-face {
+	font-family: "NanumSquareCoding";
+	src: url(/assets/font/NanumGothicCoding.ttf);
+	src: url(/assets/font/NanumGothicCoding.ttf) format('truetype');
+}
+
+$body-font-family: "NanumSquare", -apple-system, BlinkMacSystemFont, "helvetica neue",
   helvetica, roboto, noto, "segoe ui", arial, sans-serif !default;
 $mono-font-family: "SFMono-Regular", Menlo, Consolas, Monospace !default;
 $root-font-size: 16px !default; // Base font-size for rems
