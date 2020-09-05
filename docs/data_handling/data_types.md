@@ -5,11 +5,10 @@ parent: Data Handling
 nav_order: 1
 ---
 
-# Configuration
+# Data Handling
 {: .no_toc }
 
-
-Just the Docs has some specific configuration parameters that can be defined in your Jekyll site's _config.yml file.
+python data handling 기초
 {: .fs-6 .fw-300 }
 
 ## Table of contents
