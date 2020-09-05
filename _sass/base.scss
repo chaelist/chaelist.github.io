@@ -94,6 +94,11 @@ li {
   margin: 0.25em 0;
 }
 
+li::before {
+  font-family:  -apple-system, BlinkMacSystemFont, "helvetica neue",
+  helvetica, roboto, noto, "segoe ui", arial, sans-serif;
+}
+
 img {
   max-width: 100%;
   height: auto;
