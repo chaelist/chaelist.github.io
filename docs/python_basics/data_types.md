@@ -84,6 +84,7 @@ print(a, b) # 두 방법 모두 동일
 
 ### Indexing
 index number를 이용해 각 element에 접근할 수 있다.
+<div markdown="1">
 - index number는 0부터 시작 
     - 첫번째 요소의 index number: 0
     - 두번째 요소의 index number: 1
@@ -92,6 +93,7 @@ index number를 이용해 각 element에 접근할 수 있다.
     - 마지막에서 두번째 요소의 index number: -2
 - [ ]를 사용해 indexing
     - a[0]: a의 첫번째 요소의 값을 반환
+</div>
 
 ```python
 # Indexing
@@ -110,8 +112,10 @@ python
 
 ### Slicing
 **list_name[index1:index2]**와 같은 방식으로, 특정 구간의 index들에 모두 접근
+<div markdown="1">
 - index1 <= index < index2
 - index number가 index1보다 크거나 같고 index2보다 작은 모든 요소를 반환 (index1 이상, index2 미만)
+</div>
 
 ```python
 # Slicing
@@ -131,7 +135,7 @@ print(a[:]) # 그냥 a itself (처음~끝)
 ```
 
 ### List 변경하기
-: List is mutable; List can be modified
+List is mutable; List can be modified
 
 ```python
 # Modifying a list
