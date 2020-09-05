@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Data Types
-parent: data_handling
+parent: Data Handling
 nav_order: 1
 ---
 
