@@ -112,10 +112,9 @@ python
 
 ### Slicing
 **list_name[index1:index2]**와 같은 방식으로, 특정 구간의 index들에 모두 접근
-<div markdown="1">
+
 - index1 <= index < index2
 - index number가 index1보다 크거나 같고 index2보다 작은 모든 요소를 반환 (index1 이상, index2 미만)
-</div>
 
 ```python
 # Slicing
