@@ -8,8 +8,7 @@ permalink: /
 
 # Contents
 {: .fs-9 }
-
-[Data Types]({{ site.baseurl }}{% link docs/python_basics/data_types.md %})
+[Data Types 1: : Numbers, List, String]({{ site.baseurl }}{% link docs/python_basics/data_types_1.md %})
 {: .fs-6 .fw-300 }
 
 
