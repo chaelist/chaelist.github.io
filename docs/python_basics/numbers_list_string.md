@@ -306,6 +306,7 @@ x
 [3, 4]
 ```
 *주의: remove와 del의 차이
+
 ```python
 x = [1, 2, 3, 4]
 x.remove(3)
@@ -321,6 +322,7 @@ del의 결과: [1, 2, 3]
 ```
 
 1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
+
 ```python
 # x.sort()
 x = [1, 4, 3, 2, 5]
@@ -335,7 +337,9 @@ print(friends)
 [1, 2, 3, 4, 5]
 ['Glenn', 'Joseph', 'Sally']
 ```
+
 cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
+
 ```python
 fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
 fruits.sort()
