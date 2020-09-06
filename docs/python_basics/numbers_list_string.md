@@ -353,7 +353,7 @@ print(fruits)
 
 ## String
 문자열. sequence of characters. ' '이나 " "를 활용해 표현
-<br/>
+
 
 ### String 기초
 1. Indexing & Slicing: list처럼, indexing & slicing 가능
