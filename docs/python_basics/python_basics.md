@@ -8,6 +8,5 @@ permalink: /docs/python_basics
 
 # Python 기초
 
-python 기초
 
 {: .fs-6 .fw-300 }

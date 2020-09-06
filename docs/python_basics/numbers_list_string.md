@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Data Types 1: Numbers, List, String"
+title: Numbers, List, String
 parent: Python 기초
 nav_order: 1
 ---
 
-# Data Types 1: Numbers, List, String
+# Numbers, List, String
 {: .no_toc }
 <br/>
 
