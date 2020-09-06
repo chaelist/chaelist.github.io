@@ -23,7 +23,7 @@ nav_order: 1
 1.  Bolean - True or False
 <br/>
 
-### type( ) 함수
+### type() 함수
 : 각각 variable의 type을 확인하는 방법
 ```python
 # type() 함수로 각각의 type을 체크
@@ -305,8 +305,7 @@ x
 ```
 [3, 4]
 ```
-*주의: remove와 del의 차이
-
+*주의: remove와 del의 차이  
 ```python
 x = [1, 2, 3, 4]
 x.remove(3)
@@ -315,14 +314,13 @@ print('remove의 결과:', x) # 실제 '3'이란 값을 갖는 element가 삭제
 x = [1, 2, 3, 4]
 del x[3]
 print('del의 결과:', x) # index number가 3인 element, 즉 '4'가 삭제되는 것.
-```
+```  
 ```
 remove의 결과: [1, 2, 4]
 del의 결과: [1, 2, 3]
 ```
 
-1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
-
+1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)  
 ```python
 # x.sort()
 x = [1, 4, 3, 2, 5]
@@ -336,10 +334,8 @@ print(friends)
 ```
 [1, 2, 3, 4, 5]
 ['Glenn', 'Joseph', 'Sally']
-```
-
-cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
-
+```  
+cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨  
 ```python
 fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
 fruits.sort()
@@ -441,7 +437,7 @@ t.strip()  ## 양 끝의 whitespace만 제거해주고, 중간의 \t는 제거�
 'pyth\ton'
 ```
 
-1. replace('a', 'b'): 모든 'a'를 'b'로 대체
+1. replace('a', 'b'): 모든 'a'를 'b'로 대체  
 ```python
 # replace()
 s = 'python is important'
@@ -453,9 +449,9 @@ print(s) #유의사항: string은 immutable! replace를 해도 원본 s가 바�
 ```
 pythan is impartant
 python is important
-```
+```   
 *무언가를 없애고 싶을 때에도 replace()를 사용
--  ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨)
+-  ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨)  
 ```python
 s = 'python, is, important,'
 print(s.replace(',', ''))
