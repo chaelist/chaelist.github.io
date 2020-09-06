@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Data Types
+title: "Data Types 1: Numbers, List, String"
 parent: Python 기초
 nav_order: 1
 ---
 
-# Data Types
+# Data Types 1: Numbers, List, String
 {: .no_toc }
 <br/>
 
@@ -349,4 +349,116 @@ print(fruits)
 
 ## String
 문자열. sequence of characters. ' '이나 " "를 활용해 표현
+<br/>
+
+### String 기초
+1. Indexing & Slicing: list처럼, indexing & slicing 가능
+```python
+s = 'python'
+print(s[0])
+print(s[-1])
+print(s[0:3])
+```
+```
+p
+n
+pyt
+```
+
+1. len(): string의 글자수를 세는 개념
+```python
+# len()
+s = 'python'
+len(s)
+```
+```
+6
+```
+
+1. string간 덧셈(+)
+```python
+h = 'Hello'
+w = 'World'
+s = h + w  # 두 개를 더하면 단순히 앞뒤로 이어붙여진다
+s
+```
+```
+'HelloWorld'
+```
+
+1. '나 "를 중간에 삽입하는 법
+```python
+print('Tom\'s Book')  # \를 이용
+print("Tom's Book")  # string을 감싸는 따옴표를 다른 종류로 사용
+```
+```
+Tom's Book
+Tom's Book
+```
+
+1. white space characters (공백)
+-  \t: tab
+-  \n: enter (newline)
+```python
+z1 = 'Tom is busy studying. \nI am not busy. \t\tYou?'
+print(z1)
+```
+```
+Tom is busy studying. 
+I am not busy. 		You?
+```
+
+### Main String Fuctions
+1. split(): whitespace(공백)을 기준으로 split
+-  split('a'): 'a'를 기준으로 split
+-  split 결과는 list로 나타남
+```python
+# split()
+s = 'Today is a good day'
+print(s.split())
+print(s.split('a'))
+print(s.split('good'))
+```
+```
+['Today', 'is', 'a', 'good', 'day']
+['Tod', 'y is ', ' good d', 'y']
+['Today is a ', ' day']
+```
+
+1. strip(): 양쪽 끝의 whitespace를 제거
+-  strip('n'): 양쪽 끝의 'n' 문자 제거
+-  lstrip()은 왼쪽 끝 element만, rstrip()은 오늘쪽 끝 element만 제거
+```python
+# strip()
+t = '\tpyth\ton\n'
+t.strip()  ## 양 끝의 whitespace만 제거해주고, 중간의 \t는 제거되지 않는다
+```
+```
+'pyth\ton'
+```
+
+1. replace('a', 'b'): 모든 'a'를 'b'로 대체
+```python
+# replace()
+s = 'python is important'
+print(s.replace('o', 'a'))
+
+print(s) #유의사항: string은 immutable! replace를 해도 원본 s가 바뀌는 것은 아니다.
+## 바뀐 결과를 저장하고 싶으면 새로운 variable로 따로 저장해둬야 함
+```
+```
+pythan is impartant
+python is important
+```
+*무언가를 없애고 싶을 때에도 replace()를 사용
+-  ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨)
+```python
+s = 'python, is, important,'
+print(s.replace(',', ''))
+```
+```
+python is important
+```
+
+
 
