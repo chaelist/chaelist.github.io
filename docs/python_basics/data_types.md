@@ -163,7 +163,6 @@ x
 ```
 [1, 2, 3, 4, 6, 7]
 ```
-
 cf) append에 list를 넣으면?
 ```python
 x = [1, 2, 3, 4]
@@ -184,7 +183,6 @@ x
 ```
 [2, 3, 4]
 ```
-
 cf) 같은 값의 element가 두 개인 상황에서 remove()를 사용하면?
 ```python
 x = [1,2,3,4,1]
@@ -204,7 +202,6 @@ x.index(3)   # 3은 3번째 값, 즉 index number가 2인 값이므로 '2'가 �
 ```
 2
 ```
-
 cf) 같은 element가 2개 이상일 때 index() 함수를 사용하면?
 ```python
 x = [1, 2, 3, 4, 3]
@@ -248,7 +245,6 @@ print(max(x))  # 최대값
 1
 4
 ```
-
 cf) string element들로 이루어진 list의 min(), max()
 ```python
 y = ['c', 'b', 'a'] 
@@ -300,7 +296,6 @@ x
 ```
 [2, 3, 4]
 ```
-
 cf) slicing을 통한 del도 가능
 ```python
 x = [1, 2, 3, 4]
@@ -310,7 +305,6 @@ x
 ```
 [3, 4]
 ```
-
 *주의: remove와 del의 차이
 ```python
 x = [1, 2, 3, 4]
@@ -327,7 +321,6 @@ del의 결과: [1, 2, 3]
 ```
 
 1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
-
 ```python
 # x.sort()
 x = [1, 4, 3, 2, 5]
@@ -342,7 +335,6 @@ print(friends)
 [1, 2, 3, 4, 5]
 ['Glenn', 'Joseph', 'Sally']
 ```
-
 cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
 ```python
 fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
