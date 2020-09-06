@@ -306,35 +306,35 @@ x
 [3, 4]
 ```
 *주의: remove와 del의 차이
-```python
-x = [1, 2, 3, 4]
-x.remove(3)
-print('remove의 결과:', x) # 실제 '3'이란 값을 갖는 element가 삭제되는 것.
- 
-x = [1, 2, 3, 4]
-del x[3]
-print('del의 결과:', x) # index number가 3인 element, 즉 '4'가 삭제되는 것.
-```  
-```
-remove의 결과: [1, 2, 4]
-del의 결과: [1, 2, 3]
-```
+    ```python
+    x = [1, 2, 3, 4]
+    x.remove(3)
+    print('remove의 결과:', x) # 실제 '3'이란 값을 갖는 element가 삭제되는 것.
+    
+    x = [1, 2, 3, 4]
+    del x[3]
+    print('del의 결과:', x) # index number가 3인 element, 즉 '4'가 삭제되는 것.
+    ```  
+    ```
+    remove의 결과: [1, 2, 4]
+    del의 결과: [1, 2, 3]
+    ```
 
 1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
-```python
-# x.sort()
-x = [1, 4, 3, 2, 5]
-x.sort()
-print(x)
- 
-friends = ['Joseph', 'Glenn', 'Sally']
-friends.sort()
-print(friends)
-```
-```
-[1, 2, 3, 4, 5]
-['Glenn', 'Joseph', 'Sally']
-```
+    ```python
+    # x.sort()
+    x = [1, 4, 3, 2, 5]
+    x.sort()
+    print(x)
+    
+    friends = ['Joseph', 'Glenn', 'Sally']
+    friends.sort()
+    print(friends)
+    ```
+    ```
+    [1, 2, 3, 4, 5]
+    ['Glenn', 'Joseph', 'Sally']
+    ```
 cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
 ```python
 fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
@@ -399,66 +399,70 @@ Tom's Book
 1. white space characters (공백)
 -  \t: tab
 -  \n: enter (newline)
-```python
-z1 = 'Tom is busy studying. \nI am not busy. \t\tYou?'
-print(z1)
-```
-```
-Tom is busy studying. 
-I am not busy. 		You?
-```
+
+    ```python
+    z1 = 'Tom is busy studying. \nI am not busy. \t\tYou?'
+    print(z1)
+    ```
+    ```
+    Tom is busy studying. 
+    I am not busy. 		You?
+    ```
 
 ### Main String Fuctions
 1. split(): whitespace(공백)을 기준으로 split
 -  split('a'): 'a'를 기준으로 split
--  split 결과는 list로 나타남
-```python
-# split()
-s = 'Today is a good day'
-print(s.split())
-print(s.split('a'))
-print(s.split('good'))
-```
-```
-['Today', 'is', 'a', 'good', 'day']
-['Tod', 'y is ', ' good d', 'y']
-['Today is a ', ' day']
-```
+-  split 결과는 list로 나타남   
+
+    ```python
+    # split()
+    s = 'Today is a good day'
+    print(s.split())
+    print(s.split('a'))
+    print(s.split('good'))
+    ```
+    ```
+    ['Today', 'is', 'a', 'good', 'day']
+    ['Tod', 'y is ', ' good d', 'y']
+    ['Today is a ', ' day']
+    ```
 
 1. strip(): 양쪽 끝의 whitespace를 제거
 -  strip('n'): 양쪽 끝의 'n' 문자 제거
 -  lstrip()은 왼쪽 끝 element만, rstrip()은 오늘쪽 끝 element만 제거
-```python
-# strip()
-t = '\tpyth\ton\n'
-t.strip()  ## 양 끝의 whitespace만 제거해주고, 중간의 \t는 제거되지 않는다
-```
-```
-'pyth\ton'
-```
+
+    ```python
+    # strip()
+    t = '\tpyth\ton\n'
+    t.strip()  ## 양 끝의 whitespace만 제거해주고, 중간의 \t는 제거되지 않는다
+    ```
+    ```
+    'pyth\ton'
+    ```
 
 1. replace('a', 'b'): 모든 'a'를 'b'로 대체
-```python
-# replace()
-s = 'python is important'
-print(s.replace('o', 'a'))
- 
-print(s) #유의사항: string은 immutable! replace를 해도 원본 s가 바뀌는 것은 아니다.
-## 바뀐 결과를 저장하고 싶으면 새로운 variable로 따로 저장해둬야 함
-```
-```
-pythan is impartant
-python is important
-```   
-*무언가를 없애고 싶을 때에도 replace()를 사용
--  ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨)  
-```python
-s = 'python, is, important,'
-print(s.replace(',', ''))
-```
-```
-python is important
-```
+    ```python
+    # replace()
+    s = 'python is important'
+    print(s.replace('o', 'a'))
+    
+    print(s) #유의사항: string은 immutable! replace를 해도 원본 s가 바뀌는 것은 아니다.
+    ## 바뀐 결과를 저장하고 싶으면 새로운 variable로 따로 저장해둬야 함
+    ```
+    ```
+    pythan is impartant
+    python is important
+    ```   
+*무언가를 없애고 싶을 때에도 replace()를 사용  
+ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨) 
+
+    ```python
+    s = 'python, is, important,'
+    print(s.replace(',', ''))
+    ```
+    ```
+    python is important
+    ```
 
 
 
