@@ -309,7 +309,7 @@ x
 ```python
 x = [1, 2, 3, 4]
 x.remove(3)
-print('remove의 결과:', x)  # 실제 '3'이란 값을 갖는 element가 삭제되는 것.
+print('remove의 결과:', x) # 실제 '3'이란 값을 갖는 element가 삭제되는 것.
 
 x = [1, 2, 3, 4]
 del x[3]
