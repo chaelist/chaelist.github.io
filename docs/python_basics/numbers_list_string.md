@@ -9,15 +9,19 @@ nav_order: 1
 {: .no_toc }
 <br/>
 
-## Table of contents
-{: .no_toc .text-delta }
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+
 
 1. TOC
 {:toc}
-
+</details>
 ---
 
-## Numbers 
+## Numbers
 1.  Integer(정수) - ex. -2, 0, 1
 1.  Float(소수) - ex. 1.1, 3.14
 1.  Bolean - True or False
@@ -107,19 +111,19 @@ python
 ```
 
 ### Slicing
-**list_name[index1:index2]**와 같은 방식으로, 특정 구간의 index들에 모두 접근
+list_name[index1:index2]와 같은 방식으로, 특정 구간의 index들에 모두 접근
 
-* index1 <= index < index2
-* index number가 index1보다 크거나 같고 index2보다 작은 모든 요소를 반환 (index1 이상, index2 미만)
+- index1 <= index < index2 (index1 이상, index2 미만)
+- index number가 index1보다 크거나 같고 index2보다 작은 모든 요소를 반환
 
 ```python
 # Slicing
 a = ['python', 1, 5]
 
 print(a[0:2]) # index0, index1 (index2는 미포함) 
-print(a[1:]) # index1이상~끝까지
-print(a[:2]) # 처음~index1까지
-print(a[:]) # 그냥 a itself (처음~끝)
+print(a[1:]) # index1이상 ~ 끝까지
+print(a[:2]) # 처음 ~ index1까지
+print(a[:]) # 그냥 a itself (처음 ~ 끝)
 ```
 ```
 ['python', 1]
@@ -234,7 +238,7 @@ True
 False
 ```
 
-1. min(), max(): 최소값, 최대값을 반환
+1. min(x), max(x): 최소값, 최대값을 반환
 ```python
 # min, max
 x = [1, 2, 3, 4]
@@ -245,7 +249,7 @@ print(max(x))  # 최대값
 1
 4
 ```
-cf) string element들로 이루어진 list의 min(), max()
+cf) string element들로 이루어진 list의 min(x), max(x)
 ```python
 y = ['c', 'b', 'a'] 
 print(min(y))
@@ -258,7 +262,7 @@ a
 c
 ```
 
-1. sum(): list에 있는 모든 값을 다 더해줌 (*값이 모두 integer 혹은 float여야 함)
+1. sum(x): list에 있는 모든 값을 다 더해줌 (*값이 모두 integer 혹은 float여야 함)
 ```python
 # sum
 x = [1, 2, 3, 4]
@@ -276,7 +280,7 @@ sum(x)
 10.5
 ```
 
-1. len(): list의 element 수를 알려줌
+1. len(x): list의 element 수를 알려줌
 ```python
 # len(x)
 x = [1, 2, 3, 4]
@@ -344,7 +348,6 @@ print(fruits)
 ```
 ['Banana', 'Dragonfruit', 'apple', 'carrot']
 ```
-
 <br/>
 
 ## String
@@ -463,6 +466,175 @@ ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 
     ```
     python is important
     ```
+
+1. find(): 해당 단어가 존재한다면, 첫번째 character의 index number를 출력 / 존재하지 않으면 -1을 출력
+```python
+s = 'Data science is important'
+print(s.find('science'))  # 첫글자 's'의 index number 출력
+print(s.find('python'))   # 존재하지 않으므로 -1 출력
+```
+```
+5
+-1
+```
+cf) 존재 유무만을 확인하고 싶다면 find 대신 in을 사용해도 된다
+```python
+s = 'Data science is important'
+print('science' in s)
+print('python' in s)
+```
+```
+True
+False
+```
+*find를 사용하는 상황 예시
+    ```python
+    data = 'From stephen.marquard@uct.ac.za Sat Jan   5 09:14:16 2008' 
+    # 이 데이터에서 보낸 사람의 메일 도메인만을 추출하고 싶음
+
+    atpos = data.find('@')  # '@'의 위치를 알아냄
+    print(atpos)
+
+    sppos = data.find(' ', atpos) 
+    # ' '(빈칸)이 몇 번째에 있나 atpos, 즉 21번째 문자 뒤에서부터 탐색 (atpost 앞의 빈칸은 무시)
+    print(sppos)
+
+    host = data[atpos+1 : sppos]  
+    # '@' 뒤부터 그 다음 나오는 ' '(빈칸)까지를 slicing해서 메일 도메인만 추출
+    print(host)
+    ```
+    ```
+    21
+    31
+    uct.ac.za
+    ```
+
+1. startswith(): 문자열이 ()안의 특정 문자로 시작되는지 확인, 결과는 boolean 값으로 반환
+-  `if X.startswith('Y')`: 이런 식으로 if문에서 주로 사용
+```python
+line = 'Please have a nice day'
+print(line.startswith('Please')) # True
+print(line.startswith('P')) # True
+print(line.startswith('p')) # 대문자 P와 소문자 p는 다르기 때문에, False가 반환됨
+```
+```
+True
+True
+False
+```
+
+### String - Number Conversion
+1. int(x): from string/float to integer
+    ```python
+    # string -> integer
+    x = '123'  # 이렇게 '' 안이 integer여야만 int(x)로 변환 가능
+    print(x, type(x))
+
+    y = int(x)
+    print(y, type(y))
+    ```
+    ```
+    123 <class 'str'>
+    123 <class 'int'>
+    ```
+
+1. float(x): from string to float
+    ```python
+    # string -> float -> integer
+    x = '123.123'  # 이렇게 '' 안이 float이면, int(x)를 바로 할 수 없음. 먼저 float(x)를 해줘야 함.
+    print(x, type(x))
+
+    y1 = float(x)
+    print(y1, type(y1))
+
+    y2 = int(y1)  # 이제 y1은 float이기에, 여기에 int(x)를 해주면 integer가 됨.
+    print(y2, type(y2))
+    ```
+    ```
+    123.123 <class 'str'>
+    123.123 <class 'float'>
+    123 <class 'int'>
+    ```
+
+1. str(number): from number to string
+    ```python
+    # integer -> string
+    z = 123
+    print(z, type(z))
+
+    s = str(z)
+    print(s, type(s))
+    ```
+    ```
+    123 <class 'int'>
+    123 <class 'str'>
+    ```
+
+### 문자열 포맷팅 (string formatting)
+1. 'format' method
+```python
+print("오늘은 {}월 {}일입니다".format(11, 12))
+```
+```
+오늘은 11월 12일입니다
+```
+*{ }의 순서 지정하기
+```python
+# 'format' method - {}의 순서 정하기
+print("저는 {1}, {0}, {2}를 좋아합니다".format("트와이스", "유재석", "비틀즈"))
+```
+```
+저는 유재석, 트와이스, 비틀즈를 좋아합니다
+```
+*소수점 제한 지정하기
+```python
+# 'format' method - 소수점 제한 지정
+print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))  
+# :.2f라고 하면 floating point(소수) 둘째자리까지 출력하라는 뜻
+```
+```
+1 나누기 3은 0.33입니다
+```
+
+    <div class="code-example" markdown="1">
+    - `:.4f`는 소수점 넷째짜리까지 출력하라는 뜻
+    - `:.0f`는 정수로 출력하라는 뜻 (cf. 정수로 하려면 `:d`라고 해도 됨)
+    - `:f`라고 하면 그냥 소수점 제한 없이 floating point로 출력하라는 뜻
+    </div>
+
+
+1. % 기호
+- 오래된 방식. C/자바 등 언어의 문자열 포맷팅 방식과 유사
+- python에서는 권장되지는 않는다 (f-string 등 더 효율적인 방법이 있기 때문)
+- %s, %d와 같은 '포맷 스트링'을 사용
+
+    ```python
+    name = '최지아'
+    age = 25
+    print("제 이름은 %s이고 %d살입니다." % (name, age))
+    ```
+    ```
+    제 이름은 최지아이고 25살입니다.
+    ```
+
+    <div class="code-example" markdown="1">
+    - `%s`: str형
+    - `%d`: int형
+    - `%f`: float형
+    - `%.[숫자]f`: float형 (숫자를 통해 소수점을 지정)
+    </div>
+
+1. f-string (파이썬 3.6부터 나온 방식)
+```python
+name = '최지아'
+age = 25
+print(f"제 이름은 {name}이고 {age}살입니다.")
+```
+```
+제 이름은 최지아이고 25살입니다.
+```
+
+
 
 
 
