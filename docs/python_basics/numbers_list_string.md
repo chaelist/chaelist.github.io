@@ -22,10 +22,9 @@ nav_order: 1
 ---
 
 ## Numbers
-1.  Integer(정수) - ex. -2, 0, 1
-1.  Float(소수) - ex. 1.1, 3.14
-1.  Bolean - True or False
-<br/>
+1. Integer(정수) - ex. -2, 0, 1
+1. Float(소수) - ex. 1.1, 3.14
+1. Bolean - True or False
 
 ### type() 함수
 : 각각 variable의 type을 확인하는 방법
@@ -70,11 +69,9 @@ print(a ** b) # exponentiation (지수. 제곱) (ex. 3**5는 3의 5제곱을 의
 
 ## List
 a = ['python', 1, 5] 와 같이, [ ]로 표현됨
-<br/>
 
-### 빈 리스트 생성
 ```python
-# 빈 리스트를 만드는 방법
+# 빈 리스트를 생성하는 방법
 a = []
 b = list()
 print(a, b) # 두 방법 모두 동일
@@ -85,7 +82,6 @@ print(a, b) # 두 방법 모두 동일
 
 ### Indexing
 index number를 이용해 각 element에 접근할 수 있다.
-<div markdown="1">
 - index number는 0부터 시작 
     - 첫번째 요소의 index number: 0
     - 두번째 요소의 index number: 1
@@ -93,8 +89,7 @@ index number를 이용해 각 element에 접근할 수 있다.
     - 마지막 요소의 index number: -1
     - 마지막에서 두번째 요소의 index number: -2
 - [ ]를 사용해 indexing
-    - a[0]: a의 첫번째 요소의 값을 반환
-</div>
+    - a[0]: a의 첫번째 요소의 값을 반환 
 
 ```python
 # Indexing
@@ -146,7 +141,7 @@ print(x)  # index 1번 자리가 'python'으로 변경됨
 ```
 
 ### Main List Fuctions
-1. append(): 한 개의 element '추가'
+1. **append()**: 한 개의 element '추가'
 ```python
 # append
 x = [1, 2, 3, 4]
@@ -157,7 +152,7 @@ x
 [1, 2, 3, 4, 5]
 ```
 
-1. extend(): 새로운 list를 추가해 '확장'
+1. **extend()**: 새로운 list를 추가해 '확장'
 ```python
 # extend
 x = [1, 2, 3, 4]
@@ -177,7 +172,7 @@ x  # extend와 다르게, 아예 list 자체가 하나의 element로 간주되�
 [1, 2, 3, 4, [6, 7]]
 ```
 
-1. remove(): 한 개의 element를 제거
+1. **remove()**: 한 개의 element를 제거
 ```python
 # remove
 x = [1, 2, 3, 4]
@@ -197,7 +192,7 @@ x  ## 같은 값이 두 개일 경우, 더 앞에 있는 element만 지워진다
 [2, 3, 4, 1]
 ```
 
-1. index(): 해당 element의 index number를 가져옴
+1. **index()**: 해당 element의 index number를 가져옴
 ```python
 # index
 x = [1, 2, 3, 4]
@@ -215,7 +210,7 @@ x.index(3)  # 맨 처음 나오는 '3'의 index number인 2만 return.
 2
 ```
 
-1. count(): 해당 element의 개수를 셈
+1. **count()**: 해당 element의 개수를 셈
 ```python
 # count
 x = [1, 2, 3, 4, 3]
@@ -225,8 +220,8 @@ x.count(3)  # 3이 몇 개인지 세기
 2
 ```
 
-### Other common list operations / functions
-1. 'in' operator: 특정 element가 list 안에 있는지 없는지, boolean값을 반환
+### Other Common List Operators / Functions
+1. '**in**' operator: 특정 element가 list 안에 있는지 없는지, boolean값을 반환
 ```python
 # 'in'
 x = [1, 2, 3, 4]
@@ -238,7 +233,7 @@ True
 False
 ```
 
-1. min(x), max(x): 최소값, 최대값을 반환
+1. **min(x), max(x)**: 최소값, 최대값을 반환
 ```python
 # min, max
 x = [1, 2, 3, 4]
@@ -262,7 +257,7 @@ a
 c
 ```
 
-1. sum(x): list에 있는 모든 값을 다 더해줌 (*값이 모두 integer 혹은 float여야 함)
+1. **sum(x)**: list에 있는 모든 값을 다 더해줌 (*값이 모두 integer 혹은 float여야 함)
 ```python
 # sum
 x = [1, 2, 3, 4]
@@ -280,7 +275,7 @@ sum(x)
 10.5
 ```
 
-1. len(x): list의 element 수를 알려줌
+1. **len(x)**: list의 element 수를 알려줌
 ```python
 # len(x)
 x = [1, 2, 3, 4]
@@ -290,7 +285,7 @@ len(x)  # element가 4개니까 4
 4
 ```
 
-1. del x[index]: 해당 index number를 갖는 element를 삭제
+1. **del x[index]**: 해당 index number를 갖는 element를 삭제
 ```python
 # del x[index]
 x = [1, 2, 3, 4]
@@ -309,7 +304,11 @@ x
 ```
 [3, 4]
 ```
-*주의: remove와 del의 차이
+
+    <div class="code-example" markdown="1">
+
+    *주의: remove와 del의 차이
+
     ```python
     x = [1, 2, 3, 4]
     x.remove(3)
@@ -318,13 +317,16 @@ x
     x = [1, 2, 3, 4]
     del x[3]
     print('del의 결과:', x) # index number가 3인 element, 즉 '4'가 삭제되는 것.
-    ```  
+    ```
+
     ```
     remove의 결과: [1, 2, 4]
     del의 결과: [1, 2, 3]
     ```
 
-1. x.sort(): list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
+    </div>
+
+1. **sort()**: list 안의 값들을 순서대로 정렬해준다 (숫자는 오름차순, string은 첫 글자 알파벳순)
     ```python
     # x.sort()
     x = [1, 4, 3, 2, 5]
@@ -368,7 +370,7 @@ n
 pyt
 ```
 
-1. len(): string의 글자수를 세는 개념
+1. **len()**: string의 글자수를 세는 개념
 ```python
 # len()
 s = 'python'
@@ -413,7 +415,7 @@ Tom's Book
     ```
 
 ### Main String Fuctions
-1. split(): whitespace(공백)을 기준으로 split
+1. **split()**: whitespace(공백)을 기준으로 split
 -  split('a'): 'a'를 기준으로 split
 -  split 결과는 list로 나타남   
 
@@ -430,7 +432,7 @@ Tom's Book
     ['Today is a ', ' day']
     ```
 
-1. strip(): 양쪽 끝의 whitespace를 제거
+1. **strip()**: 양쪽 끝의 whitespace를 제거
 -  strip('n'): 양쪽 끝의 'n' 문자 제거
 -  lstrip()은 왼쪽 끝 element만, rstrip()은 오늘쪽 끝 element만 제거
 
@@ -443,7 +445,7 @@ Tom's Book
     'pyth\ton'
     ```
 
-1. replace('a', 'b'): 모든 'a'를 'b'로 대체
+1. **replace('a', 'b')**: 모든 'a'를 'b'로 대체
     ```python
     # replace()
     s = 'python is important'
@@ -456,8 +458,11 @@ Tom's Book
     pythan is impartant
     python is important
     ```   
-*무언가를 없애고 싶을 때에도 replace()를 사용  
-ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨) 
+*무언가를 없애고 싶을 때에도 replace()를 사용
+    {: .fs-4 }
+    {: .lh-0 }
+ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 안을 비워두면 됨)  
+    {: .fs-3 } 
 
     ```python
     s = 'python, is, important,'
@@ -467,7 +472,7 @@ ex) replace('a', '')라고 하면 'a'를 다 없애주는 기능. (두번째 '' 
     python is important
     ```
 
-1. find(): 해당 단어가 존재한다면, 첫번째 character의 index number를 출력 / 존재하지 않으면 -1을 출력
+1. **find()**: 해당 단어가 존재하면 첫번째 character의 index number를 출력 / 존재하지 않으면 -1을 출력
 ```python
 s = 'Data science is important'
 print(s.find('science'))  # 첫글자 's'의 index number 출력
@@ -487,7 +492,11 @@ print('python' in s)
 True
 False
 ```
-*find를 사용하는 상황 예시
+
+    <div class="code-example" markdown="1">
+
+    +) find를 사용하는 상황 예시
+
     ```python
     data = 'From stephen.marquard@uct.ac.za Sat Jan   5 09:14:16 2008' 
     # 이 데이터에서 보낸 사람의 메일 도메인만을 추출하고 싶음
@@ -503,28 +512,33 @@ False
     # '@' 뒤부터 그 다음 나오는 ' '(빈칸)까지를 slicing해서 메일 도메인만 추출
     print(host)
     ```
+
     ```
     21
     31
     uct.ac.za
     ```
 
-1. startswith(): 문자열이 ()안의 특정 문자로 시작되는지 확인, 결과는 boolean 값으로 반환
+    </div>
+
+
+1. **startswith()**: 문자열이 ()안의 특정 문자로 시작되는지 확인, 결과는 boolean 값으로 반환
 -  `if X.startswith('Y')`: 이런 식으로 if문에서 주로 사용
-```python
-line = 'Please have a nice day'
-print(line.startswith('Please')) # True
-print(line.startswith('P')) # True
-print(line.startswith('p')) # 대문자 P와 소문자 p는 다르기 때문에, False가 반환됨
-```
-```
-True
-True
-False
-```
+
+    ```python
+    line = 'Please have a nice day'
+    print(line.startswith('Please')) # True
+    print(line.startswith('P')) # True
+    print(line.startswith('p')) # 대문자 P와 소문자 p는 다르기 때문에, False가 반환됨
+    ```
+    ```
+    True
+    True
+    False
+    ```
 
 ### String - Number Conversion
-1. int(x): from string/float to integer
+1. **int(x)**: from string/float to integer
     ```python
     # string -> integer
     x = '123'  # 이렇게 '' 안이 integer여야만 int(x)로 변환 가능
@@ -538,7 +552,7 @@ False
     123 <class 'int'>
     ```
 
-1. float(x): from string to float
+1. **float(x)**: from string to float
     ```python
     # string -> float -> integer
     x = '123.123'  # 이렇게 '' 안이 float이면, int(x)를 바로 할 수 없음. 먼저 float(x)를 해줘야 함.
@@ -556,7 +570,7 @@ False
     123 <class 'int'>
     ```
 
-1. str(number): from number to string
+1. **str(number)**: from number to string
     ```python
     # integer -> string
     z = 123
@@ -600,6 +614,7 @@ print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))
     - `:.4f`는 소수점 넷째짜리까지 출력하라는 뜻
     - `:.0f`는 정수로 출력하라는 뜻 (cf. 정수로 하려면 `:d`라고 해도 됨)
     - `:f`라고 하면 그냥 소수점 제한 없이 floating point로 출력하라는 뜻
+    {: .fs-3 }
     </div>
 
 
@@ -622,6 +637,7 @@ print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))
     - `%d`: int형
     - `%f`: float형
     - `%.[숫자]f`: float형 (숫자를 통해 소수점을 지정)
+    {: .fs-3 }
     </div>
 
 1. f-string (파이썬 3.6부터 나온 방식)
