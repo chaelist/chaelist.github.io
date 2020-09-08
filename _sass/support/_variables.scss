@@ -7,12 +7,16 @@
   src: url(/assets/font/NanumSquareR.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'NanumSquareB';
+  src: url(/assets/font/NanumSquareB.woff) format('woff');
+}
 
-//@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"); //한글 폰트를 위해 내가 삽입
-//@import url("https://fonts.googleapis.com/earlyaccess/nanumgothic.css");  //한글 폰트를 위해 내가 삽입
+@import url("https://fonts.googleapis.com/earlyaccess/nanumgothic.css");  //한글 폰트를 위해 내가 삽입
 
 $body-font-family: -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, "segoe ui", 'NanumSquare', roboto, noto, arial, sans-serif !default; 
-$mono-font-family: "SFMono-Regular", Consolas, Menlo, Monospace !default;
+$bold-font-family: -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, "segoe ui", 'NanumSquareB', roboto, noto, arial, sans-serif !default;
+$mono-font-family: "SFMono-Regular", Consolas, Menlo, 'Nanum Gothic', Monospace !default;
 $root-font-size: 16px !default; // Base font-size for rems
 $body-line-height: 1.4 !default;
 $content-line-height: 1.6 !default;
