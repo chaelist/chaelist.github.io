@@ -201,6 +201,7 @@ print(dict1)  # 'Tom'의 value가 dict2의 값으로 업데이트됨
 
 1. **dict1.items()**: (key, value)의 tuple이 list-like variable로 출력됨
 ```python
+# dict1.items()
 dict1 = {'Tom':23, 'John':34, 'Bob':12}
 dict1.items()
 ```
@@ -377,3 +378,116 @@ dict_items([('a', 10), ('b', 1), ('c', 22)])
     </div>
 
 ## Set (집합자료형)
+- { } 안에 값들이 나열된 형태. (cf. dictionary는 { } 안에 'key:value'의 "조합"들이 담긴 형태)
+- 중복을 허용하지 않는다 
+- 순서가 없다 (unordered) -> indexing 불가. (cf. dictionary도 순서가 없어서 indexing 불가)
+- 하지만, 쉽게 list나 tuple로 변환할 수 있기에, list나 tuple로 변환 후 indexing하면 됨
+
+### Set 기초
+1. Set(집합) 만들기
+    ```python
+    # 1. list 입력해서 set 만들기
+    s1 = set([1, 2, 3])
+    print(s1)
+
+    # 2. string 입력해서 set 만들기
+    s2 = set("Hello")
+    print(s2)  # 중복이 제거되어 나오고, 순서도 뒤죽박죽으로 나옴 (순서가 없는 자료형이라)
+    ```
+    ```
+    {1, 2, 3}
+    {'H', 'o', 'l', 'e'}
+    ```
+
+1.  '중복을 허용하지 않는다' >> 중복 제거 목적으로 종종 사용
+```python
+l1 = [1, 2, 3, 4, 1, 5, 2, 3, 6, 9]
+s1 = set(l1)
+print(s1)  # 중복되는 숫자가 다 제거됨
+```
+```
+{1, 2, 3, 4, 5, 6, 9}
+```
+
+1. **add()**: 값 1개 추가하기
+```python
+# add
+s1 = set([1, 2, 3])
+s1.add(4)   # list의 append()와 유사
+s1
+```
+```
+{1, 2, 3, 4}
+```
+
+1. **update()**: 값 여러 개 추가하기
+```python
+# update
+s1 = set([1, 2, 3])
+s1.update([4, 5, 6])   # list의 extend()와 유사
+s1
+```
+```
+{1, 2, 3, 4, 5, 6}
+```
+
+1. **remove()**: 값 1개 제거하기
+```python
+s1 = set([1, 2, 3])
+s1.remove(2)
+s1
+```
+```
+{1, 3}
+```
+
+### 교집합, 합집합, 차집합
+1. 교집합 구하기: `&` 기호 or `intersection()` 함수
+    ```python
+    # 교집합
+    s1 = set([1, 2, 3, 4])
+    s2 = set([3, 4, 5, 6])
+
+    print(s1 & s2) # "&" 기호로 간단히 교집합을 구할 수 있다
+    print(s1.intersection(s2))  # intersection 함수를 써도 동일한 결과
+    ```
+    ```
+    {3, 4}
+    {3, 4}
+    ```
+
+1. 합집합 구하기: `|` 기호 or `union()` 함수
+    ```python
+    # 합집합
+    s1 = set([1, 2, 3, 4])
+    s2 = set([3, 4, 5, 6])
+
+    print(s1 | s2)  # "|" 기호로 간단히 합집합을 구할 수 있다
+    print(s1.union(s2))  # union 함수를 써도 동일한 결과
+    ```
+    ```
+    {1, 2, 3, 4, 5, 6}
+    {1, 2, 3, 4, 5, 6}
+    ```
+
+1. 차집합 구하기: `-` 기호 or `difference()` 함수
+    ```python
+    # 차집합
+    s1 = set([1, 2, 3, 4])
+    s2 = set([3, 4, 5, 6])
+
+    # s1에 대한 s2의 차집합
+    print(s1 - s2)   # "-" 기호 사용
+    print(s1.difference(s2))  # difference 함수 사용
+
+    # s2에 대한 s1의 차집합
+    print(s2 - s1)   # "-" 기호 사용
+    print(s2.difference(s1))  # difference 함수 사용
+    ```
+    ```
+    {1, 2}
+    {1, 2}
+    {5, 6}
+    {5, 6}
+    ```
+
