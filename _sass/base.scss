@@ -101,6 +101,13 @@ li {
   margin: 0.25em 0;
 }
 
+summary {
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;

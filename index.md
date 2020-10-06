@@ -8,10 +8,28 @@ permalink: /
 
 # Contents
 {: .fs-9 }
-[Numbers, List, String]({{ site.baseurl }}{% link docs/python_basics/numbers_list_string.md %}) <br/>
-[Dictionary, Tuple, Set]({{ site.baseurl }}{% link docs/python_basics/dictionary_tuple_set.md %}) <br/>
-[Control Flow (제어문)]({{ site.baseurl }}{% link docs/python_basics/controlflow.md %}) <br/>
-[Function & Module]({{ site.baseurl }}{% link docs/python_basics/function_module.md %})
 
-{: .fs-5 .fw-300 }
+<details open markdown="block">
+  <summary>
+    Python 기초
+  </summary>
+  {: .fs-5 .fw-500 }
 
+&nbsp;&nbsp; [Numbers, List, String]({{ site.baseurl }}{% link docs/python_basics/numbers_list_string.md %}) <br/>
+&nbsp;&nbsp; [Dictionary, Tuple, Set]({{ site.baseurl }}{% link docs/python_basics/dictionary_tuple_set.md %}) <br/>
+&nbsp;&nbsp; [Control Flow (제어문)]({{ site.baseurl }}{% link docs/python_basics/controlflow.md %}) <br/>
+&nbsp;&nbsp; [Function & Module]({{ site.baseurl }}{% link docs/python_basics/function_module.md %})
+{: .fs-4 .fw-300 }
+</details>
+
+
+<details open markdown="block">
+  <summary>
+    Data Handling
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [File Input & Output]({{ site.baseurl }}{% link docs/data_handling/file_input_output.md %}) <br/>
+&nbsp;&nbsp; [Regular Expressions]({{ site.baseurl }}{% link docs/data_handling/regular_expressions.md %})
+{: .fs-4 .fw-300 }
+</details>
