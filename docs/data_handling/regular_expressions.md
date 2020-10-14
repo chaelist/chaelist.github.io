@@ -222,3 +222,5 @@ result = p.findall('문자열')
     ```
     ['$10']
     ```
+
+1. 정규표현식을 테스트할 수 있는 사이트: [https://regexr.com/](https://regexr.com/){: target="_blank"}
