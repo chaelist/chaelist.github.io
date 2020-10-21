@@ -33,3 +33,15 @@ permalink: /
 &nbsp;&nbsp; [Regular Expressions]({{ site.baseurl }}{% link docs/data_handling/regular_expressions.md %})
 {: .fs-4 .fw-300 }
 </details>
+
+
+<details open markdown="block">
+  <summary>
+    Numpy & Pandas
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Numpy 기초]({{ site.baseurl }}{% link docs/numpy_pandas/numpy_basics.md %}) <br/>
+&nbsp;&nbsp; [Numpy 연산과 통계]({{ site.baseurl }}{% link docs/numpy_pandas/numpy_arithmetics.md %})
+{: .fs-4 .fw-300 }
+</details>
