@@ -142,6 +142,36 @@ print(z)
 []
 ```
 
+### re.sub()
+: 패턴에 일치되는 문자열을 다른 문자열로 바꿔준다
+- `re.sub(pattern, repl, string)`의 형태로 사용
+
+```python
+# re.sub() 간단한 버전
+print(re.sub('\d{4}', 'XXXX', '010-1256-9999'))
+```
+```
+010-XXXX-XXXX
+```
++) count 추가:
+```python
+# re.sub(pattern, repl, string, count)
+print(re.sub(pattern='Hello', repl='Bye', count=2, string='Hello, Hello, Hello Everybody.'))
+## 일치하는 문자열이 3개이지만 count=2로 한정되어 있으면 딱 2개까지만 변환됨
+```
+```
+Bye, Bye, Hello Everybody.
+```
++) **re.subn()**: re.sub()와 매우 유사하지만, 치환된 문자열과 함께 치환된 개수도 return해준다
+```python
+print(re.subn('\d{4}', 'XXXX', '010-1234-5678')) ## 치환 결과와 치환된 개수를 element로 하는 tuple 반환
+```
+```
+('010-XXXX-XXXX', 2)
+```
+
+
+
 ### re.compile()
 : 특정 정규표현식을 컴파일해두고 사용하는 방식
 

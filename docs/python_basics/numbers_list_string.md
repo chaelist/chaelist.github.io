@@ -341,16 +341,48 @@ x
     [1, 2, 3, 4, 5]
     ['Glenn', 'Joseph', 'Sally']
     ```
-cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
+    cf) 대문자와 소문자가 공존할 경우: 대문자가 먼저 알파벳순으로 정렬되고, 그 다음 소문자가 정렬됨
+    ```python
+    fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
+    fruits.sort()
+    print(fruits)
+    ```
+    ```
+    ['Banana', 'Dragonfruit', 'apple', 'carrot']
+    ```
+
+    +) **sorted(x)**: sort()와 마찬가지로, list 내용물을 알파벳순으로 정렬.
+    - `x.sort()`는 x 자체를 변경 / `sorted(x)`는 x는 변형하지 않은 채 알파벳 순으로 정렬된 리스트를 반환
+
+    ```python
+    x = [1, 4, 3, 2, 5]
+    sorted(x)
+    ```
+    ```
+    [1, 2, 3, 4, 5]
+    ```
+
+1. **reverse()**: list 안의 element 순서를 반대로 뒤집어준다
 ```python
-fruits = ['apple', 'Banana', 'carrot', 'Dragonfruit']
-fruits.sort()
-print(fruits)
+x = [1, 4, 3, 2, 5]
+x.reverse()
+print(x)
 ```
 ```
-['Banana', 'Dragonfruit', 'apple', 'carrot']
+[5, 2, 3, 4, 1]
 ```
-<br/>
+
+    +) **reversed(x)**: reverse()와 마찬가지로, list 내용물을 반대 순서로 정렬
+    - `x.reverse()`는 x 자체를 변경/ `reversed(x)`는 x는 변형하지 않은 채 반대 순서로 정렬된 리스트를 반환
+
+    ```python
+    x = [1, 4, 3, 2, 5]
+    reversed(x)
+    ```
+    ```
+    [5, 2, 3, 4, 1]
+    ```
+
 
 ## String
 문자열. sequence of characters. ' '이나 " "를 활용해 표현
