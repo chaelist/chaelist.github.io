@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Numpy & Pandas
+title: Numpy
 nav_order: 4
 has_children: true
-permalink: /docs/numpy_pandas
+permalink: /docs/numpy
 ---
 
-# Numpy & Pandas
+# Numpy
 
 
 {: .fs-6 .fw-300 }

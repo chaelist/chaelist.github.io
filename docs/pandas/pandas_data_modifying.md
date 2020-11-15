@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Pandas 데이터 가공
-parent: Numpy & Pandas
-nav_order: 3
+parent: Pandas
+nav_order: 2
 ---
 
 # Pandas 데이터 가공
@@ -61,6 +61,28 @@ iphone_df
 | iPhone X      | 2017-11-03 |          5.8 | 3GB      | iOS 11.1    | Yes       |
 | iPhone XS     | 2018-09-21 |          5.8 | 4GB      | iOS 12.0    | Yes       |
 | iPhone XS Max | 2018-09-21 |          6.5 | 4GB      | iOS 12.0    | Yes       |
+
+</div>
+
+
+### df.replace()로 일괄 수정
+```python
+# '메모리' 칼럼의 '4GB' 값들을 다 '5GB'로 replace.
+iphone_df.replace({'메모리': '4GB'}, '5GB') 
+## iphone_df에 다시 저장해주거나 inplace=True하면 df 자체를 바꿀 수 있음
+```
+
+<div class="code-example" markdown="1">
+
+|               | 출시일     |   디스플레이 | 메모리   | 출시 버전   | Face ID   |
+|:--------------|:-----------|-------------:|:---------|:------------|:----------|
+| iPhone 7      | 2016-09-16 |          4.7 | 2GB      | iOS 10.0    | No        |
+| iPhone 7 Plus | 2016-09-16 |          5.5 | 3GB      | iOS 10.0    | No        |
+| iPhone 8      | 2017-09-22 |          4.7 | 2.5GB    | iOS 11.0    | No        |
+| iPhone 8 Plus | 2017-09-22 |          5.5 | 3GB      | iOS 11.0    | No        |
+| iPhone X      | 2017-11-03 |          5.8 | 3GB      | iOS 11.1    | Yes       |
+| iPhone XS     | 2018-09-21 |          5.8 | 5GB      | iOS 12.0    | Yes       |
+| iPhone XS Max | 2018-09-21 |          6.5 | 5GB      | iOS 12.0    | Yes       |
 
 </div>
 

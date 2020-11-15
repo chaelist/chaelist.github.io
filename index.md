@@ -37,11 +37,24 @@ permalink: /
 
 <details open markdown="block">
   <summary>
-    Numpy & Pandas
+    Numpy
   </summary>
   {: .fs-5 .fw-500 }
 
-&nbsp;&nbsp; [Numpy 기초]({{ site.baseurl }}{% link docs/numpy_pandas/numpy_basics.md %}) <br/>
-&nbsp;&nbsp; [Numpy 연산과 통계]({{ site.baseurl }}{% link docs/numpy_pandas/numpy_arithmetics.md %})
+&nbsp;&nbsp; [Numpy 기초]({{ site.baseurl }}{% link docs/numpy/numpy_basics.md %}) <br/>
+&nbsp;&nbsp; [Numpy 연산과 통계]({{ site.baseurl }}{% link docs/numpy/numpy_arithmetics.md %})
+{: .fs-4 .fw-300 }
+</details>
+
+
+<details open markdown="block">
+  <summary>
+    Pandas
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Pandas 기초]({{ site.baseurl }}{% link docs/pandas/pandas_basics.md %}) <br/>
+&nbsp;&nbsp; [Pandas 데이터 가공]({{ site.baseurl }}{% link docs/pandas/pandas_data_modifying.md %}) <br/>
+&nbsp;&nbsp; [Pandas 데이터 분석]({{ site.baseurl }}{% link docs/pandas/pandas_data_analysis.md %})
 {: .fs-4 .fw-300 }
 </details>

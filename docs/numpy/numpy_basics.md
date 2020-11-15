@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Numpy 기초
-parent: Numpy & Pandas
+parent: Numpy
 nav_order: 1
 ---
 

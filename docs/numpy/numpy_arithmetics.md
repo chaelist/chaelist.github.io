@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Numpy 연산과 통계
-parent: Numpy & Pandas
+parent: Numpy
 nav_order: 2
 ---
 

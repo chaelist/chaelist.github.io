@@ -98,6 +98,7 @@ color_scheme: nil
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-spaceship
 
 compress_html:
   clippings: all
