@@ -183,7 +183,7 @@ laptops_df.sort_values(by='price').head()  ##다 확인하면 너무 많으니, 
 
 </div>
 
-`# 내림차순 정렬
+\# 내림차순 정렬
 {: .fs-3  .text-grey-dk-000} 
 ```python
  # 가격 기준으로 내림차순 정렬 (가격 높은 것부터 순서대로.)

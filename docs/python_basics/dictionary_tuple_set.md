@@ -365,7 +365,7 @@ dict_items([('a', 10), ('b', 1), ('c', 22)])
     [(22, 'c'), (10, 'a'), (1, 'b')]
     ```
     <div class="code-example" markdown="1">
-    +) List Comprehension [(참조)](../controlflow#list-comprehension)
+    +) List Comprehension [(참고)](../controlflow#list-comprehension)
     ```python
     # 위에서 썼던 다음과 같은 코드를
     tmp = list()

@@ -144,7 +144,7 @@ print(array3)
 
 ### np.arange()
 : 특정 숫자 범위만큼을 range로 하는 numpy array 생성
-- range() 함수와 작동 방식이 거의 유사  [(참조)](../../python_basics/controlflow#range-function)
+- range() 함수와 작동 방식이 거의 유사  [(참고)](../../python_basics/controlflow#range-function)
 
 1. np.arange(a)
 ```python
