@@ -2,7 +2,7 @@
 layout: default
 title: Pandas 문자열, 날짜형, 조건문
 parent: Pandas
-nav_order: 4
+nav_order: 5
 ---
 
 # Pandas 문자열, 날짜형, 조건문
