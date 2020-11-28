@@ -274,7 +274,7 @@ df.head()
 
 </div>
 
-1. 수학 점수와 읽기 점수 간의 연관성 확인!
+1. 수학 점수와 읽기 점수 간의 연관성 확인
 ```python
 df.plot(kind='scatter', x='math score', y='reading score')
 ```
