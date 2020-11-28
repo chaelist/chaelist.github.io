@@ -74,3 +74,34 @@ df.plot(y=['KBS', 'MBC']);  # df[['KBS', 'MBC']].plot() 이렇게 써도 동일
 
 
 ## 막대그래프
+
+```python
+df = pd.read_csv('data/sports.csv',index_col=0)   ## 데이터 출처: codeit
+df
+```
+
+<div class="code-example" markdown="1">
+
+|            |   Male |   Female |
+|:-----------|-------:|---------:|
+| Swimming   |    103 |      178 |
+| Baseball   |    363 |      289 |
+| Basketball |    151 |       97 |
+| Golf       |    154 |      232 |
+| Soccer     |    413 |      109 |
+| Bowling    |     88 |      129 |
+
+</div>
+
+1. 기본 막대그래프
+```python
+df.plot(kind='bar')
+```
+![Bargraph1](../../../assets/images/pandas_plot/bargraph1.png)
+
+1. 가로 방향 막대그래프
+```python
+df.plot(kind='barh');  # 'h' is for 'horizontal'
+```
+![Bargraph2](../../../assets/images/pandas_plot/bargraph2.png)
+
