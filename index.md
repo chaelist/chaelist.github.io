@@ -56,7 +56,20 @@ permalink: /
 &nbsp;&nbsp; [Pandas 기초]({{ site.baseurl }}{% link docs/pandas/pandas_basics.md %}) <br/>
 &nbsp;&nbsp; [Pandas 데이터 가공]({{ site.baseurl }}{% link docs/pandas/pandas_data_modifying.md %}) <br/>
 &nbsp;&nbsp; [Pandas 데이터 분석]({{ site.baseurl }}{% link docs/pandas/pandas_data_analysis.md %}) <br/>
+&nbsp;&nbsp; [Pandas 데이터 결합 & 요약]({{ site.baseurl }}{% link docs/pandas/pandas_merge_group.md %}) <br/>
 &nbsp;&nbsp; [Pandas 문자열, 날짜형, 조건문]({{ site.baseurl }}{% link docs/pandas/pandas_str_dt_con.md %})
 {: .fs-4 .fw-300 }
 </details>
 
+
+<details open markdown="block">
+  <summary>
+    데이터 시각화
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Pandas plot() 함수]({{ site.baseurl }}{% link docs/visualization/pandas_plot.md %}) <br/>
+&nbsp;&nbsp; [Seaborn]({{ site.baseurl }}{% link docs/visualization/seaborn.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
