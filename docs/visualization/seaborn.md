@@ -145,8 +145,8 @@ sns.kdeplot(body_df['Weight'])
 
 ## LM Plot
 : LM은 Linear Model의 약자. 산점도와 Regression Line(회귀선)을 함께 그려준다.
+
 ```python
-body_df = pd.read_csv('data/body.csv')   ## 데이터 출처: codeit
 body_df.head()
 ```
 
@@ -231,4 +231,219 @@ sns.jointplot(data=body_df, x='Height', y='Weight', kind='kde')
 
 
 ## Box Plot
+: Seaborn을 활용하면 boxplot을 더 다양하게 그릴 수 있다
 
+cf) pandas 내장 기능으로 그릴 수 있는 boxplot은 이 정도
+```python
+exam_df.plot(kind='box', y='math score');  
+```
+![BoxPlot1](../../../assets/images/seaborn/boxplot1.png)
+
+\* Seaborn을 활용하면 x축, hue도 지정해서 각각 비교해 볼 수 있다.
+```python
+sns.boxplot(data=exam_df, x='test preparation course', y='math score', hue='gender', palette='Set3')
+```
+![BoxPlot2](../../../assets/images/seaborn/boxplot2.png)
+
++) 아래에서 배울 catplot을 활용해도 boxplot과 거의 동일하게 표현 가능
+```python
+sns.catplot(data=exam_df, x='test preparation course', y='math score', hue='gender', kind='box')
+```
+![CatPlot0](../../../assets/images/seaborn/catplot0.png)
+
+## Catplot
+: 카테고리별 비교를 위한 시각화에 적합
+
+```python
+laptops_df = pd.read_csv('data/laptops.csv')   ## 데이터 출처: codeit
+laptops_df.head()
+```
+
+<div class="code-example" markdown="1">
+
+|    | brand   | model            |   ram | hd_type   |   hd_size |   screen_size |   price | processor_brand   | processor_model   |   clock_speed | graphic_card_brand   |   graphic_card_size | os    |   weight |   comments |
+|---:|:--------|:-----------------|------:|:----------|----------:|--------------:|--------:|:------------------|:------------------|--------------:|:---------------------|--------------------:|:------|---------:|-----------:|
+|  0 | Dell    | Inspiron 15-3567 |     4 | hdd       |      1024 |          15.6 |   40000 | intel             | i5                |           2.5 | intel                |                 NaN | linux |     2.5  |        NaN |
+|  1 | Apple   | MacBook Air      |     8 | ssd       |       128 |          13.3 |   55499 | intel             | i5                |           1.8 | intel                |                   2 | mac   |     1.35 |        NaN |
+|  2 | Apple   | MacBook Air      |     8 | ssd       |       256 |          13.3 |   71500 | intel             | i5                |           1.8 | intel                |                   2 | mac   |     1.35 |        NaN |
+|  3 | Apple   | MacBook Pro      |     8 | ssd       |       128 |          13.3 |   96890 | intel             | i5                |           2.3 | intel                |                   2 | mac   |     3.02 |        NaN |
+|  4 | Apple   | MacBook Pro      |     8 | ssd       |       256 |          13.3 |  112666 | intel             | i5                |           2.3 | intel                |                   2 | mac   |     3.02 |        NaN |
+
+</div>
+
+→ 'os'에 몇 개의 unique한 값이 있나 확인
+```python
+laptops_df['os'].unique()
+```
+```
+array(['linux', 'mac', 'windows'], dtype=object)
+```
+
+→ os별 가격 비교:
+1. box plot으로 비교
+```python
+sns.catplot(data=laptops_df, x='os', y='price', kind='box'); 
+```
+![CatPlot1](../../../assets/images/seaborn/catplot1.png)
+
+1. violin plot으로 비교
+```python
+sns.catplot(data=laptops_df, x='os', y='price', kind='violin')  
+```
+![CatPlot2](../../../assets/images/seaborn/catplot2.png)
+
+1. strip plot으로 비교: default option. `kind=` 안쓰면 자동으로 strip plot으로 그려짐
+```python
+sns.catplot(data=laptops_df, x='os', y='price', kind='strip') 
+```
+![CatPlot3](../../../assets/images/seaborn/catplot3.png)
+- 이 경우에는 각 항목의 분포 뿐 아니라, 어떤 항목에 데이터가 더 많은지도 알면 좋기 때문에 strip plot이 가장 적합해 보인다.
+- windows가 데이터가 가장 많고, mac은 몇 개 없는데 많이 분산되어 있다는 것을 한 눈에 알 수 있다.
+
+1. 추가) 프로세서 브랜드에 따라 색 나눠주기
+```python
+laptops_df['processor_brand'].unique()  # 몇 개의 unique한 값이 있나 확인
+```
+```
+array(['intel', 'amd'], dtype=object)
+```
+→ `hue=` 옵션을 사용해 프로세서 브랜드별로 구분
+```python
+sns.catplot(data=laptops_df, x='os', y='price', kind='strip', hue='processor_brand')
+```
+![CatPlot4](../../../assets/images/seaborn/catplot4.png)
+- amd 프로세서를 사용한 노트북은 몇 개 없고, 대체로 저렴한 축에 속한다는 걸 알 수 있다
+
+1. swarm plot으로 비교: 값이 뭉쳐있는 부분의 데이터가 펼쳐져서 보여진다
+```python
+sns.catplot(data=laptops_df, x='os', y='price', kind='swarm', hue='processor_brand');
+```
+![CatPlot5](../../../assets/images/seaborn/catplot5.png)
+
+
+## Heatmap
+
+1. 변수간 상관계수 시각화
+
+    ```python
+    exam_df.head()
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | gender   | race/ethnicity   | parental level of education   | lunch        | test preparation course   |   math score |   reading score |   writing score |
+    |---:|:---------|:-----------------|:------------------------------|:-------------|:--------------------------|-------------:|----------------:|----------------:|
+    |  0 | female   | group B          | bachelor's degree             | standard     | none                      |           72 |              72 |              74 |
+    |  1 | female   | group C          | some college                  | standard     | completed                 |           69 |              90 |              88 |
+    |  2 | female   | group B          | master's degree               | standard     | none                      |           90 |              95 |              93 |
+    |  3 | male     | group A          | associate's degree            | free/reduced | none                      |           47 |              57 |              44 |
+    |  4 | male     | group C          | some college                  | standard     | none                      |           76 |              78 |              75 |
+
+    </div>
+
+    → DatFrame의 corr() 메소드를 사용해 숫자형 변수간의 상관계수 확인
+    ```python
+    exam_df.corr()
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |               |   math score |   reading score |   writing score |
+    |:--------------|-------------:|----------------:|----------------:|
+    | math score    |     1        |        0.81758  |        0.802642 |
+    | reading score |     0.81758  |        1        |        0.954598 |
+    | writing score |     0.802642 |        0.954598 |        1        |
+
+    </div>
+
+
+    → Seaborn의 heatmap() 메소드를 사용해 상관계수를 한눈에 시각화
+    ```python
+    sns.heatmap(exam_df.corr())
+    ```
+    ![HeatMap1](../../../assets/images/seaborn/heatmap1.png)
+
+    +) `annot=True` 옵션을 추가해주면 숫자도 함께 확인 가능
+    ```python
+    sns.heatmap(exam_df.corr(), annot=True)
+    ```
+    ![HeatMap2](../../../assets/images/seaborn/heatmap2.png)
+
+
+1. 연도별, 월별 항공기 승객수 추이를 Heatmap으로 시각화
+
+    ```python
+    ## Seaborn 제공 flights 데이터셋 (연도 및 월별 항공기 승객수를 기록한 데이터셋)
+    flights = sns.load_dataset('flights')  
+    flights.head()
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    |   year | month   |   passengers |
+    |---:|-------:|:--------|-------------:|
+    |  0 |   1949 | Jan     |          112 |
+    |  1 |   1949 | Feb     |          118 |
+    |  2 |   1949 | Mar     |          132 |
+    |  3 |   1949 | Apr     |          129 |
+    |  4 |   1949 | May     |          121 |
+
+    </div>
+
+    → 행: 연도, 열: 월 기준으로 데이터 재구성
+    ```python
+    flights_pivot = flights.pivot('month', 'year', 'passengers')
+    flights_pivot.head()
+    ```
+
+    <div class="code-example" markdown="1">
+
+    | month   |   1949 |   1950 |   1951 |   1952 |   1953 |   1954 |   1955 |   1956 |   1957 |   1958 |   1959 |   1960 |
+    |:--------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+    | Jan     |    112 |    115 |    145 |    171 |    196 |    204 |    242 |    284 |    315 |    340 |    360 |    417 |
+    | Feb     |    118 |    126 |    150 |    180 |    196 |    188 |    233 |    277 |    301 |    318 |    342 |    391 |
+    | Mar     |    132 |    141 |    178 |    193 |    236 |    235 |    267 |    317 |    356 |    362 |    406 |    419 |
+    | Apr     |    129 |    135 |    163 |    181 |    235 |    227 |    269 |    313 |    348 |    348 |    396 |    461 |
+    | May     |    121 |    125 |    172 |    183 |    229 |    234 |    270 |    318 |    355 |    363 |    420 |    472 |
+
+    </div>
+
+    → Heatmap으로 시각화
+    ```python
+    sns.heatmap(flights_pivot, annot=True, fmt='d', cmap="YlGnBu")
+
+    # annot=True로 하면 안에 수치가 함께 쓰여짐 
+    # fmt(format는 안에 쓰여지는 수치의 형태를 결정. 'd'는 정수형. '.1f'는 소숫점 한자리까지
+    # cmap으로 colormap 변경 가능
+    ```
+    ![HeatMap3](../../../assets/images/seaborn/heatmap3.png)
+    - 해가 지날수록 여름 중심으로 승객수가 점점 많아짐을 한눈에 확인 가능.
+ 
+
+## Pairplot
+: 3차원 이상의 실수형 데이터를 다각도로 살펴볼 수 있음
+
+```python
+## Seaborn 제공 iris 데이터셋
+iris = sns.load_dataset('iris')
+iris.head()
+```
+
+<div class="code-example" markdown="1">
+
+|    |   sepal_length |   sepal_width |   petal_length |   petal_width | species   |
+|---:|---------------:|--------------:|---------------:|--------------:|:----------|
+|  0 |            5.1 |           3.5 |            1.4 |           0.2 | setosa    |
+|  1 |            4.9 |           3   |            1.4 |           0.2 | setosa    |
+|  2 |            4.7 |           3.2 |            1.3 |           0.2 | setosa    |
+|  3 |            4.6 |           3.1 |            1.5 |           0.2 | setosa    |
+|  4 |            5   |           3.6 |            1.4 |           0.2 | setosa    |
+
+</div>
+
+→ 4개 변수(꽃잎/꽃받침의 너비/폭) 중 어느 변수가 종을 구분하는 데 도움이 될 지 pariplot으로 확인
+```python
+sns.pairplot(iris, hue='species')
+plt.show()
+```
+![PairPlot1](../../../assets/images/seaborn/pairplot1.png)
