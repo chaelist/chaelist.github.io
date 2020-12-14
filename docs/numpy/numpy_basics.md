@@ -23,7 +23,7 @@ nav_order: 1
 
 
 *Numpy: 대규모 다차원 배열을 쉽게 수학적으로 연산할 수 있게 지원하는 라이브러리
-{: .text-purple-200}
+{: .text-purple-300}
 
 ## Numpy Array 생성
 

@@ -23,7 +23,7 @@ nav_order: 2
 
 
 *Seaborn: Python data visualization library based on matplotlib
-{: .text-purple-200}
+{: .text-purple-300}
 
 ## KDE Plot
 : 대체로 세상에서 일어나는 대부분의 일들은 비슷한 확률밀도함수(PDF)의 생김새를 갖는다.  

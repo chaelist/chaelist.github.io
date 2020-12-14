@@ -70,6 +70,7 @@ permalink: /
 
 &nbsp;&nbsp; [Pandas plot() 함수]({{ site.baseurl }}{% link docs/visualization/pandas_plot.md %}) <br/>
 &nbsp;&nbsp; [Seaborn]({{ site.baseurl }}{% link docs/visualization/seaborn.md %}) <br/>
+&nbsp;&nbsp; [Matplotlib]({{ site.baseurl }}{% link docs/visualization/matplotlib.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>

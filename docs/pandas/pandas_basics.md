@@ -23,7 +23,7 @@ nav_order: 1
 
 
 *Pandas: 데이터 분석 목적으로 널리 사용되는 라이브러리
-{: .text-purple-200}
+{: .text-purple-300}
 
 ## Pandas DataFrame 만들기
 ### From lists of lists, array of arrays, list of series
