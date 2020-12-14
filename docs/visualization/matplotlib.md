@@ -2,7 +2,7 @@
 layout: default
 title: Matplotlib
 parent: 데이터 시각화
-nav_order: 2
+nav_order: 3
 ---
 
 # Matplotlib
@@ -230,4 +230,3 @@ for i in range(len(score_df)):
 plt.grid()
 ```
 ![Labeling3](../../../assets/images/matplotlib/datalabel3.png)
-
