@@ -83,10 +83,10 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bundler (~> 2.1.4)
+  bundler (~> 2.2.0)
   jekyll-spaceship
   just-the-docs!
-  wdm
+  wdmgem update --system
 
 BUNDLED WITH
-   2.1.4
+   2.2.0
