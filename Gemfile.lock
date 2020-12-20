@@ -86,7 +86,7 @@ DEPENDENCIES
   bundler (~> 2.2.0)
   jekyll-spaceship
   just-the-docs!
-  wdmgem update --system
+  wdm
 
 BUNDLED WITH
    2.2.0

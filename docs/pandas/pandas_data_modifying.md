@@ -176,7 +176,7 @@ iphone_df.replace({'메모리': '4GB'}, '5GB')
 
     </div>
 
-1. +) 여러 줄 한 번에 삭제 
+1. 여러 줄 한 번에 삭제 
 
     ```python
     iphone_df.drop(['iPhone 7', 'iPhone 8','iPhone X'], axis='index', inplace=True)
@@ -194,6 +194,99 @@ iphone_df.replace({'메모리': '4GB'}, '5GB')
 
     </div>
  
+1. 특정 조건의 줄만 삭제하기
+
+    ```python
+    liverpool_df = pd.read_csv('data/liverpool.csv', index_col=0)  ## 데이터 출처: codeit
+    liverpool_df
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |                 | position   |   born | number   | nationality   |
+    |:----------------|:-----------|-------:|:---------|:--------------|
+    | Roberto Firmino | FW         |   1991 | no. 9    | Brazil        |
+    | Sadio Mane      | FW         |   1992 | no. 10   | Senegal       |
+    | Mohamed Salah   | FW         |   1992 | no. 11   | Egypt         |
+    | Joe Gomez       | DF         |   1997 | no. 12   | England       |
+    | Alisson Becker  | GK         |   1992 | no. 13   | Brazil        |
+
+    </div>
+
+    → 'nationality'가 'Brazil' 출신인 선수만 삭제하기
+    ```python
+    drop_index = liverpool_df.loc[liverpool_df['nationality'] == 'Brazil'].index
+    liverpool_df.drop(drop_index, axis='index', inplace=True)
+    liverpool_df
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |               | position   |   born | number   | nationality   |
+    |:--------------|:-----------|-------:|:---------|:--------------|
+    | Sadio Mane    | FW         |   1992 | no. 10   | Senegal       |
+    | Mohamed Salah | FW         |   1992 | no. 11   | Egypt         |
+    | Joe Gomez     | DF         |   1997 | no. 12   | England       |
+
+    </div>  
+
+
+
+### df.drop_duplicates()
+: 중복된 행을 삭제. 중복된 행들 중 가장 위에 있는 행만 남기고 다 삭제해준다.
+
+```python
+cake_df = pd.DataFrame({
+    'brand': ['Yummmy', 'Yummmy', 'Sweet', 'Sweet', 'Sweet'],
+    'taste': ['Chocolate', 'Chocolate', 'Strawberry', 'Strawberry', 'Cheese'],
+    'rating': [4, 4, 3.5, 15, 5]
+})
+cake_df
+```
+
+<div class="code-example" markdown="1">
+
+|    | brand   | taste      |   rating |
+|---:|:--------|:-----------|---------:|
+|  0 | Yummmy  | Chocolate  |      4   |
+|  1 | Yummmy  | Chocolate  |      4   |
+|  2 | Sweet   | Strawberry |      3.5 |
+|  3 | Sweet   | Strawberry |     15   |
+|  4 | Sweet   | Cheese     |      5   |
+
+</div>
+
+1. 기본 drop_duplicates(): 모든 열의 값이 다 일치하는 행만 중복데이터로 간주해 삭제
+    ```python
+    cake_df.drop_duplicates()  # inplace=True를 하지 않으면 실제 df가 변형되지는 않음.
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | brand   | taste      |   rating |
+    |---:|:--------|:-----------|---------:|
+    |  0 | Yummmy  | Chocolate  |      4   |
+    |  2 | Sweet   | Strawberry |      3.5 |
+    |  3 | Sweet   | Strawberry |     15   |
+    |  4 | Sweet   | Cheese     |      5   |
+
+    </div>
+
+1. `subset=[]` 조건: 지정한 열(들)에서만 값이 일치하면 중복데이터로 간주해 삭제
+    ```python
+    cake_df.drop_duplicates(subset=['brand', 'taste']) # inplace=True를 하지 않으면 실제 df가 변형되지는 않음.
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | brand   | taste      |   rating |
+    |---:|:--------|:-----------|---------:|
+    |  0 | Yummmy  | Chocolate  |      4   |
+    |  2 | Sweet   | Strawberry |      3.5 |
+    |  4 | Sweet   | Cheese     |      5   |
+
+    </div>
+
 ### df.insert()
 : 특정 위치에 열을 삽입해주는 함수
 
@@ -239,10 +332,12 @@ iphone_df.transpose()   # iphone_df.T라고 해도 동일
 </div>
 
 
+
+
+
 ## Index, 칼럼 변경하기
 
 ```python
-liverpool_df = pd.read_csv('data/liverpool.csv', index_col=0)  ## 데이터 출처: codeit
 liverpool_df
 ```
 
