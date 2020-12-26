@@ -74,3 +74,16 @@ permalink: /
 
 {: .fs-4 .fw-300 }
 </details>
+
+
+
+<details open markdown="block">
+  <summary>
+    Web Scraping
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Requests & BeautifulSoup]({{ site.baseurl }}{% link docs/webscraping/requests_beautifulsoup.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
