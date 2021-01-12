@@ -84,6 +84,8 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [Requests & BeautifulSoup]({{ site.baseurl }}{% link docs/webscraping/requests_beautifulsoup.md %}) <br/>
+&nbsp;&nbsp; [Selenium]({{ site.baseurl }}{% link docs/webscraping/selenium.md %}) <br/>
+&nbsp;&nbsp; [Image 수집 & API 활용]({{ site.baseurl }}{% link docs/webscraping/image_api.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
