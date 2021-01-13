@@ -67,7 +67,7 @@ get_picture(picture_url, 'nytimes_image') ## 함수 실행 -> 'nytimes_image.jpg
 
 <a href="https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do?serviceId=searchWeeklyBoxOffice" target="_blank">https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do?serviceId=searchWeeklyBoxOffice</a>
 
-![KOFIC_API](../../../assets/images/api/kofic_api.jpg)
+![KOFIC_API](../../../assets/images/api/kofic_api_example.jpg)
 
 **\* Weekly Boxoffice 데이터 받아오기**
 1. 원하는 주간의 boxoffice 데이터를 받아오는 url 만들기
