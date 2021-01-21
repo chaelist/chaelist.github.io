@@ -9,7 +9,7 @@ permalink: /
 # Contents
 {: .fs-9 }
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Python 기초
   </summary>
@@ -23,7 +23,7 @@ permalink: /
 </details>
 
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Data Handling
   </summary>
@@ -35,7 +35,7 @@ permalink: /
 </details>
 
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Numpy
   </summary>
@@ -47,7 +47,7 @@ permalink: /
 </details>
 
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Pandas
   </summary>
@@ -62,7 +62,7 @@ permalink: /
 </details>
 
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     데이터 시각화
   </summary>
@@ -77,7 +77,7 @@ permalink: /
 
 
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Web Scraping
   </summary>
@@ -86,6 +86,18 @@ permalink: /
 &nbsp;&nbsp; [Requests & BeautifulSoup]({{ site.baseurl }}{% link docs/webscraping/requests_beautifulsoup.md %}) <br/>
 &nbsp;&nbsp; [Selenium]({{ site.baseurl }}{% link docs/webscraping/selenium.md %}) <br/>
 &nbsp;&nbsp; [Image 수집 & API 활용]({{ site.baseurl }}{% link docs/webscraping/image_api.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
+
+
+<details markdown="block">
+  <summary>
+    Text 분석
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [빈도 분석 (English)]({{ site.baseurl }}{% link docs/text_analysis/english_text.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
