@@ -98,6 +98,7 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [빈도 분석 (English)]({{ site.baseurl }}{% link docs/text_analysis/english_text.md %}) <br/>
+&nbsp;&nbsp; [빈도 분석 (한글)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>

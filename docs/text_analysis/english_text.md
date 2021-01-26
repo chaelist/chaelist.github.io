@@ -63,13 +63,13 @@ Social Interaction Is Critical for Mental and Physical Health - The New York Tim
 {: .fs-1 .lh-0}
 
 *전처리 과정 (English):
-- 불필요한 기호 / 표현 없애기(예, !, ., “, ; 등)
-- 대소문자 변환 (Case conversion, 소문자 ↔ 대문자)
-- 단어 (혹은 Token) 단위로 짤라주기 (Tokenization)
-- 단어의 품사 찾기 (Part of Speech tagging)
+- Text Cleaning: 불필요한 기호 / 표현 없애기(예, !, ., “, ; 등)
+- Case Conversion: 대소문자 변환. 소문자 ↔ 대문자
+- Tokenization: 단어 (혹은 Token) 단위로 잘라주기
+- POS tagging: 단어의 품사 찾기
 - 원하는 품사의 단어들만 선택
-- 단어의 원형(혹은 어근) 찾기(Lemmatization / Stemming)
-- 불용어 (Stopwords) 제거
+- Lemmatization: (=Stemming) 단어의 원형(혹은 어근) 찾기
+- Stopwords Removal: 불용어 제거
 
 필요에 따라서는 위 과정의 순서가 바뀔수도 있고, 같은 과정을 반복 수행할 수도 있다
 
@@ -267,3 +267,8 @@ plt.axis('off')
 plt.show()
 ```
 ![WordCloud2](../../../assets/images/text_english/wordcloud2.png)
+
++) 워드클라우드를 파일로 저장하기
+```python
+wordcloud.to_file('WordCloud.png')
+```
