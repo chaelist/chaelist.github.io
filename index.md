@@ -102,3 +102,14 @@ permalink: /
 
 {: .fs-4 .fw-300 }
 </details>
+
+<details markdown="block">
+  <summary>
+    Network Analysis
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Network Analysis 기초]({{ site.baseurl }}{% link docs/network_analysis/network_basics.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>

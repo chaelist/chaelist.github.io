@@ -76,9 +76,9 @@ cleaned_content
 ### Tokenization + Lemmatization + POS tagging
 *'KoNLPy'의 'Kkma' Class 활용
 - KoNLPy: 한국어 NLP를 위한 Python 패키지. 
-    - 설치해야 사용 가능: [https://konlpy-ko.readthedocs.io/ko/v0.4.3/install/](https://konlpy-ko.readthedocs.io/ko/v0.4.3/install/)
+    - 설치해야 사용 가능: [https://konlpy-ko.readthedocs.io/ko/v0.4.3/install/](https://konlpy-ko.readthedocs.io/ko/v0.4.3/install/){: target="_blank"}
 - Kkma: KoNLPy에서 제공하는 한글 형태소분석기 중 하나. 
-    - 다른 Class와의 비교: [https://konlpy.org/ko/v0.5.2/morph/](https://konlpy.org/ko/v0.5.2/morph/)
+    - 다른 Class와의 비교: [https://konlpy.org/ko/v0.5.2/morph/](https://konlpy.org/ko/v0.5.2/morph/){: target="_blank"}
 
 ```python
 from konlpy.tag import Kkma   # import해서 사용
