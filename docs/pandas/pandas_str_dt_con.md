@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Pandas 문자열, 날짜형, 조건문
+title: Pandas str, dt, 조건문
 parent: Pandas
 nav_order: 5
 ---
 
-# Pandas 문자열, 날짜형, 조건문
+# Pandas str, dt, 조건문
 {: .no_toc }
 <br/>
 

@@ -424,14 +424,14 @@ s
 ```
 
 1. '나 "를 중간에 삽입하는 법
-```python
-print('Tom\'s Book')  # \를 이용
-print("Tom's Book")  # string을 감싸는 따옴표를 다른 종류로 사용
-```
-```
-Tom's Book
-Tom's Book
-```
+    ```python
+    print('Tom\\s Book')  # \를 이용
+    print("Tom's Book")  # string을 감싸는 따옴표를 다른 종류로 사용
+    ```
+    ```
+    Tom's Book
+    Tom's Book
+    ```
 
 1. white space characters (공백)
 -  \t: tab
@@ -618,29 +618,29 @@ False
 
 ### 문자열 포맷팅 (string formatting)
 1. 'format' method
-```python
-print("오늘은 {}월 {}일입니다".format(11, 12))
-```
-```
-오늘은 11월 12일입니다
-```
-*{ }의 순서 지정하기
-```python
-# 'format' method - {}의 순서 정하기
-print("저는 {1}, {0}, {2}를 좋아합니다".format("트와이스", "유재석", "비틀즈"))
-```
-```
-저는 유재석, 트와이스, 비틀즈를 좋아합니다
-```
-*소수점 제한 지정하기
-```python
-# 'format' method - 소수점 제한 지정
-print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))  
-# :.2f라고 하면 floating point(소수) 둘째자리까지 출력하라는 뜻
-```
-```
-1 나누기 3은 0.33입니다
-```
+    ```python
+    print("오늘은 {}월 {}일입니다".format(11, 12))
+    ```
+    ```
+    오늘은 11월 12일입니다
+    ```
+    *{ }의 순서 지정하기
+    ```python
+    # 'format' method - {}의 순서 정하기
+    print("저는 {1}, {0}, {2}를 좋아합니다".format("트와이스", "유재석", "비틀즈"))
+    ```
+    ```
+    저는 유재석, 트와이스, 비틀즈를 좋아합니다
+    ```
+    *소수점 제한 지정하기
+    ```python
+    # 'format' method - 소수점 제한 지정
+    print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))  
+    # :.2f라고 하면 floating point(소수) 둘째자리까지 출력하라는 뜻
+    ```
+    ```
+    1 나누기 3은 0.33입니다
+    ```
 
     <div class="code-example" markdown="1">
     - `:.4f`는 소수점 넷째짜리까지 출력하라는 뜻
@@ -673,16 +673,11 @@ print("{0} 나누기 {1}은 {2:.2f}입니다".format(1, 3, 1/3))
     </div>
 
 1. f-string (파이썬 3.6부터 나온 방식)
-```python
-name = '최지아'
-age = 25
-print(f"제 이름은 {name}이고 {age}살입니다.")
-```
-```
-제 이름은 최지아이고 25살입니다.
-```
-
-
-
-
-
+    ```python
+    name = '최지아'
+    age = 25
+    print(f"제 이름은 {name}이고 {age}살입니다.")
+    ```
+    ```
+    제 이름은 최지아이고 25살입니다.
+    ```
