@@ -110,6 +110,7 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [Network Analysis 기초]({{ site.baseurl }}{% link docs/network_analysis/network_basics.md %}) <br/>
+&nbsp;&nbsp; [Social Network Analysis]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
