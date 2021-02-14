@@ -100,6 +100,43 @@ c.draw()
 ![HP1_Graph2](../../../assets/images/social_network/hp1_network2.png) 
 
 
+### 가장 가까운 인물 10명 찾기
+: 특정 node와 연결된 edge의 weight가 큰 인물 순서대로 정렬해 찾기
+
+```python
+# 네트워크 G 안에서 특정 노드(name) 사이의 weight가 큰 neighbor 순서대로 10명 출력하는 함수
+def find_ten_closest(G, name):  
+    neighbors_list = list(G.neighbors(f"{name}"))
+    
+    temp_dict = {}
+    for n in neighbors_list:
+        weight = G.edges[f"{name}", n]['weight']
+        temp_dict[n] = weight
+    
+    sorted_list = sorted(temp_dict.items(), key=(lambda x:x[1]), reverse=True)
+    for n, w in sorted_list[0:10]:  # 1~10위
+        print(f'{n}:  {w}')
+
+
+# harry와 가장 가까운 인물 top10과 weight 출력 - 1권 기준
+find_ten_closest(G, 'harry')
+```
+```
+ron:  367
+hagrid:  183
+hermione:  177
+snape:  94
+draco:  90
+quirrell:  87
+dudley:  84
+dumbledore:  83
+vernon:  75
+neville:  66
+```
+
+
+
+
 ## 인물의 중요도 변화 확인 (HP 1~7)
 
 ```python
