@@ -44,11 +44,11 @@ book1.head()
 
 |    | source   | target    |   value |
 |---:|:---------|:----------|--------:|
-|  0 | 'vernon' | 'petunia' |      24 |
-|  1 | 'vernon' | 'dudley'  |      29 |
-|  2 | 'vernon' | 'harry'   |      75 |
-|  3 | 'vernon' | 'hagrid'  |       6 |
-|  4 | 'vernon' | 'marge'   |      21 |
+|  0 |  vernon  |  petunia  |      24 |
+|  1 |  vernon  |  dudley   |      29 |
+|  2 |  vernon  |  harry    |      75 |
+|  3 |  vernon  |  hagrid   |       6 |
+|  4 |  vernon  |  marge    |      21 |
 
 </div>
 
