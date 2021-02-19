@@ -102,7 +102,8 @@ print(g.number_of_edges()) # number of edges
 
 ```python
 nx.draw_networkx(g)
-limits = plt.axis('off')  # turn off axis   
+plt.axis('off')  # turn off axis 
+plt.show()   
 ```
 ![Graph1](../../../assets/images/network_basics/Graph1.png) 
 
@@ -171,9 +172,12 @@ EdgeDataView([(1, 3, {'weight': 3}), (2, 4, {'weight': 1}), (2, 5, {'weight': 4}
     ```python
     pos=nx.spring_layout(g)  # 각 node의 position을 정해서 그려줘야 edge_label를 맞춰서 넣을 수 있음
     nx.draw_networkx(g, pos)
+
     labels = nx.get_edge_attributes(g,'weight')
     nx.draw_networkx_edge_labels(g, pos, edge_labels=labels)
-    limits = plt.axis('off') # turn of axis
+
+    plt.axis('off')  # turn off axis 
+    plt.show()
     ```
     ![Graph2](../../../assets/images/network_basics/Graph2.png) 
 
@@ -188,9 +192,10 @@ EdgeDataView([(1, 3, {'weight': 3}), (2, 4, {'weight': 1}), (2, 5, {'weight': 4}
 
     pos=nx.spring_layout(g)
     nx.draw_networkx(g, pos, node_color=color_map)
+
     labels = nx.get_edge_attributes(g,'weight')
-    nx.draw_networkx_edge_labels(g, pos,edge_labels=labels)
-    limits = plt.axis('off') # turn of axis
+    plt.axis('off')  # turn off axis 
+    plt.show()
     ```
     ![Graph3](../../../assets/images/network_basics/Graph3.png)
 
@@ -225,7 +230,8 @@ diG.add_edges_from([(1, 2), (2, 4), (4, 2), (3, 3), (1, 3), (5, 1)]) # edge만 �
 → 시각화해보기
 ```python
 nx.draw_networkx(diG)
-limits = plt.axis('off') # turn of axis 
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![DiGraph1](../../../assets/images/network_basics/DiGraph1.png) 
 
@@ -248,7 +254,8 @@ nx.number_of_selfloops(diG)   # diG에는 1개의 self-loop가 포함되어 있�
 ```python
 # 위에서 생성한 g 네트워크를 이어서 사용
 nx.draw_networkx(g)
-limits = plt.axis('off')  # turn off axis   
+plt.axis('off')  # turn off axis 
+plt.show()  
 ```
 ![Graph1](../../../assets/images/network_basics/Graph1.png) 
 
@@ -351,7 +358,8 @@ nx.shortest_path(g, 3, 5)
 # 예시로 barbell graph를 만들어 사용
 barbell_g = nx.barbell_graph(m1=5, m2=1)
 nx.draw_networkx(barbell_g)
-limits = plt.axis('off') # turn of axis 
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![Barbell_Graph1](../../../assets/images/network_basics/Barbell_Graph1.png) 
   
@@ -406,8 +414,8 @@ limits = plt.axis('off') # turn of axis
 ```python
 # 예시로 Erdős-Rényi graph를 만들어 사용
 G = nx.erdos_renyi_graph(n=20, p=0.2)
-nx.draw_networkx(G)
-limits = plt.axis('off') # turn of axis 
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![Erdos_Renyi_Graph1](../../../assets/images/network_basics/Erdos_Graph1.png) 
 
@@ -434,7 +442,8 @@ limits = plt.axis('off') # turn of axis
     → subgraph 시각화
     ```python
     nx.draw_networkx(G_eight)
-    limits = plt.axis('off') # turn of axis 
+    plt.axis('off')  # turn off axis 
+    plt.show()
     ```
     ![Subgraph1](../../../assets/images/network_basics/Subgraph1.png) 
 
@@ -479,9 +488,12 @@ for n, d in g.nodes(data=True):
 
 pos=nx.spring_layout(g)
 nx.draw_networkx(g, pos, node_color=color_map)
+
 labels = nx.get_edge_attributes(g,'weight')
 nx.draw_networkx_edge_labels(g, pos,edge_labels=labels)
-limits = plt.axis('off') # turn of axis
+
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![Graph3](../../../assets/images/network_basics/Graph3.png)
 
@@ -545,7 +557,8 @@ for n, d in G.nodes(data=True):
       color_map.append('lightgrey')
 
 nx.draw_networkx(G, node_color=color_map)
-limits = plt.axis('off')
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![Erdos_Renyi_Graph2](../../../assets/images/network_basics/Erdos_Graph2.png)
 
@@ -573,7 +586,8 @@ c.draw()
     lp_G = nx.lollipop_graph(m=10, n=4)
 
     nx.draw_networkx(lp_G)
-    limits = plt.axis('off')
+    plt.axis('off')  # turn off axis 
+    plt.show()
     ```
     ![Lollipop_Graph1](../../../assets/images/network_basics/Lollipop_Graph1.png) 
 
@@ -583,6 +597,5 @@ c.draw()
 
     m.cmap = plt.cm.get_cmap("Greens")  # colormap을 Green으로 지정
     m.draw()
-    plt.show()
     ```
     ![MatrixPlot2](../../../assets/images/network_basics/MatrixPlot2.png)

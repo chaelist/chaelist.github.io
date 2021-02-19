@@ -477,7 +477,7 @@ soup = BeautifulSoup(html_code, 'html.parser')
     {: .fs-1 }
 
 1. 형제 태그 접근 (Sibling Combinator)
-- `~` 사용 → ` 특정 태그 뒤에 나오는 형제 태그를 선택
+- `~` 사용 → 특정 태그 뒤에 나오는 형제 태그를 선택
 - 형제 태그: parent-child 관계가 아닌, 같은 depth를 가진 태그 (병렬적 나열)
 
     ex1)

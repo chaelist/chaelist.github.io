@@ -28,14 +28,14 @@ nav_order: 2
 (→ 실제 사람들 사이의 관계에도 유사한 분석을 적용 가능)
 
 ### Network 데이터 준비
-- [bookwarm](https://github.com/harrisonpim/bookworm){: target="_blank"} API를 사용: 책 text를 바탕으로 인물 간 관계 데이터를 구성. 
+- [bookwarm](https://github.com/harrisonpim/bookworm){: target="_blank"} library를 사용: 책 text를 바탕으로 인물 간 관계 데이터를 구성. 
 - source, target, value(=weight) 3개의 칼럼으로 구성. (방향성은 없지만 편의상 source와 target으로 나눔)
 - 우선은 1권 \< Harry Potter and the Philosopher's Stone > 데이터만 사용
 
 ```python
 import pandas as pd
 
-# 미리 bookwarm API를 사용해서 구축해 놓은 인물 간 관계 데이터
+# 미리 bookwarm library를 사용해서 구축해 놓은 인물 간 관계 데이터
 book1 = pd.read_csv('harrypotter/network_HarryPotter1.csv', index_col=0)
 book1.head()
 ```
@@ -67,7 +67,8 @@ for _, edge in book1.iterrows():
     G.add_edge(edge['source'], edge['target'], weight=edge['value'])
 
 nx.draw_networkx(G)
-limits = plt.axis('off')  # turn off axis   
+plt.axis('off')  # turn off axis 
+plt.show()
 ```
 ![HP1_Graph1](../../../assets/images/social_network/hp1_network1.png)   
 - ※ 이렇게 node가 너무 많은 경우 뭉친 부분이 잘 안 보인다
@@ -143,7 +144,7 @@ neville:  66
 import pandas as pd
 import networkx as nx
 
-# 미리 bookwarm API를 사용해서 만들어 둔 인물 간 관계 데이터: 1권~7권
+# 미리 bookwarm library를 사용해서 만들어 둔 인물 간 관계 데이터: 1권~7권
 book1 = pd.read_csv('harrypotter/network_HarryPotter1.csv', index_col=0)
 book2 = pd.read_csv('harrypotter/network_HarryPotter2.csv', index_col=0)
 book3 = pd.read_csv('harrypotter/network_HarryPotter3.csv', index_col=0)

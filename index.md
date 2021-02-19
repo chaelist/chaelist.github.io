@@ -111,6 +111,7 @@ permalink: /
 
 &nbsp;&nbsp; [Network Analysis 기초]({{ site.baseurl }}{% link docs/network_analysis/network_basics.md %}) <br/>
 &nbsp;&nbsp; [Social Network Analysis]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}) <br/>
+&nbsp;&nbsp; [Semantic Network Analysis]({{ site.baseurl }}{% link docs/network_analysis/semantic_network.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
