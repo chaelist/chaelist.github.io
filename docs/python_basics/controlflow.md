@@ -354,35 +354,35 @@ while a > 0:
 : while문도 continue와 break를 활용해 특정 element를 skip하거나 전체 loop를 강제로 중단시킬 수 있다
 
 1. continue 사용 예시
-```python
-a = 0
-while a < 10:
-  a = a + 1
-  if a % 2 == 0:  # 2의 배수일 경우에는 print(a)가 실행되지 않은 채 다시 맨 처음으로 돌아간다
-    continue
-  print(a)
-```
-```
-1
-3
-5
-7
-9
-```
+  ```python
+  a = 0
+  while a < 10:
+    a = a + 1
+    if a % 2 == 0:  # 2의 배수일 경우에는 print(a)가 실행되지 않은 채 다시 맨 처음으로 돌아간다
+      continue
+    print(a)
+  ```
+  ```
+  1
+  3
+  5
+  7
+  9
+  ```
 
 1. break 사용 예시
-```python
-a = 0
-while a < 10:
-  a = a + 1
-  if a % 3 == 0:  # 2의 배수를 만나면 while loop가 아예 중단된다 
-    break
-  print(a)
-```
-```
-1
-2
-```
+  ```python
+  a = 0
+  while a < 10:
+    a = a + 1
+    if a % 3 == 0:  # 2의 배수를 만나면 while loop가 아예 중단된다 
+      break
+    print(a)
+  ```
+  ```
+  1
+  2
+  ```
 
 ## try - except문 (오류 예외 처리)
 1. 기본 try - except문
