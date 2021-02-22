@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Python 기초
-nav_order: 2
+nav_order: 10
 has_children: true
 permalink: /docs/python_basics
 ---

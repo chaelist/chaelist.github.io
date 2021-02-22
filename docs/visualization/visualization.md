@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 데이터 시각화
-nav_order: 6
+nav_order: 14
 has_children: true
 permalink: /docs/visualization
 ---

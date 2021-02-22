@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Network Analysis
-nav_order: 9
+nav_order: 17
 has_children: true
 permalink: /docs/network_analysis
 ---

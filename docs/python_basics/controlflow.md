@@ -205,18 +205,20 @@ print(total)
 ```
 
 1. for문 예시3: adding up even numbers only
-```python
-# for문과 if문을 함께 사용해, 특정 조건의 값들만 더하기
-x = [2, 3, 1, 4, 5]
-total = 0
-for k in x:
-  if k % 2 == 0:
-    total = total + k
-print(total)
-```
-```
-6
-```
+
+    ```python
+    # for문과 if문을 함께 사용해, 특정 조건의 값들만 더하기
+    x = [2, 3, 1, 4, 5]
+    total = 0
+    for k in x:
+      if k % 2 == 0:
+        total = total + k
+    print(total)
+    ```
+    ```
+    6
+    ```
+
 
 ### range() function
 - for a number n, `range(n)` returns a sequence of 0, 1, ... n-1
@@ -270,33 +272,35 @@ c
 : 특정 condition 아래 'for' loop를 멈추거나 escape하는 방법
 
 1. continue: 특정 조건을 만족하는 element에 대해서는 나머지 body가 실행되지 X, 다음 element로 process가 넘어간다 (남아있는 element가 있다면 for문 자체는 계속되는 것)
-```python
-x = [2, -1, 3]
-total = 0
-for k in x:
-  if k < 0:  # k가 음수일 경우에는 continue 
-    continue   ## 아래 total = total + k 부분이 실행되지 않고, 다음 element로 넘어간다
-  total = total + k
-print(total) # 결국, 양수만 더하는 결과가 나옴.
-```
-```
-5
-```
+
+    ```python
+    x = [2, -1, 3]
+    total = 0
+    for k in x:
+      if k < 0:  # k가 음수일 경우에는 continue 
+        continue   ## 아래 total = total + k 부분이 실행되지 않고, 다음 element로 넘어간다
+      total = total + k
+    print(total) # 결국, 양수만 더하는 결과가 나옴.
+    ```
+    ```
+    5
+    ```
 
 2. break: 특정 조건이 충족되는 순간, for문이 아예 다 멈춰버린다 (다음 element가 남아있어도 넘어가지 않음)
-```python
-x = [2, -1, 3]
-total = 0
-for k in x:
-  if k < 0:  # k가 음수일 경우에 아예 해당 'for' process가 다 멈춤. 다음 element로도 넘어가지 않음.
-    break
-  total = total + k
-print(total)
-## 2는 일단 total = total + k까지 내려가서 더해지지만, -1에서 if가 충족되면서 break를 만나 for문이 멈추면서 그대로 total은 2에서 멈춤
-```
-```
-2
-```
+
+    ```python
+    x = [2, -1, 3]
+    total = 0
+    for k in x:
+      if k < 0:  # k가 음수일 경우에 아예 해당 'for' process가 다 멈춤. 다음 element로도 넘어가지 않음.
+        break
+      total = total + k
+    print(total)
+    ## 2는 일단 total = total + k까지 내려가서 더해지지만, -1에서 if가 충족되면서 break를 만나 for문이 멈추면서 그대로 total은 2에서 멈춤
+    ```
+    ```
+    2
+    ```
 
 ### List Comprehension
 * 리스트 내포 (List Comprehension): 리스트 안에 for문을 내포해 간결하게 작성
@@ -354,35 +358,37 @@ while a > 0:
 : while문도 continue와 break를 활용해 특정 element를 skip하거나 전체 loop를 강제로 중단시킬 수 있다
 
 1. continue 사용 예시
-  ```python
-  a = 0
-  while a < 10:
-    a = a + 1
-    if a % 2 == 0:  # 2의 배수일 경우에는 print(a)가 실행되지 않은 채 다시 맨 처음으로 돌아간다
-      continue
-    print(a)
-  ```
-  ```
-  1
-  3
-  5
-  7
-  9
-  ```
+
+    ```python
+    a = 0
+    while a < 10:
+      a = a + 1
+      if a % 2 == 0:  # 2의 배수일 경우에는 print(a)가 실행되지 않은 채 다시 맨 처음으로 돌아간다
+        continue
+      print(a)
+    ```
+    ```
+    1
+    3
+    5
+    7
+    9
+    ```
 
 1. break 사용 예시
-  ```python
-  a = 0
-  while a < 10:
-    a = a + 1
-    if a % 3 == 0:  # 2의 배수를 만나면 while loop가 아예 중단된다 
-      break
-    print(a)
-  ```
-  ```
-  1
-  2
-  ```
+
+    ```python
+    a = 0
+    while a < 10:
+      a = a + 1
+      if a % 3 == 0:  # 2의 배수를 만나면 while loop가 아예 중단된다 
+        break
+      print(a)
+    ```
+    ```
+    1
+    2
+    ```
 
 ## try - except문 (오류 예외 처리)
 1. 기본 try - except문

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Text 분석
-nav_order: 8
+nav_order: 16
 has_children: true
 permalink: /docs/text_analysis
 ---

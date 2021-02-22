@@ -2,7 +2,7 @@
 layout: default
 title: Home
 nav_order: 1
-description: "This is a website for organizing python codes by chaelist."
+description: "This is a website for python codes - by chaelist."
 permalink: /
 ---
 
