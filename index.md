@@ -115,3 +115,14 @@ permalink: /
 
 {: .fs-4 .fw-300 }
 </details>
+
+<details markdown="block">
+  <summary>
+    Machine Learning 기초
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [기초 & Linear Regression]({{ site.baseurl }}{% link docs/ml_basics/linear_regression.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
