@@ -28,7 +28,7 @@ nav_order: 2
 
 *Selenium 사용을 위한 준비 사항:
 - pip이나 conda를 활용해서 install해줘야 한다
-- driver를 다운받아야 함 (크롬드라이버: https://sites.google.com/a/chromium.org/chromedriver/downloads)
+- driver를 다운받아야 함 ([크롬드라이버 다운](https://sites.google.com/a/chromium.org/chromedriver/downloads){: target="_blank"})
 
 ### driver 실행 및 종료
 

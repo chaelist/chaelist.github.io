@@ -123,6 +123,7 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [기초 & Linear Regression]({{ site.baseurl }}{% link docs/ml_basics/linear_regression.md %}) <br/>
+&nbsp;&nbsp; [Classification 1]({{ site.baseurl }}{% link docs/ml_basics/classification1.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
