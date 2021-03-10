@@ -40,13 +40,9 @@ nav_order: 2
 
 
 ## KNN (K Nearest Neighbors)
+: 가장 가까운 K개의 neighbor가 속한 class로 배정하는 classification 방식.
 
 ### 기본 개념 
-
-&nbsp;
-{: .fs-1 .lh-0}
-
-***KNN**: 가장 가까운 K개의 neighbor가 속한 class로 배정하는 classification 방식.
 - ex) K=1이라면, 새로운 datapoint의 class는 가장 가까운 하나의 neighbor의 class에 따라 배정된다.
 - ex) K=5라면, 새로운 datapoint의 class는 가장 가까운 5개의 neighbor 중 가장 많은 수가 속한 class에 따라 배정된다.
 - 보통, class(배정하게 되는 집단)의 수가 짝수일 경우, K는 홀수로 한다
@@ -226,7 +222,7 @@ model.score(X_test, y_test)
     4. 각 datapoint를 가장 확률이 높은 쪽으로 분류. (ex. 스팸 메일일 확률이 가장 높다면, 스팸 메일로 분류)
 - **손실함수: 로그 손실 = log loss = cross entropy**
 
-    ![Log_Loss_example](../../../assets/images/machine_learning/log_loss_example.png)  
+    ![Log_Loss_example](../../../assets/images/machine_learning/logloss_example.png)  
     (출처: codeit)
     {: .fs-2 .text-grey-dk-000 }
 
@@ -330,7 +326,7 @@ LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
 
 
 
-**4. test data로 성능 체크**
+**3. test data로 성능 체크**
 ```python
 model.predict(X_test)  # 어떻게 분류했나 확인
 ```
