@@ -103,6 +103,7 @@ permalink: /
 {: .fs-4 .fw-300 }
 </details>
 
+
 <details markdown="block">
   <summary>
     Network Analysis
@@ -116,6 +117,7 @@ permalink: /
 {: .fs-4 .fw-300 }
 </details>
 
+
 <details markdown="block">
   <summary>
     Machine Learning 기초
@@ -125,6 +127,7 @@ permalink: /
 &nbsp;&nbsp; [기초 & Linear Regression]({{ site.baseurl }}{% link docs/ml_basics/linear_regression.md %}) <br/>
 &nbsp;&nbsp; [Classification 1]({{ site.baseurl }}{% link docs/ml_basics/classification1.md %}) <br/>
 &nbsp;&nbsp; [Classification 2]({{ site.baseurl }}{% link docs/ml_basics/classification2.md %}) <br/>
+&nbsp;&nbsp; [Clustering]({{ site.baseurl }}{% link docs/ml_basics/clustering.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
