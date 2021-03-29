@@ -3,5 +3,6 @@
 .ruby-version
 .jekyll-cache
 .sass-cache
-_site
+_site/assets
+_site/docs
 node_modules
