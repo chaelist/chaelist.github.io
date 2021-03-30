@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Deep Learning
+title: Deep Learning 기초
 parent: Machine Learning 기초
 nav_order: 5
 --- 
 
-# Deep Learning
+# Deep Learning 기초
 {: .no_toc }
 <br/>
 
@@ -21,7 +21,7 @@ nav_order: 5
 </details>
 ---
 
-*Deep Learning: ML 연구방법 중 하나로, Neural Network를 활용하는 방식.
+*<u>Deep Learning</u>: ML 연구방법 중 하나로, Neural Network를 활용하는 방식.
 
 &nbsp;
 {: .fs-1 .lh-0}

@@ -533,6 +533,80 @@ titanic_df.head()
 
     </div>
 
+
+**+) string value groupby**
+
+```python
+# sample dataframe 생성: 이용자와 이용한 앱이 매칭되어 있는 데이터
+
+users = ['A', 'B', 'A', 'B', 'C', 'D', 'E', 'D', 'E']
+apps_used = ['Google', 'Naver', 'YouTube', 'Google', 'YouTube', 'Facebook', 'Instagram', 'Naver', 'Google']
+
+sample_df = pd.DataFrame({'users':users, 'apps_used':apps_used})
+sample_df
+```
+
+<div class="code-example" markdown="1">
+
+|    | users   | apps_used   |
+|---:|:--------|:------------|
+|  0 | A       | Google      |
+|  1 | B       | Naver       |
+|  2 | A       | YouTube     |
+|  3 | B       | Google      |
+|  4 | C       | YouTube     |
+|  5 | D       | Facebook    |
+|  6 | E       | Instagram   |
+|  7 | D       | Naver       |
+|  8 | E       | Google      |
+
+</div>
+
+1. list로 묶기: 각 이용자별 이용한 앱 조합
+```python
+sample_df.groupby('users')['apps_used'].apply(list)
+```
+```
+users
+A      [Google, YouTube]
+B        [Naver, Google]
+C              [YouTube]
+D      [Facebook, Naver]
+E    [Instagram, Google]
+Name: apps_used, dtype: object
+```
+
+1. set으로 묶기: 순서 고려X
+```python
+sample_df.groupby('users')['apps_used'].apply(set)
+```
+```
+users
+A      {Google, YouTube}
+B        {Google, Naver}
+C              {YouTube}
+D      {Facebook, Naver}
+E    {Google, Instagram}
+Name: apps_used, dtype: object
+```
+
+1. apply lambda를 활용해 원하는 모양으로 결합
+```python
+sample_df.groupby('users')['apps_used'].apply(lambda x: ', '.join(x))
+```
+```
+users
+A      Google, YouTube
+B        Naver, Google
+C              YouTube
+D      Facebook, Naver
+E    Instagram, Google
+Name: apps_used, dtype: object
+```
+
+&nbsp;
+{: .fs-1 .lh-0}
+
 ### pd.pivot_table()
 : 엑셀에서처럼 pivot 돌리기 (엑셀에서 pivot 돌리는 것의 동작 방식을 생각하면 쉬움)
 - ex) `pd.pivot_table(df, index='칼럼1', columns=['칼럼2','칼럼3'], values='칼럼4', fill_value=0, aggfunc='sum')`

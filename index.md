@@ -128,6 +128,7 @@ permalink: /
 &nbsp;&nbsp; [Classification 1]({{ site.baseurl }}{% link docs/ml_basics/classification1.md %}) <br/>
 &nbsp;&nbsp; [Classification 2]({{ site.baseurl }}{% link docs/ml_basics/classification2.md %}) <br/>
 &nbsp;&nbsp; [Clustering]({{ site.baseurl }}{% link docs/ml_basics/clustering.md %}) <br/>
+&nbsp;&nbsp; [Deep Learning 기초]({{ site.baseurl }}{% link docs/ml_basics/deep_learning.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>

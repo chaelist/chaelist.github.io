@@ -564,6 +564,30 @@ relativedelta(years=+2, months=+1, days=+29)
 29
 ```
 
+### +) 더 간단한 기간 계산
+- 두 column이 동일한 datetime 타입을 가지고 있다면, 간단히 빼기(-)로 기간을 계산할 수 있다.
+- 그 결과는 000 days와 같이 일수 기준으로 나오며, `.dt.days`를 붙여주면 int 형태로 일수만 추출된다
+
+
+```python
+# 위에서 relativedelta로 계산한 것과 달리, 'days' 기준의 회원 기간 계산
+customer['membership_period'] = (customer['calc_date'] - customer['start_date']).dt.days
+customer.head()
+```
+
+<div class="code-example" markdown="1">
+
+|    | customer_id   | name   | class   | gender   | start_date  | end_date   | campaign_id   |   is_deleted | calc_date   |   membership_period |
+|---:|:--------------|:-------|:--------|:---------|:------------|:-----------|:--------------|-------------:|:------------|---------:|
+|  0 | OA832399      | XXXX   | C01     | F        | 2015-05-01  | NaT        | CA1           |            0 | 2019-04-30|       1460 |
+|  1 | PL270116      | XXXXX  | C01     | M        | 2015-05-01  | NaT        | CA1           |            0 | 2019-04-30|       1460 |
+|  2 | OA974876      | XXXXX  | C01     | M        | 2015-05-01  | NaT        | CA1           |            0 | 2019-04-30 |      1460 |
+|  3 | HD024127      | XXXXX  | C01     | F        | 2015-05-01  | NaT        | CA1           |            0 | 2019-04-30 |      1460 |
+|  4 | HD661448      | XXXXX  | C03     | F        | 2015-05-01  | NaT        | CA1           |            0 | 2019-04-30 |      1460 |
+
+</div>
+
+
 
 ## 조건문으로 데이터 가공
 

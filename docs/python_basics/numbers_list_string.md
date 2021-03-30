@@ -54,6 +54,7 @@ print(a + b) # addition
 print(a - b) # subtraction
 print(a * b) # multiplication
 print(a / b) # division (나누어진 결과를 소수로 표시)
+print(a // b) # quotient. 나눈 몫을 반환 (ex. 5 // 3 = 1)
 print(a % b) # modulus. 나머지 값을 반환. (ex. 5 % 3 = 2)
 print(a ** b) # exponentiation (지수. 제곱) (ex. 3**5는 3의 5제곱을 의미)
 ```
@@ -62,6 +63,7 @@ print(a ** b) # exponentiation (지수. 제곱) (ex. 3**5는 3의 5제곱을 의
 2
 15
 1.6666666666666667
+1
 2
 125
 ```

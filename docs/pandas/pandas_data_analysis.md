@@ -160,6 +160,31 @@ Index(['brand', 'model', 'ram', 'hd_type', 'hd_size', 'screen_size', 'price', 'p
     ※ 데이터의 분포도를 아는 것은 머신러닝 알고리즘의 성능을 향상시키는 중요한 요소이다.
     (ex. 회귀에서 결정 값이 정규분포를 따르지 않고 특정 값으로 왜곡되어 있다면 예측 성능이 저하됨)
 
+
+### Type Conversion
+- `df.astype()`을 활용하면 특정 column의 데이터 타입을 원하는 대로 변경할 수 있다.
+- ex1) 숫자형 변수인데 string으로 저장되어 있어서 `df.describe()`로 분포 파악이 안되는 경우, 숫자형 변수로 바꿔주면 좋다
+- ex2) 데이터를 merge할 때, 통합 기준이 되는 column의 데이터 타입이 두 df에서 모두 같아햐 한다 → 미리 type을 체크하고 통일해줘야 데이터 누락 없이 merge된다
+
+```python
+# 'ram' column의 type 변경해보기
+
+print(laptops_df['ram'].dtypes)  # 이전 type 체크
+laptops_df['ram'] = laptops_df['ram'].astype('str')  # 바꾸고자 하는 type으로 변경
+print(laptops_df['ram'].dtypes)  # 바뀐 type 체크
+
+laptops_df['ram'] = laptops_df['ram'].astype('int')  # int type으로 원상 복구
+print(laptops_df['ram'].dtypes)  # 다시 바뀐 type 체크
+
+```
+```
+int64
+object
+int64
+```
+
+
+
 ### 데이터 정렬
 : **df.sort_values()**로 특정 열 기준으로 정렬하기
 - `inplace=True`를 써주면 dataframe 자체가 바뀌고, 써주지 않으면 그냥 정렬된 결과가 return되고 원본 dataframe은 바뀌지 않는다.
@@ -294,7 +319,7 @@ Name: brand, dtype: object
 - 결측치가 있으면 머신러닝을 할 수 없기에, 결측치를 삭제하거나 다른 방법으로 채워줘야 한다
 
 ### isna()
-: 각 값이 NaN인지 아닌지를 True나 False로 알려준다
+: 각 값이 NaN인지 아닌지를 True나 False로 알려준다 (NaN이면 True, 값이 존재하면 False)
 
 ```python
 laptops_df.isna().head(3) 
@@ -334,6 +359,23 @@ weight                  7
 comments              112
 dtype: int64
 ```
+
+### notna()
+: `isna()`와 반대로, 값이 존재하면 True, NaN(결측치)면 False를 반환
+
+```python
+laptops_df.notna().head(3) 
+```
+
+<div class="code-example" markdown="1">
+
+|    |   brand |   model |   ram |   hd_type |   hd_size |   screen_size |   price |   processor_brand |   processor_model |   clock_speed |   graphic_card_brand |   graphic_card_size |   os |   weight |   comments |
+|---:|--------:|--------:|------:|----------:|----------:|--------------:|--------:|------------------:|------------------:|--------------:|---------------------:|--------------------:|-----:|---------:|-----------:|
+|  0 |    True |    True |  True |      True |      True |          True |    True |              True |              True |          True |                 True |                False | True |     True |       False |
+|  1 |    True |    True |  True |      True |      True |          True |    True |              True |              True |          True |                 True |                True | True |     True |       False |
+|  2 |    True |    True |  True |      True |      True |          True |    True |              True |              True |          True |                 True |                True | True |     True |       False |
+
+</div>
 
 ### fillna()
 : 결손 데이터 대체

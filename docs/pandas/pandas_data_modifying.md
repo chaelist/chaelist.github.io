@@ -86,6 +86,33 @@ iphone_df.replace({'메모리': '4GB'}, '5GB')
 
 </div>
 
+&nbsp;
+{: .fs-1 .lh-0}
+
+**+) 다양한 df.replace() 활용법:**
+[https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.replace.html](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.replace.html){: target="_blank"}
+
+1. df 전체에서 0은 10으로, 1은 100으로 바꾸기:
+```python
+df.replace({0: 10, 1: 100})
+```
+
+1. A 칼럼의 0과 B 칼럼의 5를 100으로 바꾸기:
+```python
+df.replace({'A': 0, 'B': 5}, 100)
+```
+
+1. A 칼럼에서만, 0은 100으로, 4는 400으로 바꾸기:
+```python
+df.replace({'A': {0: 100, 4: 400}})
+```
+
+
+&nbsp;
+{: .fs-1 .lh-0}
+
+
+
 ### 새로운 행/열 추가
 
 1. 행 추가

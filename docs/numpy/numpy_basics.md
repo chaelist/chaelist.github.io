@@ -102,7 +102,7 @@ print(array3)
 ```
 
 ### random 숫자로 채워진 array 생성
-: np.random.random(), np.random.randint(), np.random.rand
+: np.random.random(), np.random.randint(), np.random.rand(), np.random.randn()
 
 1. **np.random.random()**: 0~1 사이의 랜덤한 floating number로 구성된 array 생성
 - 원소 개수만을 input으로 받는다. 
@@ -129,18 +129,30 @@ print(array3)
     array([3, 4, 0, 3, 4, 4, 4, 3])
     ```
 
-1. **np.random.rand()**: random한 값들을 넣은 '행렬' 만들기 (0~1 사이의 random한 floating number로 구성)
+1. **np.random.rand()**: random한 값들을 넣은 '행렬' 만들기 (0~1 사이의 균일분포에서 random한 floating number로 구성)
 - () 안에 차원을 적으면 됨
 
     ```python
-    B= np.random.rand(3, 5)   # 3x5 행렬을 만들겠다는 뜻
-    B
+    np.random.rand(3, 5)   # 3x5 행렬을 만들겠다는 뜻
     ```
     ```
     array([[0.20518818, 0.83743088, 0.58408188, 0.24389283, 0.28567188],
         [0.50262559, 0.50765122, 0.5385608 , 0.861137  , 0.69626678],
         [0.80102188, 0.44550328, 0.91234899, 0.91133805, 0.90298844]])
     ```
+
+1. **np.random.randn()**: `rand()`와 마찬가지로 random한 값들을 넣은 '행렬' 만들되, 평균 0, 표준편차 1의 가우시안 표준정규분포에서 random한 floating number를 추출해 구성 
+- () 안에 차원을 적으면 됨
+
+    ```python
+    np.random.randn(3, 5)   # 3x5 행렬
+    ```
+    ```
+    array([[-0.13089314,  1.12283706,  0.50684862, -1.41899365,  0.07714081],
+        [-0.20499738,  0.24543592,  0.19121621, -1.12409184, -0.8251468 ],
+        [ 1.03761123, -0.99567926,  0.78983874,  1.2103671 , -0.84700707]])
+    ```
+
 
 ### np.arange()
 : 특정 숫자 범위만큼을 range로 하는 numpy array 생성
