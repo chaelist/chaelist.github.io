@@ -314,6 +314,10 @@ cake_df
 
     </div>
 
++) `df.duplicated()`를 사용하면 drop_duplicates를 하기 전에 미리 중복값이 어느 정도 있는지 확인할 수 있음  
+(마찬가지로 `subset='칼럼명'`도 사용 가능!)
+
+
 ### df.insert()
 : 특정 위치에 열을 삽입해주는 함수
 

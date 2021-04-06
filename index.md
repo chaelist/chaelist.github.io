@@ -132,3 +132,15 @@ permalink: /
 
 {: .fs-4 .fw-300 }
 </details>
+
+
+<details markdown="block">
+  <summary>
+    Machine Learning 심화
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [Regularization]({{ site.baseurl }}{% link docs/ml_advanced/regularization.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
