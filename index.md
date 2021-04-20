@@ -141,6 +141,8 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [Regularization]({{ site.baseurl }}{% link docs/ml_advanced/regularization.md %}) <br/>
+&nbsp;&nbsp; [데이터 전처리]({{ site.baseurl }}{% link docs/ml_advanced/preprocessing.md %}) <br/>
+&nbsp;&nbsp; [Model Selection]({{ site.baseurl }}{% link docs/ml_advanced/model_selection.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>
