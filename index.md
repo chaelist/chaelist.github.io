@@ -146,3 +146,15 @@ permalink: /
 
 {: .fs-4 .fw-300 }
 </details>
+
+
+<details markdown="block">
+  <summary>
+    Machine Learning 응용
+  </summary>
+  {: .fs-5 .fw-500 }
+
+&nbsp;&nbsp; [영화 리뷰 감성 분석]({{ site.baseurl }}{% link docs/ml_application/sentiment_analysis.md %}) <br/>
+
+{: .fs-4 .fw-300 }
+</details>
