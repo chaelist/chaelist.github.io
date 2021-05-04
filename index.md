@@ -155,6 +155,7 @@ permalink: /
   {: .fs-5 .fw-500 }
 
 &nbsp;&nbsp; [영화 리뷰 감성 분석]({{ site.baseurl }}{% link docs/ml_application/sentiment_analysis.md %}) <br/>
+&nbsp;&nbsp; [뉴스 기사 Clustering]({{ site.baseurl }}{% link docs/ml_application/news_clustering.md %}) <br/>
 
 {: .fs-4 .fw-300 }
 </details>

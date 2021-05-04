@@ -111,7 +111,7 @@ print(len(reviews_with_comment_df))  # comment가 있는 리뷰의 수
 
 ### 학습용 데이터로 가공
 1. 평점 8 이상 혹은 3 이하만 저장 (8 이상: 긍정적, 3 이하: 부정적)
-1. 단어를 tokenize한 후, 동사, 형용사, 명사만 저장 (konlpy의 Okt 사용)
+1. 각 text를 tokenize한 후, 동사, 형용사, 명사만 저장 (konlpy의 Okt 사용)
 
 ```python
 # 텍스트를 tokenize해서 adjective, verb, noun만 추출하는 함수
@@ -159,14 +159,14 @@ print(X_texts[:5])
 
 ## Logistic Regression으로 학습
 
-### train_test_split & 단어 vector화
+### train_test_split & vector화
 ```python
 # train_test_split
 X_train_texts, X_test_texts, y_train, y_test = train_test_split(X_texts, y, test_size=0.2, random_state=0)
 ```
 
 ```python
-# CountVectorizer로 단어 vector화
+# CountVectorizer로 vector화
 tf_vectorizer = CountVectorizer(min_df=1, ngram_range=(1,1))
 X_train_tf = tf_vectorizer.fit_transform(X_train_texts)  # training data에 맞게 fit & training data를 transform
 X_test_tf = tf_vectorizer.transform(X_test_texts) # test data를 transform
