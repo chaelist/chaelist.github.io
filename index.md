@@ -2,160 +2,55 @@
 layout: default
 title: Home
 nav_order: 1
-description: "This is a website for python codes - by chaelist."
+description: "data analytics website by chaelist."
 permalink: /
 ---
 
-# Contents
-{: .fs-9 }
+# Chaelist
+{: .fs-9 .fw-300 }
 
-<details markdown="block">
-  <summary>
-    Python 기초
-  </summary>
-  {: .fs-5 .fw-500 }
+Data Analytics Blog
+{: .fs-5 .fw-300 }
 
-&nbsp;&nbsp; [Numbers, List, String]({{ site.baseurl }}{% link docs/python_basics/numbers_list_string.md %}) <br/>
-&nbsp;&nbsp; [Dictionary, Tuple, Set]({{ site.baseurl }}{% link docs/python_basics/dictionary_tuple_set.md %}) <br/>
-&nbsp;&nbsp; [Control Flow (제어문)]({{ site.baseurl }}{% link docs/python_basics/controlflow.md %}) <br/>
-&nbsp;&nbsp; [Function & Module]({{ site.baseurl }}{% link docs/python_basics/function_module.md %})
-{: .fs-4 .fw-300 }
-</details>
+[About Me](https://www.notion.so/Chaeyun-Chung-1db9422d977840f4ae6bd8e92ba9e5d8){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2  target="_blank"}   [LinkedIn](https://www.linkedin.com/in/chaeyun-chung-2b946b171/){: .btn .fs-5 .mb-4 .mb-md-0  target="_blank"}
 
 
-<details markdown="block">
-  <summary>
-    Data Handling
-  </summary>
-  {: .fs-5 .fw-500 }
+<br/>
 
-&nbsp;&nbsp; [File Input & Output]({{ site.baseurl }}{% link docs/data_handling/file_input_output.md %}) <br/>
-&nbsp;&nbsp; [Regular Expressions]({{ site.baseurl }}{% link docs/data_handling/regular_expressions.md %})
-{: .fs-4 .fw-300 }
-</details>
+[Frequency Analysis (빈도 분석)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
 
+뉴스 기사를 수집해 전처리를 거쳐 단어별 빈도를 파악 & 기사의 내용을 워드클라우드로 압축적으로 표현
 
-<details markdown="block">
-  <summary>
-    Numpy
-  </summary>
-  {: .fs-5 .fw-500 }
+![WordCloud](../../../assets/images/text_korean/wordcloud2.png){: width="200"} 
 
-&nbsp;&nbsp; [Numpy 기초]({{ site.baseurl }}{% link docs/numpy/numpy_basics.md %}) <br/>
-&nbsp;&nbsp; [Numpy 연산과 통계]({{ site.baseurl }}{% link docs/numpy/numpy_arithmetics.md %})
-{: .fs-4 .fw-300 }
-</details>
+<br/>
+
+[Harry Potter Network Analysis (인물 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+
+소설 \<Harry Potter> 시리즈 속 인물들 간 연결 관계 및 권별 인물의 중요도 변화를 분석
+
+![HP1_Graph](../../../assets/images/social_network/hp1_network2.png){: width="200"}  &nbsp; ![HP_Evolution_of_Top_Characters](../../../assets/images/social_network/hp_evolution4.png){: width="300"} 
 
 
-<details markdown="block">
-  <summary>
-    Pandas
-  </summary>
-  {: .fs-5 .fw-500 }
+<br/>
 
-&nbsp;&nbsp; [Pandas 기초]({{ site.baseurl }}{% link docs/pandas/pandas_basics.md %}) <br/>
-&nbsp;&nbsp; [Pandas 데이터 가공]({{ site.baseurl }}{% link docs/pandas/pandas_data_modifying.md %}) <br/>
-&nbsp;&nbsp; [Pandas 데이터 분석]({{ site.baseurl }}{% link docs/pandas/pandas_data_analysis.md %}) <br/>
-&nbsp;&nbsp; [Pandas 데이터 결합 & 요약]({{ site.baseurl }}{% link docs/pandas/pandas_merge_group.md %}) <br/>
-&nbsp;&nbsp; [Pandas str, dt, 조건문]({{ site.baseurl }}{% link docs/pandas/pandas_str_dt_con.md %})
-{: .fs-4 .fw-300 }
-</details>
+[Sementic Network Analysis (언어 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/semantic_network.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
 
+뉴스 기사 속 주요 단어들 간의 연결 관계를 파악해, 기사의 핵심 내용을 유추
 
-<details markdown="block">
-  <summary>
-    데이터 시각화
-  </summary>
-  {: .fs-5 .fw-500 }
+![Korean_SNA](../../../assets/images/semantic_network/korean_sna2.png){: width="250"}
 
-&nbsp;&nbsp; [Pandas plot() 함수]({{ site.baseurl }}{% link docs/visualization/pandas_plot.md %}) <br/>
-&nbsp;&nbsp; [Seaborn]({{ site.baseurl }}{% link docs/visualization/seaborn.md %}) <br/>
-&nbsp;&nbsp; [Matplotlib]({{ site.baseurl }}{% link docs/visualization/matplotlib.md %}) <br/>
+<br/>
 
-{: .fs-4 .fw-300 }
-</details>
+[Movie Review Sentiment Analysis (영화 리뷰 감성 분석)]({{ site.baseurl }}{% link docs/ml_application/sentiment_analysis.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+
+영화 100개의 평점-리뷰 데이터를 수집해, 리뷰의 감성(긍정/부정)을 예측하는 모델을 구축
 
 
+<br/>
 
-<details markdown="block">
-  <summary>
-    Web Scraping
-  </summary>
-  {: .fs-5 .fw-500 }
+[News Clustering (뉴스 기사 군집화)]({{ site.baseurl }}{% link docs/ml_application/news_clustering.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
 
-&nbsp;&nbsp; [Requests & BeautifulSoup]({{ site.baseurl }}{% link docs/webscraping/requests_beautifulsoup.md %}) <br/>
-&nbsp;&nbsp; [Selenium]({{ site.baseurl }}{% link docs/webscraping/selenium.md %}) <br/>
-&nbsp;&nbsp; [Image 수집 & API 활용]({{ site.baseurl }}{% link docs/webscraping/image_api.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
+서로 다른 토픽의 뉴스 기사들을 Clustering을 통해 유사한 기사들끼리 묶어줌
 
 
-<details markdown="block">
-  <summary>
-    Text 분석
-  </summary>
-  {: .fs-5 .fw-500 }
-
-&nbsp;&nbsp; [빈도 분석 (English)]({{ site.baseurl }}{% link docs/text_analysis/english_text.md %}) <br/>
-&nbsp;&nbsp; [빈도 분석 (한글)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
-
-
-<details markdown="block">
-  <summary>
-    Network Analysis
-  </summary>
-  {: .fs-5 .fw-500 }
-
-&nbsp;&nbsp; [Network Analysis 기초]({{ site.baseurl }}{% link docs/network_analysis/network_basics.md %}) <br/>
-&nbsp;&nbsp; [Social Network Analysis]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}) <br/>
-&nbsp;&nbsp; [Semantic Network Analysis]({{ site.baseurl }}{% link docs/network_analysis/semantic_network.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
-
-
-<details markdown="block">
-  <summary>
-    Machine Learning 기초
-  </summary>
-  {: .fs-5 .fw-500 }
-
-&nbsp;&nbsp; [기초 & Linear Regression]({{ site.baseurl }}{% link docs/ml_basics/linear_regression.md %}) <br/>
-&nbsp;&nbsp; [Classification 1]({{ site.baseurl }}{% link docs/ml_basics/classification1.md %}) <br/>
-&nbsp;&nbsp; [Classification 2]({{ site.baseurl }}{% link docs/ml_basics/classification2.md %}) <br/>
-&nbsp;&nbsp; [Clustering]({{ site.baseurl }}{% link docs/ml_basics/clustering.md %}) <br/>
-&nbsp;&nbsp; [Deep Learning 기초]({{ site.baseurl }}{% link docs/ml_basics/deep_learning.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
-
-
-<details markdown="block">
-  <summary>
-    Machine Learning 심화
-  </summary>
-  {: .fs-5 .fw-500 }
-
-&nbsp;&nbsp; [Regularization]({{ site.baseurl }}{% link docs/ml_advanced/regularization.md %}) <br/>
-&nbsp;&nbsp; [데이터 전처리]({{ site.baseurl }}{% link docs/ml_advanced/preprocessing.md %}) <br/>
-&nbsp;&nbsp; [Model Selection]({{ site.baseurl }}{% link docs/ml_advanced/model_selection.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
-
-
-<details markdown="block">
-  <summary>
-    Machine Learning 응용
-  </summary>
-  {: .fs-5 .fw-500 }
-
-&nbsp;&nbsp; [영화 리뷰 감성 분석]({{ site.baseurl }}{% link docs/ml_application/sentiment_analysis.md %}) <br/>
-&nbsp;&nbsp; [뉴스 기사 Clustering]({{ site.baseurl }}{% link docs/ml_application/news_clustering.md %}) <br/>
-
-{: .fs-4 .fw-300 }
-</details>
