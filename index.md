@@ -17,7 +17,7 @@ Data Analytics Blog
 
 <br/>
 
-[Frequency Analysis (빈도 분석)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+[Frequency Analysis (빈도 분석)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
 뉴스 기사를 수집해 전처리를 거쳐 단어별 빈도를 파악 & 기사의 내용을 워드클라우드로 압축적으로 표현
 
@@ -25,7 +25,7 @@ Data Analytics Blog
 
 <br/>
 
-[Harry Potter Network Analysis (인물 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+[Harry Potter Network Analysis (인물 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/social_network.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
 소설 \<Harry Potter> 시리즈 속 인물들 간 연결 관계 및 권별 인물의 중요도 변화를 분석
 
@@ -34,7 +34,7 @@ Data Analytics Blog
 
 <br/>
 
-[Sementic Network Analysis (언어 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/semantic_network.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+[Sementic Network Analysis (언어 네트워크 분석)]({{ site.baseurl }}{% link docs/network_analysis/semantic_network.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
 뉴스 기사 속 주요 단어들 간의 연결 관계를 파악해, 기사의 핵심 내용을 유추
 
@@ -49,8 +49,14 @@ Data Analytics Blog
 
 <br/>
 
-[News Clustering (뉴스 기사 군집화)]({{ site.baseurl }}{% link docs/ml_application/news_clustering.md %}){: .fs-7 .fw-300 	.text-grey-dk-000}
+[News Clustering (뉴스 기사 군집화)]({{ site.baseurl }}{% link docs/ml_application/news_clustering.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
 서로 다른 토픽의 뉴스 기사들을 Clustering을 통해 유사한 기사들끼리 묶어줌
 
+<br/>
 
+[Time Series Data Forecasting (시계열 데이터 예측)]({{ site.baseurl }}{% link docs/ml_application/time_series.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
+
+Facebook의 Prophet 라이브러리를 활용해 시계열 데이터를 예측 & 파라미터 튜닝
+
+![Forecast_Real_Comparison](../../../assets/images/ml_applied/real_forecast_comparison.png){: width="300"}  &nbsp; ![Changepoint1](../../../assets/images/ml_applied/changepoint1.png){: width="250"}
