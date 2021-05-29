@@ -342,7 +342,6 @@ print(content)
 1. Tokenization + Lemmatization + POS tagging
     ```python
     from konlpy.tag import Kkma
-    from konlpy.utils import pprint
     kkma = Kkma()
 
     NN_words = [] 

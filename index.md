@@ -60,3 +60,11 @@ Data Analytics Blog
 Facebook의 Prophet 라이브러리를 활용해 시계열 데이터를 예측 & 파라미터 튜닝
 
 ![Forecast_Real_Comparison](../../../assets/images/ml_applied/real_forecast_comparison.png){: width="300"}  &nbsp; ![Changepoint1](../../../assets/images/ml_applied/changepoint1.png){: width="250"}
+
+<br/>
+
+[Topic Modeling - LDA (토픽모델링)]({{ site.baseurl }}{% link docs/ml_application/topic_modeling.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
+
+Google Play Store의 'Netflix' 앱 리뷰 데이터를 활용해 잠재 디리클레 할당(Latent Dirichlet Allocation, LDA) 기법으로 토픽 모델링 구현
+
+![TopicModeling](../../../assets/images/ml_applied/TopicModeling.png){: width="400"}
