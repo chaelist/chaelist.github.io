@@ -35,7 +35,7 @@ nav_order: 4
 - 단어들의 집합이 어떤 토픽들로 묶인다고 가정하고, 이 단어들이 각각의 토픽에 구성될 확률을 계산하여 결과 값을 토픽에 해당할 가능성이 높은 단어들의 집합으로 추출하는 방식
 - 문서의 다양성에 비해 토픽의 수를 너무 적게 지정하거나, 하나의 문서에 다양한 주제가 혼용되어 있는 경우에는 토픽끼리 겹치는 결과가 나올 수 있다. 토픽 수를 정밀하게 지정하는 것이 중요!
 
-![LDA_example1](../../../assets/images/ml_applied/lda_example1.png){: width="300"}  
+![LDA_example_1](../../../assets/images/ml_applied/lda_example1.png){: width="300"}  
 (출처: bookdown.org/Maxine/tidy-text-mining/)
 {: .fs-2 .text-grey-dk-000 }
 
@@ -53,7 +53,7 @@ nav_order: 4
 (참고자료: [딥러닝을 이용한 자연어 처리 입문](https://wikidocs.net/book/2155){: target="_blank"})
 {: .fs-2 .text-grey-dk-000 }
 
-![LDA_example2](../../../assets/images/ml_applied/lda_example2.png){: width="600"}  
+![LDA_example_2](../../../assets/images/ml_applied/lda_example2.png){: width="600"}  
 (출처: donghwa-kim.github.io)
 {: .fs-2 .text-grey-dk-000 }
 
