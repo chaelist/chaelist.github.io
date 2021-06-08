@@ -121,6 +121,9 @@
 <loc>http://localhost:4000/docs/visualization/seaborn/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/docs/sql/select_basics/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/docs/webscraping/selenium/</loc>
 </url>
 <url>
@@ -131,6 +134,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/docs/network_analysis/social_network/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/docs/sql</loc>
 </url>
 <url>
 <loc>http://localhost:4000/docs/text_analysis</loc>
