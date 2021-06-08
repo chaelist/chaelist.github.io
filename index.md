@@ -12,7 +12,7 @@ permalink: /
 Data Analytics Blog
 {: .fs-5 .fw-300 }
 
-[Email](mailto:chaeyun.chung@gmail.com){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2  target="_blank"}   [LinkedIn](https://www.linkedin.com/in/chaeyun-chung-2b946b171/){: .btn .fs-5 .mb-4 .mb-md-0  target="_blank"}
+[Email](mailto:chaeyun1248@gmail.com){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2  target="_blank"}   [LinkedIn](https://www.linkedin.com/in/chaeyun-chung-2b946b171/){: .btn .fs-5 .mb-4 .mb-md-0  target="_blank"}
 
 
 <br/>
