@@ -281,7 +281,7 @@ FROM tablename;
 
 <div class="code-example" markdown="1">
 
-+) 위 SQL문을 서브쿼리를 활용해 더 간결하게 표현하기:
++) 위 SQL문을 [서브쿼리](../join_subq_view/#서브쿼리-subquery)를 활용해 더 간결하게 표현하기:
 ```sql
 SELECT email, BMI,
 (CASE 

@@ -40,6 +40,9 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/docs/sql/join_subq_view/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/docs/text_analysis/korean_text/</loc>
 </url>
 <url>

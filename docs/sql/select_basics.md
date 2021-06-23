@@ -182,7 +182,7 @@ DESCRIBE 테이블명;
     ```
 
 1. ANY, ALL
-    - ANY: 여러 조건 중 하나라도 만족되면 TRUE가 반환됨 (‘SOME’을 사용해도 동일) 
+    - ANY: 여러 조건 중 하나라도 만족되면 TRUE가 반환됨 ('SOME'을 사용해도 동일) 
     ```sql
     SELECT * FROM tablename
     WHERE view_count > ANY(150000, 250000, 300000);
