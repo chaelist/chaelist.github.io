@@ -179,7 +179,7 @@ df.head()
 </div>
 
 
-**+) 'Rate limit exceeded' error**
+**+) 'TooManyRequests' error**
 - twitter api를 사용해 데이터를 가져올 때에는 일정 기간 동안 가져올 수 있는 횟수가 제한되어 있다.
 - 특히, Cursor로 무제한 수집하다보면 rate limit이 초과되어 error가 날 수 있기에, 아래와 같은 코드를 추가해주면 rate limit이 초과될 때 일정 시간을 기다렸다 작업해주게 된다
 
@@ -188,13 +188,14 @@ def limit_handled(cursor):
     while True:
         try:
             yield next(cursor)
-        except tweepy.RateLimitError:
+        except tweepy.TooManyRequests:
             time.sleep(15 * 60)   # 15분 기다려줌.
 
 for status in limit_handled(tweepy.Cursor(api.user_timeline, screen_name = '').items()):
     ## -- 코드 --  ##
 ```
 
+- tweepy exception의 종류: [https://docs.tweepy.org/en/latest/exceptions.html](https://docs.tweepy.org/en/latest/exceptions.html){: target="_blank"}
 
 
 
