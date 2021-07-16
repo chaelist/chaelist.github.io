@@ -164,7 +164,7 @@ Index(['brand', 'model', 'ram', 'hd_type', 'hd_size', 'screen_size', 'price', 'p
 ### Type Conversion
 - `df.astype()`을 활용하면 특정 column의 데이터 타입을 원하는 대로 변경할 수 있다.
 - ex1) 숫자형 변수인데 string으로 저장되어 있어서 `df.describe()`로 분포 파악이 안되는 경우, 숫자형 변수로 바꿔주면 좋다
-- ex2) 데이터를 merge할 때, 통합 기준이 되는 column의 데이터 타입이 두 df에서 모두 같아햐 한다 → 미리 type을 체크하고 통일해줘야 데이터 누락 없이 merge된다
+- ex2) 데이터를 merge할 때, 통합 기준이 되는 column의 데이터 타입이 두 df에서 모두 같아야 한다 → 미리 type을 체크하고 통일해줘야 데이터 누락 없이 merge된다
 
 ```python
 # 'ram' column의 type 변경해보기

@@ -41,10 +41,19 @@ SHOW FULL TABLES IN 데이터베이스명;
 ```sql
 DESCRIBE 테이블명;
 ```
-- 각 칼럼명과 데이터 타입, Null값 존재 여부, Primary Key 여부 등을 파악 가능
+- 테이블의 컬럼 구조, 각 컬럼의 데이터 타입, 속성을 확인 가능
+- `DESC 테이블명;`이라고 줄여서 입력해도 동일
 
     ex) &nbsp; ![Describe_Table_Example](../../../assets/images/sql/describe_table_example.png){: width="300"}
     {: .fs-2 .text-grey-dk-000 }
+
+    - Field : 컬럼의 이름 
+    - Type : 컬럼의 데이터 타입
+    - Null : 컬럼의 Null 속성 유무
+    - Key : Primary Key, Unique 속성 여부
+    - Default : 컬럼의 기본값
+    - Extra : AUTO_INCREMENT 등의 기타 속성
+
 
 1. Foreign Key 관계 파악
 - Foreign Key 관계를 파악해두면, 데이터베이스가 어떻게 설계되었는지, 각 데이터가 어떤 관계를 갖는지 파악하는 데에 도움이 된다
