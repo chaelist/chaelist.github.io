@@ -65,6 +65,15 @@ Facebook의 Prophet 라이브러리를 활용해 시계열 데이터를 예측 &
 
 [Topic Modeling (토픽모델링)]({{ site.baseurl }}{% link docs/ml_application/topic_modeling.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
+
 Google Play Store의 'Netflix' 앱 리뷰 데이터를 활용해 잠재 디리클레 할당(Latent Dirichlet Allocation, LDA) 기법으로 토픽 모델링 구현
 
 ![TopicModeling](../../../assets/images/ml_applied/TopicModeling.png){: width="400"}
+
+<br/>
+
+[Logistics Optimization (물류 최적화)]({{ site.baseurl }}{% link docs/ml_application/logistics.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
+
+PuLP, ortoolpy 라이브러리를 활용해 최적화된 운송 경로 & 생산 계획을 계산
+
+![Logistics_Network](../../../assets/images/ml_applied/logistics_network.png){: width="200"} &nbsp; ![Logistics_Heatmap](../../../assets/images/ml_applied/logistics_heatmap.png){: width="190"}
