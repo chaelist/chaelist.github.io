@@ -129,6 +129,24 @@ print(a[:]) # 그냥 a itself (처음 ~ 끝)
 ['python', 1, 5]
 ```
 
+**+) list_name[index1:index2:step]**
+- index1 이상, index2 미만의 요소 중, 1번째, 1+step번째, 1+2step번째,...의 요소를 반환
+
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+numbers[1:5:2] # index number가 1, 3인 요소 반환
+print(numbers[:6:3]) # index number가 0, 3인 요소 반환
+print(numbers[::2]) # index number가 0, 2, 4, 6, 8인 요소 반환
+```
+```
+[2, 4]
+[1, 4]
+[1, 3, 5, 7, 9]
+```
+
+
+
 ### List 변경하기
 List is mutable; List can be modified
 
@@ -173,6 +191,17 @@ x  # extend와 다르게, 아예 list 자체가 하나의 element로 간주되�
 ```
 [1, 2, 3, 4, [6, 7]]
 ```
+
+1. **insert()**: list의 '특정 index에' element를 추가
+```python
+x = [1, 2, 3, 4] 
+x.insert(2, 5)  # index number = 2인 위치에 5라는 element를 추가
+x
+```
+```
+[1, 2, 5, 3, 4]
+```
+
 
 1. **remove()**: 한 개의 element를 제거
 ```python
