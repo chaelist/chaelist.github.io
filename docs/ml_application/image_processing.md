@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 이미지/동영상 처리
+title: 이미지 / 동영상 처리
 parent: Machine Learning 응용
 nav_order: 6
 --- 
 
-# 이미지/동영상 처리
+# 이미지 / 동영상 처리
 {: .no_toc }
 <br/>
 
@@ -21,7 +21,7 @@ nav_order: 6
 </details>
 ---
 
-## 이미지/동영상 읽기
+## 이미지 / 동영상 데이터 읽기
 
 ***OpenCV** 사용
 - OpenCV: 실시간 이미지 프로세싱에 중점을 둔 라이브러리

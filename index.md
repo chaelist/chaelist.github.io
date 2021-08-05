@@ -77,3 +77,12 @@ Google Play Store의 'Netflix' 앱 리뷰 데이터를 활용해 잠재 디리�
 PuLP, ortoolpy 라이브러리를 활용해 최적화된 운송 경로 & 생산 계획을 계산
 
 ![Logistics_Network](../../../assets/images/ml_applied/logistics_network.png){: width="200"} &nbsp; ![Logistics_Heatmap](../../../assets/images/ml_applied/logistics_heatmap.png){: width="190"}
+
+<br/>
+
+[Image Processing (이미지 데이터 처리)]({{ site.baseurl }}{% link docs/ml_application/image_processing.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
+
+OpenCV 라이브러리를 활용해 이미지 / 동영상 데이터를 처리 & 이미지 속 사람 검출
+
+![HOG_Detect](../../../assets/images/ml_applied/opencv_hogdetect.jpg){: width="220"} &nbsp; ![CascadeClassifier](../../../assets/images/ml_applied/opencv_cascadeclassifier.jpg){: width="220"}
+
