@@ -155,7 +155,7 @@ nav_order: 2
 : 이 원리가 boolean indexing에 사용되는 것.
 
 ```python
-array1 = np.array([2,3,5,7,11,13,17,19,23,29,31])
+array1 = np.array([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31])
 
 array1 > 4      # 각 원소별로 4보다 큰지 여부를 판단해 Boolean 값을 반환
                 # 결과값도 array 형태. Boolean 값들을 element로 하는 numpy array
@@ -174,6 +174,7 @@ array([ True, False, False, False, False, False, False, False, False,  False, Fa
 ```
 
 <div class="code-example" markdown="1">
+
 \***np.where()** 함수: 해당 Boolean 조건을 만족하는 값들의 index값을 반환
 - np.where( ) 안에는 boolean값들로 이루어진 numpy array가 들어간다
 - 결과로 True인 element의 index값만 반환 (array형태로 반환)
@@ -243,6 +244,29 @@ print(array1[filter])
     72.1875
     ```
 
+
+### nan을 포함한 array 통계량 계산
+- 하나라도 np.nan(=Null값)이 포함된 array는 sum, mean 등을 계산하면 nan으로밖에 안나온다:
+    ```python
+    array1 = np.array([14, 6, 13, 21, 23, np.nan, 9, 5])
+
+    print(array1.sum())  # np.sum(array1)과 동일
+    print(array1.mean())  # np.mean(array1)과 동일
+    ```
+    ```
+    nan
+    nan
+    ```
+- np.nansum(), np.nanmean()을 활용하면 nan을 제외한 통계량을 확인 가능:
+    ```python
+    print(np.nansum(array1))
+    print(np.nanmean(array1))
+    ```
+    ```
+    91.0
+    13.0
+    ```
+- +) np.nanstd(), np.nanmin(), np.nanmedian() 등...
 
 
 ## Numpy를 활용한 행렬 연산

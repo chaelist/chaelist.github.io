@@ -309,20 +309,66 @@ transaction.head()
 
 </div>
 
-1. datetime형으로 변환한 후 월 단위로 정리
-- **pd.to_datetime()**: 데이터를 datetime type으로 변환
-- **.dt.strftime()**: 날짜와 시간 정보를 지정한 특정 문자열 형태로 바꿔준다
-        - %Y: 앞의 빈자리를 0으로 채우는 4자리 연도 숫자
-        - %m: 앞의 빈자리를 0으로 채우는 2자리 월 숫자
-        - `.dt.strftime("%Y년 %m월 %d일")` 이런 식으로 (= '2020년 12월 25일'의 형식) 정리하는 것도 가능.
+***pd.to_datetime()**: 데이터를 datetime type으로 변환해주는 함수
 
+1. datetime 형태로 생긴 데이터: 그냥 pd.to_datetime() 안에 넣어주면 알아서 연/월/일 등이 식별된다
     ```python
+    print(transaction['payment_date'].dtypes)
+
     # pd.to_datetime 함수를 활용해 datetime type으로 변환
     transaction['payment_date'] = pd.to_datetime(transaction['payment_date'])
 
+    print(transaction['payment_date'].dtypes)
+    ```
+    ```
+    object
+    datetime64[ns]
+    ```
+
+1. str, int 등 타입의 데이터 변환하기 (연/월/일의 구조가 모호한 경우)
+- `format=`을 통해 어떤 형태로 데이터가 담겨 있는지 명시해주면 알맞게 datetime으로 변환 가능
+- ex) 데이터가 '12/08/2021'의 형태라면, `format='%d/%m/%Y`이라고 명시
+
+    ```python
+    df = pd.DataFrame({'date_example': [201901, 201902, 201903, 201904, 201905]})
+
+    df['datetime'] = pd.to_datetime(df['date_example'], format='%Y%m')
+    df
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    |   date_example | datetime            |
+    |---:|---------------:|:--------------------|
+    |  0 |         201901 | 2019-01-01 00:00:00 |
+    |  1 |         201902 | 2019-02-01 00:00:00 |
+    |  2 |         201903 | 2019-03-01 00:00:00 |
+    |  3 |         201904 | 2019-04-01 00:00:00 |
+    |  4 |         201905 | 2019-05-01 00:00:00 |
+
+    </div>
+
+    +) 데이터 타입 확인:
+    ```python
+    df.dtypes
+    ```
+    ```
+    date_example             int64
+    datetime        datetime64[ns]
+    dtype: object
+    ```
+
+
+### Datetime 데이터 가공하기
+1. **.dt.strftime()**: 날짜와 시간 정보를 지정한 특정 문자열 형태로 바꿔준다
+    - %Y: 앞의 빈자리를 0으로 채우는 4자리 연도 숫자
+    - %m: 앞의 빈자리를 0으로 채우는 2자리 월 숫자
+    - %d: 앞의 빈자리를 0으로 채우는 2자리 일 숫자
+    - `.dt.strftime("%Y년 %m월 %d일")` 이런 식으로 (= '2020년 12월 25일'의 형식) 정리하는 것도 가능.
+
+    ```python
     # '201902'와 같은 형태로 날짜를 연월 단위로 정리
     transaction['payment_month'] = transaction['payment_date'].dt.strftime('%Y%m')
-
     transaction[['payment_date', 'payment_month']].head()
     ```
 
@@ -354,19 +400,18 @@ transaction.head()
     Name: price, dtype: int64
     ```
 
-    cf) strftime() 메소드로 정리한 데이터는 str 타입
+    cf) strftime() 메소드로 정리한 데이터는 str 타입 (= object 타입)
     ```python
-    print(type(transaction['payment_date'][0]))  ## to_datetime()으로 변환한 데이터
-    print(type(transaction['payment_month'][0]))  ## strftime() 메소드를 써서 정리한 데이터
+    transaction[['payment_date', 'payment_month']].dtypes
     ```
     ```
-    <class 'pandas._libs.tslibs.timestamps.Timestamp'>
-    <class 'str'>
+    payment_date     datetime64[ns]
+    payment_month            object
+    dtype: object
     ```
 
-1. datetime 타입에서 요일 계산
-- **.dt.weekday**를 통해 쉽게 요일을 계산해올 수 있다 
-- 요일은 숫자로 가져와진다 (월:0, 화:1, ...., 토:5, 일:6)
+1. **.dt.weekday**: 해당 날짜의 요일을 계산해준다
+    - 요일은 숫자로 표시 (월:0, 화:1, ...., 토:5, 일:6)
 
     ```python
     transaction['weekday'] = transaction['payment_date'].dt.weekday 
@@ -385,9 +430,9 @@ transaction.head()
 
     </div>
 
-    +) dt.year, dt.month, dt.day 등의 속성도 있음
+    +) **dt.year, dt.month, dt.day** 등의 속성도 있음
     ```python
-    transaction['payment_date'].dt.year.head()   # 손쉽게 연도별로 정리할 수 있음
+    transaction['payment_date'].dt.year.head()   # 연도별로 정리
     ```
     ```
     0    2019
@@ -713,7 +758,7 @@ laptops_df.head()
 : `series.where(series객체에 대한 조건문, 거짓 값에 대한 대체 값)`의 형태로 사용
 
 ```python
-df = pd.DataFrame({'a':[1,2,3,4,5], 'b':[10,20,30,40,50]})
+df = pd.DataFrame({'a': [1, 2, 3, 4, 5], 'b': [10, 20, 30, 40, 50]})
 df
 ```
 
@@ -769,3 +814,26 @@ df
     </div>
 
 
+### np.where() 활용
+: `np.where(조건, 조건이 부합할 때의 값, 아닐 때의 값)`의 형태로 사용
+
+```python
+import numpy as np
+
+df = pd.DataFrame({'a':[1, 2, 3, 4, 5], 'b':[5, 4, 3, 2, 1]})
+
+df['flag'] = np.where(df['a'] < df['b'], 'b is bigger', 'a is bigger')
+df
+```
+
+<div class="code-example" markdown="1">
+
+|    |   a |   b | flag        |
+|---:|----:|----:|:------------|
+|  0 |   1 |   5 | b is bigger |
+|  1 |   2 |   4 | b is bigger |
+|  2 |   3 |   3 | a is bigger |
+|  3 |   4 |   2 | a is bigger |
+|  4 |   5 |   1 | a is bigger |
+
+</div>

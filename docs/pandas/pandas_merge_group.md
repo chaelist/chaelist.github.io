@@ -881,3 +881,108 @@ gdf2
     |        3 |    25.1406 |        74 |     13.6756 |     69.55  |
 
     </div>
+
+
+## unstack, stack으로 pivot
+
+### df.unstack()
+: index의 특정 level을 column 방향으로 pivot해주는 함수 (multi-index를 풀어준다)
+
+```python
+gdf3 = titanic_df.groupby(['Pclass', 'Sex'])[['Age']].mean()
+gdf3
+
+```
+
+<div class="code-example" markdown="1">
+
+|       ||:    Age |
+|Pclass | Sex   |         |
+|:--------------|--------:|
+|1      | female| 34.6118 |
+|^^     |   male| 41.2814 |
+|2      | female| 28.723  |
+|^^     |   male| 30.7407 |
+|3      | female| 21.75   |
+|^^     |   male| 26.5076 |
+
+</div>
+
+1. level=0: 1<sup>st</sup> level 인덱스를 column 방향으로 pivot
+    ```python
+    gdf3.unstack(level=0)
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |        |: Age     |||
+    | Pclass |: 1 |: 2 |: 3 |
+    | Sex    |   |   |   |
+    |:-------|-------------:|-------------:|-------------:|
+    | female |      34.6118 |      28.723  |      21.75   |
+    | male   |      41.2814 |      30.7407 |      26.5076 |
+
+    </div>
+
+1. level=1: 2<sup>nd</sup> level 인덱스를 column 방향으로 pivot
+
+    ```python
+    gdf3.unstack(level=1)    
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |        | :Age     ||
+    | Sex | :female  | :male |
+    |   Pclass |    |      |
+    |---------:|--------------------:|------------------:|
+    |        1 |             34.6118 |           41.2814 |
+    |        2 |             28.723  |           30.7407 |
+    |        3 |             21.75   |           26.5076 |
+
+    </div>
+
+    +) 이 경우, 2nd level이 마지막 level이므로, `level=-1`라고 적어도 동일한 결과
+
+
+### df.stack()
+: column의 특정 level을 index 방향으로 pivot해주는 함수 (unstack과 반대: multi-index를 만들어준다)
+
+```python
+gdf4 = titanic_df.groupby('Pclass')[['Age']].agg(['mean', 'max'])
+gdf4
+```
+
+<div class="code-example" markdown="1">
+
+| |:  Age  ||
+| |: mean |: max |
+|   Pclass |  | |
+|---------:|------------------:|-----------------:|
+|        1 |           38.2334 |               80 |
+|        2 |           29.8776 |               70 |
+|        3 |           25.1406 |               74 |
+
+</div> 
+
+→ 2번째 level (마지막 level)을 index 방향으로 pivot
+
+```python
+gdf4.stack(level=-1)
+```
+
+<div class="code-example" markdown="1">
+
+|              ||:    Age |
+|Pclass |       |         |
+|:--------------|--------:|
+| 1  |  mean | 38.2334 |
+| ^^ |  max  | 80      |
+| 2 | mean | 29.8776 |
+| ^^ | max  | 70      |
+| 3 | mean | 25.1406 |
+| ^^ | max  | 74      |
+
+</div>
+
+

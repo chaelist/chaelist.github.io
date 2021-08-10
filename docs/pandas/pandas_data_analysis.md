@@ -183,14 +183,41 @@ object
 int64
 ```
 
++) 여러 컬럼을 한 번에 각각 타입 변경하기:
+
+```python
+data = {'col1': [1, 2], 'col2': [3, 4]}
+df = pd.DataFrame(data)
+
+print(df, '\n')
+print(df.dtypes, '\n')
+
+# col1은 int32로, col2는 str 타입으로 변경
+df = df.astype({'col1': 'int32', 'col2':'str'})
+print(df.dtypes) 
+```
+```
+   col1  col2
+0     1     3
+1     2     4 
+
+col1    int64
+col2    int64
+dtype: object
+
+col1     int32
+col2    object
+dtype: object
+```
+
+
 
 
 ### 데이터 정렬
 : **df.sort_values()**로 특정 열 기준으로 정렬하기
 - `inplace=True`를 써주면 dataframe 자체가 바뀌고, 써주지 않으면 그냥 정렬된 결과가 return되고 원본 dataframe은 바뀌지 않는다.
 
-`# 오름차순 정렬
-{: .fs-3  .text-grey-dk-000} 
+*오름차순 정렬:
 ```python
 ## 가격 기준으로 오름차순 정렬 (ascending=True가 default라, 안써줘도 됨.)
 laptops_df.sort_values(by='price').head()  ##다 확인하면 너무 많으니, 가격이 낮은 순으로 top5만 확인
@@ -208,8 +235,7 @@ laptops_df.sort_values(by='price').head()  ##다 확인하면 너무 많으니, 
 
 </div>
 
-\# 내림차순 정렬
-{: .fs-3  .text-grey-dk-000} 
+*내림차순 정렬:
 ```python
  # 가격 기준으로 내림차순 정렬 (가격 높은 것부터 순서대로.)
 laptops_df.sort_values(by='price', ascending=False).head()   ##가격 높은 top5만 확인

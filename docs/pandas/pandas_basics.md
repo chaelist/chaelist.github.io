@@ -131,6 +131,60 @@ df1
 
 </div>
 
+&nbsp;
+{: .fs-1 .lh-0}
+
+
++) **DataFrame.from_dict()**  
+\: from_dict()를 이용하면 dictionary 형태의 데이터를 row 방향이나 column 방향 중 어떤식으로든 DataFrame으로 만들 수 있다. 
+
+- (default) dictionary의 key를 column으로:
+    ```python
+    data = {
+        'name': ['Emily', 'Abby', 'Cornelia', 'Kai'], 
+        'french_score': [50, 89, 68, 88], 
+        'math_score': [86, 31, 91, 75]
+    }
+
+    pd.DataFrame.from_dict(data)   # pd.DataFrame(data)과 동일한 결과
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name     |   french_score |   math_score |
+    |---:|:---------|---------------:|-------------:|
+    |  0 | Emily    |             50 |           86 |
+    |  1 | Abby     |             89 |           31 |
+    |  2 | Cornelia |             68 |           91 |
+    |  3 | Kai      |             88 |           75 |
+
+    </div>
+
+- dictionary의 key를 row로:
+    ```python
+    data = {
+        'row1': ['Emily', 50, 86],
+        'row2': ['Abby', 89, 31],
+        'row3': ['Cornelia', 68, 91],
+        'row4': ['Kai', 88, 75]
+    }
+
+    pd.DataFrame.from_dict(data, orient='index', columns=['name', 'french_score', 'math_score'])
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name     |   french_score |   math_score |
+    |---:|:---------|---------------:|-------------:|
+    | row1 | Emily    |             50 |           86 |
+    | row2 | Abby     |             89 |           31 |
+    | row3 | Cornelia |             68 |           91 |
+    | row4 | Kai      |             88 |           75 |
+
+    </div>
+
+
+
 ### From list of dicts
 : 사전이 담긴 리스트로 DataFrame 만들기
 

@@ -25,6 +25,124 @@ nav_order: 2
 *Seaborn: Python data visualization library based on matplotlib
 {: .text-purple-300}
 
+
+## 기본 그래프
+
+### Bar Plot, Count Plot
+
+```python
+import pandas as pd
+import seaborn as sns   # import해야 사용 가능; 보통 sns로 줄여서 import
+
+exam_df = pd.read_csv('data/exam.csv')   ## 데이터 출처: codeit
+exam_df.head()
+```
+
+<div class="code-example" markdown="1">
+
+|    | gender   | race/ethnicity   | parental level of education   | lunch        | test preparation course   |   math score |   reading score |   writing score |
+|---:|:---------|:-----------------|:------------------------------|:-------------|:--------------------------|-------------:|----------------:|----------------:|
+|  0 | female   | group B          | bachelor's degree             | standard     | none                      |           72 |              72 |              74 |
+|  1 | female   | group C          | some college                  | standard     | completed                 |           69 |              90 |              88 |
+|  2 | female   | group B          | master's degree               | standard     | none                      |           90 |              95 |              93 |
+|  3 | male     | group A          | associate's degree            | free/reduced | none                      |           47 |              57 |              44 |
+|  4 | male     | group C          | some college                  | standard     | none                      |           76 |              78 |              75 |
+
+</div>
+
+1. barplot
+    ```python
+    sns.barplot(data=exam_df, x="race/ethnicity", y="math score", palette='Blues_d');
+    # ci=95가 default (ci: Confidence Interval. 신뢰구간)
+    ```
+    ![barplot1](../../../assets/images/seaborn/barplot1.png)
+
+    +) hue 옵션 지정: 
+    ```python
+    sns.barplot(data=exam_df, x="race/ethnicity", y="math score", hue='gender', palette='Set3');
+    ```
+    ![barplot2](../../../assets/images/seaborn/barplot2.png)
+
+1. countplot: y값에는 자동으로 count가 들어가는 bar plot
+  ```python
+  # 각 race/ethnicity 그룹에 속한 학생 수를 비교
+  sns.countplot(data=exam_df, x="race/ethnicity", color='skyblue');
+  ```
+  ![countplot](../../../assets/images/seaborn/countplot1.png)
+
+
+### Line Plot
+
+```python
+import pandas as pd
+import seaborn as sns
+
+flights_df = sns.load_dataset("flights")
+flights_df.head()
+```
+
+<div class="code-example" markdown="1">
+
+|    |   year | month   |   passengers |
+|---:|-------:|:--------|-------------:|
+|  0 |   1949 | Jan     |          112 |
+|  1 |   1949 | Feb     |          118 |
+|  2 |   1949 | Mar     |          132 |
+|  3 |   1949 | Apr     |          129 |
+|  4 |   1949 | May     |          121 |
+
+</div>
+
+1. 연도별 월평균 승객수 추이
+  ```python
+  sns.lineplot(data=flights_df, x='year', y='passengers', color='skyblue');
+  # 평균값을 line으로 그려주고, 95% confidence interval을 함께 표시
+  ```
+  ![lineplot3](../../../assets/images/seaborn/lineplot3.png)
+
+1. 연도별 총 승객수 추이
+  ```python
+  flights_groupby = flights_df.groupby('year')[['passengers']].sum().reset_index()
+  sns.lineplot(data=flights_groupby, x='year', y='passengers', color='skyblue');
+  ```
+  ![lineplot1](../../../assets/images/seaborn/lineplot1.png)
+
+1. 연도별, 월별 승객수 추이
+
+    ```python
+    sns.lineplot(data=flights_df, x='year', y='passengers', hue='month', palette='pastel');
+    ```
+    ![lineplot2](../../../assets/images/seaborn/lineplot2.png)
+
+    +) 아예 pivot된 데이터를 통째로 넣어서 그리는 것도 가능:
+    ```python
+    flights_groupby2 = flights_df.pivot('year', 'month', 'passengers')
+    sns.lineplot(data=flights_groupby2, palette='pastel');
+    ```
+    ![lineplot4](../../../assets/images/seaborn/lineplot4.png)
+
+
+### Scatter Plot
+
+```python
+sns.scatterplot(data=exam_df, x='math score', y='reading score', color='skyblue');
+```
+![scatterplot1](../../../assets/images/seaborn/scatterplot1.png)
+
+
++) hue, style 등의 옵션으로 구분해서 시각화:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=exam_df, x='math score', y='reading score', hue='gender', style='race/ethnicity', palette='Blues_d');
+# +) size='lunch' 이런 식으로 점의 size에 따른 구분도 추가 가능
+```
+![scatterplot2](../../../assets/images/seaborn/scatterplot2.png)
+
+
+
 ## KDE Plot
 : 대체로 세상에서 일어나는 대부분의 일들은 비슷한 확률밀도함수(PDF)의 생김새를 갖는다.  
 그런데, 우리는 무한개의 데이터를 구할 수 없기에,  
@@ -42,9 +160,6 @@ KDE를 사용하면 우리가 구한 데이터를 기반으로 어느 정도 추
 
 ### 기본 KDE Plot
 ```python
-import pandas as pd
-import seaborn as sns   # import해야 사용 가능; 보통 sns로 줄여서 import
-
 body_df = pd.read_csv('data/body.csv')   ## 데이터 출처: codeit
 body_df.head()
 ```
@@ -144,7 +259,7 @@ sns.kdeplot(body_df['Weight'])
 
 
 ## LM Plot
-: LM은 Linear Model의 약자. 산점도와 Regression Line(회귀선)을 함께 그려준다.
+: LM은 Linear Model의 약자. 산점도와 Regression Line(회귀선)을 함께 그려준다. (lineplot + scatterplot)
 
 ```python
 body_df.head()
@@ -181,7 +296,6 @@ sns.lmplot(data=body_df, x='Height', y='Weight')
 1. hue 옵션 지정
 
     ```python
-    exam_df = pd.read_csv('data/exam.csv')   ## 데이터 출처: codeit
     exam_df.head()
     ```
 
@@ -204,13 +318,6 @@ sns.lmplot(data=body_df, x='Height', y='Weight')
     ```
     ![LMPlot3](../../../assets/images/seaborn/lmplot3.png)
 
-
-cf) scatterplot은 그냥 점만 흩뿌려주는 반면, lmplot은 데이터로부터 linear model을 유추해 선을 함께 그려줌 
-
-```python
-sns.scatterplot(data=exam_df, x='math score', y='writing score', hue='gender')
-```
-![ScatterPlot1](../../../assets/images/seaborn/scatterplot1.png)
 
 ## Joint Plot
 - 2차원 실수형 데이터는 jointplot을 활용하면 다각도로 살피기 용이하다

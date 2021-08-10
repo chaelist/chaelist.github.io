@@ -173,24 +173,36 @@ x
 ```
 
 1. **extend()**: 새로운 list를 추가해 '확장'
-```python
-# extend
-x = [1, 2, 3, 4]
-x.extend([6,7])
-x
-```
-```
-[1, 2, 3, 4, 6, 7]
-```
-cf) append에 list를 넣으면?
-```python
-x = [1, 2, 3, 4]
-x.append([6,7])
-x  # extend와 다르게, 아예 list 자체가 하나의 element로 간주되어 들어감.
-```
-```
-[1, 2, 3, 4, [6, 7]]
-```
+    ```python
+    # extend
+    x = [1, 2, 3, 4]
+    x.extend([6,7])
+    x
+    ```
+    ```
+    [1, 2, 3, 4, 6, 7]
+    ```
+
+    cf) append에 list를 넣으면?
+    ```python
+    x = [1, 2, 3, 4]
+    x.append([6,7])
+    x  # extend와 다르게, 아예 list 자체가 하나의 element로 간주되어 들어감.
+    ```
+    ```
+    [1, 2, 3, 4, [6, 7]]
+    ```
+
+    +) list끼리 +로 더해줘도 extend의 효과:
+    ```python
+    x = [1, 2, 3, 4]
+    x = x + [6,7]
+    x
+    ```
+    ```
+    [1, 2, 3, 4, 6, 7]
+    ```
+
 
 1. **insert()**: list의 '특정 index에' element를 추가
 ```python
