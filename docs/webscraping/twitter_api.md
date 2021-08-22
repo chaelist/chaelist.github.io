@@ -2,7 +2,7 @@
 layout: default
 title: Twitter 데이터 수집
 parent: Web Scraping
-nav_order: 3
+nav_order: 4
 ---
 
 # Twitter 데이터 수집
