@@ -4,6 +4,9 @@
 <loc>http://localhost:4000/404</loc>
 </url>
 <url>
+<loc>http://localhost:4000/docs/kaggle/amazon_bestsellers/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/docs/ml_basics/classification1/</loc>
 </url>
 <url>

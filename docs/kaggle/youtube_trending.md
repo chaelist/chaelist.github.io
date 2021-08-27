@@ -1,11 +1,11 @@
 ---
 layout: default
-title: YouTube Trending Video
+title: YouTube Trending Videos
 parent: Kaggle Dataset EDA
 nav_order: 1
 ---
 
-# YouTube Trending Video
+# YouTube Trending Videos
 {: .no_toc }
 <br/>
 
@@ -24,7 +24,7 @@ nav_order: 1
 
 
 ***분석 대상 데이터셋: YouTube Trending Videos (Korea)**
-- [https://www.kaggle.com/datasnaek/youtube-new?select=KRvideos.csv](https://www.kaggle.com/datasnaek/youtube-new?select=KRvideos.csv){: target="_blank"}
+- [데이터셋 출처](https://www.kaggle.com/datasnaek/youtube-new?select=KRvideos.csv){: target="_blank"}
 - 2017-11-14 ~ 2018-06-14 사이에 trending한 동영상 34,567개의 데이터
 - 일별 trending 동영상이 최소 52개에서 최대 192개까지 저장되어 있으며, 이틀 이상 trending한 동영상의 경우 여러 번 중복해서 포함되어 있음
 - Columns (16개): 'video_id', 'trending_date', 'title', 'channel_title', 'category_id', 'publish_time', 'tags', 'views', 'likes', 'dislikes', 'comment_count', 'thumbnail_link', 'comments_disabled', 'ratings_disabled', 'video_error_or_removed', 'description'
