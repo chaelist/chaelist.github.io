@@ -166,7 +166,7 @@ print(NN_words)
 - 동사는 동사원형으로, 명사는 singular(단수형)으로 변환
 
 ```python
-# nltk.WordNetLemmatizer() 함수 사용
+# nltk.WordNetLemmatizer() 사용
 
 wlem = nltk.WordNetLemmatizer()
 lemmatized_words = []

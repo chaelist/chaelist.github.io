@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Kiva Crowdfunding Data 1
+title: Kiva Crowdfunding 1
 parent: Kaggle Dataset EDA
 nav_order: 4
 ---
 
-# Kiva Crowdfunding Data 1
+# Kiva Crowdfunding 1
 {: .no_toc }
 <br/>
 
