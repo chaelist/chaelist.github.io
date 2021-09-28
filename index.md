@@ -17,7 +17,42 @@ Data Analytics Blog
 
 <br/>
 
-[Frequency Analysis (빈도 분석)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
+[YouTube Trending Videos Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/youtube_trending.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
+
+![YouTube_Video2](../../../assets/images/kaggle/youtube_video8.png){: width="400"}  ![YouTube_Video1](../../../assets/images/kaggle/youtube_video10.png){: width="250"} 
+
+
+<br/>
+
+[Amazon Bestselling Books Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/amazon_bestsellers.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
+
+![Amazon_Bestsellers1](../../../assets/images/kaggle/amazon_bestsellers5.png){: width="370"}   ![Amazon_Bestsellers2](../../../assets/images/kaggle/amazon_bestsellers14.png){: width="245"} 
+
+<br/>
+
+[Telco Customer Churn Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/customer_churn.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
+
+![Telco_Customer_Churn1](../../../assets/images/kaggle/customer_churn2.png){: width="285"}   ![Telco_Customer_Churn2](../../../assets/images/kaggle/customer_churn8.png){: width="260"} 
+
+<br/>
+
+[Kiva Crowdfunding Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/kiva_crowdfunding.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
+
+![Kiva_Crowdfunding1](../../../assets/images/kaggle/kiva_crowdfunding9.png){: width="370"}   ![Kiva_Crowdfunding2](../../../assets/images/kaggle/kiva_crowdfunding16.png){: width="260"} 
+
+
+
+
+
+
+
+<br/>
+
+<hr/>
+
+<br/>
+
+[Frequency Analysis (단어 빈도 분석)]({{ site.baseurl }}{% link docs/text_analysis/korean_text.md %}){: .fs-7 .fw-300 .text-grey-dk-000}
 
 뉴스 기사를 수집해 전처리를 거쳐 단어별 빈도를 파악 & 기사의 내용을 워드클라우드로 압축적으로 표현
 
