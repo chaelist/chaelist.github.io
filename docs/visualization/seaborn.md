@@ -57,6 +57,9 @@ exam_df.head()
     ```
     ![barplot1](../../../assets/images/seaborn/barplot1.png)
 
+    - barplot의 기본 estimator는 np.mean (평균값). 별도로 설정해주지 않으면 default로 각 카테고리의 평균값을 시각화해준다
+    - estimator는 np.sum, np.count 등으로 다양하게 변경 가능
+
     +) hue 옵션 지정: 
     ```python
     sns.barplot(data=exam_df, x="race/ethnicity", y="math score", hue='gender', palette='Set3');
@@ -101,11 +104,22 @@ flights_df.head()
   ![lineplot3](../../../assets/images/seaborn/lineplot3.png)
 
 1. 연도별 총 승객수 추이
-  ```python
-  flights_groupby = flights_df.groupby('year')[['passengers']].sum().reset_index()
-  sns.lineplot(data=flights_groupby, x='year', y='passengers', color='skyblue');
-  ```
-  ![lineplot1](../../../assets/images/seaborn/lineplot1.png)
+
+    ```python
+    flights_groupby = flights_df.groupby('year')[['passengers']].sum().reset_index()
+    sns.lineplot(data=flights_groupby, x='year', y='passengers', color='skyblue');
+    ```
+    ![lineplot1](../../../assets/images/seaborn/lineplot1.png)
+
+    +) 아예 estimator='sum'으로 설정해서 시각화하는 것도 가능
+
+    ```python
+    # 연도별 총 승객수 추이 (groupby를 거쳐서 그리는 것과 동일한 형태로 시각화 가능)
+    sns.lineplot(data=flights_df, x='year', y='passengers', color='skyblue', estimator='sum', ci=None);
+    ```
+    ![lineplot1](../../../assets/images/seaborn/lineplot1.png)
+    - estimator는 'sum', 'min', 'count' 등 다양하게 설정 가능
+
 
 1. 연도별, 월별 승객수 추이
 
@@ -213,20 +227,31 @@ sns.kdeplot(body_df['Height'])
 
 3. bandwidth 조절하기
 ```python
-sns.kdeplot(body_df['Height'], bw=0.5);   # bw는 bandwidth의 약자
+sns.kdeplot(body_df['Height'], bw_adjust=0.5);   # bw는 bandwidth의 약자
 ```
 ![KDE_Plot2](../../../assets/images/seaborn/kdeplot2.png)
-- bw로 얼마나 매끄럽게 확률밀도함수를 조절할 것인지 선택. bw값이 클수록 매끄럽다.
-- 하지만 bw가 무조건 클수록 좋은 것만은 아니다. 적절히 인사이트를 얻을 수 있는 만큼으로 조절.
-- **bw를 설정하지 않으면, Seaborn이 적당한 값으로 알아서 골라준다.
+- bw_adjust로 얼마나 매끄럽게 확률밀도함수를 조절할 것인지 선택. bw값이 클수록 매끄럽다.
+- 하지만 bw값이 무조건 클수록 좋은 것만은 아니다. 적절히 인사이트를 얻을 수 있는 만큼으로 조절.
+- **bw_adjust를 설정하지 않으면, Seaborn이 적당한 값으로 알아서 골라준다.
 
-### distplot()
-: Seaborn의 distplot을 활용하면 히스토그램과 KDE Plot을 함께 표현 가능
-```python
-sns.distplot(body_df['Height'], bins=15); 
-## df.plot(kind='hist', y='Height', bins=15)와 sns.kdeplot(body_df['Height'])를 합친 결과가 나옴
-```
-![distplot](../../../assets/images/seaborn/distplot1.png)
+### histplot()
+
+1. 기본 히스토그램
+
+    ```python
+    sns.histplot(body_df['Height'], bins=15);
+    ```
+    ![Hist_Plot1](../../../assets/images/seaborn/histplot1.png)
+
+2. 히스토그램과 KDE Plot을 한 번에 표현
+
+    ```python
+    sns.histplot(body_df['Height'], kde=True, stat='density', linewidth=0, bins=15);
+    ```
+    ![Hist_Plot2](../../../assets/images/seaborn/histplot2.png)
+    - `kde=True, stat='density', linewidth=0` 옵션을 추가해주면 deprecated 기능인 'seaborn.distplot'과 동일하게 시각화 가능
+    - `stat='density'`라고 별도로 설정해주지 않으면 y는 그냥 'Count'가 됨
+    - `linewidth=0`은 kde 곡선을 잘 보이게 하기 위해 histogram의 테두리선을 없애주는 역할
 
 
 ### violinplot()
@@ -352,11 +377,21 @@ sns.boxplot(data=exam_df, x='test preparation course', y='math score', hue='gend
 ```
 ![BoxPlot2](../../../assets/images/seaborn/boxplot2.png)
 
+  - `showfliers=False` 옵션을 추가하면 outlier를 제외하고 시각화할 수 있다
+  ```python
+  sns.boxplot(data=exam_df, x='test preparation course', y='math score', hue='gender', palette='Set3', showfliers=False)
+  ```
+
 +) 아래에서 배울 catplot을 활용해도 boxplot과 거의 동일하게 표현 가능
 ```python
 sns.catplot(data=exam_df, x='test preparation course', y='math score', hue='gender', kind='box')
 ```
 ![CatPlot0](../../../assets/images/seaborn/catplot0.png)
+
+  - catplot(kind='box') 역시 마찬가지로 `showfliers=False` 옵션을 추가할 수 있다
+  ```python
+  sns.catplot(data=exam_df, x='test preparation course', y='math score', hue='gender', kind='box', showfliers=False)
+  ```
 
 ## Catplot
 : 카테고리별 비교를 위한 시각화에 적합

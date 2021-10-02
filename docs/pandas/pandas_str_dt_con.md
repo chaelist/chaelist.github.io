@@ -754,6 +754,48 @@ laptops_df.head()
 
     </div>
 
+### lambda 식 + applymap()
+: `series.applymap(lambda x: 식)`과 같은 형식으로 사용.
+- df.apply()의 경우 row / column basis로 작용하고, df.applymap()의 경우 element-wise로 작용한다는 차이가 있기 때문에, 각 element를 하나 하나 조건식으로 검사해서 변경하고자 하는 경우에는 applymap()을 사용해야 한다
+
+```python
+df = pd.DataFrame({
+    'A': [0, 1, 2, 3],
+    'B': [1, 0, 0, 0],
+    'C': [3, 0, 2, 0],
+    'D': [0, 0, 1, 4]})
+
+df
+```
+
+<div class="code-example" markdown="1">
+
+|    |   A |   B |   C |   D |
+|---:|----:|----:|----:|----:|
+|  0 |   0 |   1 |   3 |   0 |
+|  1 |   1 |   0 |   0 |   0 |
+|  2 |   2 |   0 |   2 |   1 |
+|  3 |   3 |   0 |   0 |   4 |
+
+</div>
+
+→ 유무만을 나타내기 위해, 0보다 큰 숫자는 모두 'O'로, 그 외는 공백으로 변경:
+```python
+df.applymap(lambda x: 'O' if x > 0 else '')
+```
+
+<div class="code-example" markdown="1">
+
+|    | A   | B   | C   | D   |
+|---:|:----|:----|:----|:----|
+|  0 |     | O   | O   |     |
+|  1 | O   |     |     |     |
+|  2 | O   |     | O   | O   |
+|  3 | O   |     |     | O   |
+
+</div>
+
+
 ### pd.where()
 : `series.where(series객체에 대한 조건문, 거짓 값에 대한 대체 값)`의 형태로 사용
 

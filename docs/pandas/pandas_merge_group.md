@@ -415,6 +415,7 @@ titanic_df.head()
 
 1. df.groupby('칼럼명').함수()
 - DataFrame에 groupby()를 호출해 반환된 결과에 aggregation 함수를 호출하면, groupby() 대상 칼럼을 제외한 모든 칼럼에 aggregation 함수를 적용한 결과를 보여준다
+- aggregation 함수 종류: count, sum, max, mean, nunique 등. (*<u>nunique</u>: unique count)
 - 대상 칼럼이 index로 들어감
 
     ```python
@@ -517,6 +518,7 @@ titanic_df.head()
 
 1. 여러 칼럼에 서로 다른 Aggregation 함수를 적용
 - dictionary 형태로 함수를 적용할 칼럼과 함수명을 입력
+- ※ aggregation 방식 중 nunique의 경우, `'Age': pd.Series.nunique`와 같은 방식으로 표기해줘야 한다
 
     ```python
     agg_format = {'Age':'max', 'SibSp':'sum', 'Fare':'mean'}  

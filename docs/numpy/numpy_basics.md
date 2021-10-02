@@ -120,14 +120,26 @@ print(array3)
     ```
 
 1. **np.random.randint()**: 정수 형태의 랜덤 숫자로 구성된 array 생성
-- np.random.random()과 달리 2개의 변수를 input으로 받는다
+    - np.random.random()과 달리 2개의 변수를 input으로 받는다
 
-    ```python
-    np.random.randint(5, size=8)  # 0에서 4까지의 정수로 랜덤하게 원소가 8개인 array 생성
-    ```
-    ```
-    array([3, 4, 0, 3, 4, 4, 4, 3])
-    ```
+        ```python
+        np.random.randint(5, size=8)  # 0에서 4까지의 정수로 랜덤하게 원소가 8개인 array 생성
+        ```
+        ```
+        array([3, 4, 0, 3, 4, 4, 4, 3])
+        ```
+
+    - +) 변수 3개를 input으로 넣는 것도 가능
+
+        ```python
+        np.random.randint(2, 10, size=(3, 5))  # 2에서 9까지의 정수로 랜덤하게 (3, 5) 사이즈의 array 생성
+        ```
+        ```
+        array([[4, 3, 5, 8, 8],
+            [5, 6, 9, 2, 5],
+            [3, 4, 6, 8, 5]])
+        ```
+
 
 1. **np.random.rand()**: random한 값들을 넣은 '행렬' 만들기 (0~1 사이의 균일분포에서 random한 floating number로 구성)
 - () 안에 차원을 적으면 됨
