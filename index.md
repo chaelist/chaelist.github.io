@@ -40,10 +40,11 @@ Data Analytics Blog
 
 ![Kiva_Crowdfunding1](../../../assets/images/kaggle/kiva_crowdfunding9.png){: width="370"}   ![Kiva_Crowdfunding2](../../../assets/images/kaggle/kiva_crowdfunding16.png){: width="260"} 
 
+<br/>
 
+[STEM Salaries Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/stem_salaries.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
 
-
-
+![STEM_Salaries_snap1](../../../assets/images/kaggle/stem_salaries_snap1.png){: width="270"}   ![STEM_Salaries_snap2](../../../assets/images/kaggle/stem_salaries_snap2.png){: width="270"} 
 
 
 <br/>

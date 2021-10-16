@@ -92,6 +92,7 @@ bills_df.head()
     ```
     <iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/1.embed"></iframe>
     - 연속적이지 않은 color palette는 `color_discrete_sequence` 옵션으로 지정
+    - 보통 discrete_sequence에는 px.colors.qualitative에 있는 색을 넣지만, px.colors.sequential / px.colors.diverging / px.colors.cyclical에 있는 색을 넣어도 괜찮다
     - color로 구분을 넣으면 default로 누적 그래프 형태로 시각화됨
 
 1. daily average bills per sex (2)
@@ -404,7 +405,9 @@ fig.show()
 +) 참고용 링크들
 - [color_discrete_sequence](https://plotly.com/python/discrete-color/){: target="_blank"}
 - [color_continuous_scale](https://plotly.com/python/builtin-colorscales/#builtin-sequential-color-scales){: target="_blank"}
+- [colors in plotly express](https://plotly.com/python-api-reference/generated/plotly.express.colors.html){: target="_blank"} -- `plotly.express.colors.sequential.swatches()`와 같은 코드로 색 종류 확인 가능
 - [adjusting size](https://plotly.com/python/setting-graph-size/#adjusting-height-width--margins-with-plotly-express){: target="_blank"}
+- [hovermode and hover labels](https://plotly.com/python/hover-text-and-formatting/){: target="_blank"}
 - [templates](https://plotly.com/python/templates/){: target="_blank"}
 - [image export](https://plotly.com/python/static-image-export/){: target="_blank"}   /   [html export](https://plotly.com/python/interactive-html-export/){: target="_blank"}
 - [plotly.express python api reference](https://plotly.com/python-api-reference/plotly.express.html#px){: target="_blank"}
