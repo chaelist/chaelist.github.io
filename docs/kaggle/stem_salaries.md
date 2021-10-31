@@ -25,7 +25,7 @@ nav_order: 6
 ***분석 대상 데이터셋: Data Science and STEM Salaries**
 - [데이터셋 출처](https://www.kaggle.com/jackogozaly/data-science-and-stem-salaries?select=Levels_Fyi_Salary_Data.csv){: target="_blank"}
 - levels.fyi에서 가져온 62,642개의 salary data (Data Science & STEM 직종)
-- 2019.01.01 ~ 2020.09.09의 기간에 기록된 약 1060개의 회사, 15개 job title에 대한 데이터
+- 2017.06.07 ~ 2021.08.17의 기간에 기록된 약 1060개의 회사, 15개 job title에 대한 데이터
 
 ## 데이터 파악 및 전처리
 

@@ -34,6 +34,17 @@ nav_order: 5
 ## 데이터 정리
 
 ```python
+# 필요한 라이브러리 import
+import pandas as pd
+import numpy as np
+
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+import scipy.stats as stats
+```
+
+```python
 kiva_df = pd.read_csv('data/kiva_loans.csv')
 kiva_df.head(3)
 ```
