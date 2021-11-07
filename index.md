@@ -17,6 +17,13 @@ Data Analytics Blog
 
 <br/>
 
+[UK Ecommerce Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/uk_ecommerce.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
+
+![STEM_Salaries_snap1](../../../assets/images/kaggle/uk_ecommerce_1.png){: width="270"}   ![STEM_Salaries_snap2](../../../assets/images/kaggle/uk_ecommerce_snap.png){: width="300"} 
+
+
+<br/>
+
 [YouTube Trending Videos Dataset (EDA)]({{ site.baseurl }}{% link docs/kaggle/youtube_trending.md %}){: .fs-7 .fw-300 .text-grey-dk-000}  
 
 ![YouTube_Video2](../../../assets/images/kaggle/youtube_video8.png){: width="400"}  ![YouTube_Video1](../../../assets/images/kaggle/youtube_video10.png){: width="250"} 
