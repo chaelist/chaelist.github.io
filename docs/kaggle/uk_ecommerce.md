@@ -1,6 +1,6 @@
 ---
 layout: default
-title: UK Ecommerce Data
+title: UK Ecommerce Data 1
 parent: Kaggle Dataset EDA
 nav_order: 8
 ---
@@ -283,9 +283,11 @@ ecom_df.describe()
     ```
     - 'gift_숫자' 형태는 gift voucher 상품
 
-    → StockCode 중 제품이 아닌 것 정리:
+
+    ※ StockCode 중 제품이 아닌 것 정리:
 
     | StockCode | Desciption | 처리 방향성 | 
+    |:----------|:-----------|:------------|
     | S	| SAMPLES | 무료로 샘플을 주는 데에 쓴 돈이라고 추정 → 매출과 관련이 적으므로 일단 drop | 
     | POST |	POSTAGE | 우편 요금으로 추정... Country가 주로 해외인 것을 보면 일종의 상품이라고 생각되기도 함 → keep |
     | PADS	| PADS TO MATCH ALL CUSHIONS | Price=0.001 → 함께 판매하는 부속품으로 추정 → keep |
@@ -297,6 +299,7 @@ ecom_df.describe()
     | BANK CHARGES  | 	Bank Charges | 매출과 관련이 적으므로 일단 drop | 
     | B	| Adjust bad debt | 매출과 관련이 적으므로 일단 drop | 
     | AMAZONFEE	| AMAZON FEE | 아마존에 내는 수수료 → 매출과 관련이 적으므로 일단 drop | 
+
 
     → 제품 판매로 인한 매출과 관계 없는 Stock Code는 drop
     ```python

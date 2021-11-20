@@ -415,17 +415,26 @@ print(x)
 [5, 2, 3, 4, 1]
 ```
 
-    +) **reversed(x)**: reverse()와 마찬가지로, list 내용물을 반대 순서로 정렬
-    - `x.reverse()`는 x 자체를 변경/ `reversed(x)`는 x는 변형하지 않은 채 반대 순서로 정렬된 리스트를 반환
+    +) **reversed(x)**: x는 변형하지 않고, x의 element를 반대 순서로 정렬하는 iterator를 반환해준다
+    - `sorted(x)`와 달리, 변형된 리스트가 return되는 것이 아니라 iterator가 반환된다
 
     ```python
     x = [1, 4, 3, 2, 5]
-    reversed(x)
+    [i for i in reversed(x)]   # iterator가 반환되므로 이런 식으로 사용해야 list로 반환시킬 수 있음
     ```
     ```
     [5, 2, 3, 4, 1]
     ```
 
+    +) indexing을 통한 list 뒤집기:
+
+    ```python
+    x = [1, 4, 3, 2, 5]
+    x[::-1]
+    ```
+    ```
+    [5, 2, 3, 4, 1]
+    ```
 
 ## String
 문자열. sequence of characters. ' '이나 " "를 활용해 표현
