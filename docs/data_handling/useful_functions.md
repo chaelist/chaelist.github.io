@@ -2,7 +2,7 @@
 layout: default
 title: 유용한 Python 내장함수
 parent: Data Handling
-nav_order: 3
+nav_order: 4
 ---
 
 # 유용한 Python 내장함수
@@ -184,9 +184,9 @@ nav_order: 3
 
     ```python
     list1 = ['A', 'B', 'C', 'D', 'E']
-        for i, element in zip(count(0, 1), list1):  
-            print(i, ':', element)
-    # zip(len(list1), list1)과 결과는 같지만, len(list1)을 계산하지 않아도 된다는 장점이 있다
+    for i, element in zip(count(0, 1), list1):  
+        print(i, ':', element)
+    # zip(range(len(list1)), list1)과 결과는 같지만, len(list1)을 계산하지 않아도 된다는 장점이 있다
     ```
     ```
     0 : A

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: File Input & Output
+title: 파일 읽고 쓰기
 parent: Data Handling
 nav_order: 1
 ---
 
-# File Input & Output
+# 파일 읽고 쓰기
 {: .no_toc }
 <br/>
 
@@ -44,7 +44,7 @@ f = open('../example.txt', 'r')  ## ../를 통해 traverse up the directory
 ### f.read()
 : 파일 전체를 하나의 string value로 읽어준다
 ```python
-f = open('example.txt', 'r')
+f = open('example.txt', 'r')   # 'r'은 default mode이기 때문에 안써줘도 결과는 동일
 f.read()   # 아래처럼, 하나의 string value로 읽어옴
 ```
 ```
