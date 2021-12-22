@@ -679,7 +679,7 @@ False
     print(line2.isalnum())
     print(line3.isalnum())
 
-    print(line2.isdigit())
+    print(line2.isdigit()) 
     print(line3.isdigit())
     ```
     ```
