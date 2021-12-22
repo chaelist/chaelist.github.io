@@ -109,6 +109,24 @@ f.close()
     5
     ```
 
+1. readlines()를 쓰지 않아도, for문을 사용하면 한 줄 한 줄 접근이 가능하다
+
+    ```python
+    f = open('example.txt', 'r')
+    for line in f:
+        print(line.strip())
+        
+    f.close()
+    ```
+    ```
+    1
+    2
+    3
+    4
+    5
+    ```
+
+
 1. txt 파일에서 읽어온 값들은 일단 다 string 형태로 저장된다.
     ```python
     f = open('example.txt', 'r')
@@ -126,6 +144,58 @@ f.close()
     1 <class 'str'>
     1 <class 'int'>
     ```
+
+1. file open & close를 한 줄로 해결하는 방법:
+
+    ```python
+    with open('파일명.txt', 'r', encoding='utf-8') as file:
+        file.read()
+    ```
+    - 이렇게 써주면 open()과 close()를 모두 써준 것과 동일   
+        (with 아래의 코드가 모두 실행되고 나면 알아서 파일이 닫힌다)
+
+1. 커서 옮기기   
+    (※ 파일을 읽고 쓰는 과정에서 일종의 '커서'가 계속 줄을 따라 이동하게 되기 때문에, 커서 위치를 유의해야 할 때가 있음)
+
+    1. f.readline()으로 한 줄을 이미 읽어준 후라서, 커서의 위치는 두번째 줄로 이동함. 그 상태에서 f.read()로 읽어주면 커서 위치부터 가장 끝까지의 내용이 출력됨.
+
+        ```python
+        f = open('sample.txt')
+        print(f.readline())
+        print('---------')
+        print(f.read())
+        ```
+        ```
+        1
+
+        ---------
+        2
+        3
+        4
+        5
+    ``` 
+
+    1. `seek()`을 활용하면 커서 위치를 옮길 수 있음 (`seek(0)`: 파일의 가장 처음으로 커서를 옮겨줌) 
+
+        ```python
+        f = open('sample.txt')
+
+        print(f.readline())
+        print('---------')
+        f.seek(0)
+        print(f.read())
+        ```
+        ```
+        1
+
+        ---------
+        1
+        2
+        3
+        4
+        5
+        ``` 
+
 
 
 ## Writing a file
@@ -183,10 +253,119 @@ f3.close()
     f_test.close()  
     ```
 
-1. 이미 만든 파일에 <u>append</u>하기 (내용 추가로 더 쓰기)
+
+### 내용 append하기 
+(이미 만든 파일에 내용 추가로 더 쓰기)
+
 ```python
 f_test = open('test.txt', 'a')  # 'a': append
 f_test.write('\n'+'test3') # 'a'로 open한다음에 write 해주면 이미 존재하는 파일에 이어서 쓸 수 있음.
 f_test.close() 
 ```
 ※ `open('이미 있는 파일명', 'w')` 이렇게  이미 있는 파일을 'w'(write)로 열면 그 위에 overwrite하게 되기 때문에, 이어서 계속 쓰고 싶다면 'a'(append)로 열어줘야 한다
+
+
+## r+, w+, a+
+- open() 함수에는 +모드들도 존재. 읽기 & 쓰기 기능을 한번에 처리하고 싶은 경우에 유용하다
+- 총 6개의 모드: r, w, a, r+, w+, a+
+
+### r+ 모드
+- r 모드로 열면 reading만 가능하지만, r+ 모드로 열면 reading과 writing이 모두 가능하다
+    - 'r' 모드로 열고 'write' 함수를 사용하면 'UnsupportedOperation: not writable'이라고 error가 남
+- r+ 모드로 열고 'write'하는 경우, 새로 적는 내용은 커서 위치부터 작성된다. 파일을 연 직후에는 커서 위치가 0 (가장 앞)이므로, 그 상태에서 write하는 경우 파일의 맨 처음부터 새로운 내용이 덮어씌워진다
+    - ※ r+ 모드로 열어서 먼저 'read'를 한 번 하고 나서 'write'를 하는 경우, 커서가 가장 뒤에 가 있으므로 뒤에 이어서 새로운 내용을 추가할 수 있다
+
+```python
+# 샘플 파일 준비
+with open('sample.txt', 'r') as f:
+  print(f.read())
+```
+```
+first line
+second line
+```
+
+```python
+with open('sample.txt', 'r+') as f:
+    ## 새로운 내용이 파일의 가장 앞부분부터 덮어씌워짐
+    f.write('write new text')
+
+    f.seek(0)  # 처음부터 읽어주기 위해서는 커서 위치를 0으로 바꿔줘야 함
+    print(f.read())
+  
+```
+```
+write new textcond line
+```
+
+### w+ 모드
+- w+ 모드로 열면 기존 내용을 지우고 새롭게 write하는 것 외에도, read 기능들도 사용 가능하다 (ex. 내용을 적고 바로 확인하는 것이 가능)
+
+```python
+# 샘플 파일 준비
+with open('sample.txt', 'r') as f:
+  print(f.read())
+```
+```
+first line
+second line
+```
+
+```python
+with open('sample.txt', 'w+') as f:
+    # 기존 내용은 지워지고, 새로운 내용이 적힌다
+    f.write('write new text')
+    
+    f.seek(0)
+    print(f.read())
+```
+```
+write new text
+```
+
+
++) 'w+' 모드로 여는 순간 file은 백지화된다. w+ 모드로 열자마자 f.read()으로 읽어들이는 것은 의미가 없음
+
+```python
+with open('sample.txt', 'w+') as f:
+print(f.read())
+# 아무것도 출력되지 않음
+```
+
+
+### a+ 모드
+- a+ 모드로 열면 기존 내용에 새롭게 내용을 덧붙여 write하는 것 외에도, read 기능들도 사용 가능하다
+
+```python
+# 샘플 파일 준비
+with open('sample.txt', 'r') as f:
+    print(f.read())
+```
+```
+first line
+second line
+```
+
+```python
+with open('sample.txt', 'a+') as f:
+    # 파일의 기존 내용은 유지하고, 맨 뒤에 새로운 내용이 추가된다
+    f.write('\nwrite new text')
+
+    # write한 후의 text 내용 출력
+    f.seek(0)
+    print(f.read())
+```
+```
+first line
+second line
+write new text
+```
+
+
++) 'a+' 모드로 열면 커서 위치가 파일 맨 끝부터 시작한다. 그러므로 a+모드로 열자마자 read해주려면 seek(0)으로 커서 위치를 조정해줘야 한다
+```python
+with open('sample.txt', 'a+') as f:
+    print(f.read())
+# 아무것도 출력되지 않음
+# seek(0) 하고 f.read()를 해줘야 전체 내용을 출력 가능
+```

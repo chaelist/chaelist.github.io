@@ -516,6 +516,19 @@ s
     ['Today is a ', ' day']
     ```
 
+    +) **join()**: split된 문자열을 다시 모아주기
+
+    ```python
+    split_list = ['Today', 'is', 'a', 'good', 'day']
+    print(' '.join(split_list))  # 중간에 공백을 두고 list의 element들을 합쳐줌
+    print('/'.join(split_list))  # 중간에 /를 두고 합쳐줌
+    ```
+    ```
+    Today is a good day
+    Today/is/a/good/day
+    ```
+
+
 1. **strip()**: 양쪽 끝의 whitespace를 제거
 -  strip('n'): 양쪽 끝의 'n' 문자 제거
 -  lstrip()은 왼쪽 끝 element만, rstrip()은 오늘쪽 끝 element만 제거
@@ -606,20 +619,91 @@ False
     </div>
 
 
-1. **startswith()**: 문자열이 ()안의 특정 문자로 시작되는지 확인, 결과는 boolean 값으로 반환
--  `if X.startswith('Y')`: 이런 식으로 if문에서 주로 사용
+1. **upper()**, **lower()**, **capitalize()**
+- `upper()`: 모든 문자를 uppercase로 바꿔줌
+- `lower()`: 모든 문자를 lowercase로 바꿔줌
+- `capitalize()`: 문자열의 가장 첫번째 문자는 uppercase로, 나머지는 lowercase로 맞춰줌
 
     ```python
-    line = 'Please have a nice day'
-    print(line.startswith('Please')) # True
-    print(line.startswith('P')) # True
-    print(line.startswith('p')) # 대문자 P와 소문자 p는 다르기 때문에, False가 반환됨
+    # 숫자/특수기호에는 반영되지 않고, 알파벳에만 적용됨
+    a = 'hAve a Nice daY 12#'
+
+    print(a.upper())
+    print(a.lower())
+    print(a.capitalize())
+    ```
+    ```
+    HAVE A NICE DAY 12#
+    have a nice day 12#
+    Have a nice day 12#
+    ```
+
+
+
+1. **startswith()**, **endswith()**
+- `startswith()`: 문자열이 ()안의 특정 문자로 시작되는지 확인, 결과는 boolean 값으로 반환
+    -- `if X.startswith('Y')`: 이런 식으로 if문에서 주로 사용
+- `endswith()`: 문자열이 특정 문자로 끝나는지 여부를 판별
+
+    ```python
+    line = 'Have a nice day'
+    print(line.startswith('Have')) # True
+    print(line.startswith('H')) # True
+    print(line.startswith('h')) # 대문자 H와 소문자 h는 다르기 때문에, False가 반환됨
+
+    print(line.endswith('day'))
     ```
     ```
     True
     True
     False
+    True
     ```
+
+1. **isalpha()**, **isalnum()**, **isdigit()**
+- `isalpha()`: 문자열이 모두 문자로만 이루어져 있는지 판별 (영어/한글 등 언어는 상관X)
+- `isalnum()`: 문자열이 모두 문자/숫자로만 이루어져 있는지 판별. 특수문자/공백 등이 함께 들어 있으면 False를 return
+- `isdigit()`: 문자열이 모두 숫자로만 이루어져 있는지 판별.
+
+    ```python
+    line1 = 'Python코딩은즐거워'
+    line2 = 'start123'
+    line3 = '12345'
+    line4 = 'Python 코딩'
+
+    print(line1.isalpha())
+    print(line2.isalpha())
+    print(line4.isalpha())  # 공백만 하나 있어도 False가 됨
+
+    print(line1.isalnum())
+    print(line2.isalnum())
+    print(line3.isalnum())
+
+    print(line2.isdigit())
+    print(line3.isdigit())
+    ```
+    ```
+    True
+    False
+    False
+    True
+    True
+    True
+    False
+    True
+    ```
+
+1. **count()**: list의 element를 세는 것과 동일하게 적용됨
+
+    ```python
+    x = 'python python'
+    x.count('python')
+    ```
+    ```
+    2
+    ```
+
+
 
 ### String - Number Conversion
 1. **int(x)**: from string/float to integer
