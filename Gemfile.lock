@@ -85,11 +85,11 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bundler (2.2.33)
+  bundler (~> 2.2.0)
   jekyll-sitemap
   jekyll-spaceship
   just-the-docs!
   wdm
 
 BUNDLED WITH
-   2.2.33
+  2.2.33
