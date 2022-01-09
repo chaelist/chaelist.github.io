@@ -207,6 +207,11 @@ nav_order: 5
     print(type(period))
     print(period.days)
     ```
+    ```
+    68 days, 0:00:00
+    <class 'datetime.timedelta'>
+    68
+    ```
 
     +) datetime ± timedelta:
 
