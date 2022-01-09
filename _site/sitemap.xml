@@ -28,6 +28,9 @@
 <loc>http://localhost:4000/docs/data_handling</loc>
 </url>
 <url>
+<loc>http://localhost:4000/docs/data_handling/datetime/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/docs/sql/db_table_create/</loc>
 </url>
 <url>
