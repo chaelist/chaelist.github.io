@@ -697,6 +697,43 @@ titanic_df.head()
     </div>
 
 
+### df.pivot()
+: 데이터 형태를 변경해준다. 원하는 형태로 데이터를 변형해준다는 점에서 `pd.pivot_table`과 유사하지만, pivot_table과 달리 데이터를 요약 집계해주는 기능은 없음
+
+```python
+pivot_sample = titanic_df.groupby(['Pclass', 'Sex'])[['Fare']].mean().reset_index()
+pivot_sample
+```
+
+<div class="code-example" markdown="1">
+
+|    |   Pclass | Sex    |     Fare |
+|---:|---------:|:-------|---------:|
+|  0 |        1 | female | 106.126  |
+|  1 |        1 | male   |  67.2261 |
+|  2 |        2 | female |  21.9701 |
+|  3 |        2 | male   |  19.7418 |
+|  4 |        3 | female |  16.1188 |
+|  5 |        3 | male   |  12.6616 |
+
+</div>
+
+→ 'Pclass' 정보가 index로, 'Sex' 정보가 column으로, 그리고 'Fare'가 value로 들어가도록 reshape:
+```python
+pivot_sample.pivot(index='Pclass', columns='Sex', values='Fare')
+```
+
+<div class="code-example" markdown="1">
+
+|   Pclass |   female |    male |
+|---------:|---------:|--------:|
+|        1 | 106.126  | 67.2261 |
+|        2 |  21.9701 | 19.7418 |
+|        3 |  16.1188 | 12.6616 |
+
+</div>
+
+
 ## Multi-Index, Multi-Header 다루기
 : groupby나 pivot_table로 데이터를 요약 집계하다 보면, multi-index나 multi-header를 다루게 된다
 
@@ -871,6 +908,24 @@ gdf2
     # 이렇게 column명을 넣어주면 된다 (두 레벨의 칼럼명을 모두 담은 이름으로 적어야 좋음)
     gdf2.columns = ['Age_mean', 'Age_max', 'Fare_mean','Fare_max']
 
+    gdf2
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |   Pclass |   Age_mean |   Age_max |   Fare_mean |   Fare_max |
+    |---------:|-----------:|----------:|------------:|-----------:|
+    |        1 |    38.2334 |        80 |     84.1547 |    512.329 |
+    |        2 |    29.8776 |        70 |     20.6622 |     73.5   |
+    |        3 |    25.1406 |        74 |     13.6756 |     69.55  |
+
+    </div>
+
+    
+    +) `map` 사용해서 새로운 칼럼명 생성하기
+
+    ```python
+    gdf2.columns = gdf2.columns.map('{0[0]}_{0[1]}'.format)  # column1_column2의 형태로 새 column명을 생성해줌
     gdf2
     ```
 

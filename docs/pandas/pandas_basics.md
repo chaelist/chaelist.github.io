@@ -578,7 +578,7 @@ iphone_df
 1. 디스플레이가 5인치 이상 "AND" FaceID가 가능한 스마트폰 정보 추출
     ```python
     condition = (iphone_df['디스플레이'] > 5) & (iphone_df['Face ID'] == 'Yes')
-    iphone_df[condition]
+    iphone_df[condition]  # iphone_df.loc[condition]과 동일한 결과
     ```
 
     <div class="code-example" markdown="1">
@@ -675,3 +675,159 @@ iphone_df
     - 열: 2번째 열(index_num=1)부터 4번째 열(index_num=3)까지 
         - 1:4로 slicing했으니 5번째 열(index_num=4)는 포함되지 않는다 (list에서의 slicing과 동일)
         - cf) `iphone_df.loc['iPhone 8':'iPhone XS']`에서는 iPhone8에서 iPhone XS까지 양 끝 모두 포함
+
+
+## 조건 indexing: Query 함수
+- `df.loc[]`을 활용해 조건으로 indexing하는 것과 동일하지만, 더 간결한 문법으로 작성할 수 있다  
+(`df.query()` 함수도 결국은 `df.loc[]`의 형태로 구현됨)
+
+
+```python
+data = {
+    'name': ['Emily', 'Abby', 'Cornelia', 'Kai'], 
+    'group': ['A', 'B', 'A', 'C'],
+    'english_score': [50, 89, 68, 88], 
+    'math_score': [86, 31, 91, 75]
+}
+
+df = pd.DataFrame(data)
+df
+```
+
+<div class="code-example" markdown="1">
+
+|    | name     | group   |   english_score |   math_score |
+|---:|:---------|:--------|----------------:|-------------:|
+|  0 | Emily    | A       |              50 |           86 |
+|  1 | Abby     | B       |              89 |           31 |
+|  2 | Cornelia | A       |              68 |           91 |
+|  3 | Kai      | C       |              88 |           75 |
+
+</div>
+
+
+1. 비교 연산자(==, >, <, != 등)
+
+    ```python
+    df.query('english_score > 80') 
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name   | group   |   english_score |   math_score |
+    |---:|:-------|:--------|----------------:|-------------:|
+    |  1 | Abby   | B       |              89 |           31 |
+    |  3 | Kai    | C       |              88 |           75 |
+
+    </div>
+
+1. in, not in
+
+    ```python
+    df.query('group in ["B", "C"]')   # df.query('group == ["B", "C"]')  이렇게 작성해도 동일
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name   | group   |   english_score |   math_score |
+    |---:|:-------|:--------|----------------:|-------------:|
+    |  1 | Abby   | B       |              89 |           31 |
+    |  3 | Kai    | C       |              88 |           75 |
+
+    </div>
+
+1. and(&), or(|) 
+- 각 조건을 괄호로 명확히 구분해주는 것이 좋다
+
+    ```python
+    df.query('(group == "A") & (math_score > 90)') 
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name     | group   |   english_score |   math_score |
+    |---:|:---------|:--------|----------------:|-------------:|
+    |  2 | Cornelia | A       |              68 |           91 |
+
+    </div>
+
+1. index를 지칭
+- index에 이름이 있다면 그 이름(df.index.name)을 기록해줘야 함
+- 만약 칼럼 중에도 'index'라는 칼럼이 있으면 그 칼럼으로 연산됨
+
+    ```python
+    df.query('index >= 2')
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name     | group   |   english_score |   math_score |
+    |---:|:---------|:--------|----------------:|-------------:|
+    |  2 | Cornelia | A       |              68 |           91 |
+    |  3 | Kai      | C       |              88 |           75 |
+
+    </div>
+
+1. f-string 사용
+- f-string을 사용하면 외부 변수를 기준으로도 indexing할 수 있다
+
+    ```python
+    english_score_mean = df['english_score'].mean()  # 73.75
+
+    df.query(f'english_score >= {english_score_mean}')
+    ```
+
+    <div class="code-example" markdown="1">
+
+    |    | name   | group   |   english_score |   math_score |
+    |---:|:-------|:--------|----------------:|-------------:|
+    |  1 | Abby   | B       |              89 |           31 |
+    |  3 | Kai    | C       |              88 |           75 |
+
+    </div>
+
+
+## pd.set_option()
+
+```python
+num_df = pd.DataFrame({'Num': np.random.randn(3)*1000000000})
+num_df
+```
+
+<div class="code-example" markdown="1">
+
+|    |          Num |
+|---:|-------------:|
+|  0 | -4.69191e+08 |
+|  1 | -2.64508e+08 |
+|  2 |  9.69347e+08 |
+
+</div>
+
+→ 위와 같이 숫자가 너무 커서 scientific notation으로 나오는 경우 / 혹은 소수점 밑 자리가 너무 길게 표시되어서 복잡한 경우, `set_option`으로 float display format을 변경해두면 유용하다:
+
+```python
+pd.set_option('display.float_format', lambda x: '%.2f' % x)  
+# float type 숫자는 소수점 두번째자리까지만 표시하겠다는 의미
+```
+
+```python
+num_df
+```
+
+<div class="code-example" markdown="1">
+
+|    |          Num |
+|---:|-------------:|
+|  0 | 	1139992755.31 |
+|  1 | 1196549705.47 |
+|  2 |  777867250.54 |
+
+</div>
+
+
++) `reset_option`을 활용하면 설정해둔 option을 초기화할 수 있다:
+
+```python
+pd.reset_option('display.float_format')
+```
