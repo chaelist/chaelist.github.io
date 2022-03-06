@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network Analysis 기초 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Network Analysis 기초">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/network_analysis/network_basics/">
+<meta property="og:url" content="https://chaelist.github.io/docs/network_analysis/network_basics/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Network Analysis 기초"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/network_analysis/network_basics/","@type":"WebPage","headline":"Network Analysis 기초","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link active">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/network_analysis">Network Analysis</a></li>
+<li class="breadcrumb-nav-list-item"><span>Network Analysis 기초</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="network-analysis-기초"> <a href="#network-analysis-%EA%B8%B0%EC%B4%88" aria-labelledby="network-analysis-기초" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Network Analysis 기초</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#network-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" id="markdown-toc-network-기본-개념">Network 기본 개념</a><ol>
+<li><a href="#node%EC%99%80-edge" id="markdown-toc-node와-edge">Node와 Edge</a></li>
+<li><a href="#tie%EA%B4%80%EA%B3%84%EC%9D%98-%EC%A2%85%EB%A5%98" id="markdown-toc-tie관계의-종류">Tie(관계)의 종류</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0" id="markdown-toc-간단한-네트워크-그려보기">간단한 네트워크 그려보기</a><ol>
+<li><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%83%9D%EC%84%B1" id="markdown-toc-그래프-생성">그래프 생성</a></li>
+<li><a href="#basic-calculations" id="markdown-toc-basic-calculations">Basic Calculations</a></li>
+<li><a href="#%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%8B%9C%EA%B0%81%ED%99%94" id="markdown-toc-네트워크-시각화">네트워크 시각화</a></li>
+<li><a href="#node-edge%EC%97%90-attribute-%EB%8D%94%ED%95%98%EA%B8%B0" id="markdown-toc-node-edge에-attribute-더하기">node, edge에 attribute 더하기</a></li>
+<li><a href="#attribute-%ED%8F%AC%ED%95%A8%ED%95%B4%EC%84%9C-%EC%8B%9C%EA%B0%81%ED%99%94" id="markdown-toc-attribute-포함해서-시각화">attribute 포함해서 시각화</a></li>
+<li><a href="#%ED%8A%B9%EC%A0%95-%EC%A1%B0%EA%B1%B4%EC%9D%98-node-edge-%EC%B0%BE%EA%B8%B0" id="markdown-toc-특정-조건의-node-edge-찾기">특정 조건의 node, edge 찾기</a></li>
+<li><a href="#digraph-%EA%B7%B8%EB%A6%AC%EA%B8%B0--self-loop" id="markdown-toc-digraph-그리기--self-loop">DiGraph 그리기 &amp; self-loop</a></li>
+</ol>
+</li>
+<li>
+<a href="#network-%EA%B5%AC%EC%A1%B0-%ED%8C%8C%EC%95%85%ED%95%98%EA%B8%B0" id="markdown-toc-network-구조-파악하기">Network 구조 파악하기</a><ol>
+<li><a href="#neighbors--degree" id="markdown-toc-neighbors--degree">Neighbors &amp; Degree</a></li>
+<li><a href="#shortest-path" id="markdown-toc-shortest-path">Shortest path</a></li>
+<li><a href="#centrality" id="markdown-toc-centrality">Centrality</a></li>
+<li><a href="#cliques" id="markdown-toc-cliques">Cliques</a></li>
+<li><a href="#subgraphs" id="markdown-toc-subgraphs">Subgraphs</a></li>
+</ol>
+</li>
+<li>
+<a href="#visualization-with-nxviz" id="markdown-toc-visualization-with-nxviz">Visualization with nxviz</a><ol>
+<li><a href="#nxviz-example-1" id="markdown-toc-nxviz-example-1">nxviz example 1</a></li>
+<li><a href="#nxviz-example-2-complex-network" id="markdown-toc-nxviz-example-2-complex-network">nxviz example 2: complex network</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="network-기본-개념"> <a href="#network-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" aria-labelledby="network-기본-개념" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Network 기본 개념</h2>
+<h3 id="node와-edge"> <a href="#node%EC%99%80-edge" aria-labelledby="node와-edge" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Node와 Edge</h3>
+<ul>
+<li>Network: Node와 Edge로 이루어진 자료 구조.</li>
+<li>Node: vertex라고도 부르며, network를 이루는 각 점을 의미한다. ex) twitter user network를 만든다면, user들이 각각의 node.</li>
+<li>Edge: link, 또는 tie라고도 부르며, 각 node 간의 관계를 의미한다. ex) twitter user network를 만든다면, user(=node)간 follow 관계를 edge로 표현할 수 있다.</li>
+</ul>
+<h3 id="tie관계의-종류"> <a href="#tie%EA%B4%80%EA%B3%84%EC%9D%98-%EC%A2%85%EB%A5%98" aria-labelledby="tie관계의-종류" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Tie(관계)의 종류</h3>
+<ul>
+<li>
+<strong>비대칭 관계(asymmetric tie)</strong>: 관계에서 두 node가 갖는 특성이 다른 경우.<ul>
+<li>관계에 방향성이 있으므로, directed tie라고도 한다.</li>
+<li>ex) SNS에서의 follower - followee 관계 (A가 B를 follow하면 A → B와 같이 관계의 방향이 존재)</li>
+<li>directed tie로 구성된 네트워크를 <strong>directed network</strong>라고 함</li>
+</ul>
+</li>
+<li>
+<strong>대칭 관계 (symmetric tie)</strong>: 관계에서 두 node가 갖는 특성이 비슷한 경우<ul>
+<li>관계에 방향성이 없으므로, undirexted tie라고도 한다.</li>
+<li>ex) 특정 집단 내 사람들 간의 친분 관계. (서로 아는 사이인지)</li>
+<li>undirected tie로 구성된 네트워크를 <strong>undirected network</strong>라고 함</li>
+</ul>
+</li>
+</ul>
+<h2 id="간단한-네트워크-그려보기"> <a href="#%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B7%B8%EB%A0%A4%EB%B3%B4%EA%B8%B0" aria-labelledby="간단한-네트워크-그려보기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 간단한 네트워크 그려보기</h2>
+<ul><li>network 분석에 특화된 python library인 <code class="language-plaintext highlighter-rouge">networkx</code>를 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="n">nx</span>   <span class="c1"># import해야 사용 가능; 보통 nx로 줄여서 import
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>   <span class="c1"># 시각화를 위해 미리 함께 import
+</span></code></pre></div></div>
+<h3 id="그래프-생성"> <a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%83%9D%EC%84%B1" aria-labelledby="그래프-생성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 그래프 생성</h3>
+<ol>
+<li>먼저, 비어있는 graph를 생성<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Create an empy undirected graph
+</span> <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">Graph</span><span class="p">()</span> 
+</code></pre></div></div>
+<ul>
+<li>directed graph를 그리려면: <code class="language-plaintext highlighter-rouge">nx.DiGraph()</code>
+</li>
+<li>+) <code class="language-plaintext highlighter-rouge">nx.MultiGraph()</code>, <code class="language-plaintext highlighter-rouge">nx.MultiDiGraph()</code> 옵션도 존재 (multi-edge graph)<ul>
+<li>같은 node 2개를 연결하는 edge가 여러 개일 수 있는 그래프.</li>
+<li>ex) 정류장 간 trip을 형상화 → A 정류장에서 B 정류장을 거쳐 가는 route가 3종류면 edge가 3개</li>
+<li>하지만 multi edge를 그리려면 리소스가 많이 들어서, 보통 그냥 edge 하나로 collapse해주고 ‘weight’ metadata로 edge의 강도를 표현해준다. (Graph나 DiGraph를 그리고, weight를 지정)</li>
+</ul>
+</li>
+</ul>
+<p>+) type 확인: ‘Graph’ type</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">type</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>  
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> networkx.classes.graph.Graph
+</code></pre></div></div>
+<ul><li>directed graph의 type은 <code class="language-plaintext highlighter-rouge">networkx.classes.digraph.DiGraph</code>
+</li></ul>
+</li>
+<li>node 추가하기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="p">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># Add nodes from a list
+</span></code></pre></div></div>
+<ul><li>cf) node를 하나씩 추가하려면: <code class="language-plaintext highlighter-rouge">g.add_node(1)</code> 이렇게 하나씩 써주면 된다</li></ul>
+</li>
+<li>edge 추가하기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="p">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span> <span class="c1"># Add edges from a list
+</span></code></pre></div></div>
+<ul>
+<li>cf) edge를 하나씩 추가하려면: <code class="language-plaintext highlighter-rouge">g.add_edge(1,3)</code> 이렇게 하나씩 써주면 된다</li>
+<li>만약 모든 node가 edge가 연결되어 있다면, edge만 추가해도 그 안에 포함된 node도 자동으로 추가된다</li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-calculations"> <a href="#basic-calculations" aria-labelledby="basic-calculations" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Calculations</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">())</span> <span class="c1"># nodes
+</span><span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">edges</span><span class="p">())</span> <span class="c1"># edges
+</span><span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">number_of_nodes</span><span class="p">())</span> <span class="c1"># number of nodes
+</span><span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">number_of_edges</span><span class="p">())</span> <span class="c1"># number of edges
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6]
+[(1, 3), (2, 4), (2, 5), (2, 6), (3, 4), (4, 6), (5, 6)]
+6
+7
+</code></pre></div></div>
+<h3 id="네트워크-시각화"> <a href="#%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%8B%9C%EA%B0%81%ED%99%94" aria-labelledby="네트워크-시각화" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 네트워크 시각화</h3>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">nx.draw_networkx()</code> 함수를 이용해 시각화</li>
+<li>draw_networkx는 다른 것과 연결이 많은 노드를 중심에 오게 자동으로 위치를 결정해서 가시화해주며, node의 label도 자동으로 함께 보여준다</li>
+<li>
+<code class="language-plaintext highlighter-rouge">nx.draw()</code> 함수를 사용해도 되지만, draw_networkx가 부가 기능이 더 많음</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>   
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Graph1.png" alt="Graph1"></p>
+<p>+) graphML 파일로 저장하기</p>
+<ul><li>graphML 파일로 내보낸 후, gephi 등의 툴로 시각화할 수도 있다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nx</span><span class="p">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">'graph_test.graphml'</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="node-edge에-attribute-더하기"> <a href="#node-edge%EC%97%90-attribute-%EB%8D%94%ED%95%98%EA%B8%B0" aria-labelledby="node-edge에-attribute-더하기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> node, edge에 attribute 더하기</h3>
+<ol>
+<li>Add node attributes<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'male'</span>      <span class="c1"># {'gender':'male'}이라는 dictionary의 느낌. key-value pair.
+</span> <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'female'</span>
+ <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'male'</span>
+ <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'female'</span>
+ <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'male'</span>
+ <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="s">'gender'</span><span class="p">]</span><span class="o">=</span><span class="s">'male'</span>
+
+ <span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="p">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">'gender'</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {1: 'male', 2: 'female', 3: 'male', 4: 'female', 5: 'male', 6: 'male'}
+</code></pre></div></div>
+</li>
+<li>Add edge attributes<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1">## 이렇게 접근해도 됨: g.edges[1, 3]['weight'] = 3
+</span> <span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+ <span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+ <span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+ <span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+ <span class="n">g</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+ <span class="n">g</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+ <span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="p">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">'weight'</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {(1, 3): 3, (2, 4): 1, (2, 5): 4, (2, 6): 3, (3, 4): 2, (4, 6): 3, (5, 6): 4}
+</code></pre></div></div>
+<ul><li>1-3 사이의 edge를 접근하는 방법: <code class="language-plaintext highlighter-rouge">g[1][3]</code> = <code class="language-plaintext highlighter-rouge">g.edges[1, 3]</code> (어떻게 접근하든 상관없음)</li></ul>
+</li>
+</ol>
+<p>+) 속성까지 포함해서 node, edge 보기</p>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">data=True</code> 옵션을 넣어주면 됨</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1">## node들의 속성까지 함께 볼 수 있음
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NodeDataView({1: {'gender': 'male'}, 2: {'gender': 'female'}, 3: {'gender': 'male'}, 4: {'gender': 'female'}, 5: {'gender': 'male'}, 6: {'gender': 'male'}})
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="p">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1">## edge들의 속성까지 함께 볼 수 있음
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EdgeDataView([(1, 3, {'weight': 3}), (2, 4, {'weight': 1}), (2, 5, {'weight': 4}), (2, 6, {'weight': 3}), (3, 4, {'weight': 2}), (4, 6, {'weight': 3}), (5, 6, {'weight': 4})])
+</code></pre></div></div>
+<h3 id="attribute-포함해서-시각화"> <a href="#attribute-%ED%8F%AC%ED%95%A8%ED%95%B4%EC%84%9C-%EC%8B%9C%EA%B0%81%ED%99%94" aria-labelledby="attribute-포함해서-시각화" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> attribute 포함해서 시각화</h3>
+<ol>
+<li>edge의 ‘weight’를 포함해서 시각화<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="p">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>  <span class="c1"># 각 node의 position을 정해서 그려줘야 edge_label를 맞춰서 넣을 수 있음
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+ <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="s">'weight'</span><span class="p">)</span>
+ <span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Graph2.png" alt="Graph2"></p>
+</li>
+<li>node의 ‘gender’ attribute에 따라 색 다르게 표현<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+     <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">'gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'female'</span><span class="p">:</span>
+         <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'pink'</span><span class="p">)</span>   <span class="c1"># 여성: pink
+</span>     <span class="k">else</span><span class="p">:</span> 
+         <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'skyblue'</span><span class="p">)</span>   <span class="c1"># 남성: skyblue
+</span>
+ <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="p">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+ <span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">color_map</span><span class="p">)</span>
+
+ <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="s">'weight'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Graph3.png" alt="Graph3"></p>
+</li>
+</ol>
+<h3 id="특정-조건의-node-edge-찾기"> <a href="#%ED%8A%B9%EC%A0%95-%EC%A1%B0%EA%B1%B4%EC%9D%98-node-edge-%EC%B0%BE%EA%B8%B0" aria-labelledby="특정-조건의-node-edge-찾기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 특정 조건의 node, edge 찾기</h3>
+<ol>
+<li>‘gender’가 ‘female’인 node만 찾기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">female_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">'gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'female'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">female_nodes</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 4]
+</code></pre></div></div>
+</li>
+<li>‘weight’가 3보다 큰 edge만 찾기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strong_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="p">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">'weight'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">strong_edges</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(2, 5), (5, 6)]
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="digraph-그리기--self-loop"> <a href="#digraph-%EA%B7%B8%EB%A6%AC%EA%B8%B0--self-loop" aria-labelledby="digraph-그리기--self-loop" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DiGraph 그리기 &amp; self-loop</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">diG</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">diG</span><span class="p">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span> <span class="c1"># edge만 추가해도, 자동으로 이에 포함된 node도 함께 추가됨
+</span></code></pre></div></div>
+<p>→ 시각화해보기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">diG</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/DiGraph1.png" alt="DiGraph1"></p>
+<p>+) <strong>self-loop</strong> 확인하기</p>
+<ul>
+<li>self-loop: 자기 자신으로 돌아오는 루프 (edge that begin and end on the same node)</li>
+<li>ex) 버스 노선 중, A 플랫폼에서 떠나서 A 플랫폼으로 돌아오는 순환선이 self-loop로 표현될 수 있음.</li>
+<li>이번 diG에서 추가한 (3, 3) edge가 바로 self-loop</li>
+<li>self-loop는 그래프를 시각화했을 때 잘 눈에 띄지 않기에, <code class="language-plaintext highlighter-rouge">nx.number_of_selfloops()</code>함수로 self-loop의 개수를 파악할 수 있다.</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nx</span><span class="p">.</span><span class="n">number_of_selfloops</span><span class="p">(</span><span class="n">diG</span><span class="p">)</span>   <span class="c1"># diG에는 1개의 self-loop가 포함되어 있음
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+<h2 id="network-구조-파악하기"> <a href="#network-%EA%B5%AC%EC%A1%B0-%ED%8C%8C%EC%95%85%ED%95%98%EA%B8%B0" aria-labelledby="network-구조-파악하기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Network 구조 파악하기</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 위에서 생성한 g 네트워크를 이어서 사용
+</span><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>  
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Graph1.png" alt="Graph1"></p>
+<h3 id="neighbors--degree"> <a href="#neighbors--degree" aria-labelledby="neighbors--degree" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Neighbors &amp; Degree</h3>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">g.neighbors(node)</code>: 그래프 g 내에서 특정 node와 연결된 neighbor node들을 파악할 수 있음</li>
+<li>
+<code class="language-plaintext highlighter-rouge">g.degree(node)</code>: 그래프 g 내에서 특정 node의 neighbor 수를 파악할 수 있음. (연결된 node의 수)<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">neighbors</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span> <span class="c1"># 4's neighbors  
+</span><span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 4's degree, i.e., number of neighbors
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 3, 6]
+3
+</code></pre></div></div>
+</li>
+</ul>
+<h3 id="shortest-path"> <a href="#shortest-path" aria-labelledby="shortest-path" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Shortest path</h3>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">nx.shortest_path(g, node1, node2)</code>를 활용하면 네트워크 g의 node1에서 node2까지의 shortest path를 찾을 수 있다.</li>
+<li>+) <code class="language-plaintext highlighter-rouge">nx.shortest_path(g, node1, node2, weight='weight')</code>라고 하면 edge의 weight을 고려해서 찾아준다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nx</span><span class="p">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[3, 4, 2, 5]
+</code></pre></div></div>
+<p>+) 그냥 <code class="language-plaintext highlighter-rouge">nx.shortest_path(g)</code>라고만 하면 g의 모든 node 간의 shortest path를 모두 찾아준다</p>
+<h3 id="centrality"> <a href="#centrality" aria-labelledby="centrality" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Centrality</h3>
+<p>: node의 중요성을 판별할 때 활용.</p>
+<ol>
+<li>
+<strong>Degree Centrality</strong>: tie가 얼마나 많은지의 정도<ul>
+<li>특정 node의 neighbor 수 / 최대로 가질 수 있는 neighbor 수 = <u>degree / (n-1)</u>
+</li>
+<li>최대로 가질 수 있는 neighbor 수는 n-1. (self-loop 고려X)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각 node별 degree centrality 값을 dictionary 형태로 보여줌
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>  <span class="c1"># key: node, value: degree centrality score for that node
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {1: 0.2, 2: 0.6000000000000001, 3: 0.4, 4: 0.6000000000000001, 5: 0.4, 6: 0.6000000000000001}
+</code></pre></div></div>
+<p>→ 2, 4, 6이 가장 중요한 node로 판별됨</p>
+</li>
+<li>
+<strong>Betweenness Centrality</strong>: 얼마나 bridge 역할을 하는지의 정도<ul>
+<li>특정 node를 지나가는 shortest path의 수 / 모든 가능한 shortest path의 수</li>
+<li>여러 집단을 이어주는 역할을 하는 node를 파악할 때 용이 (ex. 정치 관심 그룹과 예술 관심 그룹을 이어주는 역할을 하는 node 파악)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각 node별 betweenness centrality 값을 dictionary 형태로 보여줌
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {1: 0.0, 2: 0.15000000000000002, 3: 0.4, 4: 0.6000000000000001, 5: 0.0, 6: 0.15000000000000002}
+</code></pre></div></div>
+<p>→ 4가 가장 중요한 node로 판별됨</p>
+<p>+) <code class="language-plaintext highlighter-rouge">nx.betweenness_centrality(g, weight='weight')</code>라고 weight 옵션을 적어주면, 각 edge의 weight를 고려해서 centrality를 계산</p>
+</li>
+<li>
+<strong>Closeness Centrality</strong>: 다른 node들과 얼마나 close하게 연결되어 있나<ul>
+<li>특정 node에서의 다른 node까지의 shortest path를 고려</li>
+<li>(n-1) / 특정 node에서 다른 모든 node까지의 shortest path distance의 합</li>
+<li>n-1은 sum of minimum possible distances. (모든 다른 node까지 1로 가는 게 minimum이니까)</li>
+<li>분모(특정 node에서 다른 모든 node까지의 shortest path distance의 합)가 작을수록 central한 것이므로, closeness centraliy 값은 높을수록 더 중요도가 높은 것!</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각 node별 closeness centrality 값을 dictionary 형태로 보여줌
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {1: 0.38461538461538464, 2: 0.625, 3: 0.5555555555555556, 4: 0.7142857142857143, 5: 0.45454545454545453, 6: 0.625}
+</code></pre></div></div>
+<p>→ 4가 가장 중요한 node로 판별됨</p>
+</li>
+<li>
+<strong>Eigenvector centrality</strong>: 얼마나 central한 node들과 연결되어 있나<ul>
+<li>특정 node의 neighbor들의 centrality를 고려</li>
+<li>ex) 단순히 많은 follower가 있는 사람보다 많은 follower가 있는 사람들에 의해 많이 follow되는 사람을 더 중요한 influencer라고 간주</li>
+<li>
+<u>Ax = λx</u> → eigenvector x의 n번째 값이 n번째 node의 eigenvector centrality.</li>
+<li>A: adjacency matrix of the graph, λ: eigenvalue, x: eigenvector</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각 node별 eigenvector centrality 값을 dictionary 형태로 보여줌
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {1: 0.07902199743319213, 2: 0.5299719499101774, 3: 0.20983546432528058, 4: 0.47818048045123035, 5: 0.39915848301808887, 6: 0.5299719499101774}
+</code></pre></div></div>
+<p>→ 2, 6이 가장 중요한 node로 판별됨</p>
+<p>+) <code class="language-plaintext highlighter-rouge">nx.eigenvector_centrality(g, weight='weight')</code>라고 weight 옵션을 적어주면, 각 edge의 weight를 고려해서 centrality를 계산</p>
+</li>
+</ol>
+<h3 id="cliques"> <a href="#cliques" aria-labelledby="cliques" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cliques</h3>
+<p>: completely connected network</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 예시로 barbell graph를 만들어 사용
+</span><span class="n">barbell_g</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">barbell_graph</span><span class="p">(</span><span class="n">m1</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">m2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">barbell_g</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Barbell_Graph1.png" alt="Barbell_Graph1"></p>
+<p class="fs-3">+) networkX로 만들 수 있는 기본 모양들: <a href="https://networkx.org/documentation/stable//reference/generators.html" target="_blank">https://networkx.org/documentation/stable//reference/generators.html</a></p>
+<ol>
+<li>
+<strong>triangles</strong>: 3개의 node가 모두 서로 연결된 모양<ul>
+<li>simplest complex clique: a triangle.</li>
+<li>친구 추천 시스템에서 triangle 개념 활용 가능: ex) A와 B가 친구이고 A와 C가 친구 → A와 C도 서로 알 가능성이 높음</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## 각각의 node가 몇 개의 triangle에 속해 있는지 출력
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">triangles</span><span class="p">(</span><span class="n">barbell_g</span><span class="p">)</span>  
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {0: 6, 1: 6, 2: 6, 3: 6, 4: 6, 5: 0, 6: 6, 7: 6, 8: 6, 9: 6, 10: 6}
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## barbell_g 그래프의 6 node가 몇 개의 triangle에 속해 있는지만 출력
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">triangles</span><span class="p">(</span><span class="n">barbell_g</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 6
+</code></pre></div></div>
+</li>
+<li>
+<strong>Maximal Cliques</strong>: 찾아지는 최대 크기의 clique.<ul>
+<li>a clique that, when extended by one more node is no longer a clique.</li>
+<li>네트워크 안의 특정 community를 찾는 데에 응용될 수 있다: Cliques form a good starting point for finding communities, as they are fully connected subgraphs within a larger graph.</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각각 maximal clique을 이루고 있는 node들의 list를 출력
+</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="p">.</span><span class="n">find_cliques</span><span class="p">(</span><span class="n">barbell_g</span><span class="p">))</span> 
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [[4, 0, 1, 2, 3], [4, 5], [6, 5], [6, 7, 8, 9, 10]]
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## 특정 node 6이 속한 clique들을 모두 출력
+</span> <span class="n">nx</span><span class="p">.</span><span class="n">cliques_containing_node</span><span class="p">(</span><span class="n">barbell_g</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [[6, 5], [6, 7, 8, 9, 10]]
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="subgraphs"> <a href="#subgraphs" aria-labelledby="subgraphs" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Subgraphs</h3>
+<p>: 큰 group에서 일부를 떼어서 Subgraph로 그려보는 것이 유용할 때가 있다<br> (특정 node 사이의 path, communties / cliques, degree of seperation 등을 파악하기 용이)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 예시로 Erdős-Rényi graph를 만들어 사용
+</span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Erdos_Graph1.png" alt="Erdos_Renyi_Graph1"></p>
+<ol>
+<li>node 8과 이와 연결된 neighbor 노드들을 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">.</span><span class="n">neighbors</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+ <span class="n">nodes</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+ <span class="n">nodes</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [2, 4, 15, 16, 8]
+</code></pre></div></div>
+</li>
+<li>node 8과 이와 연결된 node들로 subgraph를 구성<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">G_eight</span> <span class="o">=</span> <span class="n">G</span><span class="p">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>   <span class="c1"># subgraph를 구성할 node의 list를 G.subgraph() 함수에 넣어준다
+</span> <span class="n">G_eight</span><span class="p">.</span><span class="n">edges</span><span class="p">()</span>  <span class="c1"># 넣어준 list 속 node들 사이의 edge가 반영됨 
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> EdgeView([(2, 4), (2, 8), (4, 8), (8, 15), (8, 16)])
+</code></pre></div></div>
+<p>→ subgraph 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G_eight</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Subgraph1.png" alt="Subgraph1"></p>
+<ul><li>이렇게 특정 node와 이에 연결된 node들만으로 구성한 network를 ‘Ego Network’라고 한다</li></ul>
+<div class="code-example">
+<p><strong>*전체 네트워크와 Ego Network</strong></p>
+<ul>
+<li>전체 네트워크(Whole Network): 네트워크를 구성하고 있는 모든 node와 그 사이의 관계를 모두 포함 (ex. 중세 플로랑스 지역 주요 가문들 간의 혼인 관계 네트워크)</li>
+<li>ego network: 특정 node의 personal network를 의미 (ex. Medici 가문의 ego network: Medici 가문과 연결된 tie만 표현)</li>
+</ul>
+</div>
+</li>
+<li>특정 graph와 이의 subgraph는 동일한 type을 갖게 됨.<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">G_eight</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;class 'networkx.classes.graph.Graph'&gt;
+ &lt;class 'networkx.classes.graph.Graph'&gt;
+</code></pre></div></div>
+</li>
+</ol>
+<h2 id="visualization-with-nxviz"> <a href="#visualization-with-nxviz" aria-labelledby="visualization-with-nxviz" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Visualization with nxviz</h2>
+<p>*nxvis: a graph visualization package for NetworkX</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 먼저 설치해줘야 사용할 수 있다
+$ conda install -c conda-forge nxviz
+
+## conda install이 추천되지만, $ pip install nxviz로 설치해도 괜찮음
+</code></pre></div></div>
+<h3 id="nxviz-example-1"> <a href="#nxviz-example-1" aria-labelledby="nxviz-example-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nxviz example 1</h3>
+<p>: 가장 위에서 만들어뒀던 ‘g’ 네트워크를 사용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">'gender'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'female'</span><span class="p">:</span>
+        <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'pink'</span><span class="p">)</span>   <span class="c1"># 여성: pink
+</span>    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'skyblue'</span><span class="p">)</span>   <span class="c1"># 남성: skyblue
+</span>
+<span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="p">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">color_map</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="s">'weight'</span><span class="p">)</span>
+<span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span><span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Graph3.png" alt="Graph3"></p>
+<ol>
+<li>
+<p><strong>Arc Plot</strong>: 한 줄로 늘어선 node 간의 연결 관계를 반원 모양 라인으로 표현</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">nxviz</span> <span class="k">as</span> <span class="n">nv</span>  <span class="c1"># import해서 사용
+</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+ <span class="n">ap</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">ArcPlot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span>  <span class="c1"># 성별에 따라 색을 다르게 표현
+</span>                 <span class="n">edge_width</span><span class="o">=</span><span class="s">'weight'</span><span class="p">)</span>  <span class="c1"># edge의 weight에 따라 선의 굵기를 다르게 표현
+</span> <span class="n">ap</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/ArcPlot1.png" alt="ArcPlot1"></p>
+</li>
+<li>
+<p><strong>Circos Plot</strong>: Arc Plot의 양 끝을 circle로 결합한 모양. 동그라미 형태로 node들을 그려주고, 서로의 연결관계가 곡선으로 표현됨.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">c</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">CircosPlot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">node_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>   <span class="c1"># node label을 함께 보여줌
+</span>                 <span class="n">node_color</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span>   <span class="c1"># 성별에 따라 색을 다르게 표현 
+</span>                 <span class="n">node_order</span><span class="o">=</span><span class="s">'gender'</span><span class="p">)</span>   <span class="c1"># 성별에 따라 묶어서 보여줌 (순서를 조정)
+</span> <span class="n">c</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/CircosPlot1.png" alt="CircosPlot1"></p>
+</li>
+<li>
+<p><strong>Matrix Plot</strong>: 각 node가 행/열에 들어가고, 서로 연결이 있는 node라면 해당 cell이 진하게 표현됨</p>
+<ul>
+<li>weight에 따라 색의 강도가 다르게 표현됨</li>
+<li>Directed Network라면, A→B 연결은 행:A, 열:B에 해당되는 위치에 칠해서 표현</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">m</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">MatrixPlot</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+ <span class="n">m</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/MatrixPlot1.png" alt="MatrixPlot1"></p>
+</li>
+</ol>
+<h3 id="nxviz-example-2-complex-network"> <a href="#nxviz-example-2-complex-network" aria-labelledby="nxviz-example-2-complex-network" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nxviz example 2: complex network</h3>
+<ul><li>network에 node와 edge가 많으면 많을수록, 시각화하면 hairball 같은 형태가 되어 알아보기 어렵기 때문에, 복잡한 network일수록 nxviz로 시각화하면 더 깔끔하게 보여줄 수 있다.</li></ul>
+<p># 예시로 node가 30개인 Erdős-Rényi graph를 만들어 사용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s">"class"</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="s">"one"</span><span class="p">,</span> <span class="s">"two"</span><span class="p">,</span> <span class="s">"three"</span><span class="p">])</span>
+</code></pre></div></div>
+<p>→ 평범한 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">'class'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'one'</span><span class="p">:</span>
+        <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'pink'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">d</span><span class="p">[</span><span class="s">'class'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'two'</span><span class="p">:</span>
+        <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'skyblue'</span><span class="p">)</span> 
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">color_map</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'lightgrey'</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">color_map</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Erdos_Graph2.png" alt="Erdos_Renyi_Graph2"></p>
+<ol>
+<li>Arc Plot<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ap</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">ArcPlot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s">"class"</span><span class="p">,</span> <span class="n">node_order</span><span class="o">=</span><span class="s">'class'</span><span class="p">)</span>
+<span class="n">ap</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/ArcPlot2.png" alt="ArcPlot2"></p>
+</li>
+<li>Circos Plot<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">CircosPlot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s">"class"</span><span class="p">,</span> <span class="n">node_order</span><span class="o">=</span><span class="s">"class"</span><span class="p">)</span>
+<span class="n">c</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/CircosPlot2.png" alt="CircosPlot2"></p>
+</li>
+<li>
+<p>Matrix Plot</p>
+<p># 예시로 Lollipop Graph를 그려서 사용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="n">npr</span>
+
+ <span class="n">lp_G</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">lollipop_graph</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+ <span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">lp_G</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/Lollipop_Graph1.png" alt="Lollipop_Graph1"></p>
+<p>→ Matrix Plot으로 표현</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">m</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">MatrixPlot</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+ <span class="n">m</span><span class="p">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s">"Greens"</span><span class="p">)</span>  <span class="c1"># colormap을 Green으로 지정
+</span> <span class="n">m</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/network_basics/MatrixPlot2.png" alt="MatrixPlot2"></p>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기초 &amp; Linear Regression | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="기초 &amp; Linear Regression">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_basics/linear_regression/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_basics/linear_regression/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="기초 &amp; Linear Regression"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_basics/linear_regression/","@type":"WebPage","headline":"기초 &amp; Linear Regression","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link active">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_basics">Machine Learning 기초</a></li>
+<li class="breadcrumb-nav-list-item"><span>기초 &amp; Linear Regression</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="기초--linear-regression"> <a href="#%EA%B8%B0%EC%B4%88--linear-regression" aria-labelledby="기초--linear-regression" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기초 &amp; Linear Regression</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#machine-learning%EC%9D%B4%EB%9E%80" id="markdown-toc-machine-learning이란">Machine Learning이란?</a><ol>
+<li><a href="#%EA%B4%80%EB%A0%A8-%EC%9A%A9%EC%96%B4%EB%93%A4" id="markdown-toc-관련-용어들">관련 용어들</a></li>
+<li><a href="#maching-learning%EC%9D%98-%EC%A2%85%EB%A5%98" id="markdown-toc-maching-learning의-종류">Maching Learning의 종류</a></li>
+</ol>
+</li>
+<li>
+<a href="#linear-regression-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80" id="markdown-toc-linear-regression-선형회귀">Linear Regression (선형회귀)</a><ol>
+<li><a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" id="markdown-toc-기본-개념">기본 개념</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0" id="markdown-toc-scikit-learn으로-구현하기">scikit-learn으로 구현하기</a></li>
+</ol>
+</li>
+<li>
+<a href="#polynomial-regression-%EB%8B%A4%ED%95%AD%ED%9A%8C%EA%B7%80" id="markdown-toc-polynomial-regression-다항회귀">Polynomial Regression (다항회귀)</a><ol>
+<li><a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1" id="markdown-toc-기본-개념-1">기본 개념</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1" id="markdown-toc-scikit-learn으로-구현하기-1">scikit-learn으로 구현하기</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="machine-learning이란"> <a href="#machine-learning%EC%9D%B4%EB%9E%80" aria-labelledby="machine-learning이란" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Machine Learning이란?</h2>
+<p>: 데이터셋으로 모델을 학습시켜 이를 바탕으로 새로운 데이터셋을 예측할 수 있게 하는 방식.</p>
+<ul><li>인공지능(AI)의 한 분야이며, 명시적으로 프로그래밍하지 않아도 기계 스스로의 학습을 통한 예측이 가능.</li></ul>
+<h3 id="관련-용어들"> <a href="#%EA%B4%80%EB%A0%A8-%EC%9A%A9%EC%96%B4%EB%93%A4" aria-labelledby="관련-용어들" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 관련 용어들</h3>
+<ol>
+<li>
+<strong>종속변수와 독립변수</strong><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">y = f(x)</code>에서의 y가 종속변수, x가 독립변수.</li>
+<li>Independent variable (독립변수): ML에서 학습의 단서가 되는 변수들. (ex. 귀의 모양, 털의 색, 수염의 길이)<ul><li>feature 또는 입력변수라고도 함.</li></ul>
+</li>
+<li>Dependent variable (종속변수): ML에서 예측해야 하는 정답 (ex. 개 / 고양이)<ul><li>목표변수라고도 함.</li></ul>
+</li>
+<li>IV와 DV 간의 관계는 ‘파라미터’의 값에 따라 달라진다<ul><li>y = a + bx에서의 a, b처럼 모델의 모양을 결정짓는 값들을 Parameter(파라미터)라고 한다</li></ul>
+</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+</li>
+<li>
+<strong>연속변수와 이산변수</strong><ul>
+<li>Continuous variable (연속변수): 무한한 값을 취할 수 있는 변수 (ex. 체중, 수입)</li>
+<li>Discrete variable (이산변수): 취할 수 있는 값이 유한한 변수. (ex. 성별, 자녀 수)<ul><li>Categorical varialbe (범주형변수): 취하는 값이 숫자의 크기가 아닌 그룹의 이름을 지칭하는 변수. (ex. 성별)</li></ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="maching-learning의-종류"> <a href="#maching-learning%EC%9D%98-%EC%A2%85%EB%A5%98" aria-labelledby="maching-learning의-종류" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Maching Learning의 종류</h3>
+<ol>
+<li>
+<strong>Supervised Learning (지도 학습)</strong><ul>
+<li>정답(=DV)이 있는 training data로 학습 → 새로운 데이터(test data)에 적용해서 정답을 예측한다.</li>
+<li>Machine Learning의 대부분은 Supervised Learning.</li>
+</ul>
+<p>*예시:</p>
+<ul>
+<li>Regression problems (회귀): DV가 연속 변수인 경우. (ex. 아파트 가격 예측, 연봉 예측)</li>
+<li>Classifiaction problems (분류): DV가 범주형 변수인 경우. (ex. 고양이인지 강아지인지 분류)</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+</li>
+<li>
+<strong>Unsupervised Learning (비지도 학습)</strong><ul>
+<li>training data가 필요 없음 (=정답이 따로 없음). 비교를 통해 비슷한 data point끼리 묶어준다.</li>
+<li>비지도 학습은 대부분 탐색적 데이터 분석의 일부로 수행된다.</li>
+</ul>
+<p>*예시:</p>
+<ul>
+<li>Clustering (군집화): 거리를 계산해 유사한 data point끼리 같은 Cluster로 묶어준다.</li>
+<li>Dimension reduction (차원 축소): 많은 feature를 갖고 있는 다차원 데이터셋의 차원을 축소해 새로운 데이터셋을 생성해준다.</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+</li>
+<li>
+<strong>Reinforcement learning (강화학습)</strong><ul>
+<li>action &amp; feedback 프로세스를 통해 문제를 풀어나가는 방식.</li>
+<li>현재 상태에서 높은 reward를 받는 방법을 찾아가며 action을 취하는 것을 반복하다보면 높은 reward를 받을 수 있는 전략을 터득하게 됨</li>
+</ul>
+</li>
+</ol>
+<p>+. <strong>Deep Learning</strong>: <br>    머신러닝 중 인공신경망 모델을 집중 연구하는 분야로, 지도학습, 비지도학습, 강화학습과 모두 연결이 가능하다</p>
+<p><br></p>
+<h2 id="linear-regression-선형회귀"> <a href="#linear-regression-%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80" aria-labelledby="linear-regression-선형회귀" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Linear Regression (선형회귀)</h2>
+<h3 id="기본-개념"> <a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" aria-labelledby="기본-개념" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기본 개념</h3>
+<ul>
+<li>
+<strong>가설 함수: 일차 함수</strong> (학습 = 데이터에 가장 잘 맞는 일차 함수를 찾는 것!)<ul>
+<li>feature가 하나인 경우: h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub>
+</li>
+<li>feature가 여러 개인 경우: h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sub>2</sub> + … + θ<sub>n</sub>x<sub>n</sub><ul><li>feature가 여러 개인 경우도 항이 많긴 하지만 일차함수.</li></ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>손실함수: MSE(평균제곱오차)</strong><ul>
+<li>손실 함수(loss function): 가설 함수를 평가하기 위한 함수. 손실 함수의 결과값이 작을수록 손실이 작은 것. = 좋은 가설 함수.</li>
+<li>MSE: 각 데이터포인트들이 가설 함수로부터 얼마나 떨어져 있는지, 그 오차를 모두 제곱해서 합하고 평균을 낸 것.</li>
+<li>손실 함수의 최저점, 즉 MSE가 가장 최소가 되는 지점을 찾으면 데이터에 가장 잘 맞는 가설함수를 찾을 수 있다.</li>
+</ul>
+</li>
+<li>
+<strong>손실함수의 최저점을 찾는 방법</strong>:<ul>
+<li>Normal Equation: derivative(미분값)이 0이 되는 지점을 직접 바로 계산해서 찾는다</li>
+<li>Gradient Descent (경사하강법): 특정 지점에서 시작, 점점 값을 update해가면서 최저점을 찾는다</li>
+</ul>
+</li>
+</ul>
+<p>※ sklearn의 Linear Regression 모델은 <code class="language-plaintext highlighter-rouge">scipy.linalg.lstsq</code>를 사용해서 최저점을 계산. <br> (Normal Equation 방식)</p>
+<h3 id="scikit-learn으로-구현하기"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0" aria-labelledby="scikit-learn으로-구현하기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 구현하기</h3>
+<p>※ Anaconda를 사용하고 있다면 scikit-learn은 이미 내장되어 있음. <br> 그 외 경우에는 <code class="language-plaintext highlighter-rouge">pip install scikit-learn</code>로 설치.</p>
+<ul>
+<li>sklearn에서 기본 제공하는 학습용 dataset 중 ‘boston 집값 데이터’를 활용</li>
+<li>IV이 2개 이상인 ‘Multiple Linear Regression (다중선형회귀)’ 문제.</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>  <span class="c1"># boston 집값 데이터 불러오기
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>  <span class="c1"># 데이터셋을 training set / test set 나누기 위한 함수
+</span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span> <span class="c1"># 선형회귀를 구현해주는 함수
+</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>  <span class="c1"># mean squared error(평균제곱오차)를 구해주는 함수
+</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. 데이터 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boston_dataset</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>  <span class="c1"># 데이터셋을 가져와준다
+</span></code></pre></div></div>
+<p>+) <code class="language-plaintext highlighter-rouge">print(boston_dataset.DESCR)</code>를 해주면 데이터셋에 대한 정보를 살펴볼 수 있음</p>
+<ul>
+<li>Number of Instances: 506 (506개의 집값 데이터가 들어있음)</li>
+<li>Number of Attributes: 13 (입력변수 13개)</li>
+<li>14번째 속성이 대체로 목표변수인 ‘집값’</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<p><strong>→ 데이터 정리</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># boston dataset의 입력변수들을 dataframe으로 정리
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="c1"># 목표변수도 dataframe으로 정리
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">])</span>
+</code></pre></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">CRIM</th>
+<th style="text-align: right">ZN</th>
+<th style="text-align: right">INDUS</th>
+<th style="text-align: right">CHAS</th>
+<th style="text-align: right">NOX</th>
+<th style="text-align: right">RM</th>
+<th style="text-align: right">AGE</th>
+<th style="text-align: right">DIS</th>
+<th style="text-align: right">RAD</th>
+<th style="text-align: right">TAX</th>
+<th style="text-align: right">PTRATIO</th>
+<th style="text-align: right">B</th>
+<th style="text-align: right">LSTAT</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.00632</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">2.31</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.538</td>
+<td style="text-align: right">6.575</td>
+<td style="text-align: right">65.2</td>
+<td style="text-align: right">4.09</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">296</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">4.98</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.02731</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">6.421</td>
+<td style="text-align: right">78.9</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">9.14</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.02729</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">7.185</td>
+<td style="text-align: right">61.1</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">392.83</td>
+<td style="text-align: right">4.03</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0.03237</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">6.998</td>
+<td style="text-align: right">45.8</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">394.63</td>
+<td style="text-align: right">2.94</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0.06905</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">7.147</td>
+<td style="text-align: right">54.2</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">5.33</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">MEDV</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">24.0</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">21.6</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">34.7</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">33.4</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">36.2</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>2. train_test_split</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># training set / test set 분리
+</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 약 4:1로 잘 나뉘었음을 확인할 수 있음
+</span><span class="k">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_test</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(404, 13)
+(102, 13)
+(404, 1)
+(102, 1)
+</code></pre></div></div>
+<p><strong>3. 모델 학습시키기</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>   <span class="c1"># 학습
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+</code></pre></div></div>
+<p>*theta값 확인 (변수별 가중치를 확인할 수 있다)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># theta_1부터의 theta값들. (각 변수별 가중치)
+</span><span class="n">model</span><span class="p">.</span><span class="n">coef_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ -0.13,   0.05,   0.  ,   2.71, -15.96,   3.41,   0.  ,  -1.49,
+          0.36,  -0.01,  -0.95,   0.01,  -0.59]])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># theta_0. (절편)
+</span><span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([37.91248701])
+</code></pre></div></div>
+<p><strong>4. test data로 성능 체크</strong></p>
+<ol>
+<li>
+<p>평균제곱근오차 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># X_test로 예측
+</span> <span class="n">y_test_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+ <span class="c1">## 평균제곱근오차 (RMSE: Root Mean Square Error)
+</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_prediction</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 4.568292042303217
+</code></pre></div></div>
+</li>
+<li>
+<p>R 스퀘어 값 확인</p>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">model.score()</code>: R square (R<sup>2</sup>) 값을 계산해주는 함수</li>
+<li>R square: 0 ~ 1 사이의 값을 가지며, 1에 가까울수록 모델의 성능이 좋은 것. (설명력이 좋은 것)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.738339392059052
+0.7334492147453064
+</code></pre></div></div>
+<p>training data는 약 74%, test data는 약 73%를 잘 예측한다는 뜻</p>
+</li>
+</ol>
+<p><br></p>
+<h2 id="polynomial-regression-다항회귀"> <a href="#polynomial-regression-%EB%8B%A4%ED%95%AD%ED%9A%8C%EA%B7%80" aria-labelledby="polynomial-regression-다항회귀" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Polynomial Regression (다항회귀)</h2>
+<ul><li>IV와 DV 간의 관계를 가장 잘 표현하는 게 일차함수가 아니라 다항식(곡선 모양)인 경우, 다항 회귀를 사용</li></ul>
+<h3 id="기본-개념-1"> <a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1" aria-labelledby="기본-개념-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기본 개념</h3>
+<ul>
+<li>
+<strong>가설 함수: 다항식</strong> (원하는 모양에 따라 2차 함수 ~ n차 함수)<ul>
+<li>ex) feature가 하나이고, 가설함수가 2차 함수: h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sup>2</sup>
+</li>
+<li>ex) feature가 하나이고, 가설함수가 3차 함수: h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sup>2</sup> + + θ<sub>3</sub>x<sup>3</sup>
+</li>
+<li>ex) feature가 2개이고, 가설함수가 2차 함수: h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sub>2</sub> + θ<sub>3</sub>x<sub>1</sub>x<sub>2</sub> + θ<sub>4</sub>x<sub>1</sub><sup>2</sup> + θ<sub>5</sub>x<sub>2</sub><sup>2</sup>
+</li>
+</ul>
+</li>
+<li>
+<strong>선형회귀와 동일한 방식으로 문제를 해결</strong><ul>
+<li>ex) h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sup>2</sup>: 입력변수가 2개인 선형회귀로 취급</li>
+<li>ex) h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sub>2</sub> + θ<sub>3</sub>x<sub>1</sub>x<sub>2</sub> + θ<sub>4</sub>x<sub>1</sub><sup>2</sup> + θ<sub>5</sub>x<sub>2</sub><sup>2</sup>: 입력변수가 5개인 선형회귀로 취급</li>
+</ul>
+</li>
+<li>다항회귀의 장점: <strong>속성 간에 있을 수 있는 복잡한 관계들이 학습에 반영된다</strong><ul><li>ex) 집 값 예측 문제에서 IV가 ‘너비’, ‘높이’ 2개일 때, 다항회귀를 사용하면 ‘너비x높이’라는 새로운 변수가 입력변수로 들어가는 셈이기에, 예측력이 커짐<br> (단순선형회귀의 경우 두 변수가 독립적이라, ‘높이와 너비가 모두 커야 집 값이 높다’는 관계는 학습 불가)</li></ul>
+</li>
+<li>다항회귀의 단점: 너무 차수를 높여서 training data에 꼭 맞는 가설 함수를 만드는 경우, training data는 잘 설명하지만 새로운 데이터는 잘 설명하지 못하는 <strong>overfitting(과적합) 문제가 발생할 수 있다</strong>
+</li>
+</ul>
+<h3 id="scikit-learn으로-구현하기-1"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1" aria-labelledby="scikit-learn으로-구현하기-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 구현하기</h3>
+<ul>
+<li>sklearn에서 기본 제공하는 학습용 dataset 중 ‘boston 집값 데이터’를 활용해 2차 함수를 만들어줄 예정.</li>
+<li>IV이 2개 이상인 ‘다중 다항 회귀’ 문제.</li>
+<li>LinearRegression 모델을 사용하되, 다항 속성을 만들어서 IV로 넣어준다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span> <span class="c1"># 다항속성을 만들어주는 툴
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>  <span class="c1"># 똑같이 LinearRegression 모델을 사용
+</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. 다항 속성 만들어주기</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># boston dataset 가져옴
+</span><span class="n">boston_dataset</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">polynomial_transformer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># () 안에 몇차 함수로 할 건지 써줌 - 여기선 2차함수로 지정.
+</span><span class="n">polynomial_data</span> <span class="o">=</span> <span class="n">polynomial_transformer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">polynomial_data</span><span class="p">.</span><span class="n">shape</span>  <span class="c1"># 열이 13개에서 105개로 늘어났음을 확인 가능.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(506, 105)
+</code></pre></div></div>
+<p>+) 어떤 feature들이 105개 안에 들어갔나 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">polynomial_feature_names</span> <span class="o">=</span> <span class="n">polynomial_transformer</span><span class="p">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">polynomial_feature_names</span><span class="p">)</span> <span class="c1"># 가능한 모든 2차 조합이 다 들어있음을 확인 가능
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['1', 'CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'CRIM^2', 'CRIM ZN', 'CRIM INDUS', 'CRIM CHAS', 'CRIM NOX', 'CRIM RM', 'CRIM AGE', 'CRIM DIS', 'CRIM RAD', 'CRIM TAX', 'CRIM PTRATIO', 'CRIM B', 'CRIM LSTAT', 'ZN^2', 'ZN INDUS', 'ZN CHAS', 'ZN NOX', 'ZN RM', 'ZN AGE', 'ZN DIS', 'ZN RAD', 'ZN TAX', 'ZN PTRATIO', 'ZN B', 'ZN LSTAT', 'INDUS^2', 'INDUS CHAS', 'INDUS NOX', 'INDUS RM', 'INDUS AGE', 'INDUS DIS', 'INDUS RAD', 'INDUS TAX', 'INDUS PTRATIO', 'INDUS B', 'INDUS LSTAT', 'CHAS^2', 'CHAS NOX', 'CHAS RM', 'CHAS AGE', 'CHAS DIS', 'CHAS RAD', 'CHAS TAX', 'CHAS PTRATIO', 'CHAS B', 'CHAS LSTAT', 'NOX^2', 'NOX RM', 'NOX AGE', 'NOX DIS', 'NOX RAD', 'NOX TAX', 'NOX PTRATIO', 'NOX B', 'NOX LSTAT', 'RM^2', 'RM AGE', 'RM DIS', 'RM RAD', 'RM TAX', 'RM PTRATIO', 'RM B', 'RM LSTAT', 'AGE^2', 'AGE DIS', 'AGE RAD', 'AGE TAX', 'AGE PTRATIO', 'AGE B', 'AGE LSTAT', 'DIS^2', 'DIS RAD', 'DIS TAX', 'DIS PTRATIO', 'DIS B', 'DIS LSTAT', 'RAD^2', 'RAD TAX', 'RAD PTRATIO', 'RAD B', 'RAD LSTAT', 'TAX^2', 'TAX PTRATIO', 'TAX B', 'TAX LSTAT', 'PTRATIO^2', 'PTRATIO B', 'PTRATIO LSTAT', 'B^2', 'B LSTAT', 'LSTAT^2']
+</code></pre></div></div>
+<p><strong>2. X, y값 정리</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">polynomial_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">polynomial_feature_names</span><span class="p">)</span>
+<span class="n">X</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">1</th>
+<th style="text-align: right">CRIM</th>
+<th style="text-align: right">ZN</th>
+<th style="text-align: right">INDUS</th>
+<th style="text-align: right">CHAS</th>
+<th style="text-align: right">NOX</th>
+<th style="text-align: right">RM</th>
+<th style="text-align: right">AGE</th>
+<th style="text-align: right">DIS</th>
+<th style="text-align: right">RAD</th>
+<th style="text-align: right">TAX</th>
+<th style="text-align: right">PTRATIO</th>
+<th style="text-align: right">B</th>
+<th style="text-align: right">LSTAT</th>
+<th style="text-align: right">CRIM^2</th>
+<th style="text-align: right">CRIM ZN</th>
+<th style="text-align: right">CRIM INDUS</th>
+<th style="text-align: right">CRIM CHAS</th>
+<th style="text-align: right">CRIM NOX</th>
+<th style="text-align: right">CRIM RM</th>
+<th style="text-align: right">CRIM AGE</th>
+<th style="text-align: right">CRIM DIS</th>
+<th style="text-align: right">CRIM RAD</th>
+<th style="text-align: right">CRIM TAX</th>
+<th style="text-align: right">CRIM PTRATIO</th>
+<th style="text-align: right">CRIM B</th>
+<th style="text-align: right">CRIM LSTAT</th>
+<th style="text-align: right">ZN^2</th>
+<th style="text-align: right">ZN INDUS</th>
+<th style="text-align: right">ZN CHAS</th>
+<th style="text-align: right">ZN NOX</th>
+<th style="text-align: right">ZN RM</th>
+<th style="text-align: right">ZN AGE</th>
+<th style="text-align: right">ZN DIS</th>
+<th style="text-align: right">ZN RAD</th>
+<th style="text-align: right">ZN TAX</th>
+<th style="text-align: right">ZN PTRATIO</th>
+<th style="text-align: right">ZN B</th>
+<th style="text-align: right">ZN LSTAT</th>
+<th style="text-align: right">INDUS^2</th>
+<th style="text-align: right">INDUS CHAS</th>
+<th style="text-align: right">INDUS NOX</th>
+<th style="text-align: right">INDUS RM</th>
+<th style="text-align: right">INDUS AGE</th>
+<th style="text-align: right">INDUS DIS</th>
+<th style="text-align: right">INDUS RAD</th>
+<th style="text-align: right">INDUS TAX</th>
+<th style="text-align: right">INDUS PTRATIO</th>
+<th style="text-align: right">INDUS B</th>
+<th style="text-align: right">INDUS LSTAT</th>
+<th style="text-align: right">CHAS^2</th>
+<th style="text-align: right">CHAS NOX</th>
+<th style="text-align: right">CHAS RM</th>
+<th style="text-align: right">CHAS AGE</th>
+<th style="text-align: right">CHAS DIS</th>
+<th style="text-align: right">CHAS RAD</th>
+<th style="text-align: right">CHAS TAX</th>
+<th style="text-align: right">CHAS PTRATIO</th>
+<th style="text-align: right">CHAS B</th>
+<th style="text-align: right">CHAS LSTAT</th>
+<th style="text-align: right">NOX^2</th>
+<th style="text-align: right">NOX RM</th>
+<th style="text-align: right">NOX AGE</th>
+<th style="text-align: right">NOX DIS</th>
+<th style="text-align: right">NOX RAD</th>
+<th style="text-align: right">NOX TAX</th>
+<th style="text-align: right">NOX PTRATIO</th>
+<th style="text-align: right">NOX B</th>
+<th style="text-align: right">NOX LSTAT</th>
+<th style="text-align: right">RM^2</th>
+<th style="text-align: right">RM AGE</th>
+<th style="text-align: right">RM DIS</th>
+<th style="text-align: right">RM RAD</th>
+<th style="text-align: right">RM TAX</th>
+<th style="text-align: right">RM PTRATIO</th>
+<th style="text-align: right">RM B</th>
+<th style="text-align: right">RM LSTAT</th>
+<th style="text-align: right">AGE^2</th>
+<th style="text-align: right">AGE DIS</th>
+<th style="text-align: right">AGE RAD</th>
+<th style="text-align: right">AGE TAX</th>
+<th style="text-align: right">AGE PTRATIO</th>
+<th style="text-align: right">AGE B</th>
+<th style="text-align: right">AGE LSTAT</th>
+<th style="text-align: right">DIS^2</th>
+<th style="text-align: right">DIS RAD</th>
+<th style="text-align: right">DIS TAX</th>
+<th style="text-align: right">DIS PTRATIO</th>
+<th style="text-align: right">DIS B</th>
+<th style="text-align: right">DIS LSTAT</th>
+<th style="text-align: right">RAD^2</th>
+<th style="text-align: right">RAD TAX</th>
+<th style="text-align: right">RAD PTRATIO</th>
+<th style="text-align: right">RAD B</th>
+<th style="text-align: right">RAD LSTAT</th>
+<th style="text-align: right">TAX^2</th>
+<th style="text-align: right">TAX PTRATIO</th>
+<th style="text-align: right">TAX B</th>
+<th style="text-align: right">TAX LSTAT</th>
+<th style="text-align: right">PTRATIO^2</th>
+<th style="text-align: right">PTRATIO B</th>
+<th style="text-align: right">PTRATIO LSTAT</th>
+<th style="text-align: right">B^2</th>
+<th style="text-align: right">B LSTAT</th>
+<th style="text-align: right">LSTAT^2</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.00632</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">2.31</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.538</td>
+<td style="text-align: right">6.575</td>
+<td style="text-align: right">65.2</td>
+<td style="text-align: right">4.09</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">296</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">4.98</td>
+<td style="text-align: right">3.99424e-05</td>
+<td style="text-align: right">0.11376</td>
+<td style="text-align: right">0.0145992</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.00340016</td>
+<td style="text-align: right">0.041554</td>
+<td style="text-align: right">0.412064</td>
+<td style="text-align: right">0.0258488</td>
+<td style="text-align: right">0.00632</td>
+<td style="text-align: right">1.87072</td>
+<td style="text-align: right">0.096696</td>
+<td style="text-align: right">2.50841</td>
+<td style="text-align: right">0.0314736</td>
+<td style="text-align: right">324</td>
+<td style="text-align: right">41.58</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">9.684</td>
+<td style="text-align: right">118.35</td>
+<td style="text-align: right">1173.6</td>
+<td style="text-align: right">73.62</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">5328</td>
+<td style="text-align: right">275.4</td>
+<td style="text-align: right">7144.2</td>
+<td style="text-align: right">89.64</td>
+<td style="text-align: right">5.3361</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1.24278</td>
+<td style="text-align: right">15.1883</td>
+<td style="text-align: right">150.612</td>
+<td style="text-align: right">9.4479</td>
+<td style="text-align: right">2.31</td>
+<td style="text-align: right">683.76</td>
+<td style="text-align: right">35.343</td>
+<td style="text-align: right">916.839</td>
+<td style="text-align: right">11.5038</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.289444</td>
+<td style="text-align: right">3.53735</td>
+<td style="text-align: right">35.0776</td>
+<td style="text-align: right">2.20042</td>
+<td style="text-align: right">0.538</td>
+<td style="text-align: right">159.248</td>
+<td style="text-align: right">8.2314</td>
+<td style="text-align: right">213.532</td>
+<td style="text-align: right">2.67924</td>
+<td style="text-align: right">43.2306</td>
+<td style="text-align: right">428.69</td>
+<td style="text-align: right">26.8917</td>
+<td style="text-align: right">6.575</td>
+<td style="text-align: right">1946.2</td>
+<td style="text-align: right">100.598</td>
+<td style="text-align: right">2609.62</td>
+<td style="text-align: right">32.7435</td>
+<td style="text-align: right">4251.04</td>
+<td style="text-align: right">266.668</td>
+<td style="text-align: right">65.2</td>
+<td style="text-align: right">19299.2</td>
+<td style="text-align: right">997.56</td>
+<td style="text-align: right">25877.9</td>
+<td style="text-align: right">324.696</td>
+<td style="text-align: right">16.7281</td>
+<td style="text-align: right">4.09</td>
+<td style="text-align: right">1210.64</td>
+<td style="text-align: right">62.577</td>
+<td style="text-align: right">1623.32</td>
+<td style="text-align: right">20.3682</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">296</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">4.98</td>
+<td style="text-align: right">87616</td>
+<td style="text-align: right">4528.8</td>
+<td style="text-align: right">117482</td>
+<td style="text-align: right">1474.08</td>
+<td style="text-align: right">234.09</td>
+<td style="text-align: right">6072.57</td>
+<td style="text-align: right">76.194</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">1976.56</td>
+<td style="text-align: right">24.8004</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.02731</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">6.421</td>
+<td style="text-align: right">78.9</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">9.14</td>
+<td style="text-align: right">0.000745836</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.193082</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0128084</td>
+<td style="text-align: right">0.175358</td>
+<td style="text-align: right">2.15476</td>
+<td style="text-align: right">0.135652</td>
+<td style="text-align: right">0.05462</td>
+<td style="text-align: right">6.60902</td>
+<td style="text-align: right">0.486118</td>
+<td style="text-align: right">10.8393</td>
+<td style="text-align: right">0.249613</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">49.9849</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3.31583</td>
+<td style="text-align: right">45.3965</td>
+<td style="text-align: right">557.823</td>
+<td style="text-align: right">35.1174</td>
+<td style="text-align: right">14.14</td>
+<td style="text-align: right">1710.94</td>
+<td style="text-align: right">125.846</td>
+<td style="text-align: right">2806.08</td>
+<td style="text-align: right">64.6198</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.219961</td>
+<td style="text-align: right">3.01145</td>
+<td style="text-align: right">37.0041</td>
+<td style="text-align: right">2.32957</td>
+<td style="text-align: right">0.938</td>
+<td style="text-align: right">113.498</td>
+<td style="text-align: right">8.3482</td>
+<td style="text-align: right">186.146</td>
+<td style="text-align: right">4.28666</td>
+<td style="text-align: right">41.2292</td>
+<td style="text-align: right">506.617</td>
+<td style="text-align: right">31.8937</td>
+<td style="text-align: right">12.842</td>
+<td style="text-align: right">1553.88</td>
+<td style="text-align: right">114.294</td>
+<td style="text-align: right">2548.49</td>
+<td style="text-align: right">58.6879</td>
+<td style="text-align: right">6225.21</td>
+<td style="text-align: right">391.904</td>
+<td style="text-align: right">157.8</td>
+<td style="text-align: right">19093.8</td>
+<td style="text-align: right">1404.42</td>
+<td style="text-align: right">31315.4</td>
+<td style="text-align: right">721.146</td>
+<td style="text-align: right">24.6721</td>
+<td style="text-align: right">9.9342</td>
+<td style="text-align: right">1202.04</td>
+<td style="text-align: right">88.4144</td>
+<td style="text-align: right">1971.44</td>
+<td style="text-align: right">45.3993</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">484</td>
+<td style="text-align: right">35.6</td>
+<td style="text-align: right">793.8</td>
+<td style="text-align: right">18.28</td>
+<td style="text-align: right">58564</td>
+<td style="text-align: right">4307.6</td>
+<td style="text-align: right">96049.8</td>
+<td style="text-align: right">2211.88</td>
+<td style="text-align: right">316.84</td>
+<td style="text-align: right">7064.82</td>
+<td style="text-align: right">162.692</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">3627.67</td>
+<td style="text-align: right">83.5396</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.02729</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">7.185</td>
+<td style="text-align: right">61.1</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">392.83</td>
+<td style="text-align: right">4.03</td>
+<td style="text-align: right">0.000744744</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.19294</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.012799</td>
+<td style="text-align: right">0.196079</td>
+<td style="text-align: right">1.66742</td>
+<td style="text-align: right">0.135552</td>
+<td style="text-align: right">0.05458</td>
+<td style="text-align: right">6.60418</td>
+<td style="text-align: right">0.485762</td>
+<td style="text-align: right">10.7203</td>
+<td style="text-align: right">0.109979</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">49.9849</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3.31583</td>
+<td style="text-align: right">50.798</td>
+<td style="text-align: right">431.977</td>
+<td style="text-align: right">35.1174</td>
+<td style="text-align: right">14.14</td>
+<td style="text-align: right">1710.94</td>
+<td style="text-align: right">125.846</td>
+<td style="text-align: right">2777.31</td>
+<td style="text-align: right">28.4921</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.219961</td>
+<td style="text-align: right">3.36976</td>
+<td style="text-align: right">28.6559</td>
+<td style="text-align: right">2.32957</td>
+<td style="text-align: right">0.938</td>
+<td style="text-align: right">113.498</td>
+<td style="text-align: right">8.3482</td>
+<td style="text-align: right">184.237</td>
+<td style="text-align: right">1.89007</td>
+<td style="text-align: right">51.6242</td>
+<td style="text-align: right">439.003</td>
+<td style="text-align: right">35.6886</td>
+<td style="text-align: right">14.37</td>
+<td style="text-align: right">1738.77</td>
+<td style="text-align: right">127.893</td>
+<td style="text-align: right">2822.48</td>
+<td style="text-align: right">28.9555</td>
+<td style="text-align: right">3733.21</td>
+<td style="text-align: right">303.49</td>
+<td style="text-align: right">122.2</td>
+<td style="text-align: right">14786.2</td>
+<td style="text-align: right">1087.58</td>
+<td style="text-align: right">24001.9</td>
+<td style="text-align: right">246.233</td>
+<td style="text-align: right">24.6721</td>
+<td style="text-align: right">9.9342</td>
+<td style="text-align: right">1202.04</td>
+<td style="text-align: right">88.4144</td>
+<td style="text-align: right">1951.23</td>
+<td style="text-align: right">20.0174</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">484</td>
+<td style="text-align: right">35.6</td>
+<td style="text-align: right">785.66</td>
+<td style="text-align: right">8.06</td>
+<td style="text-align: right">58564</td>
+<td style="text-align: right">4307.6</td>
+<td style="text-align: right">95064.9</td>
+<td style="text-align: right">975.26</td>
+<td style="text-align: right">316.84</td>
+<td style="text-align: right">6992.37</td>
+<td style="text-align: right">71.734</td>
+<td style="text-align: right">154315</td>
+<td style="text-align: right">1583.1</td>
+<td style="text-align: right">16.2409</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.03237</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">6.998</td>
+<td style="text-align: right">45.8</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">394.63</td>
+<td style="text-align: right">2.94</td>
+<td style="text-align: right">0.00104782</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0705666</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0148255</td>
+<td style="text-align: right">0.226525</td>
+<td style="text-align: right">1.48255</td>
+<td style="text-align: right">0.196233</td>
+<td style="text-align: right">0.09711</td>
+<td style="text-align: right">7.18614</td>
+<td style="text-align: right">0.605319</td>
+<td style="text-align: right">12.7742</td>
+<td style="text-align: right">0.0951678</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">4.7524</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.99844</td>
+<td style="text-align: right">15.2556</td>
+<td style="text-align: right">99.844</td>
+<td style="text-align: right">13.2156</td>
+<td style="text-align: right">6.54</td>
+<td style="text-align: right">483.96</td>
+<td style="text-align: right">40.766</td>
+<td style="text-align: right">860.293</td>
+<td style="text-align: right">6.4092</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.209764</td>
+<td style="text-align: right">3.20508</td>
+<td style="text-align: right">20.9764</td>
+<td style="text-align: right">2.77649</td>
+<td style="text-align: right">1.374</td>
+<td style="text-align: right">101.676</td>
+<td style="text-align: right">8.5646</td>
+<td style="text-align: right">180.741</td>
+<td style="text-align: right">1.34652</td>
+<td style="text-align: right">48.972</td>
+<td style="text-align: right">320.508</td>
+<td style="text-align: right">42.4233</td>
+<td style="text-align: right">20.994</td>
+<td style="text-align: right">1553.56</td>
+<td style="text-align: right">130.863</td>
+<td style="text-align: right">2761.62</td>
+<td style="text-align: right">20.5741</td>
+<td style="text-align: right">2097.64</td>
+<td style="text-align: right">277.649</td>
+<td style="text-align: right">137.4</td>
+<td style="text-align: right">10167.6</td>
+<td style="text-align: right">856.46</td>
+<td style="text-align: right">18074.1</td>
+<td style="text-align: right">134.652</td>
+<td style="text-align: right">36.7503</td>
+<td style="text-align: right">18.1866</td>
+<td style="text-align: right">1345.81</td>
+<td style="text-align: right">113.363</td>
+<td style="text-align: right">2392.33</td>
+<td style="text-align: right">17.8229</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">666</td>
+<td style="text-align: right">56.1</td>
+<td style="text-align: right">1183.89</td>
+<td style="text-align: right">8.82</td>
+<td style="text-align: right">49284</td>
+<td style="text-align: right">4151.4</td>
+<td style="text-align: right">87607.9</td>
+<td style="text-align: right">652.68</td>
+<td style="text-align: right">349.69</td>
+<td style="text-align: right">7379.58</td>
+<td style="text-align: right">54.978</td>
+<td style="text-align: right">155733</td>
+<td style="text-align: right">1160.21</td>
+<td style="text-align: right">8.6436</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.06905</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">7.147</td>
+<td style="text-align: right">54.2</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">5.33</td>
+<td style="text-align: right">0.0047679</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.150529</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0316249</td>
+<td style="text-align: right">0.4935</td>
+<td style="text-align: right">3.74251</td>
+<td style="text-align: right">0.418595</td>
+<td style="text-align: right">0.20715</td>
+<td style="text-align: right">15.3291</td>
+<td style="text-align: right">1.29123</td>
+<td style="text-align: right">27.4059</td>
+<td style="text-align: right">0.368036</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">4.7524</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.99844</td>
+<td style="text-align: right">15.5805</td>
+<td style="text-align: right">118.156</td>
+<td style="text-align: right">13.2156</td>
+<td style="text-align: right">6.54</td>
+<td style="text-align: right">483.96</td>
+<td style="text-align: right">40.766</td>
+<td style="text-align: right">865.242</td>
+<td style="text-align: right">11.6194</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.209764</td>
+<td style="text-align: right">3.27333</td>
+<td style="text-align: right">24.8236</td>
+<td style="text-align: right">2.77649</td>
+<td style="text-align: right">1.374</td>
+<td style="text-align: right">101.676</td>
+<td style="text-align: right">8.5646</td>
+<td style="text-align: right">181.78</td>
+<td style="text-align: right">2.44114</td>
+<td style="text-align: right">51.0796</td>
+<td style="text-align: right">387.367</td>
+<td style="text-align: right">43.3265</td>
+<td style="text-align: right">21.441</td>
+<td style="text-align: right">1586.63</td>
+<td style="text-align: right">133.649</td>
+<td style="text-align: right">2836.64</td>
+<td style="text-align: right">38.0935</td>
+<td style="text-align: right">2937.64</td>
+<td style="text-align: right">328.571</td>
+<td style="text-align: right">162.6</td>
+<td style="text-align: right">12032.4</td>
+<td style="text-align: right">1013.54</td>
+<td style="text-align: right">21512</td>
+<td style="text-align: right">288.886</td>
+<td style="text-align: right">36.7503</td>
+<td style="text-align: right">18.1866</td>
+<td style="text-align: right">1345.81</td>
+<td style="text-align: right">113.363</td>
+<td style="text-align: right">2406.09</td>
+<td style="text-align: right">32.3115</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">666</td>
+<td style="text-align: right">56.1</td>
+<td style="text-align: right">1190.7</td>
+<td style="text-align: right">15.99</td>
+<td style="text-align: right">49284</td>
+<td style="text-align: right">4151.4</td>
+<td style="text-align: right">88111.8</td>
+<td style="text-align: right">1183.26</td>
+<td style="text-align: right">349.69</td>
+<td style="text-align: right">7422.03</td>
+<td style="text-align: right">99.671</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">2115.48</td>
+<td style="text-align: right">28.4089</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">])</span>
+<span class="n">y</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">MEDV</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">24.0</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">21.6</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">34.7</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">33.4</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">36.2</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>3. train_test_split &amp; 학습</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1">#학습
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+</code></pre></div></div>
+<p>*theta값 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">coef_</span>  <span class="c1"># 변수별 가중치
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ -0.  ,  -5.09,  -0.17,  -5.97,  24.32, 165.18,  21.99,   1.03,
+         -5.67,   3.22,  -0.01,   5.35,  -0.05,   0.75,   0.  ,   0.27,
+          0.59,   2.42,  -0.03,   0.09,  -0.01,  -0.06,   0.36,  -0.04,
+          0.54,  -0.  ,   0.02,  -0.  ,  -0.01,  -0.11,  -1.28,   0.03,
+          0.  ,  -0.01,  -0.  ,   0.  ,  -0.01,   0.  ,  -0.  ,   0.03,
+         -0.21,   1.3 ,   0.31,   0.  ,   0.08,  -0.01,   0.  ,  -0.01,
+          0.01,  -0.01,  24.32, -18.48,  -6.89,   0.04,   3.05,  -0.41,
+          0.02,  -0.85,   0.03,  -0.47, -46.79,   3.65,  -0.6 ,  15.93,
+         -0.99,   0.13, -11.92,  -0.04,   1.5 ,   0.16,  -0.06,  -0.02,
+         -0.15,  -0.01,  -0.54,  -0.  ,  -0.22,   0.  ,  -0.01,   0.02,
+         -0.  ,   0.  ,  -0.  ,  -0.01,   0.51,  -0.1 ,  -0.01,  -0.19,
+         -0.01,   0.1 ,  -0.14,   0.01,  -0.12,  -0.  ,  -0.05,  -0.  ,
+          0.01,  -0.  ,  -0.  ,  -0.01,   0.01,  -0.  ,  -0.  ,  -0.  ,
+          0.01]])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>   <span class="c1"># 절편
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-141.9])
+</code></pre></div></div>
+<p><strong>4. test data로 성능 체크</strong></p>
+<ol>
+<li>평균제곱근오차 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">y_test_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+ <span class="c1">## 평균제곱근오차 (RMSE: Root Mean Square Error)
+</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_prediction</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 3.1965276513308156
+</code></pre></div></div>
+</li>
+<li>R 스퀘어 값 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span> 
+ <span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 0.9315569004651908
+ 0.8694943908787136
+</code></pre></div></div>
+<p>training data는 약 93%, test data는 약 87%를 잘 예측한다는 뜻</p>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

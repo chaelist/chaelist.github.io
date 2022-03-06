@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>뉴스 기사 Clustering | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="뉴스 기사 Clustering">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_application/news_clustering/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_application/news_clustering/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="뉴스 기사 Clustering"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_application/news_clustering/","@type":"WebPage","headline":"뉴스 기사 Clustering","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link active">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_application">Machine Learning 응용</a></li>
+<li class="breadcrumb-nav-list-item"><span>뉴스 기사 Clustering</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="뉴스-기사-clustering"> <a href="#%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-clustering" aria-labelledby="뉴스-기사-clustering" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 뉴스 기사 Clustering</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc"><li>
+<a href="#%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-clustering-1" id="markdown-toc-뉴스-기사-clustering-1">뉴스 기사 Clustering</a><ol>
+<li><a href="#%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-%EC%A4%80%EB%B9%84" id="markdown-toc-뉴스-기사-준비">뉴스 기사 준비</a></li>
+<li><a href="#tokenize--%EB%AA%85%EC%82%AC%EB%A7%8C-%EC%A0%80%EC%9E%A5" id="markdown-toc-tokenize--명사만-저장">tokenize &amp; 명사만 저장</a></li>
+<li><a href="#text-vector%ED%99%94--%ED%95%99%EC%8A%B5" id="markdown-toc-text-vector화--학습">Text Vector화 &amp; 학습</a></li>
+<li><a href="#%ED%95%99%EC%8A%B5-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8" id="markdown-toc-학습-결과-확인">학습 결과 확인</a></li>
+</ol>
+</li></ol></details><hr>
+<h2 id="뉴스-기사-clustering-1"> <a href="#%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-clustering-1" aria-labelledby="뉴스-기사-clustering-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 뉴스 기사 Clustering</h2>
+<ul><li>뉴스 기사의 내용을 바탕으로 유사한 기사끼리 묶어보려고 함</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 사용할 library를 먼저 모두 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">konlpy</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">AgglomerativeClustering</span>
+</code></pre></div></div>
+<h3 id="뉴스-기사-준비"> <a href="#%EB%89%B4%EC%8A%A4-%EA%B8%B0%EC%82%AC-%EC%A4%80%EB%B9%84" aria-labelledby="뉴스-기사-준비" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 뉴스 기사 준비</h3>
+<ul>
+<li>우선, Clustering할 기사 데이터를 수집</li>
+<li>
+<a href="https://news.daum.net/breakingnews/politics/assembly" target="_blank">다음 뉴스</a>에서, ‘국회/정당’, ‘금융’, ‘건강’, ‘사건/사고’ 4개 토픽의 기사를 조금씩 수집해 옴</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## '다음 뉴스'에서 직접 수집해 온 데이터를 dataframe으로 정리해 둠
+</span><span class="n">news_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">topic</th>
+<th style="text-align: left">article_title</th>
+<th style="text-align: left">news_text</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">[포토]재보선 D-1, ‘시민들의 선택은?’</td>
+<td style="text-align: left">[국회사진취재단] 6일 오후 서대문구 홍제역에서 열린 박영선 더불어민주당 서울시장…</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“약속 지킨다”..김종인, 8일 국민의힘 떠난다</td>
+<td style="text-align: left">김종인 국민의힘 비상대책위원장이 5일 오후 서울 관악구 서울대입구역에서 오세훈 서울…</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“위선·무능 정부 심판해야”..빨강 운동화에 ‘골목’ 찾은 오세훈</td>
+<td style="text-align: left">오세훈 국민의힘 서울시장 후보가 6일 서울 성북구 정릉시장에서 만난 한 시민에게 허…</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">김종인, 강남 대치역 찾아 오세훈 후보 지지호소</td>
+<td style="text-align: left">(서울=뉴스1) 국회사진취재단 = 김종인 국민의힘 비상대책위원장이 6일 오후 서울…</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">이낙연 “특권층 득세하고 차별하는 서울로 퇴보할 텐가”</td>
+<td style="text-align: left">[이데일리 이정현 기자] 이낙연 더불어민주당 상임선대위원장이 6일 오세훈 국민의힘..</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">news_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'topic'</span><span class="p">)[[</span><span class="s">'article_title'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">topic</th>
+<th style="text-align: right">article_title</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">건강</td>
+<td style="text-align: right">16</td>
+</tr>
+<tr>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: right">13</td>
+</tr>
+<tr>
+<td style="text-align: left">금융</td>
+<td style="text-align: right">15</td>
+</tr>
+<tr>
+<td style="text-align: left">사건/사고</td>
+<td style="text-align: right">15</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="tokenize--명사만-저장"> <a href="#tokenize--%EB%AA%85%EC%82%AC%EB%A7%8C-%EC%A0%80%EC%9E%A5" aria-labelledby="tokenize--명사만-저장" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> tokenize &amp; 명사만 저장</h3>
+<ul><li>기사의 주제를 판단하는 데에 명사가 가장 중요하다고 생각해 명사만 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documents_processed</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">news_df</span><span class="p">[</span><span class="s">'news_text'</span><span class="p">]:</span>
+    <span class="n">okt</span> <span class="o">=</span> <span class="n">konlpy</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">Okt</span><span class="p">()</span> 
+    <span class="n">okt_pos</span> <span class="o">=</span> <span class="n">okt</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">okt_pos</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">'Noun'</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+            <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="n">documents_processed</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">documents_processed</span><span class="p">))</span>
+<span class="n">documents_processed</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>59
+'국회 진취 재단 오후 서대문구 홍제역 박영선 민주당 서울시장 후보 집중 유세 시민 휴대폰 관심 표명 노진환'
+</code></pre></div></div>
+<h3 id="text-vector화--학습"> <a href="#text-vector%ED%99%94--%ED%95%99%EC%8A%B5" aria-labelledby="text-vector화--학습" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Text Vector화 &amp; 학습</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">tfidf_vector</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents_processed</span><span class="p">)</span>
+
+<span class="n">tfidf_dense</span> <span class="o">=</span> <span class="n">tfidf_vector</span><span class="p">.</span><span class="n">todense</span><span class="p">()</span>   <span class="c1">## sparse array로는 Agg.Clustering 학습이 안되어서, dense array로 바꿔줘야 함
+</span></code></pre></div></div>
+<p>*<a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" target="_blank">TfidfVectorizer</a>: 각 단어의 Term Frequency - Inverse Document Frequency를 기반으로 text를 vector화.</p>
+<ul>
+<li>ngram_range: (1, 1) means only unigrams, (1, 2) means unigrams and bigrams, and (2, 2) means only bigrams. (default: (1,1))</li>
+<li>min_df: ignore terms that have a document frequency strictly lower than the given threshold. (default: 1)</li>
+</ul>
+<p>→ AgglomerativeClustering으로 학습</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">linkage</span><span class="o">=</span><span class="s">'complete'</span><span class="p">,</span> <span class="n">affinity</span><span class="o">=</span><span class="s">'cosine'</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfidf_dense</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">labels_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1,
+       0, 1, 1, 1, 1, 1, 2, 0, 1, 2, 0, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 2,
+       0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3], dtype=int64)
+</code></pre></div></div>
+<h3 id="학습-결과-확인"> <a href="#%ED%95%99%EC%8A%B5-%EA%B2%B0%EA%B3%BC-%ED%99%95%EC%9D%B8" aria-labelledby="학습-결과-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 학습 결과 확인</h3>
+<ul><li>원래 daum에서 분류되어 있던 주제와 비교해서, 유사한 기사끼리 잘 묶였나 확인</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># topic, article_title에 cluster를 붙여서 확인
+</span>
+<span class="n">cluster_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">news_df</span><span class="p">[</span><span class="s">'topic'</span><span class="p">],</span> <span class="n">news_df</span><span class="p">[</span><span class="s">'article_title'</span><span class="p">],</span> <span class="n">model</span><span class="p">.</span><span class="n">labels_</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'topic'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">,</span> <span class="s">'cluster'</span><span class="p">])</span>
+<span class="n">cluster_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">topic</th>
+<th style="text-align: left">title</th>
+<th style="text-align: right">cluster</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">[포토]재보선 D-1, ‘시민들의 선택은?’</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“약속 지킨다”..김종인, 8일 국민의힘 떠난다</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“위선·무능 정부 심판해야”..빨강 운동화에 ‘골목’ 찾은 오세훈</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">김종인, 강남 대치역 찾아 오세훈 후보 지지호소</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">이낙연 “특권층 득세하고 차별하는 서울로 퇴보할 텐가”</td>
+<td style="text-align: right">3</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 각 topic별 cluster 배정 현황을 확인:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cluster_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'topic'</span><span class="p">,</span> <span class="s">'cluster'</span><span class="p">])[[</span><span class="s">'cluster'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">topic</th>
+<th style="text-align: right">cluster</th>
+<th style="text-align: right">count</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right" rowspan="3">건강
+<br><br>
+</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">10</td>
+</tr>
+<tr>
+<td style="text-align: right" rowspan="2">국회/정당
+<br>
+</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right" rowspan="2">금융
+<br>
+</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">13</td>
+</tr>
+<tr>
+<td style="text-align: right" rowspan="2">사건/사고
+<br>
+</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">13</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">2</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>주로 ‘건강’: 2, ‘국회/정당’: 3, ‘금융’: 1, ‘사건/사고’: 0으로 많이 배정되었음을 확인</li></ul>
+<p>→ daum의 분류와 다른 부분을 확인:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cluster_df</span><span class="p">[</span><span class="n">cluster_df</span><span class="p">[</span><span class="s">'topic'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'국회/정당'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">topic</th>
+<th style="text-align: left">title</th>
+<th style="text-align: right">cluster</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">[포토]재보선 D-1, ‘시민들의 선택은?’</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“약속 지킨다”..김종인, 8일 국민의힘 떠난다</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">“위선·무능 정부 심판해야”..빨강 운동화에 ‘골목’ 찾은 오세훈</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">김종인, 강남 대치역 찾아 오세훈 후보 지지호소</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">이낙연 “특권층 득세하고 차별하는 서울로 퇴보할 텐가”</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">시민들과 기념사진 찍는 김종인 비대위원장</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">6</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">강남 찾아 오세훈 지지호소하는 김종인</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">7</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">김종인, 오세훈 후보 지원유세</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">8</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">지원유세 마치고 차량에 오른 김종인</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">9</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">오세훈 후보 지원유세하는 김종인</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">10</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">내 선거’처럼 뛴 안철수는 국민의힘에서 무엇이 될까</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">11</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">웹툰에서도 부딪히는 네이버 vs 카카오..’원조 국밥집’ 논란도?</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">12</td>
+<td style="text-align: left">국회/정당</td>
+<td style="text-align: left">토스, 매출 230% 급증..”출범 후 처음으로 매출 이익 동시 개선”</td>
+<td style="text-align: right">1</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>topic 간 경계가 모호한 기사의 경우 daum에서 배정한 topic과 다른 cluster로 묶인 것…</li></ul>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

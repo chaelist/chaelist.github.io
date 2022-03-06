@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requests &amp; BeautifulSoup | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Requests &amp; BeautifulSoup">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/">
+<meta property="og:url" content="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Requests &amp; BeautifulSoup"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/","@type":"WebPage","headline":"Requests &amp; BeautifulSoup","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link active">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/webscraping">Web Scraping</a></li>
+<li class="breadcrumb-nav-list-item"><span>Requests &amp; BeautifulSoup</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="requests--beautifulsoup"> <a href="#requests--beautifulsoup" aria-labelledby="requests--beautifulsoup" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Requests &amp; BeautifulSoup</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#requests" id="markdown-toc-requests">Requests</a><ol>
+<li><a href="#proxy-%EC%82%AC%EC%9A%A9" id="markdown-toc-proxy-사용">Proxy 사용</a></li>
+<li><a href="#header-%EC%82%AC%EC%9A%A9" id="markdown-toc-header-사용">Header 사용</a></li>
+</ol>
+</li>
+<li>
+<a href="#beautifulsoup" id="markdown-toc-beautifulsoup">BeautifulSoup</a><ol>
+<li><a href="#%EC%A7%81%EC%A0%91-tag-%EC%9D%B4%EB%A6%84-%ED%98%B8%EC%B6%9C" id="markdown-toc-직접-tag-이름-호출">직접 tag 이름 호출</a></li>
+<li><a href="#find%EC%99%80-find_all" id="markdown-toc-find와-find_all">find()와 find_all()</a></li>
+<li><a href="#tag-%EB%82%B4-element-%EC%B6%94%EC%B6%9C" id="markdown-toc-tag-내-element-추출">tag 내 element 추출</a></li>
+<li><a href="#nested-tags-%EC%A0%91%EA%B7%BC" id="markdown-toc-nested-tags-접근">Nested Tags 접근</a></li>
+<li><a href="#recompile" id="markdown-toc-recompile">re.compile</a></li>
+</ol>
+</li>
+<li>
+<a href="#beautifulsoup-select" id="markdown-toc-beautifulsoup-select">BeautifulSoup: select()</a><ol>
+<li><a href="#css-%EC%84%A0%ED%83%9D%EC%9E%90%EB%A1%9C-%EC%A0%91%EA%B7%BC" id="markdown-toc-css-선택자로-접근">CSS 선택자로 접근</a></li>
+<li><a href="#css-%EC%84%A0%ED%83%9D%EC%9E%90-%EC%A1%B0%ED%95%A9%ED%95%98%EC%97%AC-%EC%82%AC%EC%9A%A9" id="markdown-toc-css-선택자-조합하여-사용">CSS 선택자 조합하여 사용</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="requests"> <a href="#requests" aria-labelledby="requests" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Requests</h2>
+<p>*역할: web communication. 서버에서 (raw) data (=source codes)를 받아온다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># import해서 사용
+</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://www.imdb.com/title/tt0805647/?ref_=vp_vi_tt'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1">## sends request message &amp; recieves source codes &amp; returns variables
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>  <span class="c1">## .text로 간단히 불러온 source code 출력
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="http://www.facebook.com/2008/fbml"&gt;
+    &lt;head&gt;
+         
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+
+    &lt;meta name="apple-itunes-app" content="app-id=342792525, app-argument=imdb:///title/tt0805647?src=mdot"&gt;
+(생략)
+</code></pre></div></div>
+<p>+) header도 별도로 가져올 수 있음</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r.headers 
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'Content-Type': 'text/html;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'Server', 'Date': 'Mon, 21 Dec 2020 12:27:34 GMT', 'x-amz-rid': 'H9QPTE15DWZ8GAJ3F3ZG', 'Set-Cookie': 'uu=BCYhjgIkRCdAZD3iSQrRQiy0YbMFhLNwk8zxrf0rHF5X3OWIKROLTsDOoCR5TLd5OyQ0OMF32iae%0D%0A1Y0pLcflXX3sTAoF6tCuyAmbPBhAOsNT3-PBrLCEP09Zd7kJEDY89VtMKo_UdYkrDrA6PrC082Jb%0D%0AzA%0D%0A; Domain=.imdb.com; Expires=Sat, 08-Jan-2089 15:41:41 GMT; Path=/; Secure, session-id=000-0000000-0000000; Domain=.imdb.com; Expires=Sat, 08-Jan-2089 15:41:41 GMT; Path=/; Secure, session-id-time=2239273654; Domain=.imdb.com; Expires=Sat, 08-Jan-2089 15:41:41 GMT; Path=/; Secure', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Security-Policy': "frame-ancestors 'self' imdb.com *.imdb.com *.media-imdb.com withoutabox.com *.withoutabox.com amazon.com *.amazon.com amazon.co.uk *.amazon.co.uk amazon.de *.amazon.de translate.google.com images.google.com www.google.com www.google.co.uk search.aol.com bing.com www.bing.com", 'Content-Language': 'en-US', 'Strict-Transport-Security': 'max-age=47474747; includeSubDomains; preload', 'Vary': 'Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent', 'X-Cache': 'Miss from cloudfront', 'Via': '1.1 214d8a3cdb14de6b0331d1f72902cc67.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'HKG60-C1', 'X-Amz-Cf-Id': '-_bmiycwCogkwse1lduiRQkvFpgQb2evcKf0DlKRZKSiJwYrPimtfw=='}
+</code></pre></div></div>
+<h3 id="proxy-사용"> <a href="#proxy-%EC%82%AC%EC%9A%A9" aria-labelledby="proxy-사용" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Proxy 사용</h3>
+<p>: proxy를 사용하면 국가를 우회하여 접속할 수 있다 (특정 국가에서만 접속 가능한 사이트에 접속하기)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proxy 사용 예시 코드
+</span><span class="n">proxyDict</span> <span class="o">=</span> <span class="p">{</span> 
+              <span class="s">"http"</span>  <span class="p">:</span> <span class="s">"http://proxy_example:8080"</span><span class="p">,</span> 
+              <span class="s">"https"</span> <span class="p">:</span> <span class="s">"https://proxy_example:8080"</span> 
+            <span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxyDict</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="header-사용"> <a href="#header-%EC%82%AC%EC%9A%A9" aria-labelledby="header-사용" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Header 사용</h3>
+<p>: headers 옵션을 사용하면 사람인 척 접속할 수 있다 (scraper 차단하는 사이트에 접속하기)</p>
+<ul><li>User Agent는 자신이 사용하는 브라우저에서 정보를 가져와도 되고, fake user agent를 받아와서 사용해도 된다.</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Header 사용 예시 코드
+</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'User-Agent'</span><span class="p">:</span> <span class="s">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'</span><span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre></div></div>
+<p>+) fake user agent 쉽게 가져와서 사용할 수 있는 라이브러리</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">fake_useragent</span> <span class="kn">import</span> <span class="n">UserAgent</span>  <span class="c1"># import해서 사용
+</span>
+<span class="n">ua</span> <span class="o">=</span> <span class="n">UserAgent</span><span class="p">()</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'User-Agent'</span><span class="p">:</span> <span class="n">ua</span><span class="p">.</span><span class="n">random</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="beautifulsoup"> <a href="#beautifulsoup" aria-labelledby="beautifulsoup" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> BeautifulSoup</h2>
+<p>*역할: information extraction. 원하는 정보를 담은 tag를 찾아서, 그 안의 text를 extract해준다</p>
+<ul>
+<li>
+<p>보통 Requests로 웹 상의 source code를 받아온 후에, BeautifulSoup를 통해 원하는 정보를 추출한다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">requests</span>
+  <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+  <span class="n">url</span> <span class="o">=</span> <span class="s">'https://www.imdb.com/title/tt0805647/?ref_=vp_vi_tt'</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># requests가 url의 source code를 받아온 후,
+</span>  <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">,</span> <span class="s">'lxml'</span><span class="p">)</span>   <span class="c1"># BeautifulSoup로 각 tag를 접근할 수 있게 준비
+</span></code></pre></div></div>
+</li>
+<li>parser의 종류:<ul>
+<li>html.parser: 각종 기능 완비, 적절한 속도, 관대함(lenient)</li>
+<li>lxml: 아주 빠름, 관대함</li>
+<li>html5lib: 아주 관대함 (웹 브라우저 방식으로 페이지를 해석함), 하지만 속도가 매우 느림</li>
+</ul>
+</li>
+<li>parser에 따라 읽어오는 방식이 조금씩 다르기에, parser를 변경하면 크롤링이 가능해지는 경우도 있다.</li>
+</ul>
+<h3 id="직접-tag-이름-호출"> <a href="#%EC%A7%81%EC%A0%91-tag-%EC%9D%B4%EB%A6%84-%ED%98%B8%EC%B6%9C" aria-labelledby="직접-tag-이름-호출" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 직접 tag 이름 호출</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 실습용으로 제작된 html code. (Requests로 웹 상의 source code를 받아오는 단계를 대체)
+</span><span class="n">html_code</span> <span class="o">=</span> <span class="s">"""&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt; Cities and Locations &lt;/title&gt;
+	&lt;/head&gt;
+
+	&lt;body&gt;
+		&lt;span class="city1"&gt; 
+			&lt;a href = "http://english.seoul.go.kr/"&gt;Seoul&lt;/a&gt;
+			&lt;p class = "location"&gt; South Korea &lt;/p&gt;
+			&lt;a href = "https://en.wikipedia.org/wiki/Seoul"&gt;Wikipedia - Seoul &lt;/p&gt;
+		&lt;/span&gt;
+		&lt;span class="city2"&gt;
+			&lt;a href = "hhttp://www1.nyc.gov/"&gt;New York City&lt;/a&gt;
+			&lt;p class = "location western"&gt; U.S.A. &lt;/p&gt;
+			&lt;a href = "https://en.wikipedia.org/wiki/New_York_City"&gt;Wikipedia - NY City &lt;/p&gt;
+		&lt;/span&gt;
+		&lt;span class="city3"&gt;
+			&lt;a href = "http://www.ebeijing.gov.cn/"&gt;Beijing&lt;/a&gt;
+			&lt;p class = "location"&gt; China &lt;/p&gt;
+			&lt;a href = "https://en.wikipedia.org/wiki/Beijing"&gt;Wikipedia - Beijing &lt;/p&gt;
+		&lt;/span&gt;
+	&lt;/body&gt;
+&lt;/html&gt;"""</span>
+
+<span class="c1"># BeautifulSoup 타입으로 변환
+</span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+</code></pre></div></div>
+<ol>
+<li>
+<p>title tag에 접근하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">title</span> 
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;title&gt; Cities and Locations &lt;/title&gt;
+</code></pre></div></div>
+</li>
+<li>
+<p>tag의 text만 추출하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">soup</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1">## .text만 해줘도 되지만, 앞뒤에 space가 있을 수 있어서 보통은 strip()을 함께 써준다.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cities and Locations
+</code></pre></div></div>
+</li>
+</ol>
+<p>cf) 여러 개의 같은 tag가 있는 경우:</p>
+<ul><li>
+<p>직접 tag 이름을 호출해 불러오는 경우는, 같은 tag가 두 개 이상이여도 맨 처음 tag 하나만 불러온다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">soup</span><span class="p">.</span><span class="n">p</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;p class="location"&gt; South Korea &lt;/p&gt;
+</code></pre></div></div>
+</li></ul>
+<h3 id="find와-find_all"> <a href="#find%EC%99%80-find_all" aria-labelledby="find와-find_all" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> find()와 find_all()</h3>
+<p>: html tag 기반 선택자</p>
+<ul>
+<li>find(): 조건을 충족하는 것 중 가장 처음의 tag 하나만 가져옴</li>
+<li>find_all(): 조건을 충족하는 모든 tag를 list 형태로 다 불러옴</li>
+</ul>
+<ol>
+<li>find()<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'p'</span><span class="p">)</span>  <span class="c1"># 맨 처음 p tag만 반환. soup.p랑 동일.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;p class="location"&gt; South Korea &lt;/p&gt;
+</code></pre></div></div>
+</li>
+<li>find_all()<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'p'</span><span class="p">)</span>  <span class="c1"># list 형태로 모든 p tag 모두 반환
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;p class="location"&gt; South Korea &lt;/p&gt;,
+ &lt;p class="location western"&gt; U.S.A. &lt;/p&gt;,
+ &lt;p class="location"&gt; China &lt;/p&gt;]
+</code></pre></div></div>
+<p>→ list 형태로 반환되면, indexing을 통해 text를 추출하면 된다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'p'</span><span class="p">)[</span><span class="mi">2</span><span class="p">].</span><span class="n">text</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> China
+</code></pre></div></div>
+</li>
+<li>특정 attribute를 갖는 tag 찾기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'p'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'western'</span><span class="p">})</span>  <span class="c1"># 'western'이라는 'class'를 가진 p tag 찾기
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;p class="location western"&gt; U.S.A. &lt;/p&gt;
+</code></pre></div></div>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">soup.find('p', attrs={'class':'western'})</code>는 다음과 같이 써도 동일: <code class="language-plaintext highlighter-rouge">soup.find('p', 'western')</code>, <code class="language-plaintext highlighter-rouge">soup.find('p', class_='western')</code> (편한대로 줄여서 써도 된다)</li></ul>
+</li>
+</ol>
+<h3 id="tag-내-element-추출"> <a href="#tag-%EB%82%B4-element-%EC%B6%94%EC%B6%9C" aria-labelledby="tag-내-element-추출" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> tag 내 element 추출</h3>
+<ol>
+<li>.get() 함수<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>  <span class="c1"># a tag에 접근
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;a href="http://english.seoul.go.kr/"&gt;Seoul&lt;/a&gt;
+</code></pre></div></div>
+<p>→ a tag의 ‘href’에서 url 정보 추출하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">).</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> http://english.seoul.go.kr/
+</code></pre></div></div>
+</li>
+<li>[ ] 방식<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="s">'href'</span><span class="p">]</span>  <span class="c1">## 이렇게 접근하는 것도 가능
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> http://english.seoul.go.kr/
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="nested-tags-접근"> <a href="#nested-tags-%EC%A0%91%EA%B7%BC" aria-labelledby="nested-tags-접근" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Nested Tags 접근</h3>
+<ul>
+<li>a tag can be a parent / child / sibling of another tag</li>
+<li>특정 parent tag에 먼저 접근한 후, child tag에 접근하면 더 정교한 접근이 가능하다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city3_info</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="s">'city3'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># parent tag
+</span><span class="n">city3_info</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span class="city3"&gt;
+&lt;a href="http://www.ebeijing.gov.cn/"&gt;Beijing&lt;/a&gt;
+&lt;p class="location"&gt; China &lt;/p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/Beijing"&gt;Wikipedia - Beijing &lt;/a&gt;&lt;/span&gt;
+</code></pre></div></div>
+<p>→ 해당 parent tag 아래에 있는 child tag에 접근해서 정보 추출</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city3_info</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://www.ebeijing.gov.cn/
+</code></pre></div></div>
+<h3 id="recompile"> <a href="#recompile" aria-labelledby="recompile" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re.compile</h3>
+<p>: 정규표현식을 활용하면 특정 글자를 포함하는 tag를 모두 찾아오는 것이 가능</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">tags</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">'city'</span><span class="p">)})</span>   
+<span class="c1"># 이렇게 하면 class attribute에 'city'가 포함된 span tag를 다 찾는다
+## &lt;span class='city1'&gt;, &lt;span class='city2'&gt;, &lt;span class='city3'&gt; 등을 다 찾아옴!
+</span><span class="n">tags</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;span class="city1"&gt;
+ &lt;a href="http://english.seoul.go.kr/"&gt;Seoul&lt;/a&gt;
+ &lt;p class="location"&gt; South Korea &lt;/p&gt;
+ &lt;a href="https://en.wikipedia.org/wiki/Seoul"&gt;Wikipedia - Seoul &lt;/a&gt;&lt;/span&gt;,
+ &lt;span class="city2"&gt;
+ &lt;a href="hhttp://www1.nyc.gov/"&gt;New York City&lt;/a&gt;
+ &lt;p class="location western"&gt; U.S.A. &lt;/p&gt;
+ &lt;a href="https://en.wikipedia.org/wiki/New_York_City"&gt;Wikipedia - NY City &lt;/a&gt;&lt;/span&gt;,
+ &lt;span class="city3"&gt;
+ &lt;a href="http://www.ebeijing.gov.cn/"&gt;Beijing&lt;/a&gt;
+ &lt;p class="location"&gt; China &lt;/p&gt;
+ &lt;a href="https://en.wikipedia.org/wiki/Beijing"&gt;Wikipedia - Beijing &lt;/a&gt;&lt;/span&gt;]
+</code></pre></div></div>
+<h2 id="beautifulsoup-select"> <a href="#beautifulsoup-select" aria-labelledby="beautifulsoup-select" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> BeautifulSoup: select()</h2>
+<p>: CSS 기반 선택자</p>
+<ul>
+<li>select(): find_all()과 유사. 조건을 충족하는 모든 tag를 list 형태로 다 불러옴</li>
+<li>select_one(): find()와 유사. 조건을 충족하는 것 중 가장 처음의 tag 하나만 가져옴</li>
+</ul>
+<p>※ 태그 이름, 속성, 속성값을 특정하는 방식은 find()와 같다. 하지만 select()는 이 외에도 다양한 선택자(selector)를 갖기 때문에 여러 요소를 조합하여 태그를 특정하기 쉽다는 장점이 있다 (more flexible!)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">html_code</span> <span class="o">=</span> <span class="s">"""&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Sample Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;HTML 연습!&lt;/h2&gt;
+
+&lt;p&gt;이것은 첫 번째 문단입니다.&lt;/p&gt;
+&lt;p&gt;이것은 두 번째 문단입니다!&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li id="coffee"&gt;커피&lt;/li&gt;
+    &lt;li class="green-tea"&gt;녹차&lt;/li&gt;
+    &lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;
+    &lt;li class="milk"&gt;우유&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;img src='https://i.imgur.com/bY0l0PC.jpg' alt="coffee"/&gt;
+&lt;img src='https://i.imgur.com/fvJLWdV.jpg' alt="green-tea"/&gt;
+&lt;img src='https://i.imgur.com/rNOIbNt.jpg' alt="milk"/&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"""</span>
+
+<span class="c1"># BeautifulSoup 타입으로 변환
+</span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+</code></pre></div></div>
+<ol>
+<li>html tag로 선택<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># soup.select()
+</span> <span class="n">li_tags</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'li'</span><span class="p">)</span>  <span class="c1"># &lt;li&gt; 태그만 모아서 리스트로 출력
+</span> <span class="n">li_tags</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li id="coffee"&gt;커피&lt;/li&gt;,
+ &lt;li class="green-tea"&gt;녹차&lt;/li&gt;,
+ &lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;,
+ &lt;li class="milk"&gt;우유&lt;/li&gt;]
+</code></pre></div></div>
+<p>→ text만 추출</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">li_tags</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span>  <span class="c1"># find()에서와 동일하게 .text를 사용
+</span> <span class="c1">## 하나만 추출하고 싶을 때는 soup.select_one('li').text라고 해도 동일
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 커피
+</code></pre></div></div>
+</li>
+<li>tag 내 element 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">img_tags</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'img'</span><span class="p">)</span>
+ <span class="n">img_tags</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;img alt="coffee" src="https://i.imgur.com/bY0l0PC.jpg"/&gt;,
+ &lt;img alt="green-tea" src="https://i.imgur.com/fvJLWdV.jpg"/&gt;,
+ &lt;img alt="milk" src="https://i.imgur.com/rNOIbNt.jpg"/&gt;]
+</code></pre></div></div>
+<p>→ find()에서와 동일하게, <code class="language-plaintext highlighter-rouge">[]</code>이나 <code class="language-plaintext highlighter-rouge">.get()</code>을 활용하면 tag 내 element 추출 가능</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">img_tags</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'src'</span><span class="p">]</span>  <span class="c1">## img_tags[0].get('src')와 동일
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> https://i.imgur.com/bY0l0PC.jpg
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="css-선택자로-접근"> <a href="#css-%EC%84%A0%ED%83%9D%EC%9E%90%EB%A1%9C-%EC%A0%91%EA%B7%BC" aria-labelledby="css-선택자로-접근" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CSS 선택자로 접근</h3>
+<ol>
+<li>특정 id의 태그 선택<ul><li>
+<code class="language-plaintext highlighter-rouge">#</code>으로 접근 - ex) id가 coffee인 태그: <code class="language-plaintext highlighter-rouge">#coffee</code>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'#coffee'</span><span class="p">)</span>     <span class="c1">#soup.find('#coffee')는 성립X
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li id="coffee"&gt;커피&lt;/li&gt;]
+</code></pre></div></div>
+</li>
+<li>특정 class의 태그 선택<ul><li>
+<code class="language-plaintext highlighter-rouge">.</code>으로 접근 - ex) class가 ‘green-tea’인 태그: <code class="language-plaintext highlighter-rouge">.green-tea</code>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'.green-tea'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li class="green-tea"&gt;녹차&lt;/li&gt;,
+ &lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;]
+</code></pre></div></div>
+</li>
+<li>속성의 이름/값으로 태그 선택<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">[name="value"]</code> 형식으로 접근</li>
+<li>ex) alt 속성의 값이 “green-tea”인 태그: <code class="language-plaintext highlighter-rouge">[alt="green-tea"]</code>
+</li>
+<li>ex) href 속성의 값이 “https://chaelist.github.io/”인 태그: <code class="language-plaintext highlighter-rouge">[href="https://chaelist.github.io/"]</code>
+</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'[alt="green-tea"]'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;img alt="green-tea" src="https://i.imgur.com/fvJLWdV.jpg"/&gt;]
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="css-선택자-조합하여-사용"> <a href="#css-%EC%84%A0%ED%83%9D%EC%9E%90-%EC%A1%B0%ED%95%A9%ED%95%98%EC%97%AC-%EC%82%AC%EC%9A%A9" aria-labelledby="css-선택자-조합하여-사용" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CSS 선택자 조합하여 사용</h3>
+<p>: 아래와 같이 다양한 조합으로 접근할 수 있다는 것이 CSS 기반 선택자인 select()의 장점!</p>
+<ol>
+<li>OR 연산<ul><li>
+<code class="language-plaintext highlighter-rouge">,</code> 사용 → 두 CSS 선택자 중 하나라도 해당되면 선택</li></ul>
+<p class="fs-3">ex1)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># id가 coffee이거나 class가 milk인 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'#coffee, .milk'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li id="coffee"&gt;커피&lt;/li&gt;, &lt;li class="milk"&gt;우유&lt;/li&gt;]
+</code></pre></div></div>
+<p class="fs-3">ex2)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 모든 p 태그와 모든 li 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'p, li'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;p&gt;이것은 첫 번째 문단입니다.&lt;/p&gt;,
+ &lt;p&gt;이것은 두 번째 문단입니다!&lt;/p&gt;,
+ &lt;li id="coffee"&gt;커피&lt;/li&gt;,
+ &lt;li class="green-tea favorite"&gt;녹차&lt;/li&gt;,
+ &lt;li class="milk"&gt;우유&lt;/li&gt;]
+</code></pre></div></div>
+</li>
+<li>AND 연산<ul><li>두 CSS 선택자를 붙여씀 → 두 CSS 선택자 모두 해당되는 요소만 선택</li></ul>
+<p class="fs-3">ex1)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># green-tea 클래스와 favorite 클래스를 모두 가진 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'.green-tea.favorite'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;]
+</code></pre></div></div>
+<p class="fs-3">ex2)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># favoite 클래스를 가진 li 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'li.favorite'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;]
+</code></pre></div></div>
+</li>
+<li>Nested Tags 접근 (Descendant Combinator)<ul><li>두 CSS 선택자를 띄어씀 → 첫 번째 CSS 선택자로 선택된 태그 내부에서 두 번째 CSS 선택자를 찾는다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># ul 태그 아래에 있는 자손 태그 중, milk라는 class를 가진 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'ul .milk'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li class="milk"&gt;우유&lt;/li&gt;]
+</code></pre></div></div>
+<p>cf) <code class="language-plaintext highlighter-rouge">.class1 .class2</code>와 <code class="language-plaintext highlighter-rouge">.class1 &gt; .class2</code>의 차이:</p>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">.class1 .class2</code>: class1 클래스를 가진 태그의 “자손” 중에 class2 클래스를 가진 모든 태그를 의미</li>
+<li>
+<code class="language-plaintext highlighter-rouge">.class1 &gt; .class2</code>: class1 클래스를 가진 태그의 “자식” 중에 class2 클래스를 가진 모든 태그를 의미</li>
+<li>“자손”: 부모 요소에 포함된 모든 하위 요소를 의미 vs “자식”: 부모의 바로 아래 자식 요소만을 의미</li>
+</ul>
+<p class="fs-1"> </p>
+</li>
+<li>형제 태그 접근 (Sibling Combinator)<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">~</code> 사용 → 특정 태그 뒤에 나오는 형제 태그를 선택</li>
+<li>형제 태그: parent-child 관계가 아닌, 같은 depth를 가진 태그 (병렬적 나열)</li>
+</ul>
+<p class="fs-3">ex1)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># green-tea라는 class를 가진 태그 뒤에 나오는 green-tea라는 class를 가진 태그
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'.green-tea ~ .green-tea'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;li class="green-tea favorite"&gt;Sencha Green Tea&lt;/li&gt;]
+</code></pre></div></div>
+<p class="fs-3">ex2)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># ul 태그 뒤에 나오는 img 태그 (뒤에 나오는 모든 img 태그)
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'ul ~ img'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;img alt="coffee" src="https://i.imgur.com/bY0l0PC.jpg"/&gt;,
+ &lt;img alt="green-tea" src="https://i.imgur.com/fvJLWdV.jpg"/&gt;,
+ &lt;img alt="milk" src="https://i.imgur.com/rNOIbNt.jpg"/&gt;]
+</code></pre></div></div>
+<p>cf) 인접형제 선택자 <code class="language-plaintext highlighter-rouge">+</code>: 특정 태그 바로 뒤에 나오는 형제 태그를 선택.</p>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">~</code>와 유사하나, 바로 뒤에 있는 1개만 선택한다는 점에서 차이<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># ~ 대신 +를 사용하면 바로 뒤에 나오는 태그 1개만 찾아줌
+</span> <span class="n">soup</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'ul + img'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [&lt;img alt="coffee" src="https://i.imgur.com/bY0l0PC.jpg"/&gt;]
+</code></pre></div></div>
+</li></ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Ecommerce Data 1 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="UK Ecommerce Data 1">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/">
+<meta property="og:url" content="https://chaelist.github.io/docs/kaggle/uk_ecommerce/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="UK Ecommerce Data 1"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/kaggle/uk_ecommerce/","@type":"WebPage","headline":"UK Ecommerce Data 1","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link active">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/kaggle">Kaggle Dataset EDA</a></li>
+<li class="breadcrumb-nav-list-item"><span>UK Ecommerce Data 1</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="uk-ecommerce-data"> <a href="#uk-ecommerce-data" aria-labelledby="uk-ecommerce-data" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> UK Ecommerce Data</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85-%EB%B0%8F-%EC%A0%84%EC%B2%98%EB%A6%AC" id="markdown-toc-데이터-파악-및-전처리">데이터 파악 및 전처리</a><ol>
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85-%EC%A0%95%EB%A6%AC" id="markdown-toc-데이터-타입-정리">데이터 타입 정리</a></li>
+<li><a href="#%EC%A4%91%EB%B3%B5%EA%B0%92-%ED%99%95%EC%9D%B8" id="markdown-toc-중복값-확인">중복값 확인</a></li>
+<li><a href="#%EA%B2%B0%EC%B8%A1%EC%B9%98-%ED%99%95%EC%9D%B8" id="markdown-toc-결측치-확인">결측치 확인</a></li>
+<li><a href="#%EC%9D%B4%EC%83%81%EC%B9%98--%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%92-%EC%A0%95%EB%A6%AC" id="markdown-toc-이상치--불필요한-값-정리">이상치 / 불필요한 값 정리</a></li>
+<li><a href="#%EA%B2%B0%EC%B8%A1%EC%B9%98-%EC%9E%AC%ED%99%95%EC%9D%B8" id="markdown-toc-결측치-재확인">결측치 재확인</a></li>
+<li><a href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%B9%BC%EB%9F%BC-%EC%83%9D%EC%84%B1" id="markdown-toc-새로운-칼럼-생성">새로운 칼럼 생성</a></li>
+</ol>
+</li>
+<li><a href="#%EC%9B%94%EB%B3%84-%EB%A7%A4%EC%B6%9C%EC%95%A1-%EA%B5%AC%EB%A7%A4%EC%9E%90%EC%88%98" id="markdown-toc-월별-매출액-구매자수">월별 매출액, 구매자수</a></li>
+<li>
+<a href="#%EC%BD%94%ED%98%B8%ED%8A%B8-%EB%B6%84%EC%84%9D" id="markdown-toc-코호트-분석">코호트 분석</a><ol>
+<li><a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%EC%9E%AC%EB%B0%A9%EB%AC%B8%EB%A5%A0" id="markdown-toc-코호트별-재방문률">코호트별 재방문률</a></li>
+<li><a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%EC%B4%9D%EB%A7%A4%EC%B6%9C%EC%95%A1" id="markdown-toc-코호트별-총매출액">코호트별 총매출액</a></li>
+<li><a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%ED%8F%89%EA%B7%A0-%EC%A7%80%EC%B6%9C%EC%95%A1" id="markdown-toc-코호트별-평균-지출액">코호트별 평균 지출액</a></li>
+</ol>
+</li>
+<li><a href="#%EA%B3%A0%EA%B0%9D%EB%B3%84-%EC%9D%B4%ED%83%88-%EA%B0%80%EB%8A%A5%EC%84%B1-%ED%8C%8C%EC%95%85" id="markdown-toc-고객별-이탈-가능성-파악">고객별 이탈 가능성 파악</a></li>
+<li>
+<a href="#%EC%9B%94%EB%B3%84-%EC%9D%B4%ED%83%88%EB%A5%A0" id="markdown-toc-월별-이탈률">월별 이탈률</a><ol><li><a href="#%EC%9B%94%EB%B3%84-%EC%9D%B4%ED%83%88%EB%A5%A0-%EC%B6%94%EC%9D%B4" id="markdown-toc-월별-이탈률-추이">월별 이탈률 추이</a></li></ol>
+</li>
+<li>
+<a href="#%EC%9B%94%EB%B3%84-%EC%8B%A0%EA%B7%9C-%EC%9C%A0%EC%9E%85%EB%A5%A0" id="markdown-toc-월별-신규-유입률">월별 신규 유입률</a><ol><li><a href="#%EC%9B%94%EB%B3%84-%EC%8B%A0%EA%B7%9C%EC%9C%A0%EC%9E%85%EB%A5%A0-%EC%B6%94%EC%9D%B4" id="markdown-toc-월별-신규유입률-추이">월별 신규유입률 추이</a></li></ol>
+</li>
+</ol></details><hr>
+<p><strong>*분석 대상 데이터셋: UK E-Commerce Data</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/carrie1/ecommerce-data" target="_blank">데이터셋 출처</a></li>
+<li>UK-based retailer의 2020-12-01에서 2011-12-09 사이의 모든 거래를 기록한 데이터</li>
+<li>gift를 주로 판매하며, 대다수의 고객은 wholesaler임</li>
+</ul>
+<h2 id="데이터-파악-및-전처리"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85-%EB%B0%8F-%EC%A0%84%EC%B2%98%EB%A6%AC" aria-labelledby="데이터-파악-및-전처리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 파악 및 전처리</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 라이브러리 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="n">stats</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="n">pio</span>
+
+<span class="n">pio</span><span class="p">.</span><span class="n">templates</span><span class="p">.</span><span class="n">default</span> <span class="o">=</span> <span class="s">"plotly_white"</span>  <span class="c1"># default template을 지정
+</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ecom_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/uk_ecommerce_data.csv'</span><span class="p">)</span>
+<span class="n">ecom_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">InvoiceNo</th>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">Country</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">85123A</td>
+<td style="text-align: left">WHITE HANGING HEART T-LIGHT HOLDER</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">12/1/2010 8:26</td>
+<td style="text-align: right">2.55</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">71053</td>
+<td style="text-align: left">WHITE METAL LANTERN</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">12/1/2010 8:26</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">84406B</td>
+<td style="text-align: left">CREAM CUPID HEARTS COAT HANGER</td>
+<td style="text-align: right">8</td>
+<td style="text-align: left">12/1/2010 8:26</td>
+<td style="text-align: right">2.75</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">84029G</td>
+<td style="text-align: left">KNITTED UNION FLAG HOT WATER BOTTLE</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">12/1/2010 8:26</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">84029E</td>
+<td style="text-align: left">RED WOOLLY HOTTIE WHITE HEART.</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">12/1/2010 8:26</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 칼럼 정보 파악</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ecom_df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 541909 entries, 0 to 541908
+Data columns (total 8 columns):
+ #   Column       Non-Null Count   Dtype  
+---  ------       --------------   -----  
+ 0   InvoiceNo    541909 non-null  object 
+ 1   StockCode    541909 non-null  object 
+ 2   Description  540455 non-null  object 
+ 3   Quantity     541909 non-null  int64  
+ 4   InvoiceDate  541909 non-null  object 
+ 5   UnitPrice    541909 non-null  float64
+ 6   CustomerID   406829 non-null  float64
+ 7   Country      541909 non-null  object 
+dtypes: float64(2), int64(1), object(5)
+memory usage: 33.1+ MB
+</code></pre></div></div>
+<h3 id="데이터-타입-정리"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85-%EC%A0%95%EB%A6%AC" aria-labelledby="데이터-타입-정리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 타입 정리</h3>
+<ol>
+<li>Customer ID: string 형태로 변경<ul>
+<li>현재는 Null값이 섞이 칼럼이라 float 형태로 되어 있음</li>
+<li>소수점을 없애기 위해 정수로 먼저 변경한 후 str로 바꿔줌</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">].</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 일단 N/A를 0으로 바꿔줌
+</span>
+ <span class="n">ecom_df</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">].</span><span class="n">astype</span><span class="p">(</span><span class="s">'int'</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">'str'</span><span class="p">)</span>  <span class="c1"># 정수로 변경한 후, str로 바꿔줌
+</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">replace</span><span class="p">({</span><span class="s">'CustomerID'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">},</span> <span class="s">'N/A'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 0은 'N/A'로 바꿔줌
+</span> <span class="k">print</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">].</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> object
+</code></pre></div></div>
+</li>
+<li>
+<p>InvoiceDate: datetime 형태로 변경</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">])</span>
+
+ <span class="k">print</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">].</span><span class="n">dtypes</span><span class="p">)</span>
+ <span class="n">ecom_df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> datetime64[ns]
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">InvoiceNo</th>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">Country</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">85123A</td>
+<td style="text-align: left">WHITE HANGING HEART T-LIGHT HOLDER</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">2.55</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">71053</td>
+<td style="text-align: left">WHITE METAL LANTERN</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">84406B</td>
+<td style="text-align: left">CREAM CUPID HEARTS COAT HANGER</td>
+<td style="text-align: right">8</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">2.75</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 기간 범위 확인:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">]))</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">]))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 2010-12-01 08:26:00
+ 2011-12-09 12:50:00
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="중복값-확인"> <a href="#%EC%A4%91%EB%B3%B5%EA%B0%92-%ED%99%95%EC%9D%B8" aria-labelledby="중복값-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 중복값 확인</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 중복값의 수를 확인
+</span><span class="n">ecom_df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5268
+</code></pre></div></div>
+<p>→ 전체 값이 다 중복된 경우, 기록 과정에서 중복 기입된 것이라고 판단. → 가장 위에 있는 행만 남기고 drop</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+<span class="n">ecom_df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ecom_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>541909
+536641
+</code></pre></div></div>
+<h3 id="결측치-확인"> <a href="#%EA%B2%B0%EC%B8%A1%EC%B9%98-%ED%99%95%EC%9D%B8" aria-labelledby="결측치-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 결측치 확인</h3>
+<ol>
+<li>
+<p>Description 칼럼</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'Description'</span><span class="p">].</span><span class="n">isna</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1454
+</code></pre></div></div>
+<p>→ StockCode와 Description이 1:1 대응되는 개념인지 확인<br> (같은 StockCode의 Description으로 null값을 채워넣을 수 있을지 점검)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">temp1</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'StockCode'</span><span class="p">)[[</span><span class="s">'Description'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">()</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp1</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Description &gt; 1'</span><span class="p">)))</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp1</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Description == 1'</span><span class="p">)))</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp1</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Description &lt; 1'</span><span class="p">)))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 650
+ 3308
+ 112
+</code></pre></div></div>
+<ul>
+<li>StockCode 1가지에도 Description이 2개 이상 붙기도 해서, 단순하게 StockCode를 바탕으로 Description을 채워넣을 수는 없을 듯.</li>
+<li>우선 Description의 null값을 그대로 둠.</li>
+</ul>
+</li>
+<li><p>CustemerID 칼럼</p></li>
+</ol>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sum</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'N/A'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>135037
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 같은 InvoiceNo라면 한 명이 한번에 구매한 것이므로, InvoiceNo의 unique 값으로도 확인해봄
+</span><span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'CustomerID == "N/A"'</span><span class="p">)[</span><span class="s">'InvoiceNo'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3710
+</code></pre></div></div>
+<ul>
+<li>개별 transaction으로 따지면, 3710개의 구매가 구매자가 남겨져 있지 않음</li>
+<li>우선은 지우지 않고 둠.</li>
+</ul>
+<h3 id="이상치--불필요한-값-정리"> <a href="#%EC%9D%B4%EC%83%81%EC%B9%98--%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%92-%EC%A0%95%EB%A6%AC" aria-labelledby="이상치--불필요한-값-정리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 이상치 / 불필요한 값 정리</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ecom_df</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span> 
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: right">UnitPrice</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: right">536641</td>
+<td style="text-align: right">536641</td>
+</tr>
+<tr>
+<td style="text-align: left">mean</td>
+<td style="text-align: right">9.62003</td>
+<td style="text-align: right">4.63266</td>
+</tr>
+<tr>
+<td style="text-align: left">std</td>
+<td style="text-align: right">219.13</td>
+<td style="text-align: right">97.2331</td>
+</tr>
+<tr>
+<td style="text-align: left">min</td>
+<td style="text-align: right">-80995</td>
+<td style="text-align: right">-11062.1</td>
+</tr>
+<tr>
+<td style="text-align: left">25%</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1.25</td>
+</tr>
+<tr>
+<td style="text-align: left">50%</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">2.08</td>
+</tr>
+<tr>
+<td style="text-align: left">75%</td>
+<td style="text-align: right">10</td>
+<td style="text-align: right">4.13</td>
+</tr>
+<tr>
+<td style="text-align: left">max</td>
+<td style="text-align: right">80995</td>
+<td style="text-align: right">38970</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>Quanity나 UnitPrice에 -값이 섞어 있음</li></ul>
+<ol>
+<li>
+<p>UnitPrice가 0인 경우 체크</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sum</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'UnitPrice'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 2510
+</code></pre></div></div>
+<ul>
+<li>UnitPrice = 0인 데이터는 매출과 관계가 없으므로 삭제해준다</li>
+<li>아마 재고 관리를 위해 Price=0인 칼럼을 덧붙여서 Quantity를 조정해준 듯..</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+ <span class="n">drop_index</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">[</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'UnitPrice'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">].</span><span class="n">index</span>
+ <span class="n">ecom_df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+
+ <span class="c1"># reset index
+</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 536641
+ 534131
+</code></pre></div></div>
+</li>
+<li>
+<p>UnitPrice가 -인 경우 체크</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'UnitPrice &lt; 0'</span><span class="p">)</span>   <span class="c1">## Stock Code가 'B'임
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">InvoiceNo</th>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: left">CustomerID</th>
+<th style="text-align: left">Country</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">297646</td>
+<td style="text-align: left">A563186</td>
+<td style="text-align: left">B</td>
+<td style="text-align: left">Adjust bad debt</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2011-08-12 14:51:00</td>
+<td style="text-align: right">-11062.1</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">297647</td>
+<td style="text-align: left">A563187</td>
+<td style="text-align: left">B</td>
+<td style="text-align: left">Adjust bad debt</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2011-08-12 14:52:00</td>
+<td style="text-align: right">-11062.1</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>StockCode 점검</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Stock Code에 상품코드와 조금 다른 값들이 있음
+</span> <span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">[</span><span class="s">'StockCode'</span><span class="p">].</span><span class="n">unique</span><span class="p">())[</span><span class="o">-</span><span class="mi">30</span><span class="p">:])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ['90214T', '90214U', '90214V', '90214W', '90214Y', '90214Z', 'AMAZONFEE', 'B', 'BANK CHARGES', 'C2', 'CRUK', 'D', 'DCGS0003', 'DCGS0004', 'DCGS0069', 'DCGS0070', 'DCGS0076', 'DCGSSBOY', 'DCGSSGIRL', 'DOT', 'M', 'PADS', 'POST', 'S', 'gift_0001_10', 'gift_0001_20', 'gift_0001_30', 'gift_0001_40', 'gift_0001_50', 'm']
+</code></pre></div></div>
+<ul><li>‘gift_숫자’ 형태는 gift voucher 상품</li></ul>
+<p>※ StockCode 중 제품이 아닌 것 정리:</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Desciption</th>
+<th style="text-align: left">처리 방향성</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">S</td>
+<td style="text-align: left">SAMPLES</td>
+<td style="text-align: left">무료로 샘플을 주는 데에 쓴 돈이라고 추정 → 매출과 관련이 적으므로 일단 drop</td>
+</tr>
+<tr>
+<td style="text-align: left">POST</td>
+<td style="text-align: left">POSTAGE</td>
+<td style="text-align: left">우편 요금으로 추정… Country가 주로 해외인 것을 보면 일종의 상품이라고 생각되기도 함 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">PADS</td>
+<td style="text-align: left">PADS TO MATCH ALL CUSHIONS</td>
+<td style="text-align: left">Price=0.001 → 함께 판매하는 부속품으로 추정 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">M</td>
+<td style="text-align: left">Manual</td>
+<td style="text-align: left">제품명이 정확하게 찍히지 않은 구매/환불건에 대해 Manual이라고 적어놓은 것으로 추정 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">DOT</td>
+<td style="text-align: left">DOTCOM POSTAGE</td>
+<td style="text-align: left">POST와 마찬가지로, 일종의 상품이라고 간주 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">D</td>
+<td style="text-align: left">Discount</td>
+<td style="text-align: left">구매할 때 Discount해준 금액 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">CRUK</td>
+<td style="text-align: left">CRUK Commission</td>
+<td style="text-align: left">특정 단체(CRUK)에 내는 Commision이라고 추정 → 매출과 관련이 적으므로 일단 drop</td>
+</tr>
+<tr>
+<td style="text-align: left">C2</td>
+<td style="text-align: left">CARRIAGE</td>
+<td style="text-align: left">운송비 → keep</td>
+</tr>
+<tr>
+<td style="text-align: left">BANK CHARGES</td>
+<td style="text-align: left">Bank Charges</td>
+<td style="text-align: left">매출과 관련이 적으므로 일단 drop</td>
+</tr>
+<tr>
+<td style="text-align: left">B</td>
+<td style="text-align: left">Adjust bad debt</td>
+<td style="text-align: left">매출과 관련이 적으므로 일단 drop</td>
+</tr>
+<tr>
+<td style="text-align: left">AMAZONFEE</td>
+<td style="text-align: left">AMAZON FEE</td>
+<td style="text-align: left">아마존에 내는 수수료 → 매출과 관련이 적으므로 일단 drop</td>
+</tr>
+</tbody>
+</table></div>
+<p>→ 제품 판매로 인한 매출과 관계 없는 Stock Code는 drop</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># CRUK, BANK CHARGES, B, AMAZONFEE, S 삭제
+</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+ <span class="n">drop_index</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"StockCode in ['CRUK', 'BANK CHARGES', 'B', 'S', 'AMAZONFEE']"</span><span class="p">).</span><span class="n">index</span>
+ <span class="n">ecom_df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">))</span>
+
+ <span class="c1"># reset index
+</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 534131
+ 533979
+</code></pre></div></div>
+</li>
+<li>
+<p>Quantity가 -인 경우 체크</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Quantity &lt; 0'</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">InvoiceNo</th>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">Country</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">141</td>
+<td style="text-align: left">C536379</td>
+<td style="text-align: left">D</td>
+<td style="text-align: left">Discount</td>
+<td style="text-align: right">-1</td>
+<td style="text-align: left">2010-12-01 09:41:00</td>
+<td style="text-align: right">27.5</td>
+<td style="text-align: right">14527</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">154</td>
+<td style="text-align: left">C536383</td>
+<td style="text-align: left">35004C</td>
+<td style="text-align: left">SET OF 3 COLOURED FLYING DUCKS</td>
+<td style="text-align: right">-1</td>
+<td style="text-align: left">2010-12-01 09:49:00</td>
+<td style="text-align: right">4.65</td>
+<td style="text-align: right">15311</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align: right">235</td>
+<td style="text-align: left">C536391</td>
+<td style="text-align: left">22556</td>
+<td style="text-align: left">PLASTERS IN TIN CIRCUS PARADE</td>
+<td style="text-align: right">-12</td>
+<td style="text-align: left">2010-12-01 10:24:00</td>
+<td style="text-align: right">1.65</td>
+<td style="text-align: right">17548</td>
+<td style="text-align: left">United Kingdom</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul>
+<li>Quantity가 -인 경우는 refund, discount, 혹은 기타 지출을 의미하는 듯</li>
+<li>refund나 discount 금액은 매출과 관련이 있으므로 Quantity가 -인 행은 다 남겨둠.</li>
+<li>cf) Quantity가 0인 경우는 없음</li>
+</ul>
+</li>
+</ol>
+<h3 id="결측치-재확인"> <a href="#%EA%B2%B0%EC%B8%A1%EC%B9%98-%EC%9E%AC%ED%99%95%EC%9D%B8" aria-labelledby="결측치-재확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 결측치 재확인</h3>
+<ol>
+<li>
+<p>Description 칼럼</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'Description'</span><span class="p">].</span><span class="n">isna</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 0
+</code></pre></div></div>
+<ul><li>정리하고 나니 Description이 nan인 행은 모두 사라짐</li></ul>
+</li>
+<li>
+<p>CustemerID 칼럼</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Invoice 기준으로 묶어주면 1531명의 Customer가 null
+</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'CustomerID == "N/A"'</span><span class="p">)[</span><span class="s">'InvoiceNo'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1531
+</code></pre></div></div>
+<ul>
+<li>nan인 값은 ‘등록되지 않은 구매자’ 개념인 듯. (비회원 구매 개념)</li>
+<li>신규 이용자 / 이탈자 등을 분석할 때는 제외하는 것이 맞을 것 같지만, 인기 상품 / 기간별 매출 등을 파악할 때에는 미등록 이용자의 구매도 중요하므로 일단 남겨둠.</li>
+</ul>
+</li>
+</ol>
+<h3 id="새로운-칼럼-생성"> <a href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%B9%BC%EB%9F%BC-%EC%83%9D%EC%84%B1" aria-labelledby="새로운-칼럼-생성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 새로운 칼럼 생성</h3>
+<ol>
+<li>
+<p>InvoiceMonth, InvoiceWeekday 칼럼 생성</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceMonth'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'%Y%m'</span><span class="p">)</span>  <span class="c1"># YYYYmm 형식으로 정리
+</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceWeekday'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'InvoiceDate'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">weekday</span>   <span class="c1"># 월: 0 ~ 일: 6
+</span>
+ <span class="n">ecom_df</span><span class="p">[[</span><span class="s">'InvoiceDate'</span><span class="p">,</span> <span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="s">'InvoiceWeekday'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">InvoiceMonth</th>
+<th style="text-align: right">InvoiceWeekday</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>TotalSpending 칼럼 생성: Quantity * UnitPrice</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'TotalSpending'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'Quantity'</span><span class="p">]</span> <span class="o">*</span> <span class="n">ecom_df</span><span class="p">[</span><span class="s">'UnitPrice'</span><span class="p">]</span>
+
+ <span class="n">ecom_df</span><span class="p">[[</span><span class="s">'Quantity'</span><span class="p">,</span> <span class="s">'UnitPrice'</span><span class="p">,</span> <span class="s">'TotalSpending'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: right">TotalSpending</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">2.55</td>
+<td style="text-align: right">15.3</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">20.34</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">2.75</td>
+<td style="text-align: right">22</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">20.34</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">20.34</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h2 id="월별-매출액-구매자수"> <a href="#%EC%9B%94%EB%B3%84-%EB%A7%A4%EC%B6%9C%EC%95%A1-%EA%B5%AC%EB%A7%A4%EC%9E%90%EC%88%98" aria-labelledby="월별-매출액-구매자수" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 월별 매출액, 구매자수</h2>
+<ul><li>201112는 9일밖에 없으므로 제외하고 그려줌</li></ul>
+<ol>
+<li>월별 총 매출액<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="s">'InvoiceMonth'</span><span class="p">)[[</span><span class="s">'TotalSpending'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">(),</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'TotalSpending'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'TotalSpending'</span><span class="p">,</span>
+             <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Teal'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="450" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/126.embed"></iframe>
+</li>
+<li>월별 순구매자수<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_no_na</span> <span class="o">=</span> <span class="n">ecom_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'CustomerID != "N/A"'</span><span class="p">)</span>  <span class="c1"># CustomerID가 N/A인 걸 제외한 df를 따로 저장해둠
+</span>
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ecom_no_na</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="s">'InvoiceMonth'</span><span class="p">)[[</span><span class="s">'CustomerID'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">().</span><span class="n">reset_index</span><span class="p">(),</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'CustomerID'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'CustomerID'</span><span class="p">,</span>
+             <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s">'CustomerID'</span><span class="p">:</span><span class="s">'# of Customers'</span><span class="p">},</span>
+             <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Teal'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="450" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/128.embed"></iframe><ul>
+<li>월별 매출액, 구매자수 모두 2011.09 ~ 2011.11 기간에 급증하는 추세</li>
+<li>현재로서는 전망이 긍정적으로 판단되지만, 겨울 seasonality의 영향인지, 실적이 전반적으로 좋아지는 추세인 것인지 구분하려면 조금 더 장기간의 데이터가 필요할 듯</li>
+</ul>
+</li>
+<li>
+<p>월별 고객 1인당 지출</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># CustomerID = N/A인 값은 제외하고 계산
+</span> <span class="n">cus_spend</span> <span class="o">=</span> <span class="n">ecom_no_na</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="s">'InvoiceMonth'</span><span class="p">)</span>
+ <span class="n">cus_spend</span> <span class="o">=</span> <span class="n">cus_spend</span><span class="p">.</span><span class="n">agg</span><span class="p">({</span><span class="s">'CustomerID'</span><span class="p">:</span><span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">.</span><span class="n">nunique</span><span class="p">,</span> <span class="s">'TotalSpending'</span><span class="p">:</span><span class="s">'sum'</span><span class="p">})</span>
+ <span class="n">cus_spend</span><span class="p">[</span><span class="s">'SpendingPerCustomer'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cus_spend</span><span class="p">[</span><span class="s">'TotalSpending'</span><span class="p">]</span> <span class="o">/</span> <span class="n">cus_spend</span><span class="p">[</span><span class="s">'CustomerID'</span><span class="p">]</span> 
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cus_spend</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'SpendingPerCustomer'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'SpendingPerCustomer'</span><span class="p">,</span>
+             <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s">'SpendingPerCustomer'</span><span class="p">:</span><span class="s">'Spending per Customer'</span><span class="p">},</span>
+             <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Teal'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="450" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/130.embed"></iframe><ul>
+<li>1인당 지출 금액이 크게 증가하는 추세는 아님.</li>
+<li>2011.09 ~ 2011.11 기간에 비교적 1인당 지출이 높게 나타나지만, 겨울 seasonality의 영향인지, 실제로 1인당 지출이 증가하는 추세인 것인지 구분하려면 조금 더 장기간의 데이터가 필요할 듯</li>
+</ul>
+</li>
+</ol>
+<h2 id="코호트-분석"> <a href="#%EC%BD%94%ED%98%B8%ED%8A%B8-%EB%B6%84%EC%84%9D" aria-labelledby="코호트-분석" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 코호트 분석</h2>
+<ul>
+<li>201112는 9일밖에 없으므로 제외하고 계산</li>
+<li>첫 구매월을 기준으로 cohort 분류</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ecom_cohort_df</span> <span class="o">=</span> <span class="n">ecom_no_na</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">)</span>
+<span class="n">min_month</span> <span class="o">=</span><span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)[[</span><span class="s">'InvoiceMonth'</span><span class="p">]].</span><span class="nb">min</span><span class="p">()</span>
+<span class="n">min_month</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'InvoiceMonth'</span><span class="p">:</span> <span class="s">'CohortGroup'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">ecom_cohort_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ecom_cohort_df</span><span class="p">,</span> <span class="n">min_month</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'CustomerID'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">InvoiceNo</th>
+<th style="text-align: left">StockCode</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: right">Quantity</th>
+<th style="text-align: left">InvoiceDate</th>
+<th style="text-align: right">UnitPrice</th>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">Country</th>
+<th style="text-align: right">InvoiceMonth</th>
+<th style="text-align: right">InvoiceWeekday</th>
+<th style="text-align: right">TotalSpending</th>
+<th style="text-align: right">CohortGroup</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">85123A</td>
+<td style="text-align: left">WHITE HANGING HEART T-LIGHT HOLDER</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">2.55</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">201012</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">71053</td>
+<td style="text-align: left">WHITE METAL LANTERN</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">3.39</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">20.34</td>
+<td style="text-align: right">201012</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">536365</td>
+<td style="text-align: left">84406B</td>
+<td style="text-align: left">CREAM CUPID HEARTS COAT HANGER</td>
+<td style="text-align: right">8</td>
+<td style="text-align: left">2010-12-01 08:26:00</td>
+<td style="text-align: right">2.75</td>
+<td style="text-align: right">17850</td>
+<td style="text-align: left">United Kingdom</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">22</td>
+<td style="text-align: right">201012</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ CohortGroup을 기준으로 정리</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ecom_cohort_df</span> <span class="o">=</span> <span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'CohortGroup'</span><span class="p">,</span> <span class="s">'InvoiceMonth'</span><span class="p">])</span>
+<span class="n">ecom_cohort_df</span> <span class="o">=</span> <span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">agg</span><span class="p">({</span><span class="s">'CustomerID'</span><span class="p">:</span><span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">.</span><span class="n">nunique</span><span class="p">,</span> <span class="s">'TotalSpending'</span><span class="p">:[</span><span class="s">'sum'</span><span class="p">,</span> <span class="s">'mean'</span><span class="p">]})</span>
+<span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Customers'</span><span class="p">,</span> <span class="s">'TotalSpending'</span><span class="p">,</span> <span class="s">'AverageSpending'</span><span class="p">]</span>  <span class="c1"># 칼럼명 정리
+</span><span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">CohortGroup</th>
+<th style="text-align: left">InvoiceMonth</th>
+<th style="text-align: right">Customers</th>
+<th style="text-align: right">TotalSpending</th>
+<th style="text-align: right">AverageSpending</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="5">201012
+<br><br><br><br>
+</td>
+<td style="text-align: left">201012</td>
+<td style="text-align: right">947</td>
+<td style="text-align: right">552358</td>
+<td style="text-align: right">20.9623</td>
+</tr>
+<tr>
+<td style="text-align: left">201101</td>
+<td style="text-align: right">361</td>
+<td style="text-align: right">271937</td>
+<td style="text-align: right">25.2237</td>
+</tr>
+<tr>
+<td style="text-align: left">201102</td>
+<td style="text-align: right">317</td>
+<td style="text-align: right">230416</td>
+<td style="text-align: right">25.3427</td>
+</tr>
+<tr>
+<td style="text-align: left">201103</td>
+<td style="text-align: right">367</td>
+<td style="text-align: right">301779</td>
+<td style="text-align: right">25.2345</td>
+</tr>
+<tr>
+<td style="text-align: left">201104</td>
+<td style="text-align: right">341</td>
+<td style="text-align: right">200541</td>
+<td style="text-align: right">20.0741</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 첫구매월을 기준으로 얼마나 지났는지 표기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cohort_period</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'CohortPeriod'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">ecom_cohort_df</span> <span class="o">=</span> <span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="nb">apply</span><span class="p">(</span><span class="n">cohort_period</span><span class="p">).</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ecom_cohort_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">CohortGroup</th>
+<th style="text-align: right">InvoiceMonth</th>
+<th style="text-align: right">Customers</th>
+<th style="text-align: right">TotalSpending</th>
+<th style="text-align: right">AverageSpending</th>
+<th style="text-align: right">CohortPeriod</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">947</td>
+<td style="text-align: right">552358</td>
+<td style="text-align: right">20.9623</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">201101</td>
+<td style="text-align: right">361</td>
+<td style="text-align: right">271937</td>
+<td style="text-align: right">25.2237</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">201102</td>
+<td style="text-align: right">317</td>
+<td style="text-align: right">230416</td>
+<td style="text-align: right">25.3427</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">201103</td>
+<td style="text-align: right">367</td>
+<td style="text-align: right">301779</td>
+<td style="text-align: right">25.2345</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">201104</td>
+<td style="text-align: right">341</td>
+<td style="text-align: right">200541</td>
+<td style="text-align: right">20.0741</td>
+<td style="text-align: right">5</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="코호트별-재방문률"> <a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%EC%9E%AC%EB%B0%A9%EB%AC%B8%EB%A5%A0" aria-labelledby="코호트별-재방문률" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 코호트별 재방문률</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cohorts1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">ecom_cohort_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'CohortGroup'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'CohortPeriod'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Customers'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+
+<span class="n">cohort_retention</span> <span class="o">=</span> <span class="n">cohorts1</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="n">cohorts1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cohort_retention</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'MEAN'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_retention</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cohort_retention</span> <span class="o">=</span> <span class="n">cohort_retention</span><span class="p">.</span><span class="n">reindex</span><span class="p">([</span><span class="s">'MEAN'</span><span class="p">,</span> <span class="s">'201012'</span><span class="p">,</span> <span class="s">'201101'</span><span class="p">,</span> <span class="s">'201102'</span><span class="p">,</span> <span class="s">'201103'</span><span class="p">,</span> <span class="s">'201104'</span><span class="p">,</span> <span class="s">'201105'</span><span class="p">,</span> <span class="s">'201106'</span><span class="p">,</span> <span class="s">'201107'</span><span class="p">,</span> <span class="s">'201108'</span><span class="p">,</span> <span class="s">'201109'</span><span class="p">,</span> <span class="s">'201110'</span><span class="p">,</span> <span class="s">'201111'</span><span class="p">])</span>
+
+<span class="c1"># heatmap으로 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cohort_retention</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'GnBu'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.0%'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/uk_ecommerce_1.png" alt="cohort_retention"></p>
+<ul>
+<li>2010.12에 첫구매한 cohort가 가장 이후 재방문률이 놓은 편. (2010.12 이전부터 지속적으로 구매해오던 이용자 역시 이 그룹으로 계산되었기 때문일 수도 있음)</li>
+<li>2010.12에 첫구매한 cohort의 50%가 2011.11에 다시 방문 → 겨울 seasonality가 있는 상품에 대한 수요가 있는 편이라고 추정</li>
+<li>2011.09, 2011.10에 첫구매한 cohort의 경우 이전 cohort에 비해 다음달 재방문률이 다소 높은 편이지만, ‘최근에 유입된 고객일수록 재방문률이 높다’고 말하기는 어려움</li>
+</ul>
+<h3 id="코호트별-총매출액"> <a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%EC%B4%9D%EB%A7%A4%EC%B6%9C%EC%95%A1" aria-labelledby="코호트별-총매출액" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 코호트별 총매출액</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cohort_spending</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">ecom_cohort_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'CohortGroup'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'CohortPeriod'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'TotalSpending'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+<span class="n">cohort_spending</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'MEAN'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_spending</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cohort_spending</span> <span class="o">=</span> <span class="n">cohort_spending</span><span class="p">.</span><span class="n">reindex</span><span class="p">([</span><span class="s">'MEAN'</span><span class="p">,</span> <span class="s">'201012'</span><span class="p">,</span> <span class="s">'201101'</span><span class="p">,</span> <span class="s">'201102'</span><span class="p">,</span> <span class="s">'201103'</span><span class="p">,</span> <span class="s">'201104'</span><span class="p">,</span> <span class="s">'201105'</span><span class="p">,</span> <span class="s">'201106'</span><span class="p">,</span> <span class="s">'201107'</span><span class="p">,</span> <span class="s">'201108'</span><span class="p">,</span> <span class="s">'201109'</span><span class="p">,</span> <span class="s">'201110'</span><span class="p">,</span> <span class="s">'201111'</span><span class="p">])</span>
+
+<span class="c1"># heatmap으로 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cohort_spending</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'GnBu'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.0f'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/uk_ecommerce_2.png" alt="cohort_spending"></p>
+<ul>
+<li>2010.12에 첫구매한 cohort가 총매출에 지속적으로 가장 큰 기여를 함</li>
+<li>특히, 2010.12에 첫구매한 cohort의 경우, 2011.09 ~ 2010.11 기간에도 거의 2010.12에 버금가는 큰 금액을 지출</li>
+</ul>
+<h3 id="코호트별-평균-지출액"> <a href="#%EC%BD%94%ED%98%B8%ED%8A%B8%EB%B3%84-%ED%8F%89%EA%B7%A0-%EC%A7%80%EC%B6%9C%EC%95%A1" aria-labelledby="코호트별-평균-지출액" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 코호트별 평균 지출액</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cohort_avgspend</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">ecom_cohort_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'CohortGroup'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'CohortPeriod'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'AverageSpending'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+<span class="n">cohort_avgspend</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'MEAN'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_avgspend</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cohort_avgspend</span> <span class="o">=</span> <span class="n">cohort_avgspend</span><span class="p">.</span><span class="n">reindex</span><span class="p">([</span><span class="s">'MEAN'</span><span class="p">,</span> <span class="s">'201012'</span><span class="p">,</span> <span class="s">'201101'</span><span class="p">,</span> <span class="s">'201102'</span><span class="p">,</span> <span class="s">'201103'</span><span class="p">,</span> <span class="s">'201104'</span><span class="p">,</span> <span class="s">'201105'</span><span class="p">,</span> <span class="s">'201106'</span><span class="p">,</span> <span class="s">'201107'</span><span class="p">,</span> <span class="s">'201108'</span><span class="p">,</span> <span class="s">'201109'</span><span class="p">,</span> <span class="s">'201110'</span><span class="p">,</span> <span class="s">'201111'</span><span class="p">])</span>
+
+<span class="c1"># heatmap으로 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cohort_avgspend</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'GnBu'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.2f'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/uk_ecommerce_3.png" alt="cohort_spending"></p>
+<ul>
+<li>2010.12에 첫구매한 cohort가 지속적으로 평균 지출액이 높은 편. 첫구매월 이후 오히려 평균 지출액이 증가하는 모습을 보임</li>
+<li>오히려 최근에 유입된 cohort들의 경우, 2번째 달 지출액이 이전 cohort대비 낮은 편으로 나타남 → 긍정적이지 않은 신호라고 생각됨 (서비스가 개선되고 있다면, 점점 첫달 이후 지출액 감소분이 줄어드는 것이 이상적)</li>
+</ul>
+<h2 id="고객별-이탈-가능성-파악"> <a href="#%EA%B3%A0%EA%B0%9D%EB%B3%84-%EC%9D%B4%ED%83%88-%EA%B0%80%EB%8A%A5%EC%84%B1-%ED%8C%8C%EC%95%85" aria-labelledby="고객별-이탈-가능성-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 고객별 이탈 가능성 파악</h2>
+<ol>
+<li>
+<p>고객별 구매 내역을 월별로 정리</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ecom_purchase</span> <span class="o">=</span> <span class="n">ecom_no_na</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'TotalSpending &gt;= 0'</span><span class="p">)</span>  <span class="c1"># TotalSpending이 양수인 값만 반영. (-는 반품한 내역으로 추정)
+</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ecom_purchase</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">)</span>  <span class="c1"># 201112는 제외하고 계산
+</span>
+ <span class="n">customer_usage</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'CustomerID'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'InvoiceNo'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'count'</span><span class="p">)</span>
+ <span class="n">customer_usage</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">'O'</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">'X'</span><span class="p">)</span>
+ <span class="n">customer_usage</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>고객별로, 구매와 구매 사이에 걸리는 평균 기간을 계산<ul>
+<li>2011.10 ~ 2011.11 기간에 한 번만 구매한 고객은 ‘New Customer’라고 기재 (이탈자라고 보기에는 최근에 새로 구입한 고객이므로)</li>
+<li>2010.12 ~ 2011.09 기간에 한 번 구매한 이후 다시 돌아오지 않은 고객은 ‘Never Returned’라고 기재</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">index</span><span class="p">:</span>
+     <span class="n">templist</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">to_list</span><span class="p">()</span>
+        
+     <span class="n">month_btw</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">templist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'O'</span><span class="p">:</span>
+             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span> <span class="o">-</span> <span class="n">i</span><span class="p">):</span>
+                 <span class="k">if</span> <span class="n">templist</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">'O'</span><span class="p">:</span>
+                     <span class="n">month_btw</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                     <span class="k">break</span>
+        
+     <span class="k">if</span> <span class="n">month_btw</span><span class="p">:</span>
+         <span class="n">month_btw_avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">month_btw</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">month_btw</span><span class="p">)</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'201111'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'O'</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'201110'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'O'</span><span class="p">):</span>
+             <span class="n">month_btw_avg</span> <span class="o">=</span> <span class="s">'New Customer'</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="n">month_btw_avg</span> <span class="o">=</span> <span class="s">'Never Returned'</span>
+     <span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'avg_month_btw_purchases'</span><span class="p">]</span> <span class="o">=</span> <span class="n">month_btw_avg</span>
+
+ <span class="n">customer_usage</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+<th style="text-align: left">avg_month_btw_purchases</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">Never Returned</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">2.0</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">3.0</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">New Customer</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">Never Returned</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ ‘Never Returned’인 고객의 수 파악:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">len</span><span class="p">(</span><span class="n">customer_usage</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'avg_month_btw_purchases == "Never Returned"'</span><span class="p">))</span>  
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1097
+</code></pre></div></div>
+<ul><li>2010.12 ~ 2011.09 기간에 한 번 구매한 이후 다시 돌아오지 않은 고객이 1097명</li></ul>
+<p>+) 지속적으로 구매해 온 고객의 평균 구매 간격 파악:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">temp</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'avg_month_btw_purchases not in ["Never Returned", "New Customer"]'</span><span class="p">)</span>
+ <span class="n">temp</span><span class="p">[</span><span class="s">'avg_month_btw_purchases'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 2.870106683984906
+</code></pre></div></div>
+<ul><li>평균적으로 2.9개월 간격으로 구매</li></ul>
+</li>
+<li>
+<p>마지막 구매 이후 경과한 기간 계산</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 고객별 마지막 구매월 파악
+</span> <span class="n">last_month</span> <span class="o">=</span> <span class="n">ecom_purchase</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'InvoiceMonth != "201112"'</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)[[</span><span class="s">'InvoiceMonth'</span><span class="p">]].</span><span class="nb">max</span><span class="p">()</span>
+ <span class="n">last_month</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'InvoiceMonth'</span><span class="p">:</span><span class="s">'LastMonth'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">customer_usage</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">last_month</span><span class="p">)</span>
+
+ <span class="c1"># 마지막 구매 이후 경과한 기간 계산: 현재시점(2010.12) - 마지막 구매월
+</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">index</span><span class="p">:</span>
+     <span class="n">lastmonth</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'LastMonth'</span><span class="p">]</span>
+     <span class="k">if</span> <span class="n">lastmonth</span> <span class="o">==</span> <span class="s">'201012'</span><span class="p">:</span>
+         <span class="n">lastmonth</span> <span class="o">=</span> <span class="mi">201100</span>
+     <span class="n">customer_usage</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'months_after_latest_purchase'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">201112</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">lastmonth</span><span class="p">)</span>
+
+ <span class="n">customer_usage</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+<th style="text-align: left">avg_month_btw_purchases</th>
+<th style="text-align: right">LastMonth</th>
+<th style="text-align: right">months_after_latest_purchase</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">Never Returned</td>
+<td style="text-align: right">201101</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">2.0</td>
+<td style="text-align: right">201110</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">3.0</td>
+<td style="text-align: right">201109</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">New Customer</td>
+<td style="text-align: right">201111</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">Never Returned</td>
+<td style="text-align: right">201102</td>
+<td style="text-align: right">10</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) ‘Never Returned’ 고객의 평균 구매 후 경과 기간:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">customer_usage</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'avg_month_btw_purchases == "Never Returned"'</span><span class="p">)[</span><span class="s">'months_after_latest_purchase'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 7.353691886964448
+</code></pre></div></div>
+<ul><li>평균적으로 마지막 구매 이후 7개월 이상이 지남</li></ul>
+</li>
+<li>구매 지속 고객의 ‘risk ratio’ 계산<ul>
+<li>risk ratio(위험 비율): 마지막 구매 이후 경과한 기간 / 평균 구매 간격</li>
+<li>고객별로 평균 구매 간격이 다른 경우가 많기 때문에, ‘risk ratio’를 계산해보면 각각의 성격에 맞게 이탈 여부를 판별할 수 있다</li>
+<li>ex) 평균 4달 간격으로 구매하던 고객이 6달 동안 구매하지 않은 경우보다 평균 2달 간격으로 구매하던 고객이 6달 동안 구매하지 않은 경우가 더 강한 이탈 신호라고 판단</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">likely_customer</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'avg_month_btw_purchases not in ["Never Returned", "New Customer"]'</span><span class="p">)</span>
+ <span class="n">likely_customer</span><span class="p">[</span><span class="s">'risk_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">likely_customer</span><span class="p">[</span><span class="s">'months_after_latest_purchase'</span><span class="p">]</span> <span class="o">/</span> <span class="n">likely_customer</span><span class="p">[</span><span class="s">'avg_month_btw_purchases'</span><span class="p">]</span>
+ <span class="n">likely_customer</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+<th style="text-align: right">avg_month_btw_purchases</th>
+<th style="text-align: right">LastMonth</th>
+<th style="text-align: right">months_after_latest_purchase</th>
+<th style="text-align: right">risk_ratio</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">201110</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">201109</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">12352</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">201111</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.333333</td>
+</tr>
+<tr>
+<td style="text-align: right">12356</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">201111</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">12359</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">201110</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.666667</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ risk ratio가 1.5보다 높은 이용자수:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">likely_customer</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'risk_ratio &gt; 1.5'</span><span class="p">)))</span>  
+ <span class="c1"># 평균 구매 간격의 1.5배가 넘는 기간 동안 구매하지 않고 있는 고객의 수
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 515
+</code></pre></div></div>
+</li>
+</ol>
+<p>&gt; 결론: 2010.12 ~ 2011.11 내의 순구매자 4371명 중 1097명은 아마 이탈한 것이 확정적, 515명은 이탈 위기</p>
+<ul><li>risk ratio가 일정 수치가 넘는 고객의 경우 특별한 관리를 통해 이탈을 방지하는 것이 필요하다고 생각됨</li></ul>
+<h2 id="월별-이탈률"> <a href="#%EC%9B%94%EB%B3%84-%EC%9D%B4%ED%83%88%EB%A5%A0" aria-labelledby="월별-이탈률" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 월별 이탈률</h2>
+<p>: 구매 지속 고객의 경우 평균 구매 간격이 2.9개월 정도의 기간라고 계산되었으므로, 구매 이후 3개월 간 이용이 없는 이용자를 ‘이탈자’로 간주하고 월별 변화를 분석</p>
+<ol>
+<li>
+<p>customer_usage의 월별 O, X 부분을 복사</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">customer_churn</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'avg_month_btw_purchases'</span><span class="p">,</span> <span class="s">'LastMonth'</span><span class="p">,</span> <span class="s">'months_after_latest_purchase'</span><span class="p">],</span>
+                 <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 필요 없는 칼럼은 drop
+</span>
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">O</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+<td style="text-align: left">X</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>월별 이용 내역을 바탕으로, 이탈 여부 정리<ul>
+<li>구매가 일어난 월을 기준으로, 그 후 3개월 간 다시 구매하지 않으면 ‘Churn’이라고 표기</li>
+<li>3개월 이내에 다시 구매한 경우, ‘Returning’이라고 표기</li>
+<li>구매가 일어나지 않은 월은 ‘N/A’로 표기</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">columns</span> <span class="o">=</span> <span class="n">customer_churn</span><span class="p">.</span><span class="n">columns</span>
+
+ <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">customer_churn</span><span class="p">.</span><span class="n">index</span><span class="p">:</span>
+     <span class="n">usage_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">customer_churn</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">usage_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'X'</span><span class="p">:</span>
+             <span class="n">customer_churn</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'N/A'</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="k">if</span> <span class="s">'O'</span> <span class="ow">in</span> <span class="n">usage_list</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">]:</span>
+                 <span class="n">customer_churn</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'Returning'</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">customer_churn</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'Churn'</span>
+
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'201109'</span><span class="p">,</span> <span class="s">'201110'</span><span class="p">,</span> <span class="s">'201111'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201012</th>
+<th style="text-align: left">201101</th>
+<th style="text-align: left">201102</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>unstack &amp; rename columns</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">customer_churn</span> <span class="o">=</span> <span class="n">customer_churn</span><span class="p">.</span><span class="n">unstack</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'level_0'</span><span class="p">:</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s">'ChurnFlag'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">customer_churn</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">InvoiceMonth</th>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">ChurnFlag</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">Returning</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">Returning</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">201012</td>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">N/A</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>월별 Churn / Returning 고객 수 및 비율을 계산</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># InvoiceMonth, ChurnFlag를 기준으로 groupby ('N/A'는 무시)
+</span> <span class="n">monthly_churn</span> <span class="o">=</span> <span class="n">customer_churn</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'ChurnFlag != "N/A"'</span><span class="p">)</span>
+ <span class="n">monthly_churn</span> <span class="o">=</span> <span class="n">monthly_churn</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="s">'ChurnFlag'</span><span class="p">])[[</span><span class="s">'CustomerID'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+ <span class="n">monthly_churn</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'CustomerID'</span><span class="p">:</span><span class="s">'CustomerCount'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="c1"># 월별로, Churn vs Returning 비율을 계산
+</span> <span class="n">monthly_churn</span><span class="p">[</span><span class="s">'Percentage'</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_churn</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="s">'CustomerCount'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="p">.</span><span class="nb">sum</span><span class="p">())</span>
+ <span class="n">monthly_churn</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">InvoiceMonth</th>
+<th style="text-align: left">ChurnFlag</th>
+<th style="text-align: right">CustomerCount</th>
+<th style="text-align: right">Percentage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">201012
+<br>
+</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: right">357</td>
+<td style="text-align: right">0.403846</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">527</td>
+<td style="text-align: right">0.596154</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">201101
+<br>
+</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: right">263</td>
+<td style="text-align: right">0.354926</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">478</td>
+<td style="text-align: right">0.645074</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">201102
+<br>
+</td>
+<td style="text-align: left">Churn</td>
+<td style="text-align: right">254</td>
+<td style="text-align: right">0.335092</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">504</td>
+<td style="text-align: right">0.664908</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="월별-이탈률-추이"> <a href="#%EC%9B%94%EB%B3%84-%EC%9D%B4%ED%83%88%EB%A5%A0-%EC%B6%94%EC%9D%B4" aria-labelledby="월별-이탈률-추이" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 월별 이탈률 추이</h3>
+<ol>
+<li>
+<p>월별 재구매자수 &amp; 이탈자수 추이</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">monthly_churn</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'CustomerCount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'ChurnFlag'</span><span class="p">,</span> <span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">,</span> 
+             <span class="n">category_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s">'ChurnFlag'</span><span class="p">:[</span><span class="s">'Returning'</span><span class="p">,</span> <span class="s">'Churn'</span><span class="p">]},</span>
+             <span class="n">hover_data</span><span class="o">=</span><span class="p">{</span><span class="s">'Percentage'</span><span class="p">:</span> <span class="s">':.0%'</span><span class="p">},</span> 
+             <span class="n">color_discrete_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/132.embed"></iframe><ul>
+<li>재구매자: 2010.12 대비 2011.08에 약 33% 증가</li>
+<li>이탈자 수 자체는 크게 급감하는 추세를 보이지는 않지만, 2011.05 이후에는 비교적 감소 추세</li>
+<li>하지만 구매자 수가 증가하는 동안 이탈자 수가 증가하지 않고 유지되었다는 것만으로도 긍정적인 성과라고 생각됨</li>
+</ul>
+</li>
+<li>
+<p>월별 재구매율 &amp; 이탈률 추이</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">monthly_churn</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Percentage'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'ChurnFlag'</span><span class="p">,</span>
+             <span class="n">category_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s">'ChurnFlag'</span><span class="p">:[</span><span class="s">'Returning'</span><span class="p">,</span> <span class="s">'Churn'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">tickformat</span><span class="o">=</span><span class="s">'.0%'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/134.embed"></iframe><ul><li>월별 전체 구매자 대비 비율로 따지면, ‘이탈률’은 감소 추세라고 할 수 있을 듯.</li></ul>
+</li>
+</ol>
+<h2 id="월별-신규-유입률"> <a href="#%EC%9B%94%EB%B3%84-%EC%8B%A0%EA%B7%9C-%EC%9C%A0%EC%9E%85%EB%A5%A0" aria-labelledby="월별-신규-유입률" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 월별 신규 유입률</h2>
+<p>: 구매 지속 고객의 경우 평균 구매 간격이 2.9개월 정도의 기간라고 계산되었으므로, 구매 이전에 3개월 간 이용이 없었던 이용자를 ‘신규유입자’로 간주하고 월별 변화를 분석</p>
+<ol>
+<li>고객별 월별 신규 유입 여부 정리<ul>
+<li>구매가 발생한 월을 기준으로, 그 전 3개월 간 이용이 없었다면 ‘New’라고 표기</li>
+<li>3개월 이내에 구매했던 이력이 있다면 ‘Returning’이라고 표기</li>
+<li>구매하지 않은 월은 ‘N/A’로 표기</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># customer_usage의 월별 O, X 부분을 복사
+</span> <span class="n">new_customer</span> <span class="o">=</span> <span class="n">customer_usage</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+ <span class="n">new_customer</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'avg_month_btw_purchases'</span><span class="p">,</span> <span class="s">'LastMonth'</span><span class="p">,</span> <span class="s">'months_after_latest_purchase'</span><span class="p">],</span>
+                 <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="c1"># 월별 이용 내역을 바탕으로, 신규 유입 여부 정리
+</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">new_customer</span><span class="p">.</span><span class="n">columns</span>
+
+ <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">new_customer</span><span class="p">.</span><span class="n">index</span><span class="p">:</span>
+     <span class="n">usage_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_customer</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>        
+         <span class="k">if</span> <span class="n">usage_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'X'</span><span class="p">:</span>
+             <span class="n">new_customer</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'N/A'</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="k">if</span> <span class="s">'O'</span> <span class="ow">in</span> <span class="n">usage_list</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span> <span class="p">:</span> <span class="n">i</span><span class="p">]:</span>
+                 <span class="n">new_customer</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'Returning'</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">new_customer</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="s">'New'</span>
+
+ <span class="n">new_customer</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'201012'</span><span class="p">,</span> <span class="s">'201101'</span><span class="p">,</span> <span class="s">'201102'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">new_customer</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">CustomerID</th>
+<th style="text-align: left">201103</th>
+<th style="text-align: left">201104</th>
+<th style="text-align: left">201105</th>
+<th style="text-align: left">201106</th>
+<th style="text-align: left">201107</th>
+<th style="text-align: left">201108</th>
+<th style="text-align: left">201109</th>
+<th style="text-align: left">201110</th>
+<th style="text-align: left">201111</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">12346</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12347</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12348</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">Returning</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">New</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: right">12349</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">New</td>
+</tr>
+<tr>
+<td style="text-align: right">12350</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left">N/A</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>월별 Churn / Returning 고객 수 및 비율을 계산</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># unstack &amp; rename
+</span> <span class="n">new_customer</span> <span class="o">=</span> <span class="n">new_customer</span><span class="p">.</span><span class="n">unstack</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">new_customer</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'level_0'</span><span class="p">:</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="s">'NewFlag'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="c1"># InvoiceMonth, NewFlag를 기준으로 groupby ('N/A'는 무시)
+</span> <span class="n">monthly_new</span> <span class="o">=</span> <span class="n">new_customer</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'NewFlag != "N/A"'</span><span class="p">)</span>
+ <span class="n">monthly_new</span> <span class="o">=</span> <span class="n">monthly_new</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="s">'NewFlag'</span><span class="p">])[[</span><span class="s">'CustomerID'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+ <span class="n">monthly_new</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'CustomerID'</span><span class="p">:</span><span class="s">'CustomerCount'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="c1"># 월별로, New vs Returning 비율을 계산
+</span> <span class="n">monthly_new</span><span class="p">[</span><span class="s">'Percentage'</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_new</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="s">'CustomerCount'</span><span class="p">].</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="p">.</span><span class="nb">sum</span><span class="p">())</span>
+ <span class="n">monthly_new</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">InvoiceMonth</th>
+<th style="text-align: left">NewFlag</th>
+<th style="text-align: right">CustomerCount</th>
+<th style="text-align: right">Percentage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">201103
+<br>
+</td>
+<td style="text-align: left">New</td>
+<td style="text-align: right">452</td>
+<td style="text-align: right">0.464066</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">522</td>
+<td style="text-align: right">0.535934</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">201104
+<br>
+</td>
+<td style="text-align: left">New</td>
+<td style="text-align: right">361</td>
+<td style="text-align: right">0.421729</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">495</td>
+<td style="text-align: right">0.578271</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">201105
+<br>
+</td>
+<td style="text-align: left">New</td>
+<td style="text-align: right">372</td>
+<td style="text-align: right">0.352607</td>
+</tr>
+<tr>
+<td style="text-align: left">Returning</td>
+<td style="text-align: right">683</td>
+<td style="text-align: right">0.647393</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="월별-신규유입률-추이"> <a href="#%EC%9B%94%EB%B3%84-%EC%8B%A0%EA%B7%9C%EC%9C%A0%EC%9E%85%EB%A5%A0-%EC%B6%94%EC%9D%B4" aria-labelledby="월별-신규유입률-추이" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 월별 신규유입률 추이</h3>
+<ol>
+<li>
+<p>월별 재구매자수 &amp; 신규유입자수 추이</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">monthly_new</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'CustomerCount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'NewFlag'</span><span class="p">,</span> <span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">,</span>
+             <span class="n">category_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s">'NewFlag'</span><span class="p">:[</span><span class="s">'Returning'</span><span class="p">,</span> <span class="s">'New'</span><span class="p">]},</span>
+             <span class="n">hover_data</span><span class="o">=</span><span class="p">{</span><span class="s">'Percentage'</span><span class="p">:</span> <span class="s">':.0%'</span><span class="p">},</span> 
+             <span class="n">color_discrete_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/136.embed"></iframe><ul>
+<li>재구매자: 2011.03 대비 2011.11에 약 92% 증가</li>
+<li>2011.09 ~ 2011.11 3개월 간 신규유입자가 500명 위로 높게 유지됨</li>
+</ul>
+</li>
+<li>
+<p>월별 재구매율 &amp; 신규유입률 추이</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">monthly_new</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'InvoiceMonth'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Percentage'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'NewFlag'</span><span class="p">,</span>
+             <span class="n">category_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s">'NewFlag'</span><span class="p">:[</span><span class="s">'Returning'</span><span class="p">,</span> <span class="s">'New'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">sequential</span><span class="p">.</span><span class="n">Teal</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">tickformat</span><span class="o">=</span><span class="s">'.0%'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/138.embed"></iframe><ul>
+<li>월별 전체 구매자 대비 비율로 따지면, 신규유입률은 여름(2011.06 ~ 2011.08)에 감소 후 가을 이후로 다시 증가하는 경향을 보임</li>
+<li>1년 정도의 데이터를 더 확보하면 seasonality를 더 명확히 파악하고 전략을 세울 수 있을 거라 생각됨 (ex. 신규 유입이 많은 겨울 시즌에 집중 프로모션)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

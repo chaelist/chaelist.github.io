@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiva Crowdfunding 1 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Kiva Crowdfunding 1">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/">
+<meta property="og:url" content="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Kiva Crowdfunding 1"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/","@type":"WebPage","headline":"Kiva Crowdfunding 1","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link active">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/kaggle">Kaggle Dataset EDA</a></li>
+<li class="breadcrumb-nav-list-item"><span>Kiva Crowdfunding 1</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="kiva-crowdfunding-1"> <a href="#kiva-crowdfunding-1" aria-labelledby="kiva-crowdfunding-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Kiva Crowdfunding 1</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85" id="markdown-toc-데이터-파악">데이터 파악</a><ol>
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%ED%8C%8C%EC%95%85" id="markdown-toc-데이터-정보-파악">데이터 정보 파악</a></li>
+<li><a href="#datetime-%ED%98%95%EC%8B%9D-%EC%B2%98%EB%A6%AC" id="markdown-toc-datetime-형식-처리">datetime 형식 처리</a></li>
+</ol>
+</li>
+<li>
+<a href="#funded-amount-%ED%8C%8C%EC%95%85" id="markdown-toc-funded-amount-파악">funded amount 파악</a><ol>
+<li><a href="#funded-amount-%EB%B6%84%ED%8F%AC" id="markdown-toc-funded-amount-분포">funded amount 분포</a></li>
+<li><a href="#funded-amount-%EC%B6%94%EC%9D%B4" id="markdown-toc-funded-amount-추이">funded amount 추이</a></li>
+<li><a href="#funded-amount%EC%99%80-loan-amount%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EB%B9%84%EA%B5%90" id="markdown-toc-funded-amount와-loan-amount의-차이-비교">funded amount와 loan amount의 차이 비교</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%A1%B0%EA%B1%B4%EB%B3%84-funded-amount-%ED%99%95%EC%9D%B8" id="markdown-toc-조건별-funded-amount-확인">조건별 funded amount 확인</a><ol>
+<li><a href="#%EA%B5%AD%EA%B0%80%EB%B3%84" id="markdown-toc-국가별">국가별</a></li>
+<li><a href="#sector%EB%B3%84" id="markdown-toc-sector별">Sector별</a></li>
+<li><a href="#activity%EB%B3%84" id="markdown-toc-activity별">Activity별</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%A1%B0%EA%B1%B4%EB%B3%84-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" id="markdown-toc-조건별-분포-확인">조건별 분포 확인</a><ol>
+<li><a href="#borrower-genders" id="markdown-toc-borrower-genders">borrower genders</a></li>
+<li><a href="#term-in-months" id="markdown-toc-term-in-months">term in months</a></li>
+<li><a href="#repayment-interval" id="markdown-toc-repayment-interval">repayment interval</a></li>
+<li><a href="#lender-count" id="markdown-toc-lender-count">lender count</a></li>
+<li><a href="#funding%EC%97%90-%EA%B1%B8%EB%A6%AC%EB%8A%94-%EA%B8%B0%EA%B0%84" id="markdown-toc-funding에-걸리는-기간">funding에 걸리는 기간</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<p><strong>*분석 대상 데이터셋: Kiva Crowdfunding Data</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/kiva/data-science-for-good-kiva-crowdfunding" target="_blank">데이터셋 출처</a></li>
+<li>kiva.org: 세계 각국의 경제적으로 어려운 사람들에게 돈을 빌려주는 online crowdfunding platform</li>
+<li>kiva_loans.csv: 2014.01.01~2017.07.26 사이에 kiva에 올라온 loan 정보 데이터. (671,205개의 row)</li>
+</ul>
+<h2 id="데이터-파악"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85" aria-labelledby="데이터-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 파악</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 라이브러리 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="n">stats</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kiva_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/kiva_loans.csv'</span><span class="p">)</span>
+<span class="n">kiva_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">id</th>
+<th style="text-align: right">funded_amount</th>
+<th style="text-align: right">loan_amount</th>
+<th style="text-align: left">activity</th>
+<th style="text-align: left">sector</th>
+<th style="text-align: left">use</th>
+<th style="text-align: left">country_code</th>
+<th style="text-align: left">country</th>
+<th style="text-align: left">region</th>
+<th style="text-align: left">currency</th>
+<th style="text-align: right">partner_id</th>
+<th style="text-align: left">posted_time</th>
+<th style="text-align: left">disbursed_time</th>
+<th style="text-align: left">funded_time</th>
+<th style="text-align: right">term_in_months</th>
+<th style="text-align: right">lender_count</th>
+<th style="text-align: left">tags</th>
+<th style="text-align: left">borrower_genders</th>
+<th style="text-align: left">repayment_interval</th>
+<th style="text-align: left">date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">653051</td>
+<td style="text-align: right">300</td>
+<td style="text-align: right">300</td>
+<td style="text-align: left">Fruits &amp; Vegetables</td>
+<td style="text-align: left">Food</td>
+<td style="text-align: left">To buy seasonal, fresh fruits to sell.</td>
+<td style="text-align: left">PK</td>
+<td style="text-align: left">Pakistan</td>
+<td style="text-align: left">Lahore</td>
+<td style="text-align: left">PKR</td>
+<td style="text-align: right">247</td>
+<td style="text-align: left">2014-01-01 06:12:39+00:00</td>
+<td style="text-align: left">2013-12-17 08:00:00+00:00</td>
+<td style="text-align: left">2014-01-02 10:06:32+00:00</td>
+<td style="text-align: right">12</td>
+<td style="text-align: right">12</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">irregular</td>
+<td style="text-align: left">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">653053</td>
+<td style="text-align: right">575</td>
+<td style="text-align: right">575</td>
+<td style="text-align: left">Rickshaw</td>
+<td style="text-align: left">Transportation</td>
+<td style="text-align: left">to repair and maintain the auto rickshaw used in their business.</td>
+<td style="text-align: left">PK</td>
+<td style="text-align: left">Pakistan</td>
+<td style="text-align: left">Lahore</td>
+<td style="text-align: left">PKR</td>
+<td style="text-align: right">247</td>
+<td style="text-align: left">2014-01-01 06:51:08+00:00</td>
+<td style="text-align: left">2013-12-17 08:00:00+00:00</td>
+<td style="text-align: left">2014-01-02 09:17:23+00:00</td>
+<td style="text-align: right">11</td>
+<td style="text-align: right">14</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">female, female</td>
+<td style="text-align: left">irregular</td>
+<td style="text-align: left">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">653068</td>
+<td style="text-align: right">150</td>
+<td style="text-align: right">150</td>
+<td style="text-align: left">Transportation</td>
+<td style="text-align: left">Transportation</td>
+<td style="text-align: left">To repair their old cycle-van and buy another one to rent out as a source of income</td>
+<td style="text-align: left">IN</td>
+<td style="text-align: left">India</td>
+<td style="text-align: left">Maynaguri</td>
+<td style="text-align: left">INR</td>
+<td style="text-align: right">334</td>
+<td style="text-align: left">2014-01-01 09:58:07+00:00</td>
+<td style="text-align: left">2013-12-17 08:00:00+00:00</td>
+<td style="text-align: left">2014-01-01 16:01:36+00:00</td>
+<td style="text-align: right">43</td>
+<td style="text-align: right">6</td>
+<td style="text-align: left">user_favorite, user_favorite</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">bullet</td>
+<td style="text-align: left">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">653063</td>
+<td style="text-align: right">200</td>
+<td style="text-align: right">200</td>
+<td style="text-align: left">Embroidery</td>
+<td style="text-align: left">Arts</td>
+<td style="text-align: left">to purchase an embroidery machine and a variety of new embroidery materials.</td>
+<td style="text-align: left">PK</td>
+<td style="text-align: left">Pakistan</td>
+<td style="text-align: left">Lahore</td>
+<td style="text-align: left">PKR</td>
+<td style="text-align: right">247</td>
+<td style="text-align: left">2014-01-01 08:03:11+00:00</td>
+<td style="text-align: left">2013-12-24 08:00:00+00:00</td>
+<td style="text-align: left">2014-01-01 13:00:00+00:00</td>
+<td style="text-align: right">11</td>
+<td style="text-align: right">8</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">irregular</td>
+<td style="text-align: left">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">653084</td>
+<td style="text-align: right">400</td>
+<td style="text-align: right">400</td>
+<td style="text-align: left">Milk Sales</td>
+<td style="text-align: left">Food</td>
+<td style="text-align: left">to purchase one buffalo.</td>
+<td style="text-align: left">PK</td>
+<td style="text-align: left">Pakistan</td>
+<td style="text-align: left">Abdul Hakeem</td>
+<td style="text-align: left">PKR</td>
+<td style="text-align: right">245</td>
+<td style="text-align: left">2014-01-01 11:53:19+00:00</td>
+<td style="text-align: left">2013-12-17 08:00:00+00:00</td>
+<td style="text-align: left">2014-01-01 19:18:51+00:00</td>
+<td style="text-align: right">14</td>
+<td style="text-align: right">16</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">monthly</td>
+<td style="text-align: left">2014-01-01</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul>
+<li>funded_amount: amount disbursed by Kiva to the field agent (USD)</li>
+<li>loan_amount: amount disbursed by the field agent to the borrower (USD)</li>
+<li>country_code: ISO country code</li>
+<li>posted_time: the time at which the loan is posted on Kiva by the field agent</li>
+<li>disbursed_time: the time at which the loan is disbursed by the field agent to the borrower</li>
+<li>funded_time: the time at which the loan posted to Kiva gets funded by lenders completely</li>
+<li>term_in_months: the duration for which the loan was disbursed in months</li>
+<li>date: posted_time에서 date만 추출한 것. (Kiva에 올라온 날짜)</li>
+</ul>
+<h3 id="데이터-정보-파악"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%ED%8C%8C%EC%95%85" aria-labelledby="데이터-정보-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 정보 파악</h3>
+<ol>
+<li>
+<p>중복값 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># 중복값이 포함되어 있나 확인 (모든 열의 데이터가 같은 경우)
+</span> <span class="n">kiva_df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 0
+</code></pre></div></div>
+</li>
+<li>
+<p>null값 여부, data type 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">kiva_df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;class 'pandas.core.frame.DataFrame'&gt;
+ RangeIndex: 671205 entries, 0 to 671204
+ Data columns (total 20 columns):
+ #   Column              Non-Null Count   Dtype  
+ ---  ------              --------------   -----  
+ 0   id                  671205 non-null  int64  
+ 1   funded_amount       671205 non-null  float64
+ 2   loan_amount         671205 non-null  float64
+ 3   activity            671205 non-null  object 
+ 4   sector              671205 non-null  object 
+ 5   use                 666973 non-null  object 
+ 6   country_code        671197 non-null  object 
+ 7   country             671205 non-null  object 
+ 8   region              614405 non-null  object 
+ 9   currency            671205 non-null  object 
+ 10  partner_id          657698 non-null  float64
+ 11  posted_time         671205 non-null  object 
+ 12  disbursed_time      668809 non-null  object 
+ 13  funded_time         622874 non-null  object 
+ 14  term_in_months      671205 non-null  float64
+ 15  lender_count        671205 non-null  int64  
+ 16  tags                499789 non-null  object 
+ 17  borrower_genders    666984 non-null  object 
+ 18  repayment_interval  671205 non-null  object 
+ 19  date                671205 non-null  object 
+ dtypes: float64(4), int64(2), object(14)
+ memory usage: 102.4+ MB
+</code></pre></div></div>
+</li>
+<li>
+<p>funded_amount와 loan_amount의 관계를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="s">'funded = loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">==</span> <span class="n">kiva_df</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'funded &lt; loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">kiva_df</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'funded &gt; loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">kiva_df</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> funded = loan:  622875
+ funded &lt; loan:  48328
+ funded &gt; loan:  2
+</code></pre></div></div>
+<ul>
+<li>funded_amount: Kiva → field agent // loan_amount: field_agent → borrower</li>
+<li>보통 field agent가 먼저 borrower에게 필요한 금액을 빌려주고, 그 다음 Kiva에 post헤서 자금을 모으는 형태인 듯.</li>
+<li>loan_amount만큼 funded_amount가 찬 경우가 가장 많고, 아직 loan_amount만큼 차지 않는 경우는 48,328건</li>
+<li>loan_amount보다 funded_amount가 많은 경우도 이례적으로 2건 있으나, 오기입인지 실제로 loan_amount를 초과해서 자금을 모을 수 있는지는 불분명.</li>
+</ul>
+</li>
+<li>
+<p>funded_time의 null값을 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">funded_time_na</span> <span class="o">=</span> <span class="n">kiva_df</span><span class="p">[</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">].</span><span class="n">isna</span><span class="p">()]</span>
+
+ <span class="k">print</span><span class="p">(</span><span class="s">'funded = loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">funded_time_na</span><span class="p">[</span><span class="n">funded_time_na</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">==</span> <span class="n">funded_time_na</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'funded &lt; loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">funded_time_na</span><span class="p">[</span><span class="n">funded_time_na</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">funded_time_na</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'funded &gt; loan: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">funded_time_na</span><span class="p">[</span><span class="n">funded_time_na</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">funded_time_na</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]]))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> funded = loan:  1
+ funded &lt; loan:  48328
+ funded &gt; loan:  2
+</code></pre></div></div>
+<ul>
+<li>funded_time: Kiva에 post된 loan이 완전히 모금된 시간을 기록</li>
+<li>loan_amount만큼 아직 funded_amount가 다 차지 않은 경우, funded_time이 아직 기록될 수 없어서 null값으로 남아 있음.</li>
+<li>이례적으로 funded_amount &gt;= loan_amount인 경우도 3건 있음: 모금이 완료되었는데도 해당 시간을 미처 기록하지 못한 듯.</li>
+</ul>
+</li>
+</ol>
+<h3 id="datetime-형식-처리"> <a href="#datetime-%ED%98%95%EC%8B%9D-%EC%B2%98%EB%A6%AC" aria-labelledby="datetime-형식-처리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> datetime 형식 처리</h3>
+<ol>
+<li>datetime 정보를 담은 컬럼들을 datetime type으로 변환해줌<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">kiva_df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">])</span>
+ <span class="n">kiva_df</span><span class="p">[</span><span class="s">'disbursed_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'disbursed_time'</span><span class="p">])</span>
+ <span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">kiva_df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">])</span>
+
+ <span class="c1"># 잘 변환되었나 확인
+</span> <span class="n">kiva_df</span><span class="p">[[</span><span class="s">'posted_time'</span><span class="p">,</span> <span class="s">'disbursed_time'</span><span class="p">,</span> <span class="s">'funded_time'</span><span class="p">]].</span><span class="n">dtypes</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> posted_time       datetime64[ns, UTC]
+ disbursed_time    datetime64[ns, UTC]
+ funded_time       datetime64[ns, UTC]
+ dtype: object
+</code></pre></div></div>
+</li>
+<li>
+<p>posted_time 정보: 미리 가공해둠</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># posted_time → Month, Year, Quarter로도 묶어둠 (추이를 시각화해서 확인하기 편하도록)
+</span>
+ <span class="n">df</span><span class="p">[</span><span class="s">'posted_month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'%Y%m'</span><span class="p">)</span>
+ <span class="n">df</span><span class="p">[</span><span class="s">'posted_year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">year</span>
+ <span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">to_period</span><span class="p">(</span><span class="s">"Q"</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">'str'</span><span class="p">)</span>
+
+ <span class="n">df</span><span class="p">[[</span><span class="s">'posted_time'</span><span class="p">,</span> <span class="s">'posted_month'</span><span class="p">,</span> <span class="s">'posted_year'</span><span class="p">,</span> <span class="s">'posted_quarter'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">posted_time</th>
+<th style="text-align: right">posted_month</th>
+<th style="text-align: right">posted_year</th>
+<th style="text-align: left">posted_quarter</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">2014-01-01 06:12:39+00:00</td>
+<td style="text-align: right">201401</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">2014Q1</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2014-01-01 06:51:08+00:00</td>
+<td style="text-align: right">201401</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">2014Q1</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">2014-01-01 09:58:07+00:00</td>
+<td style="text-align: right">201401</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">2014Q1</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">2014-01-01 08:03:11+00:00</td>
+<td style="text-align: right">201401</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">2014Q1</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">2014-01-01 11:53:19+00:00</td>
+<td style="text-align: right">201401</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">2014Q1</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h2 id="funded-amount-파악"> <a href="#funded-amount-%ED%8C%8C%EC%95%85" aria-labelledby="funded-amount-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> funded amount 파악</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 당장 필요하지는 않은 column을 제외하고 df 구성
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">kiva_df</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'country_code'</span><span class="p">,</span> <span class="s">'tags'</span><span class="p">,</span> <span class="s">'date'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="funded-amount-분포"> <a href="#funded-amount-%EB%B6%84%ED%8F%AC" aria-labelledby="funded-amount-분포" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> funded amount 분포</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding1.png" alt="funded_amount_kde1"></p>
+<p>→ outlier가 많아서 알아보기 어려우므로 특정 구간만 확대해서 다시 그려봄:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3사분위값 + 1.5IQR = 1875
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1875</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding2.png" alt="funded_amount_kde2"></p>
+<ul><li>대체로 250 USD 정도의 funding이 많고, 75%가 900 USD 이하의 규모.</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">].</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    671205.000000
+mean        785.995061
+std        1130.398941
+min           0.000000
+25%         250.000000
+50%         450.000000
+75%         900.000000
+max      100000.000000
+Name: funded_amount, dtype: float64
+</code></pre></div></div>
+<h3 id="funded-amount-추이"> <a href="#funded-amount-%EC%B6%94%EC%9D%B4" aria-labelledby="funded-amount-추이" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> funded amount 추이</h3>
+<ol>
+<li>분기별 총 funded_amount<ul>
+<li>월별로 그리기에는 기간이 너무 길어 시각화해서 제대로 표현하기 어려우므로, 분기별 추이로 시각화</li>
+<li>2017Q3은 2017.07.26까지의 기록밖에 없으므로 제외하고 시각화</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">30000000</span><span class="p">,</span> <span class="mi">45000000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding3.png" alt="quarterly_funded_amount"></p>
+</li>
+<li>
+<p>분기별 총 post된 fund수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s">'count'</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding4.png" alt="quarterly_funded_count"></p>
+</li>
+<li>
+<p>분기별 평균 funded_amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">)</span>   <span class="c1"># estimator='mean'이 default값
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding5.png" alt="quarterly_funded_amount_average"></p>
+<ul>
+<li>분기별 총 funded_amount는 증가하는 추세</li>
+<li>평균 funded_amount는 감소세이지만, post되는 fund의 수가 증가 추세여서 총 amount가 함께 증가.</li>
+<li>다만, 2017Q2에는 post된 fund의 수가 증가했음에도 평균 funded_amount가 크게 감소해 총 funded_amount도 크게 감소.</li>
+</ul>
+</li>
+</ol>
+<h3 id="funded-amount와-loan-amount의-차이-비교"> <a href="#funded-amount%EC%99%80-loan-amount%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EB%B9%84%EA%B5%90" aria-labelledby="funded-amount와-loan-amount의-차이-비교" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> funded amount와 loan amount의 차이 비교</h3>
+<ol>
+<li>
+<p>funded_amount와 loan_amount의 변화 추이를 비교해서 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'loan_amount'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#D7CCAD'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s">'sum'</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">30000000</span><span class="p">,</span> <span class="mi">50000000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding6.png" alt="quarterly_funded_loan_amount"></p>
+</li>
+<li>
+<p>loan_amount - funded_amount 차액 변화를 확인</p>
+<ul><li>loan_amount에서 funded_amount를 뺀 금액이 어떻게 변화하는지 시각화</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_amount</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="s">'loan_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">quarterly_amount</span><span class="p">[</span><span class="s">'loan-funded'</span><span class="p">]</span> <span class="o">=</span> <span class="n">quarterly_amount</span><span class="p">[</span><span class="s">'loan_amount'</span><span class="p">]</span> <span class="o">-</span> <span class="n">quarterly_amount</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">quarterly_amount</span><span class="p">[</span><span class="n">quarterly_amount</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'loan-funded'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding7.png" alt="quarterly_funded_loan_amount_diff"></p>
+<ul>
+<li>2017Q2에는 loan_amount 자체도 조금 감소하긴 했으나 별 문제는 없어 보임.</li>
+<li>2017Q2에 funded_amount 총액이 크게 감소한 것은 아직 loan_amount만큼 다 채워지지 않은 건들이 남아 있기 때문인 듯. 조금 더 시간이 있으면 funding이 늘어날 수 있으므로 시간을 두고 추이를 확인해볼 필요가 있다고 판단됨.</li>
+<li>특이하게도 연도별 Q1(1분기)에는 loan_amount와 funded_amount 사이의 차이가 유독 작게 나타남. 주로 연초에 crowdfunding 등 새로운 계획을 실천하는 사람이 많이 때문?</li>
+</ul>
+</li>
+</ol>
+<h2 id="조건별-funded-amount-확인"> <a href="#%EC%A1%B0%EA%B1%B4%EB%B3%84-funded-amount-%ED%99%95%EC%9D%B8" aria-labelledby="조건별-funded-amount-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 조건별 funded amount 확인</h2>
+<h3 id="국가별"> <a href="#%EA%B5%AD%EA%B0%80%EB%B3%84" aria-labelledby="국가별" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 국가별</h3>
+<ol>
+<li>
+<p>funded amount가 가장 높은 국가 Top 10 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded_amount 합산 금액 내림차순으로 Top 10 국가만 시각화
+</span>
+ <span class="n">loans_country</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'country'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">loans_country</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">loans_country</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">loans_country</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding8.png" alt="loan_per_country"></p>
+<ul><li>kiva에서 fund 받은 금액이 가장 많은 나라는 Philippines</li></ul>
+</li>
+<li>
+<p>분기별 국가별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_loans_country</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="s">'country'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="c1"># 2017Q3은 7월밖에 없고, 그나마 7월도 26일까지밖에 없으므로 제외
+</span> <span class="n">quarterly_loans_country</span> <span class="o">=</span> <span class="n">quarterly_loans_country</span><span class="p">[</span><span class="n">quarterly_loans_country</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">]</span>
+
+ <span class="c1"># 각 기간별로, funded amount top 5에 포함되는 국가들만 따로 저장
+</span> <span class="n">quarters</span> <span class="o">=</span> <span class="n">quarterly_loans_country</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">].</span><span class="n">unique</span><span class="p">()</span>
+ <span class="n">top_countries_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+ <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quarters</span><span class="p">:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">quarterly_loans_country</span><span class="p">[</span><span class="n">quarterly_loans_country</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">]</span>
+     <span class="n">temp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">()[</span><span class="s">'country'</span><span class="p">].</span><span class="n">to_list</span><span class="p">())</span>
+     <span class="n">top_countries_set</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">temp_set</span><span class="p">)</span>
+
+ <span class="c1"># 위에서 정리한 top_countries_set에 포함된 국가에 한해서 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">quarterly_loans_country</span><span class="p">[</span><span class="n">quarterly_loans_country</span><span class="p">[</span><span class="s">'country'</span><span class="p">].</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries_set</span><span class="p">)],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Set2'</span><span class="p">);</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding9.png" alt="quarterly_loan_per_country"></p>
+<ul>
+<li>2014Q1을 제외한 모든 기간에 Philippines이 fund 받은 금액이 가장 많음</li>
+<li>Kenya의 경우, 특히 Q1(1분기)를 위주로 funded amount가 증가하는 트렌드를 보임</li>
+<li>Cambodia의 경우 2017Q1, 2017Q2에 큰 funded amount 상승세를 보여, 추후 지켜봐야 할 듯.</li>
+</ul>
+<p>+) Kenya의 sector별 funded_amount 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">kenya_sector</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'country'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Kenya'</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'sector'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">kenya_sector</span><span class="p">[</span><span class="s">'percentage(%)'</span><span class="p">]</span> <span class="o">=</span> <span class="n">kenya_sector</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">]</span> <span class="o">/</span> <span class="n">kenya_sector</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">].</span><span class="nb">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="n">kenya_sector</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">sector</th>
+<th style="text-align: right">funded_amount</th>
+<th style="text-align: right">percentage(%)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">Agriculture</td>
+<td style="text-align: right">16484185</td>
+<td style="text-align: right">51.12</td>
+</tr>
+<tr>
+<td style="text-align: left">Food</td>
+<td style="text-align: right">4603345</td>
+<td style="text-align: right">14.27</td>
+</tr>
+<tr>
+<td style="text-align: left">Retail</td>
+<td style="text-align: right">4232640</td>
+<td style="text-align: right">13.13</td>
+</tr>
+<tr>
+<td style="text-align: left">Services</td>
+<td style="text-align: right">1896535</td>
+<td style="text-align: right">5.88</td>
+</tr>
+<tr>
+<td style="text-align: left">Clothing</td>
+<td style="text-align: right">1547850</td>
+<td style="text-align: right">4.80</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>Kenya의 경우 funded amount 중 약 51%가 Agriculture(농업) 관련이여서 1분기에 특히 fund가 증가하는 추세가 나타나는 듯.</li></ul>
+</li>
+</ol>
+<h3 id="sector별"> <a href="#sector%EB%B3%84" aria-labelledby="sector별" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sector별</h3>
+<ol>
+<li>
+<p>funded amount가 가장 높은 sector Top 10 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded_amount 합산 금액 내림차순으로 정렬 후 시각화
+</span> <span class="n">loans_sector</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'sector'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">loans_sector</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">loans_sector</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sector'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">40</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding10.png" alt="loan_per_sector"></p>
+<ul><li>가장 많은 funded amount를 보이는 sector는 Agriculture, Food, Retail.</li></ul>
+</li>
+<li>
+<p>분기별 sector별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_loans_sector</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="s">'sector'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="c1"># 2017Q3은 7월밖에 없고, 그나마 7월도 26일까지밖에 없으므로 제외
+</span> <span class="n">quarterly_loans_sector</span> <span class="o">=</span> <span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">]</span>
+
+
+ <span class="c1"># 각 기간별로, funded amount top 5에 포함되는 sector들만 따로 저장
+</span> <span class="n">quarters</span> <span class="o">=</span> <span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">].</span><span class="n">unique</span><span class="p">()</span>
+ <span class="n">top_sectors_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+ <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quarters</span><span class="p">:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">]</span>
+     <span class="n">temp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">()[</span><span class="s">'sector'</span><span class="p">].</span><span class="n">to_list</span><span class="p">())</span>
+     <span class="n">top_sectors_set</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">temp_set</span><span class="p">)</span>
+
+ <span class="c1"># 위에서 정리한 top_sectors_set에 포함된 sector에 한해서 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="n">quarterly_loans_sector</span><span class="p">[</span><span class="s">'sector'</span><span class="p">].</span><span class="n">isin</span><span class="p">(</span><span class="n">top_sectors_set</span><span class="p">)],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'sector'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Set2'</span><span class="p">);</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding11.png" alt="quarterly_loan_per_sector"></p>
+<ul>
+<li>Agriculture 섹터의 경우, 주로 Q1 ~ Q2의 기간에 특히 funded amount가 증가하는 트렌드를 보임</li>
+<li>Food, Retail 섹터는 꾸준히 많은 funded amount를 보임</li>
+</ul>
+</li>
+<li>
+<p>국가별 sector별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded amount Top 10 country만 따로 저장
+</span> <span class="n">top_countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'country'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="c1"># funded amount 내림차순으로 sector 순서 정렬
+</span> <span class="n">sectors_order</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'sector'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="n">loans_country_sector</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'sector'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+ <span class="n">loans_country_sector</span> <span class="o">=</span> <span class="n">loans_country_sector</span><span class="p">[</span><span class="n">loans_country_sector</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span>  <span class="c1"># top 10 country만 대상으로 자름
+</span> <span class="n">loans_country_sector</span> <span class="o">=</span> <span class="n">loans_country_sector</span><span class="p">[</span><span class="n">sectors_order</span><span class="p">]</span>   <span class="c1"># 전체 loan amount가 가장 높은 sector부터 내림차순 정렬
+</span>
+ <span class="n">loans_country_sector</span> <span class="o">=</span> <span class="n">loans_country_sector</span><span class="p">.</span><span class="n">T</span>
+ <span class="n">loans_country_sector</span> <span class="o">=</span> <span class="n">loans_country_sector</span><span class="p">[</span><span class="n">top_countries</span><span class="p">]</span>   <span class="c1"># 전체 loan amount가 가장 높은 country부터 내림차순 정렬
+</span>
+
+ <span class="c1"># 값을 normalize(정규화)해서 비교 (heatmap으로 보다 명확하게 비교할 수 있게 표현하기 위함)
+</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+
+ <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
+ <span class="n">normalized_data</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">loans_country_sector</span><span class="p">)</span>
+ <span class="n">loans_cntry_sctr_normalized</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalized_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">loans_country_sector</span><span class="p">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">loans_country_sector</span><span class="p">.</span><span class="n">index</span><span class="p">)</span>
+
+ <span class="c1"># heatmap으로 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">loans_cntry_sctr_normalized</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.2f'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding12.png" alt="loan_per_sector_country_heatmap"></p>
+<ul>
+<li>funded amount Top 10 국가 중 Kenya, El Salvador, Cambodia, Ecuador는 Agriculture 섹터로 funding 받은 금액이 가장 많음</li>
+<li>funded amount Top 10 국가 중 Peru, Paraguay, Bolivia, Rwanda는 Food 섹터로 funding 받은 금액이 가장 많음</li>
+<li>가장 funded amount가 많은 국가인 Philippines은 Retail 섹터로 받은 금액이 가장 많음</li>
+<li>United States는 이례적으로 Services 섹터로 받은 금액이 가장 많음</li>
+</ul>
+</li>
+</ol>
+<h3 id="activity별"> <a href="#activity%EB%B3%84" aria-labelledby="activity별" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Activity별</h3>
+<ol>
+<li>
+<p>funded amount가 가장 높은 activity Top 10 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded_amount 합산 금액 내림차순으로 Top 10 activity만 확인
+</span> <span class="n">loans_activity</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'sector'</span><span class="p">,</span> <span class="s">'activity'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">loans_activity</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">loans_activity</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">sector</th>
+<th style="text-align: left">activity</th>
+<th style="text-align: right">funded_amount</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">7</td>
+<td style="text-align: left">Agriculture</td>
+<td style="text-align: left">Farming</td>
+<td style="text-align: right">47900500</td>
+</tr>
+<tr>
+<td style="text-align: right">94</td>
+<td style="text-align: left">Retail</td>
+<td style="text-align: left">General Store</td>
+<td style="text-align: right">35555135</td>
+</tr>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Agriculture</td>
+<td style="text-align: left">Agriculture</td>
+<td style="text-align: right">25530735</td>
+</tr>
+<tr>
+<td style="text-align: right">54</td>
+<td style="text-align: left">Food</td>
+<td style="text-align: left">Food Production/Sales</td>
+<td style="text-align: right">24326140</td>
+</tr>
+<tr>
+<td style="text-align: right">112</td>
+<td style="text-align: left">Retail</td>
+<td style="text-align: left">Retail</td>
+<td style="text-align: right">23911950</td>
+</tr>
+<tr>
+<td style="text-align: right">24</td>
+<td style="text-align: left">Clothing</td>
+<td style="text-align: left">Clothing Sales</td>
+<td style="text-align: right">22569725</td>
+</tr>
+<tr>
+<td style="text-align: right">68</td>
+<td style="text-align: left">Housing</td>
+<td style="text-align: left">Personal Housing Expenses</td>
+<td style="text-align: right">20166525</td>
+</tr>
+<tr>
+<td style="text-align: right">37</td>
+<td style="text-align: left">Education</td>
+<td style="text-align: left">Higher education costs</td>
+<td style="text-align: right">19012400</td>
+</tr>
+<tr>
+<td style="text-align: right">57</td>
+<td style="text-align: left">Food</td>
+<td style="text-align: left">Grocery Store</td>
+<td style="text-align: right">14299895</td>
+</tr>
+<tr>
+<td style="text-align: right">10</td>
+<td style="text-align: left">Agriculture</td>
+<td style="text-align: left">Livestock</td>
+<td style="text-align: right">13699275</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">loans_activity</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'activity'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding13.png" alt="loan_per_activity"></p>
+<ul><li>Agriculture 섹터에 속하는 ‘Farming’ activity가 가장 많은 funded amount를 보임</li></ul>
+</li>
+<li>
+<p>분기별 activity별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_loans_activity</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="s">'activity'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="c1"># 2017Q3은 7월밖에 없고, 그나마 7월도 26일까지밖에 없으므로 제외
+</span> <span class="n">quarterly_loans_activity</span> <span class="o">=</span> <span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">]</span>
+
+ <span class="c1"># 각 기간별로, funded amount top 5에 포함되는 activity들만 따로 저장
+</span> <span class="n">quarters</span> <span class="o">=</span> <span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">].</span><span class="n">unique</span><span class="p">()</span>
+ <span class="n">top_activities_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+ <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quarters</span><span class="p">:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">]</span>
+     <span class="n">temp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">()[</span><span class="s">'activity'</span><span class="p">].</span><span class="n">to_list</span><span class="p">())</span>
+     <span class="n">top_activities_set</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">temp_set</span><span class="p">)</span>
+
+ <span class="c1"># 위에서 정리한 top_sectors_set에 포함된 activity에 한해서 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="n">quarterly_loans_activity</span><span class="p">[</span><span class="s">'activity'</span><span class="p">].</span><span class="n">isin</span><span class="p">(</span><span class="n">top_activities_set</span><span class="p">)],</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'activity'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Set2'</span><span class="p">);</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding14.png" alt="quarterly_loan_per_activity"></p>
+<ul>
+<li>Farming activity의 funded amount는 Q4에 가장 적고 주로 Q1 ~ Q2 기간에 증가하는 추세를 보임 (Seasonality 존재)</li>
+<li>General Store activity의 꾸준히 높은 funded amount를 보이는 편</li>
+</ul>
+</li>
+<li>
+<p>국가별 activity별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded amount Top 10 country만 따로 저장
+</span> <span class="n">top_countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'country'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="c1"># funded amount 내림차순으로 activity 순서 정렬
+</span> <span class="n">activity_order</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'activity'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="c1"># Top 10 country 각각의 Top 3 activity만 따로 저장
+</span> <span class="n">temp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'country'</span><span class="p">,</span> <span class="s">'activity'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">top_activities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+ <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">top_countries</span><span class="p">:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="n">temp_df</span><span class="p">[</span><span class="s">'country'</span><span class="p">]</span> <span class="o">==</span> <span class="n">country</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+     <span class="n">top_activities</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s">'activity'</span><span class="p">].</span><span class="n">to_list</span><span class="p">()))</span>
+
+
+ <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'activity'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+ <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">loans_country_activity</span><span class="p">[</span><span class="n">loans_country_activity</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span>   <span class="c1"># top 10 country만 대상으로 자름
+</span> <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">loans_country_activity</span><span class="p">[</span><span class="n">activity_order</span><span class="p">]</span>   <span class="c1"># 전체 loan amount가 가장 높은 activity부터 내림차순 정렬
+</span>
+ <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">loans_country_activity</span><span class="p">.</span><span class="n">T</span>
+ <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">loans_country_activity</span><span class="p">[</span><span class="n">loans_country_activity</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_activities</span><span class="p">)]</span>   <span class="c1"># top_activities로 한정
+</span> <span class="n">loans_country_activity</span> <span class="o">=</span> <span class="n">loans_country_activity</span><span class="p">[</span><span class="n">top_countries</span><span class="p">]</span>   <span class="c1"># 전체 loan amount가 가장 높은 country부터 내림차순 정렬
+</span>
+
+ <span class="c1"># 값을 normalize(정규화)해서 비교 (heatmap으로 보다 명확하게 비교할 수 있게 표현하기 위함)
+</span> <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
+ <span class="n">normalized_data</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">loans_country_activity</span><span class="p">)</span>
+ <span class="n">loans_country_activity_normalized</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalized_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">loans_country_activity</span><span class="p">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">loans_country_activity</span><span class="p">.</span><span class="n">index</span><span class="p">)</span>
+
+ <span class="c1"># heatmap으로 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">loans_country_activity_normalized</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.2f'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding15.png" alt="loan_per_activity_country_heatmap"></p>
+<ul>
+<li>Kenya와 Cambodia는 Farming으로 받은 금액이 가장 많음</li>
+<li>Philipines는 General Store 관련 금액이 가장 많음</li>
+</ul>
+</li>
+</ol>
+<h2 id="조건별-분포-확인"> <a href="#%EC%A1%B0%EA%B1%B4%EB%B3%84-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" aria-labelledby="조건별-분포-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 조건별 분포 확인</h2>
+<h3 id="borrower-genders"> <a href="#borrower-genders" aria-labelledby="borrower-genders" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> borrower genders</h3>
+<ul><li>결측치는 무시하고 계산</li></ul>
+<ol>
+<li>borrower_genders 칼럼을 type별로 묶어서 저장<ul><li>female 또는 male 한 명인 경우 그대로 적고, female 여러 명일 경우 female_group, male 여러 명일 경우 male_group, 그리고 female과 male이 섞여 있는 그룹일 경우 mixed_group으로 기재</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">borrower_type</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">:</span>
+         <span class="n">borrower</span> <span class="o">=</span> <span class="s">'N/A'</span>
+     <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="s">'female'</span><span class="p">:</span>
+         <span class="n">borrower</span> <span class="o">=</span> <span class="s">'female'</span>
+     <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="s">'male'</span><span class="p">:</span>
+         <span class="n">borrower</span> <span class="o">=</span> <span class="s">'male'</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="n">borr_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">', '</span><span class="p">))</span>
+         <span class="k">if</span> <span class="s">'female'</span> <span class="ow">in</span> <span class="n">borr_set</span><span class="p">:</span>
+             <span class="k">if</span> <span class="s">'male'</span> <span class="ow">in</span> <span class="n">borr_set</span><span class="p">:</span>
+                 <span class="n">borrower</span> <span class="o">=</span> <span class="s">'mixed_group'</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">borrower</span> <span class="o">=</span> <span class="s">'female_group'</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="n">borrower</span> <span class="o">=</span> <span class="s">'male_group'</span>
+     <span class="k">return</span> <span class="n">borrower</span>
+
+ <span class="n">df</span><span class="p">[</span><span class="s">'borrower_type'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'borrower_genders'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">borrower_type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+ <span class="n">df</span><span class="p">[[</span><span class="s">'borrower_genders'</span><span class="p">,</span> <span class="s">'borrower_type'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">borrower_genders</th>
+<th style="text-align: left">borrower_type</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">female</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">female, female</td>
+<td style="text-align: left">female_group</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">female</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">female</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">female</td>
+<td style="text-align: left">female</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>borrower type별 총 funded_amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'borrower_type'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">,</span>
+         <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'female_group'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'male_group'</span><span class="p">,</span> <span class="s">'mixed_group'</span><span class="p">,</span> <span class="s">'N/A'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding16.png" alt="loan_total_per_borrower_type"></p>
+</li>
+<li>
+<p>borrower type별 fund count</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'borrower_type'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span>
+         <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'female_group'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'male_group'</span><span class="p">,</span> <span class="s">'mixed_group'</span><span class="p">,</span> <span class="s">'N/A'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding17.png" alt="loan_count_per_borrower_type"></p>
+</li>
+<li>
+<p>borrower type별 평균 funded_amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'borrower_type'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span>
+         <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'female_group'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'male_group'</span><span class="p">,</span> <span class="s">'mixed_group'</span><span class="p">,</span> <span class="s">'N/A'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding18.png" alt="average_loan_per_borrower_type"></p>
+<ul>
+<li>female 혼자 빌리는 경우는 평균 funded_amount는 적지만 수 자체가 가장 많기 때문에 총 funded_amount가 가장 많음</li>
+<li>group으로 빌리는 경우는 수 자체는 적지만 평균 funded_amount가 많다</li>
+</ul>
+</li>
+<li>
+<p>분기별 borrower type별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">borrower_loan</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="s">'borrower_type'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">borrower_loan</span> <span class="o">=</span> <span class="n">borrower_loan</span><span class="p">[</span><span class="n">borrower_loan</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">]</span>   <span class="c1"># 2017Q3은 7월밖에 없고, 그나마 7월도 26일까지밖에 없으므로 제외
+</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">borrower_loan</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'borrower_type'</span><span class="p">,</span> 
+             <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'female_group'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'male_group'</span><span class="p">,</span> <span class="s">'mixed_group'</span><span class="p">,</span> <span class="s">'N/A'</span><span class="p">])</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<ul><li>모든 기간에 female 혼자 빌리는 형태의 funded_amount 총액이 가장 많다</li></ul>
+</li>
+<li>
+<p>borrower type별 activity별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># borrower_type 중 'N/A'만 제외
+</span> <span class="n">borrower_type_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'borrower_type'</span><span class="p">].</span><span class="n">unique</span><span class="p">())</span>
+ <span class="n">borrower_type_list</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'N/A'</span><span class="p">)</span>
+
+ <span class="c1"># funded amount 내림차순으로 activity 순서 정렬
+</span> <span class="n">activity_order</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'activity'</span><span class="p">)[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="c1"># Top 10 country 각각의 Top 5 activity만 따로 저장
+</span> <span class="n">temp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'borrower_type'</span><span class="p">,</span> <span class="s">'activity'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">top_activities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+ <span class="k">for</span> <span class="n">borrower</span> <span class="ow">in</span> <span class="n">borrower_type_list</span><span class="p">:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="n">temp_df</span><span class="p">[</span><span class="s">'borrower_type'</span><span class="p">]</span> <span class="o">==</span> <span class="n">borrower</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+     <span class="n">top_activities</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s">'activity'</span><span class="p">].</span><span class="n">to_list</span><span class="p">()))</span>
+
+
+ <span class="n">loans_borrower_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'borrower_type'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'activity'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'sum'</span><span class="p">)</span>
+ <span class="n">loans_borrower_activity</span> <span class="o">=</span> <span class="n">loans_borrower_activity</span><span class="p">[</span><span class="n">activity_order</span><span class="p">]</span>   <span class="c1"># 전체 loan amount가 가장 높은 activity부터 내림차순 정렬
+</span> <span class="n">loans_borrower_activity</span> <span class="o">=</span> <span class="n">loans_borrower_activity</span><span class="p">[</span><span class="n">loans_borrower_activity</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">borrower_type_list</span><span class="p">)]</span>
+
+ <span class="n">loans_borrower_activity</span> <span class="o">=</span> <span class="n">loans_borrower_activity</span><span class="p">.</span><span class="n">T</span>
+ <span class="n">loans_borrower_activity</span> <span class="o">=</span> <span class="n">loans_borrower_activity</span><span class="p">[</span><span class="n">loans_borrower_activity</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_activities</span><span class="p">)]</span>   <span class="c1"># top_activities로 한정
+</span>
+ <span class="c1"># 값을 normalize(정규화)해서 비교 (heatmap으로 보다 명확하게 비교할 수 있게 표현하기 위함)
+</span> <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
+ <span class="n">normalized_data</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">loans_borrower_activity</span><span class="p">)</span>
+ <span class="n">loans_borrower_activity_normalized</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalized_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">loans_borrower_activity</span><span class="p">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">loans_borrower_activity</span><span class="p">.</span><span class="n">index</span><span class="p">)</span>
+
+ <span class="c1"># heatmap으로 시각화
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">loans_borrower_activity_normalized</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.2f'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding19.png" alt="loan_borrower_type_activity"></p>
+<ul>
+<li>다른 타입은 모두 ‘Farming’ 관련 funded amount가 가장 많은 반면, female은 ‘General Store’ 관련 funded amount가 가장 많음</li>
+<li>male과 male_group은 Farming과 Agriculture 관련 funded amount가 많음</li>
+<li>female_group의 경우, 가장 funded amount가 많은 두 activity는 Farming과 Retail</li>
+</ul>
+</li>
+</ol>
+<h3 id="term-in-months"> <a href="#term-in-months" aria-labelledby="term-in-months" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> term in months</h3>
+<ul><li>term_in_months: 돈을 몇 개월에 걸쳐 나눠서 지급하는지 나타내는 지표 (The duration for which the loan was disbursed in months)</li></ul>
+<ol>
+<li>
+<p>term_in_months와 funded_amount 사이의 상관관계 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span> 
+                 <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding20.png" alt="term_in_months_loans_corr"></p>
+<p>+) 상관계수 계산:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 피어슨 상관계수 검정
+</span> <span class="n">corr</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'term_in_months'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">])</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'Corr_Coefficient : %.3f </span><span class="se">\n</span><span class="s">p-value : %.3f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">corr</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Corr_Coefficient : 0.149 
+ p-value : 0.000
+</code></pre></div></div>
+<ul><li>funded_amount와 term_in_months 사이에 큰 관계는 보이지 않음</li></ul>
+</li>
+<li>
+<p>funded amount를 구간별로 나눠서 비교</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded_amount를 기준으로 1사분위 ~ 4사분위로 나눠서 flag를 붙임 
+</span> <span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+
+ <span class="k">def</span> <span class="nf">get_flag</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">if</span> <span class="n">x</span><span class="o">&lt;</span> <span class="n">q1</span><span class="p">:</span> <span class="n">quarter</span> <span class="o">=</span> <span class="s">'1st_q'</span>
+     <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">q2</span><span class="p">:</span> <span class="n">quarter</span> <span class="o">=</span> <span class="s">'2nd_q'</span>
+     <span class="k">elif</span> <span class="n">x</span><span class="o">&lt;</span> <span class="n">q3</span><span class="p">:</span> <span class="n">quarter</span> <span class="o">=</span> <span class="s">'3rd_q'</span>
+     <span class="k">else</span><span class="p">:</span> <span class="n">quarter</span> <span class="o">=</span> <span class="s">'4th_q'</span>
+     <span class="k">return</span> <span class="n">quarter</span>
+
+ <span class="n">df</span><span class="p">[</span><span class="s">'funded_amount_flag'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_flag</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+ <span class="n">df</span><span class="p">[[</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="s">'funded_amount_flag'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">funded_amount</th>
+<th style="text-align: left">funded_amount_flag</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">300</td>
+<td style="text-align: left">2nd_q</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">575</td>
+<td style="text-align: left">3rd_q</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">150</td>
+<td style="text-align: left">1st_q</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">200</td>
+<td style="text-align: left">1st_q</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">400</td>
+<td style="text-align: left">2nd_q</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ funded_amount_flag별 평균 term_in_months를 비교</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount_flag'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> 
+             <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s">'4th_q'</span><span class="p">,</span> <span class="s">'3rd_q'</span><span class="p">,</span> <span class="s">'2nd_q'</span><span class="p">,</span> <span class="s">'1st_q'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding21.png" alt="term_in_months_funded_amount_flag"></p>
+<ul><li>loan_amount가 가장 많은 그룹(4사분위)이 지급 기간도 평균적으로 긴 편</li></ul>
+</li>
+<li>
+<p>분기별 그룹별 평균 term in months 비교</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'funded_amount_flag'</span><span class="p">,</span>
+             <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s">'4th_q'</span><span class="p">,</span> <span class="s">'3rd_q'</span><span class="p">,</span> <span class="s">'2nd_q'</span><span class="p">,</span> <span class="s">'1st_q'</span><span class="p">])</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding22.png" alt="term_in_months_funded_amount_flag_per_quarter"></p>
+<ul><li>대체로 loan_amount가 많은 그룹(3~4사분위)이 지급 기간도 평균적으로 긴 편</li></ul>
+</li>
+<li>
+<p>분기별 평균 term in months 추이 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding23.png" alt="term_in_months_per_quarter"></p>
+<ul>
+<li>특히 Q1 ~ Q2 기간에 평균 term_in_months가 짧은 편으로 나타나는 경향이 있는 듯</li>
+<li>전체적으로 봤을 때, 평균 term_in_months가 감소하는 추세라고 판단됨. (추후 수치 트래킹 필요)</li>
+</ul>
+</li>
+<li>
+<p>sector별 평균 term in months 비교</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># term_in_months 기준 내림차순으로 index 순서를 저장해둠
+</span> <span class="n">index_order</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'sector'</span><span class="p">)[[</span><span class="s">'term_in_months'</span><span class="p">]].</span><span class="n">mean</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">index</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sector'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'term_in_months'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">index_order</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">40</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding24.png" alt="term_in_months_per_sector"></p>
+<ul>
+<li>각 sector의 평균 funded_amount와는 큰 관계가 없음</li>
+<li>평균 term_in_months가 큰 sector는 Education, Housing, Health</li>
+</ul>
+</li>
+</ol>
+<h3 id="repayment-interval"> <a href="#repayment-interval" aria-labelledby="repayment-interval" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> repayment interval</h3>
+<ol>
+<li>
+<p>repayment interval별 총 funded_amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'repayment_interval'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+             <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s">'bullet'</span><span class="p">,</span> <span class="s">'irregular'</span><span class="p">,</span> <span class="s">'monthly'</span><span class="p">,</span> <span class="s">'weekly'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding25.png" alt="repayment_interval_funded_amount"></p>
+</li>
+<li>
+<p>repayment interval별 평균 funded_amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'repayment_interval'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span>
+             <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s">'bullet'</span><span class="p">,</span> <span class="s">'irregular'</span><span class="p">,</span> <span class="s">'monthly'</span><span class="p">,</span> <span class="s">'weekly'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding27.png" alt="repayment_interval_avg_funded_amounts"></p>
+</li>
+<li>
+<p>repayment interval별 loan 수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'repayment_interval'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">,</span> 
+             <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s">'bullet'</span><span class="p">,</span> <span class="s">'irregular'</span><span class="p">,</span> <span class="s">'monthly'</span><span class="p">,</span> <span class="s">'weekly'</span><span class="p">]);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding26.png" alt="repayment_interval_loan_count"></p>
+<ul>
+<li>‘monthly’로 상환하는 loan이 가장 많음</li>
+<li>monthly로 상환하는 loan 수가 많고, 평균 funded_amount도 높은 편이기 때문에 monthly로 상환되는 총 funded_amount가 가장 많음</li>
+</ul>
+</li>
+<li>
+<p>분기별 repayment interval별 funded amount</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarter_interval</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="s">'repayment_interval'</span><span class="p">])[[</span><span class="s">'funded_amount'</span><span class="p">]].</span><span class="nb">sum</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">quarter_interval</span> <span class="o">=</span> <span class="n">quarter_interval</span><span class="p">[</span><span class="n">quarter_interval</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">]</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">quarter_interval</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'repayment_interval'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>
+
+ <span class="c1"># legend를 box 밖으로 빼 줌
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding28.png" alt="quarterly_repayment_interval_loans"></p>
+<ul>
+<li>2015Q3 이후로는 weekly 상환 방식은 없어짐</li>
+<li>monthly 혹은 bullet 상환 방식이 더 안정적인 자금 계획에 유리하겠지만, irregular 상환 방식도 지나치게 증가하고 있는 추세는 아니므로 괜찮다고 생각됨</li>
+<li>다만, irregular 상환 방식의 비중이 너무 높아지면 좋지 않을 수 있으므로 향후 꾸준히 트래킹할 필요가 있다고 생각됨</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="s">'*2014Q1 대비 2017Q1 funded_amount 증감*'</span><span class="p">)</span>
+
+ <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'monthly'</span><span class="p">,</span> <span class="s">'irregular'</span><span class="p">,</span> <span class="s">'bullet'</span><span class="p">]:</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">quarter_interval</span><span class="p">[</span><span class="n">quarter_interval</span><span class="p">[</span><span class="s">'repayment_interval'</span><span class="p">]</span> <span class="o">==</span> <span class="n">interval</span><span class="p">]</span>
+     <span class="n">loan_2014</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'2014Q1'</span><span class="p">][</span><span class="s">'funded_amount'</span><span class="p">])</span>
+     <span class="n">loan_2017</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'2017Q1'</span><span class="p">][</span><span class="s">'funded_amount'</span><span class="p">])</span>
+     <span class="n">growth_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">loan_2017</span> <span class="o">/</span> <span class="n">loan_2014</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> 
+     <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">interval</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">growth_rate</span> <span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="s">%  (</span><span class="si">{</span><span class="n">loan_2014</span><span class="si">}</span><span class="s"> -&gt; </span><span class="si">{</span><span class="n">loan_2017</span><span class="si">}</span><span class="s">)'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> *2014Q1 대비 2017Q1 funded_amount 증감*
+ monthly: 15%  (21201250 -&gt; 24314025)
+ irregular: 30%  (10370950 -&gt; 13451700)
+ bullet: 41%  (3173205 -&gt; 4460625)
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="lender-count"> <a href="#lender-count" aria-labelledby="lender-count" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> lender count</h3>
+<ol>
+<li>
+<p>lender_count와 funded_amount 사이의 상관관계 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'lender_count'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding29.png" alt="lender_count_amount_corr"></p>
+<p>+) 상관계수 계산:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 피어슨 상관계수 검정
+</span> <span class="n">corr</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'lender_count'</span><span class="p">])</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'Corr_Coefficient : %.3f </span><span class="se">\n</span><span class="s">p-value : %.3f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">corr</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Corr_Coefficient : 0.849 
+ p-value : 0.000
+</code></pre></div></div>
+<ul><li>lender_count와 funded_amount는 꽤 강한 상관관계를 보임</li></ul>
+</li>
+<li>
+<p>lender_count의 분포 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'lender_count'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding30.png" alt="lender_count_kde"></p>
+<p>→ outlier로 인해 값이 몰려 있는 부분을 구체적으로 확인하기 어려우므로, 주요 구간을 확대해서 확인:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Q3 + 1.5IQR = 49.5
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'lender_count'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">'lender_count'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding31.png" alt="lender_count_countplot"></p>
+<ul><li>주로 1명 혹은 5~9명 정도가 하나의 funding에 참여하는 경우가 많다</li></ul>
+</li>
+<li>
+<p>분기별 평균 lender_count</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'lender_count'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding32.png" alt="quarterly_lender_count_avg"></p>
+<ul>
+<li>평균적인 lender 수가 점점 감소하는 추세를 보임</li>
+<li>점점 post되는 loan의 수가 많아지면서 개당 lender수, funded_amount가 감소하는 것인라고 추정됨</li>
+</ul>
+</li>
+</ol>
+<h3 id="funding에-걸리는-기간"> <a href="#funding%EC%97%90-%EA%B1%B8%EB%A6%AC%EB%8A%94-%EA%B8%B0%EA%B0%84" aria-labelledby="funding에-걸리는-기간" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> funding에 걸리는 기간</h3>
+<ul><li>posted_time ~ funded_time 사이 기간 (post한 후 완전히 funding 완료되기까지)</li></ul>
+<ol>
+<li>
+<p>funding 미완료 post의 분포를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># funded_time이 null값인 post를 funding 미완료라고 분류
+</span> <span class="n">funding_incomplete</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">].</span><span class="n">isna</span><span class="p">()]</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">funding_incomplete</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding33.png" alt="funding_incomplete_posts"></p>
+</li>
+<li>
+<p>posted_time ~ funded_time 사이 기간을 계산해서 저장</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># day(일) 단위로 저장
+</span> <span class="n">df</span><span class="p">[</span><span class="s">'post_to_funded'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">]).</span><span class="n">dt</span><span class="p">.</span><span class="n">days</span>
+ <span class="n">df</span><span class="p">[[</span><span class="s">'funded_time'</span><span class="p">,</span> <span class="s">'posted_time'</span><span class="p">,</span> <span class="s">'post_to_funded'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">funded_time</th>
+<th style="text-align: left">posted_time</th>
+<th style="text-align: right">post_to_funded</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">2014-01-02 10:06:32+00:00</td>
+<td style="text-align: left">2014-01-01 06:12:39+00:00</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2014-01-02 09:17:23+00:00</td>
+<td style="text-align: left">2014-01-01 06:51:08+00:00</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">2014-01-01 16:01:36+00:00</td>
+<td style="text-align: left">2014-01-01 09:58:07+00:00</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">2014-01-01 13:00:00+00:00</td>
+<td style="text-align: left">2014-01-01 08:03:11+00:00</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">2014-01-01 19:18:51+00:00</td>
+<td style="text-align: left">2014-01-01 11:53:19+00:00</td>
+<td style="text-align: right">0</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) null값 수 파악</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">[</span><span class="s">'post_to_funded'</span><span class="p">].</span><span class="n">isnull</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 48331
+</code></pre></div></div>
+<p>+) 잘못된 값 파악</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'funded_time'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s">'posted_time'</span><span class="p">]][[</span><span class="s">'funded_time'</span><span class="p">,</span> <span class="s">'posted_time'</span><span class="p">]]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">posted_time</th>
+<th style="text-align: left">funded_time</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align: right">636606</td>
+<td style="text-align: left">2017-05-15 00:00:00+00:00</td>
+<td style="text-align: left">2017-04-27 11:52:24+00:00</td>
+</tr></tbody>
+</table></div></div>
+<ul>
+<li>posted_time은 kiva에 loan이 post된 시각이고, funded_time은 kiva에 post된 loan이 완전히 funded된 시각이므로 posted_time이 funded_time보다 뒤일 수는 없다</li>
+<li>posted_time &lt; posted_time으로 나오는 row는 잘못 기입된 것이라고 생각됨</li>
+</ul>
+<p>→ 마이너스 값을 보이는 칼럼 &amp; N/A값(아직 funding 완료 안됨)을 제외한 데이터를 별도로 저장</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">post_to_fund_notna</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'post_to_funded'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>post된 후 funding 완료까지의 기간 분포 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">post_to_fund_notna</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">"post_to_funded"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding34.png" alt="post_to_funding_kde"></p>
+<p>→ outlier로 인해 값이 몰려 있는 부분을 구체적으로 확인하기 어려우므로, 주요 구간을 확대해서 확인:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Q3 + 1.5IQR = 47.5
+</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">post_to_fund_notna</span><span class="p">[</span><span class="n">post_to_fund_notna</span><span class="p">[</span><span class="s">'post_to_funded'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">],</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">"post_to_funded"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding35.png" alt="post_to_funding_countplot"></p>
+<ul><li>주로 funding 완료까지 5일 정도 걸리는 경우가 많으며, 전체의 50% 이상이 9일 안에 funding이 완료됨</li></ul>
+</li>
+<li>
+<p>분기별 평균 posted ~ funded 기간</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">post_to_fund_notna</span><span class="p">[</span><span class="n">post_to_fund_notna</span><span class="p">[</span><span class="s">'posted_quarter'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'2017Q3'</span><span class="p">],</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'posted_quarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'post_to_funded'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding36.png" alt="post_to_funding_per_quarter"></p>
+<ul><li>특히 Q1에 post 후 funding 완료까지의 기간이 평균적으로 짧은 경향을 보임</li></ul>
+</li>
+<li>
+<p>sector별 평균 posted ~ funded 기간</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">post_to_fund_notna</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sector'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'post_to_funded'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">40</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding37.png" alt="post_to_funding_per_sector"></p>
+<ul><li>Arts, Manufacturing, Education, Personal Use 섹터가 특히 post 후 funding 완료까지의 기간이 비교적 짧은 것으로 보임</li></ul>
+</li>
+<li>
+<p>funded_amount와 posted ~ funded 기간의 상관관계 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">post_to_fund_notna</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'funded_amount'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'post_to_funded'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'#C88686'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/kiva_crowdfunding38.png" alt="post_to_funding_funded_amount_corr"></p>
+<p>+) 상관계수 계산:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 피어슨 상관계수 검정
+</span> <span class="n">corr</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">post_to_fund_notna</span><span class="p">[</span><span class="s">'post_to_funded'</span><span class="p">],</span> <span class="n">post_to_fund_notna</span><span class="p">[</span><span class="s">'funded_amount'</span><span class="p">])</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'Corr_Coefficient : %.3f </span><span class="se">\n</span><span class="s">p-value : %.3f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">corr</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Corr_Coefficient : 0.140 
+ p-value : 0.000
+</code></pre></div></div>
+<ul><li>funded_amount와 funding 완료되기까지의 기간 사이에 관계가 있을 수 있다고 생각했으나, 별로 관계가 없는 것으로 확인됨</li></ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

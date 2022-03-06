@@ -1,0 +1,2445 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pandas 데이터 결합 &amp; 요약 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Pandas 데이터 결합 &amp; 요약">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/pandas/pandas_merge_group/">
+<meta property="og:url" content="https://chaelist.github.io/docs/pandas/pandas_merge_group/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Pandas 데이터 결합 &amp; 요약"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/pandas/pandas_merge_group/","@type":"WebPage","headline":"Pandas 데이터 결합 &amp; 요약","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link active">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/pandas">Pandas</a></li>
+<li class="breadcrumb-nav-list-item"><span>Pandas 데이터 결합 &amp; 요약</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="pandas-데이터-결합--요약"> <a href="#pandas-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B2%B0%ED%95%A9--%EC%9A%94%EC%95%BD" aria-labelledby="pandas-데이터-결합--요약" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pandas 데이터 결합 &amp; 요약</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#merge-join-concatenate" id="markdown-toc-merge-join-concatenate">Merge, Join, Concatenate</a><ol>
+<li><a href="#pdmergedf1-df2" id="markdown-toc-pdmergedf1-df2">pd.merge(df1, df2)</a></li>
+<li><a href="#df1joindf2" id="markdown-toc-df1joindf2">df1.join(df2)</a></li>
+<li><a href="#pdconcatdf1-df2" id="markdown-toc-pdconcatdf1-df2">pd.concat([df1, df2])</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9A%94%EC%95%BD-%EC%A7%91%EA%B3%84" id="markdown-toc-데이터-요약-집계">데이터 요약 집계</a><ol>
+<li><a href="#dfgroupby" id="markdown-toc-dfgroupby">df.groupby()</a></li>
+<li><a href="#pdpivot_table" id="markdown-toc-pdpivot_table">pd.pivot_table()</a></li>
+<li><a href="#dfpivot" id="markdown-toc-dfpivot">df.pivot()</a></li>
+</ol>
+</li>
+<li>
+<a href="#multi-index-multi-header-%EB%8B%A4%EB%A3%A8%EA%B8%B0" id="markdown-toc-multi-index-multi-header-다루기">Multi-Index, Multi-Header 다루기</a><ol>
+<li><a href="#multi-index-%EB%8B%A4%EB%A3%A8%EA%B8%B0" id="markdown-toc-multi-index-다루기">Multi-Index 다루기</a></li>
+<li><a href="#multi-header-%EB%8B%A4%EB%A3%A8%EA%B8%B0" id="markdown-toc-multi-header-다루기">Multi-Header 다루기</a></li>
+</ol>
+</li>
+<li>
+<a href="#unstack-stack%EC%9C%BC%EB%A1%9C-pivot" id="markdown-toc-unstack-stack으로-pivot">unstack, stack으로 pivot</a><ol>
+<li><a href="#dfunstack" id="markdown-toc-dfunstack">df.unstack()</a></li>
+<li><a href="#dfstack" id="markdown-toc-dfstack">df.stack()</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="merge-join-concatenate"> <a href="#merge-join-concatenate" aria-labelledby="merge-join-concatenate" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Merge, Join, Concatenate</h2>
+<h3 id="pdmergedf1-df2"> <a href="#pdmergedf1-df2" aria-labelledby="pdmergedf1-df2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> pd.merge(df1, df2)</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'customer_id'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="mi">1003</span><span class="p">,</span> <span class="mi">1004</span><span class="p">,</span> <span class="mi">1005</span><span class="p">],</span>
+                    <span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Annie'</span><span class="p">,</span> <span class="s">'Chloe'</span><span class="p">,</span> <span class="s">'Jacob'</span><span class="p">,</span> <span class="s">'David'</span><span class="p">,</span> <span class="s">'Ellie'</span><span class="p">],</span>
+                    <span class="s">'sex'</span><span class="p">:</span> <span class="p">[</span><span class="s">'F'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">]})</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'customer_id'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">1005</span><span class="p">,</span> <span class="mi">1004</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="mi">1008</span><span class="p">],</span>
+                    <span class="s">'amount_spent'</span><span class="p">:</span> <span class="p">[</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">12000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">35000</span><span class="p">]})</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   customer_id   name sex
+0         1001  Annie   F
+1         1002  Chloe   F
+2         1003  Jacob   M
+3         1004  David   M
+4         1005  Ellie   F 
+
+   customer_id  amount_spent
+0         1001         10000
+1         1001         20000
+2         1005         12000
+3         1004          5000
+4         1002         30000
+5         1008         35000
+</code></pre></div></div>
+<ol>
+<li>inner join (default): 두 DataFrame에 모두 데이터가 존재하는 행만 남는다<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+ <span class="c1"># 보통 default로 'inner join' 방식이 사용되며, 자동으로 이름이 같은 column을 기준으로 merge된다
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>‘on’으로 통합할 열 지정<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'customer_id'</span><span class="p">)</span>
+ <span class="c1"># on에 어떤 열을 기준으로 통합할 것인지 지정해줄 수 있다. (두 df에 모두 존재하는 열이여야 함)
+</span> <span class="c1">## 이 예시에서는 상관 없지만, 기준 열이 아니면서 이름이 같은 열이 2개 이상일 경우에는 꼭 on을 지정해줘야 함
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>outer join: 어느 한 쪽의 DataFrame에만 있는 값이라도 다 보여주는 방식<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'outer'</span><span class="p">)</span>
+ <span class="c1"># 한 쪽에만 데이터가 있다면, 반대쪽 DataFrame의 해당 부분은 NaN으로 채워짐
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1003</td>
+<td style="text-align: left">Jacob</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+<tr>
+<td style="text-align: right">6</td>
+<td style="text-align: right">1008</td>
+<td style="text-align: left">NaN</td>
+<td style="text-align: left">NaN</td>
+<td style="text-align: right">35000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>left outer join: 왼쪽 DataFrame (df1)에 존재하는 값을 기준으로 merge<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1003</td>
+<td style="text-align: left">Jacob</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>right outer join: 오른쪽 DataFrame (df2)에 존재하는 값을 기준으로 merge<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">1008</td>
+<td style="text-align: left">NaN</td>
+<td style="text-align: left">NaN</td>
+<td style="text-align: right">35000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>키가 되는 기준열의 이름이 두 데이터프레임에서 다른 경우<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'customer_id'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1002</span><span class="p">,</span> <span class="mi">1003</span><span class="p">,</span> <span class="mi">1004</span><span class="p">,</span> <span class="mi">1005</span><span class="p">],</span>
+                     <span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Annie'</span><span class="p">,</span> <span class="s">'Chloe'</span><span class="p">,</span> <span class="s">'Jacob'</span><span class="p">,</span> <span class="s">'David'</span><span class="p">,</span> <span class="s">'Ellie'</span><span class="p">],</span>
+                     <span class="s">'sex'</span><span class="p">:</span> <span class="p">[</span><span class="s">'F'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">]})</span>
+
+ <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'customer'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Chloe'</span><span class="p">,</span> <span class="s">'Jacob'</span><span class="p">,</span> <span class="s">'Ellie'</span><span class="p">,</span> <span class="s">'Haley'</span><span class="p">,</span> <span class="s">'Serene'</span><span class="p">],</span>
+                     <span class="s">'VIP_type'</span><span class="p">:</span> <span class="p">[</span><span class="s">'VIP'</span><span class="p">,</span> <span class="s">'Gold'</span><span class="p">,</span> <span class="s">'VIP'</span><span class="p">,</span> <span class="s">'Silver'</span><span class="p">,</span> <span class="s">'Gold'</span><span class="p">]})</span>
+
+ <span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> customer_id   name sex
+ 0         1001  Annie   F
+ 1         1002  Chloe   F
+ 2         1003  Jacob   M
+ 3         1004  David   M
+ 4         1005  Ellie   F 
+
+ customer VIP_type
+ 0    Chloe      VIP
+ 1    Jacob     Gold
+ 2    Ellie      VIP
+ 3    Haley   Silver
+ 4   Serene     Gold
+</code></pre></div></div>
+<p class="fs-3 text-grey-dk-000"># 키가 되는 기준열의 이름이 두 데이터프레임에서 다른 경우: left_on, right_on 인수를 사용하여 기준열을 명시</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s">'name'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s">"customer"</span><span class="p">)</span>  <span class="c1"># default: inner join
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: left">customer</th>
+<th style="text-align: left">VIP_type</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">VIP</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1003</td>
+<td style="text-align: left">Jacob</td>
+<td style="text-align: left">M</td>
+<td style="text-align: left">Jacob</td>
+<td style="text-align: left">Gold</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">VIP</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="df1joindf2"> <a href="#df1joindf2" aria-labelledby="df1joindf2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> df1.join(df2)</h3>
+<ul>
+<li>join 메소드를 사용해도 merge와 같은 결과를 낼 수 있다</li>
+<li>하지만 join()은 index를 기준으로 결합하는 것이 기본이고, how=’left’가 default다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># join을 쓰기 위해, df1과 df2 모두 결합할 기준이 되는 열인 'customer_id'를 index로 지정해준다
+</span>
+<span class="n">df1</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'customer_id'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df2</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'customer_id'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>  
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              name sex
+customer_id           
+1001         Annie   F
+1002         Chloe   F
+1003         Jacob   M
+1004         David   M
+1005         Ellie   F 
+
+             amount_spent
+customer_id              
+1001                10000
+1001                20000
+1005                12000
+1004                 5000
+1002                30000
+1008                35000
+</code></pre></div></div>
+<ol>
+<li>left outer join (default)<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>   <span class="c1"># how='left'가 default값
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">1003</td>
+<td style="text-align: left">Jacob</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>inner join<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'inner'</span><span class="p">)</span>  <span class="c1"># how에 'right', 'outer', 'innner' 모두 사용 가능 
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">customer_id</th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: right">amount_spent</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">10000</td>
+</tr>
+<tr>
+<td style="text-align: right">1001</td>
+<td style="text-align: left">Annie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">20000</td>
+</tr>
+<tr>
+<td style="text-align: right">1002</td>
+<td style="text-align: left">Chloe</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">30000</td>
+</tr>
+<tr>
+<td style="text-align: right">1004</td>
+<td style="text-align: left">David</td>
+<td style="text-align: left">M</td>
+<td style="text-align: right">5000</td>
+</tr>
+<tr>
+<td style="text-align: right">1005</td>
+<td style="text-align: left">Ellie</td>
+<td style="text-align: left">F</td>
+<td style="text-align: right">12000</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="pdconcatdf1-df2"> <a href="#pdconcatdf1-df2" aria-labelledby="pdconcatdf1-df2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> pd.concat([df1, df2])</h3>
+<ul>
+<li>기준 열(key column)을 사용하지 않고 단순히 데이터를 연결(concatenate)한다</li>
+<li>기본적으로는 위/아래로 데이터 행을 연결하며, axis=1로 인수를 설정하면 옆으로 연결해준다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">])</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="mi">5</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   a  b
+0  0  1
+1  2  3
+2  4  5 
+
+   a  b   c
+0  5  6   7
+1  8  9  10
+</code></pre></div></div>
+<ol>
+<li>위 아래로 연결 (default)<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span>  <span class="c1">## 위 아래로 연결됨. (column명 기준)
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">a</th>
+<th style="text-align: right">b</th>
+<th style="text-align: right">c</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">10</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 그냥 이어붙이면 행 인덱스번호도 그대로 가져오기에, <code class="language-plaintext highlighter-rouge">ignore_index=True</code>로 인덱스를 재배열할 수 있다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">a</th>
+<th style="text-align: right">b</th>
+<th style="text-align: right">c</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">NaN</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">10</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>옆으로 연결: <code class="language-plaintext highlighter-rouge">axis=1</code> 설정<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># axis=1로 설정해주면, 옆으로 연결된다 (index 기준)
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">a</th>
+<th style="text-align: right">b</th>
+<th style="text-align: right">a</th>
+<th style="text-align: right">b</th>
+<th style="text-align: right">c</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">10</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">NaN</td>
+<td style="text-align: right">NaN</td>
+<td style="text-align: right">NaN</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>Series 간 결합<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sr1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'e0'</span><span class="p">,</span><span class="s">'e1'</span><span class="p">,</span><span class="s">'e2'</span><span class="p">,</span><span class="s">'e3'</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'e'</span><span class="p">)</span>
+ <span class="n">sr2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'g0'</span><span class="p">,</span><span class="s">'g1'</span><span class="p">,</span><span class="s">'g2'</span><span class="p">,</span><span class="s">'g3'</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'g'</span><span class="p">)</span>
+
+ <span class="n">result1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sr1</span><span class="p">,</span> <span class="n">sr2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">#열방향 연결, type = 데이터프레임이 됨
+</span> <span class="k">print</span><span class="p">(</span><span class="n">result1</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+ <span class="n">result2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sr1</span><span class="p">,</span> <span class="n">sr2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">#행방향 연결, type = 시리즈
+</span> <span class="k">print</span><span class="p">(</span><span class="n">result2</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+ <span class="c1">## 사실, pd.concat([sr1, sr2], axis = 0)는 sr1.append(sr2)와 동일한 결과
+</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">sr1</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sr2</span><span class="p">)</span>   <span class="c1">#이렇게 하면 행방향 concat과 동일
+</span> <span class="k">print</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     e   g
+ 0  e0  g0
+ 1  e1  g1
+ 2  e2  g2
+ 3  e3  g3
+
+ 0    e0
+ 1    e1
+ 2    e2
+ 3    e3
+ 0    g0
+ 1    g1
+ 2    g2
+ 3    g3
+ dtype: object
+
+ 0    e0
+ 1    e1
+ 2    e2
+ 3    e3
+ 0    g0
+ 1    g1
+ 2    g2
+ 3    g3
+ dtype: object 
+</code></pre></div></div>
+<p>+) 참고) pd.merge()는 Series간 결합에는 사용할 수 없다. (공통의 column이 있어야 하는 게 전제조건)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sr1</span><span class="p">,</span> <span class="n">sr2</span><span class="p">)</span>  <span class="c1">## series끼리 merge하려고 하면 error.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> MergeError                                Traceback (most recent call last)
+ &lt;ipython-input-43-176c5dc5c9a2&gt; in &lt;module&gt;()
+ ----&gt; 1 pd.merge(sr1, sr2)
+</code></pre></div></div>
+</li>
+</ol>
+<h2 id="데이터-요약-집계"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9A%94%EC%95%BD-%EC%A7%91%EA%B3%84" aria-labelledby="데이터-요약-집계" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 요약 집계</h2>
+<h3 id="dfgroupby"> <a href="#dfgroupby" aria-labelledby="dfgroupby" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> df.groupby()</h3>
+<p>: 그룹별로 요약해서 집계하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/titanic.csv'</span><span class="p">)</span>   <span class="c1">## 데이터 출처: kaggle
+</span><span class="n">titanic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">SibSp</th>
+<th style="text-align: right">Parch</th>
+<th style="text-align: left">Ticket</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: left">Cabin</th>
+<th style="text-align: left">Embarked</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Braund, Mr. Owen Harris</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">22</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">A/5 21171</td>
+<td style="text-align: right">7.25</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">38</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">PC 17599</td>
+<td style="text-align: right">71.2833</td>
+<td style="text-align: left">C85</td>
+<td style="text-align: left">C</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Heikkinen, Miss. Laina</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">26</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">STON/O2. 3101282</td>
+<td style="text-align: right">7.925</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">35</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">113803</td>
+<td style="text-align: right">53.1</td>
+<td style="text-align: left">C123</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Allen, Mr. William Henry</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">35</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">373450</td>
+<td style="text-align: right">8.05</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>df.groupby(‘칼럼명’).함수()<ul>
+<li>DataFrame에 groupby()를 호출해 반환된 결과에 aggregation 함수를 호출하면, groupby() 대상 칼럼을 제외한 모든 칼럼에 aggregation 함수를 적용한 결과를 보여준다</li>
+<li>aggregation 함수 종류: count, sum, max, mean, nunique 등. (*<u>nunique</u>: unique count)</li>
+<li>대상 칼럼이 index로 들어감</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 'Pclass' 기준으로 데이터 수를 집계
+</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">).</span><span class="n">count</span><span class="p">()</span>
+     <span class="c1">## 3등석이 가장 사람이 많음을 유추 가능.
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+<th style="text-align: right">Name</th>
+<th style="text-align: right">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">SibSp</th>
+<th style="text-align: right">Parch</th>
+<th style="text-align: right">Ticket</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: right">Cabin</th>
+<th style="text-align: right">Embarked</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">186</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">176</td>
+<td style="text-align: right">214</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">173</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">16</td>
+<td style="text-align: right">184</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">355</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">12</td>
+<td style="text-align: right">491</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>as_index=False: 대상 칼럼이 index가 아닌 칼럼으로 들어감<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 이렇게 as_index=False를 넣어주면 index가 아닌 칼럼으로 들어감
+</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+<th style="text-align: right">Name</th>
+<th style="text-align: right">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">SibSp</th>
+<th style="text-align: right">Parch</th>
+<th style="text-align: right">Ticket</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: right">Cabin</th>
+<th style="text-align: right">Embarked</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">186</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">176</td>
+<td style="text-align: right">214</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">173</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">16</td>
+<td style="text-align: right">184</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">355</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">12</td>
+<td style="text-align: right">491</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>특정 칼럼만 필터링해서 함수 적용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[[</span><span class="s">'PassengerId'</span><span class="p">,</span> <span class="s">'Survived'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 이렇게 하는 것도 가능:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)[[</span><span class="s">'PassengerId'</span><span class="p">,</span> <span class="s">'Survived'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">216</td>
+<td style="text-align: right">216</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">184</td>
+<td style="text-align: right">184</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">491</td>
+<td style="text-align: right">491</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>여러 개의 aggregation 함수를 적용<ul><li>적용하려는 함수명을 agg( ) 내에 인자로 입력해서 사용해야 함</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[</span><span class="s">'Age'</span><span class="p">].</span><span class="n">agg</span><span class="p">([</span><span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">max</th>
+<th style="text-align: right">min</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">0.92</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">0.67</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">0.42</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>여러 칼럼에 여러 aggregation 함수 적용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[[</span><span class="s">'Age'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">,</span> <span class="s">'SibSp'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left" colspan="2">Age</th>
+<th style="text-align: left" colspan="2">Fare</th>
+<th style="text-align: left" colspan="2">SibSp</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">max</th>
+<th style="text-align: right">min</th>
+<th style="text-align: right">max</th>
+<th style="text-align: right">min</th>
+<th style="text-align: right">max</th>
+<th style="text-align: right">min</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">0.92</td>
+<td style="text-align: right">512.329</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">0.67</td>
+<td style="text-align: right">73.5</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">0.42</td>
+<td style="text-align: right">69.55</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">0</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>여러 칼럼에 서로 다른 Aggregation 함수를 적용<ul>
+<li>dictionary 형태로 함수를 적용할 칼럼과 함수명을 입력</li>
+<li>※ aggregation 방식 중 nunique의 경우, <code class="language-plaintext highlighter-rouge">'Age': pd.Series.nunique</code>와 같은 방식으로 표기해줘야 한다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">agg_format</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Age'</span><span class="p">:</span><span class="s">'max'</span><span class="p">,</span> <span class="s">'SibSp'</span><span class="p">:</span><span class="s">'sum'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">:</span><span class="s">'mean'</span><span class="p">}</span>  
+ <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">).</span><span class="n">agg</span><span class="p">(</span><span class="n">agg_format</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">SibSp</th>
+<th style="text-align: right">Fare</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">90</td>
+<td style="text-align: right">84.1547</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">20.6622</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">302</td>
+<td style="text-align: right">13.6756</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<p><strong>+) string value groupby</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># sample dataframe 생성: 이용자와 이용한 앱이 매칭되어 있는 데이터
+</span>
+<span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span> <span class="s">'D'</span><span class="p">,</span> <span class="s">'E'</span><span class="p">,</span> <span class="s">'D'</span><span class="p">,</span> <span class="s">'E'</span><span class="p">]</span>
+<span class="n">apps_used</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Google'</span><span class="p">,</span> <span class="s">'Naver'</span><span class="p">,</span> <span class="s">'YouTube'</span><span class="p">,</span> <span class="s">'Google'</span><span class="p">,</span> <span class="s">'YouTube'</span><span class="p">,</span> <span class="s">'Facebook'</span><span class="p">,</span> <span class="s">'Instagram'</span><span class="p">,</span> <span class="s">'Naver'</span><span class="p">,</span> <span class="s">'Google'</span><span class="p">]</span>
+
+<span class="n">sample_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'users'</span><span class="p">:</span><span class="n">users</span><span class="p">,</span> <span class="s">'apps_used'</span><span class="p">:</span><span class="n">apps_used</span><span class="p">})</span>
+<span class="n">sample_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">users</th>
+<th style="text-align: left">apps_used</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">A</td>
+<td style="text-align: left">Google</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">B</td>
+<td style="text-align: left">Naver</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">A</td>
+<td style="text-align: left">YouTube</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">B</td>
+<td style="text-align: left">Google</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">C</td>
+<td style="text-align: left">YouTube</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: left">D</td>
+<td style="text-align: left">Facebook</td>
+</tr>
+<tr>
+<td style="text-align: right">6</td>
+<td style="text-align: left">E</td>
+<td style="text-align: left">Instagram</td>
+</tr>
+<tr>
+<td style="text-align: right">7</td>
+<td style="text-align: left">D</td>
+<td style="text-align: left">Naver</td>
+</tr>
+<tr>
+<td style="text-align: right">8</td>
+<td style="text-align: left">E</td>
+<td style="text-align: left">Google</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>list로 묶기: 각 이용자별 이용한 앱 조합<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sample_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'users'</span><span class="p">)[</span><span class="s">'apps_used'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>users
+A      [Google, YouTube]
+B        [Naver, Google]
+C              [YouTube]
+D      [Facebook, Naver]
+E    [Instagram, Google]
+Name: apps_used, dtype: object
+</code></pre></div></div>
+</li>
+<li>set으로 묶기: 순서 고려X<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sample_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'users'</span><span class="p">)[</span><span class="s">'apps_used'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>users
+A      {Google, YouTube}
+B        {Google, Naver}
+C              {YouTube}
+D      {Facebook, Naver}
+E    {Google, Instagram}
+Name: apps_used, dtype: object
+</code></pre></div></div>
+</li>
+<li>apply lambda를 활용해 원하는 모양으로 결합<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sample_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'users'</span><span class="p">)[</span><span class="s">'apps_used'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">', '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>users
+A      Google, YouTube
+B        Naver, Google
+C              YouTube
+D      Facebook, Naver
+E    Instagram, Google
+Name: apps_used, dtype: object
+</code></pre></div></div>
+</li>
+</ol>
+<p class="fs-1 lh-0"> </p>
+<h3 id="pdpivot_table"> <a href="#pdpivot_table" aria-labelledby="pdpivot_table" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> pd.pivot_table()</h3>
+<p>: 엑셀에서처럼 pivot 돌리기 (엑셀에서 pivot 돌리는 것의 동작 방식을 생각하면 쉬움)</p>
+<ul><li>ex) <code class="language-plaintext highlighter-rouge">pd.pivot_table(df, index='칼럼1', columns=['칼럼2','칼럼3'], values='칼럼4', fill_value=0, aggfunc='sum')</code><ul>
+<li>index(열)나 columns(행)에 str 하나만 넣어도 되고, [ ] 리스트 형태로 여러 개 넣으면 multiindex / multiheader되는 것</li>
+<li>values가 실제 pivot을 채울 값</li>
+<li>aggfunc에는 집계 함수를 적어 줌. - ‘sum’이면 합산 / ‘mean’이면 평균</li>
+<li>fill_value=0은 NaN 값들을 0으로 채워서 return하겠다는 뜻</li>
+</ul>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titanic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">PassengerId</th>
+<th style="text-align: right">Survived</th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">SibSp</th>
+<th style="text-align: right">Parch</th>
+<th style="text-align: left">Ticket</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: left">Cabin</th>
+<th style="text-align: left">Embarked</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Braund, Mr. Owen Harris</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">22</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">A/5 21171</td>
+<td style="text-align: right">7.25</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">38</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">PC 17599</td>
+<td style="text-align: right">71.2833</td>
+<td style="text-align: left">C85</td>
+<td style="text-align: left">C</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Heikkinen, Miss. Laina</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">26</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">STON/O2. 3101282</td>
+<td style="text-align: right">7.925</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">35</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">113803</td>
+<td style="text-align: right">53.1</td>
+<td style="text-align: left">C123</td>
+<td style="text-align: left">S</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Allen, Mr. William Henry</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">35</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">373450</td>
+<td style="text-align: right">8.05</td>
+<td style="text-align: left">nan</td>
+<td style="text-align: left">S</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>
+<p>기본 예시</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">,</span>        <span class="c1"># 피벗할 데이터프레임
+</span>               <span class="n">index</span><span class="o">=</span><span class="s">'Pclass'</span><span class="p">,</span>    <span class="c1"># 행 위치에 들어갈 열
+</span>               <span class="n">columns</span><span class="o">=</span><span class="s">'Sex'</span><span class="p">,</span>     <span class="c1"># 열 위치에 들어갈 열
+</span>               <span class="n">values</span><span class="o">=</span><span class="s">'Age'</span><span class="p">,</span>      <span class="c1"># 데이터로 사용할 열
+</span>               <span class="n">aggfunc</span><span class="o">=</span><span class="s">'mean'</span><span class="p">)</span>    <span class="c1"># 데이터 집계함수
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right">Sex</th>
+<th style="text-align: right">female</th>
+<th style="text-align: right">male</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">41.2814</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">28.723</td>
+<td style="text-align: right">30.7407</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">21.75</td>
+<td style="text-align: right">26.5076</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>여러 개의 데이터 집계함수 넣기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Sex'</span><span class="p">,</span> 
+                <span class="n">values</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'sum'</span><span class="p">])</span>  
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left" colspan="2">mean</th>
+<th style="text-align: left" colspan="2">sum</th>
+</tr>
+<tr>
+<th style="text-align: right">Sex</th>
+<th style="text-align: right">female</th>
+<th style="text-align: right">male</th>
+<th style="text-align: right">female</th>
+<th style="text-align: right">male</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.968085</td>
+<td style="text-align: right">0.368852</td>
+<td style="text-align: right">91</td>
+<td style="text-align: right">45</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.921053</td>
+<td style="text-align: right">0.157407</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">17</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0.5</td>
+<td style="text-align: right">0.135447</td>
+<td style="text-align: right">72</td>
+<td style="text-align: right">47</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>많은 칼럼을 동시에 인자로 입력<ul><li>
+<code class="language-plaintext highlighter-rouge">index=</code>, <code class="language-plaintext highlighter-rouge">columns=</code>, <code class="language-plaintext highlighter-rouge">values=</code>에 모두 list 형태로 여러 개의 칼럼을 인자로 넣을 수 있다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> 
+                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">'Age'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'max'</span><span class="p">])</span>  
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left"> </th>
+<th style="text-align: left" colspan="4">mean</th>
+<th style="text-align: left" colspan="4">max</th>
+</tr>
+<tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left"> </th>
+<th style="text-align: left" colspan="2">Age</th>
+<th style="text-align: left" colspan="2">Fare</th>
+<th style="text-align: left" colspan="2">Age</th>
+<th style="text-align: left" colspan="2">Fare</th>
+</tr>
+<tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">Survived</th>
+<th style="text-align: left">0</th>
+<th style="text-align: left">1</th>
+<th style="text-align: left">0</th>
+<th style="text-align: left">1</th>
+<th style="text-align: left">0</th>
+<th style="text-align: left">1</th>
+<th style="text-align: left">0</th>
+<th style="text-align: left">1</th>
+</tr>
+<tr>
+<th style="text-align: left">Pclass</th>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">1
+<br>
+</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">25.6667</td>
+<td style="text-align: right">34.939</td>
+<td style="text-align: right">110.604</td>
+<td style="text-align: right">105.978</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">63</td>
+<td style="text-align: right">151.55</td>
+<td style="text-align: right">512.329</td>
+</tr>
+<tr>
+<td style="text-align: left">male</td>
+<td style="text-align: right">44.582</td>
+<td style="text-align: right">36.248</td>
+<td style="text-align: right">62.8949</td>
+<td style="text-align: right">74.6373</td>
+<td style="text-align: right">71</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">263</td>
+<td style="text-align: right">512.329</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">2
+<br>
+</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">36</td>
+<td style="text-align: right">28.0809</td>
+<td style="text-align: right">18.25</td>
+<td style="text-align: right">22.289</td>
+<td style="text-align: right">57</td>
+<td style="text-align: right">55</td>
+<td style="text-align: right">26</td>
+<td style="text-align: right">65</td>
+</tr>
+<tr>
+<td style="text-align: left">male</td>
+<td style="text-align: right">33.369</td>
+<td style="text-align: right">16.022</td>
+<td style="text-align: right">19.489</td>
+<td style="text-align: right">21.0951</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">62</td>
+<td style="text-align: right">73.5</td>
+<td style="text-align: right">39</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">3
+<br>
+</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">23.8182</td>
+<td style="text-align: right">19.3298</td>
+<td style="text-align: right">19.7731</td>
+<td style="text-align: right">12.4645</td>
+<td style="text-align: right">48</td>
+<td style="text-align: right">63</td>
+<td style="text-align: right">69.55</td>
+<td style="text-align: right">31.3875</td>
+</tr>
+<tr>
+<td style="text-align: left">male</td>
+<td style="text-align: right">27.2558</td>
+<td style="text-align: right">22.2742</td>
+<td style="text-align: right">12.2045</td>
+<td style="text-align: right">15.5797</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">45</td>
+<td style="text-align: right">69.55</td>
+<td style="text-align: right">56.4958</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="dfpivot"> <a href="#dfpivot" aria-labelledby="dfpivot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> df.pivot()</h3>
+<p>: 데이터 형태를 변경해준다. 원하는 형태로 데이터를 변형해준다는 점에서 <code class="language-plaintext highlighter-rouge">pd.pivot_table</code>과 유사하지만, pivot_table과 달리 데이터를 요약 집계해주는 기능은 없음</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pivot_sample</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">])[[</span><span class="s">'Fare'</span><span class="p">]].</span><span class="n">mean</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pivot_sample</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right">Fare</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">106.126</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">67.2261</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">21.9701</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">2</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">19.7418</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">16.1188</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">12.6616</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ ‘Pclass’ 정보가 index로, ‘Sex’ 정보가 column으로, 그리고 ‘Fare’가 value로 들어가도록 reshape:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pivot_sample</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Sex'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Fare'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">female</th>
+<th style="text-align: right">male</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">106.126</td>
+<td style="text-align: right">67.2261</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">21.9701</td>
+<td style="text-align: right">19.7418</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">16.1188</td>
+<td style="text-align: right">12.6616</td>
+</tr>
+</tbody>
+</table></div></div>
+<h2 id="multi-index-multi-header-다루기"> <a href="#multi-index-multi-header-%EB%8B%A4%EB%A3%A8%EA%B8%B0" aria-labelledby="multi-index-multi-header-다루기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multi-Index, Multi-Header 다루기</h2>
+<p>: groupby나 pivot_table로 데이터를 요약 집계하다 보면, multi-index나 multi-header를 다루게 된다</p>
+<h3 id="multi-index-다루기"> <a href="#multi-index-%EB%8B%A4%EB%A3%A8%EA%B8%B0" aria-labelledby="multi-index-다루기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multi-Index 다루기</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdf</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">])[[</span><span class="s">'Age'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">,</span> <span class="s">'Survived'</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">gdf</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Age</th>
+<th style="text-align: left">Fare</th>
+<th style="text-align: left">Survived</th>
+</tr>
+<tr>
+<th style="text-align: left">Pclass</th>
+<th style="text-align: right">Sex</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">1
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">106.126</td>
+<td>0.968085</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td style="text-align: right">41.2814</td>
+<td style="text-align: right">67.2261</td>
+<td>0.368852</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">2
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td style="text-align: right">28.723</td>
+<td style="text-align: right">21.9701</td>
+<td>0.921053</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td style="text-align: right">30.7407</td>
+<td style="text-align: right">19.7418</td>
+<td>0.157407</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">3
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td style="text-align: right">21.75</td>
+<td style="text-align: right">16.1188</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td style="text-align: right">26.5076</td>
+<td style="text-align: right">12.6616</td>
+<td>0.135447</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>인덱싱: 1<sup>st</sup> level<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># [Pclass]열의 [1]행만 인덱싱 (index_number=1이 아니라, 인덱스 이름이 1)
+</span> <span class="n">gdf</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">## 1은 int 타입이라서 '1'이라고 쓰지 않음
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: right">Survived</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">female</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">106.126</td>
+<td style="text-align: right">0.968085</td>
+</tr>
+<tr>
+<td style="text-align: left">male</td>
+<td style="text-align: right">41.2814</td>
+<td style="text-align: right">67.2261</td>
+<td style="text-align: right">0.368852</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>인덱싱: 1<sup>st</sup> level - 2<sup>nd</sup> level (순서대로, 차근차근)<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># [Pclass]열의 [1]행 중, [Sex] 열의 [female]행만 인덱싱 (순서: 1, female)
+</span> <span class="c1">## 이렇게 tuple 형태로 넣어주려면, 더 밖에 있는 index부터 차근차근 접근해야 한다
+</span>    
+ <span class="n">gdf</span><span class="p">.</span><span class="n">loc</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s">'female'</span><span class="p">)]</span>
+     <span class="c1">## pivot_df.loc[1].loc['female'] 이렇게 해도 동일한 결과.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Age          34.611765
+ Fare        106.125798
+ Survived      0.968085
+ Name: (1, female), dtype: float64
+</code></pre></div></div>
+</li>
+<li>인덱싱: 2<sup>nd</sup> level에 바로 접근<ul><li>멀티인덱서 <strong>xs</strong>를 이용하면 그룹 범주와 상관 없이 수준(level)만 명시해주면 인덱싱이 가능 (cf.loc와 iloc를 이용하려면 큰 그룹부터 순차적으로 인덱싱을 해야 함)</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Sex그룹의 male값을 갖는 행을 모두 추출, 즉 등급(class)별 male에 대한 자료를 인덱싱
+</span> <span class="n">gdf</span><span class="p">.</span><span class="n">xs</span><span class="p">(</span><span class="s">'male'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s">'Sex'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: right">Survived</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">41.2814</td>
+<td style="text-align: right">67.2261</td>
+<td style="text-align: right">0.368852</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">30.7407</td>
+<td style="text-align: right">19.7418</td>
+<td style="text-align: right">0.157407</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">26.5076</td>
+<td style="text-align: right">12.6616</td>
+<td style="text-align: right">0.135447</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) <code class="language-plaintext highlighter-rouge">level=</code>에는 인덱스명을 적어줘도 되고, 해당 인덱스의 레벨을 int로 넣어줘도 된다. (0부터 시작)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## 'Sex' level은 두번째 level이므로, level=1이라고 넣어줘도 위와 같은 결과.
+</span> <span class="n">gdf</span><span class="p">.</span><span class="n">xs</span><span class="p">(</span><span class="s">'male'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+</code></pre></div></div>
+</li>
+<li>
+<p>멀티 인덱스 해제: <code class="language-plaintext highlighter-rouge">reset_index()</code> 활용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">gdf</span><span class="p">.</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">Fare</th>
+<th style="text-align: right">Survived</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">106.126</td>
+<td style="text-align: right">0.968085</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">41.2814</td>
+<td style="text-align: right">67.2261</td>
+<td style="text-align: right">0.368852</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">28.723</td>
+<td style="text-align: right">21.9701</td>
+<td style="text-align: right">0.921053</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">2</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">30.7407</td>
+<td style="text-align: right">19.7418</td>
+<td style="text-align: right">0.157407</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">female</td>
+<td style="text-align: right">21.75</td>
+<td style="text-align: right">16.1188</td>
+<td style="text-align: right">0.5</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3</td>
+<td style="text-align: left">male</td>
+<td style="text-align: right">26.5076</td>
+<td style="text-align: right">12.6616</td>
+<td style="text-align: right">0.135447</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="multi-header-다루기"> <a href="#multi-header-%EB%8B%A4%EB%A3%A8%EA%B8%B0" aria-labelledby="multi-header-다루기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multi-Header 다루기</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdf2</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[[</span><span class="s">'Age'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'max'</span><span class="p">])</span>
+<span class="n">gdf2</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left" colspan="2">Age</th>
+<th style="text-align: left" colspan="2">Fare</th>
+</tr>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">mean</th>
+<th style="text-align: left">max</th>
+<th style="text-align: left">mean</th>
+<th style="text-align: left">max</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">84.1547</td>
+<td style="text-align: right">512.329</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">20.6622</td>
+<td style="text-align: right">73.5</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">13.6756</td>
+<td style="text-align: right">69.55</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>
+<p>인덱싱: 1<sup>st</sup> level</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 'Age' 열을 indexing
+</span> <span class="n">gdf2</span><span class="p">[</span><span class="s">'Age'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">mean</th>
+<th style="text-align: right">max</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">80</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">70</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">74</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>인덱싱: 1<sup>st</sup> level - 2<sup>nd</sup> level (순서대로, 차근차근)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 'Age' 열의 'mean' 열을 indexing
+</span> <span class="n">gdf2</span><span class="p">[</span><span class="s">'Age'</span><span class="p">][</span><span class="s">'mean'</span><span class="p">]</span>
+
+ <span class="c1">## gdf2[('Age', 'mean')] 이렇게 넣어줘도 동일한 결과.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Pclass
+ 1    38.233441
+ 2    29.877630
+ 3    25.140620
+ Name: mean, dtype: float64
+</code></pre></div></div>
+</li>
+<li>인덱싱: 2<sup>nd</sup> level에 바로 접근<ul><li>열 방향 멀티인덱싱에도 <strong>xs</strong>를 사용 – <code class="language-plaintext highlighter-rouge">axis=1</code>이라고 하면 열 방향을 의미</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 'mean' 행을 모두 추출 -- 'Age'와 'Fare'의 'mean'을 모두 추출
+</span> <span class="n">gdf2</span><span class="p">.</span><span class="n">xs</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">Age</th>
+<th style="text-align: right">Fare</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">84.1547</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">20.6622</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">13.6756</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>멀티 헤더 해제: column명을 아래와 같이 새로 넣어주면 된다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 이렇게 column명을 넣어주면 된다 (두 레벨의 칼럼명을 모두 담은 이름으로 적어야 좋음)
+</span> <span class="n">gdf2</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Age_mean'</span><span class="p">,</span> <span class="s">'Age_max'</span><span class="p">,</span> <span class="s">'Fare_mean'</span><span class="p">,</span><span class="s">'Fare_max'</span><span class="p">]</span>
+
+ <span class="n">gdf2</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">Age_mean</th>
+<th style="text-align: right">Age_max</th>
+<th style="text-align: right">Fare_mean</th>
+<th style="text-align: right">Fare_max</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">84.1547</td>
+<td style="text-align: right">512.329</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">20.6622</td>
+<td style="text-align: right">73.5</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">13.6756</td>
+<td style="text-align: right">69.55</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) <code class="language-plaintext highlighter-rouge">map</code> 사용해서 새로운 칼럼명 생성하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">gdf2</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">gdf2</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="nb">map</span><span class="p">(</span><span class="s">'{0[0]}_{0[1]}'</span><span class="p">.</span><span class="nb">format</span><span class="p">)</span>  <span class="c1"># column1_column2의 형태로 새 column명을 생성해줌
+</span> <span class="n">gdf2</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right">Age_mean</th>
+<th style="text-align: right">Age_max</th>
+<th style="text-align: right">Fare_mean</th>
+<th style="text-align: right">Fare_max</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">80</td>
+<td style="text-align: right">84.1547</td>
+<td style="text-align: right">512.329</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">70</td>
+<td style="text-align: right">20.6622</td>
+<td style="text-align: right">73.5</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">74</td>
+<td style="text-align: right">13.6756</td>
+<td style="text-align: right">69.55</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h2 id="unstack-stack으로-pivot"> <a href="#unstack-stack%EC%9C%BC%EB%A1%9C-pivot" aria-labelledby="unstack-stack으로-pivot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> unstack, stack으로 pivot</h2>
+<h3 id="dfunstack"> <a href="#dfunstack" aria-labelledby="dfunstack" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> df.unstack()</h3>
+<p>: index의 특정 level을 column 방향으로 pivot해주는 함수 (multi-index를 풀어준다)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdf3</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">])[[</span><span class="s">'Age'</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">gdf3</span>
+
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left" colspan="2">
+</th>
+<th style="text-align: left">Age</th>
+</tr>
+<tr>
+<th style="text-align: left">Pclass</th>
+<th style="text-align: right">Sex</th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">1
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td>34.6118</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td>41.2814</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">2
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td>28.723</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td>30.7407</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">3
+<br>
+</td>
+<td style="text-align: right">female</td>
+<td>21.75</td>
+</tr>
+<tr>
+<td style="text-align: right">male</td>
+<td>26.5076</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>level=0: 1<sup>st</sup> level 인덱스를 column 방향으로 pivot<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">gdf3</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left" colspan="3">Age</th>
+</tr>
+<tr>
+<th style="text-align: left">Pclass</th>
+<th style="text-align: left">1</th>
+<th style="text-align: left">2</th>
+<th style="text-align: left">3</th>
+</tr>
+<tr>
+<th style="text-align: left">Sex</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left">female</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">28.723</td>
+<td style="text-align: right">21.75</td>
+</tr>
+<tr>
+<td style="text-align: left">male</td>
+<td style="text-align: right">41.2814</td>
+<td style="text-align: right">30.7407</td>
+<td style="text-align: right">26.5076</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>level=1: 2<sup>nd</sup> level 인덱스를 column 방향으로 pivot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">gdf3</span><span class="p">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>    
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left" colspan="2">Age</th>
+</tr>
+<tr>
+<th style="text-align: right">Sex</th>
+<th style="text-align: left">female</th>
+<th style="text-align: left">male</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">34.6118</td>
+<td style="text-align: right">41.2814</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">28.723</td>
+<td style="text-align: right">30.7407</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">21.75</td>
+<td style="text-align: right">26.5076</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 이 경우, 2nd level이 마지막 level이므로, <code class="language-plaintext highlighter-rouge">level=-1</code>라고 적어도 동일한 결과</p>
+</li>
+</ol>
+<h3 id="dfstack"> <a href="#dfstack" aria-labelledby="dfstack" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> df.stack()</h3>
+<p>: column의 특정 level을 index 방향으로 pivot해주는 함수 (unstack과 반대: multi-index를 만들어준다)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdf4</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Pclass'</span><span class="p">)[[</span><span class="s">'Age'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'max'</span><span class="p">])</span>
+<span class="n">gdf4</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left" colspan="2">Age</th>
+</tr>
+<tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">mean</th>
+<th style="text-align: left">max</th>
+</tr>
+<tr>
+<th style="text-align: right">Pclass</th>
+<th style="text-align: right"> </th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">38.2334</td>
+<td style="text-align: right">80</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">29.8776</td>
+<td style="text-align: right">70</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">25.1406</td>
+<td style="text-align: right">74</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 2번째 level (마지막 level)을 index 방향으로 pivot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdf4</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left" colspan="2">
+</th>
+<th style="text-align: left">Age</th>
+</tr>
+<tr>
+<th style="text-align: left">Pclass</th>
+<th style="text-align: right"> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left" rowspan="2">1
+<br>
+</td>
+<td style="text-align: right">mean</td>
+<td>38.2334</td>
+</tr>
+<tr>
+<td style="text-align: right">max</td>
+<td>80</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">2
+<br>
+</td>
+<td style="text-align: right">mean</td>
+<td>29.8776</td>
+</tr>
+<tr>
+<td style="text-align: right">max</td>
+<td>70</td>
+</tr>
+<tr>
+<td style="text-align: left" rowspan="2">3
+<br>
+</td>
+<td style="text-align: right">mean</td>
+<td>25.1406</td>
+</tr>
+<tr>
+<td style="text-align: right">max</td>
+<td>74</td>
+</tr>
+</tbody>
+</table></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

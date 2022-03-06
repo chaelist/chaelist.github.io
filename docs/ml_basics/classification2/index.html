@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classification 2 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Classification 2">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_basics/classification2/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_basics/classification2/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Classification 2"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_basics/classification2/","@type":"WebPage","headline":"Classification 2","@context":"https://schema.org"}</script><script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link active">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_basics">Machine Learning 기초</a></li>
+<li class="breadcrumb-nav-list-item"><span>Classification 2</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="classification-2"> <a href="#classification-2" aria-labelledby="classification-2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Classification 2</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#decision-tree-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC" id="markdown-toc-decision-tree-결정-트리">Decision Tree (결정 트리)</a><ol>
+<li><a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" id="markdown-toc-기본-개념">기본 개념</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5" id="markdown-toc-scikit-learn으로-데이터-학습">scikit-learn으로 데이터 학습</a></li>
+<li><a href="#tree-%EA%B5%AC%EC%A1%B0-%ED%99%95%EC%9D%B8" id="markdown-toc-tree-구조-확인">tree 구조 확인</a></li>
+<li><a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8" id="markdown-toc-속성-중요도-확인">속성 중요도 확인</a></li>
+</ol>
+</li>
+<li>
+<a href="#random-forest" id="markdown-toc-random-forest">Random Forest</a><ol>
+<li><a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1" id="markdown-toc-기본-개념-1">기본 개념</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5-1" id="markdown-toc-scikit-learn으로-데이터-학습-1">scikit-learn으로 데이터 학습</a></li>
+<li><a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8-1" id="markdown-toc-속성-중요도-확인-1">속성 중요도 확인</a></li>
+</ol>
+</li>
+<li>
+<a href="#adaboost" id="markdown-toc-adaboost">AdaBoost</a><ol>
+<li><a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-2" id="markdown-toc-기본-개념-2">기본 개념</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5-2" id="markdown-toc-scikit-learn으로-데이터-학습-2">scikit-learn으로 데이터 학습</a></li>
+<li><a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8-2" id="markdown-toc-속성-중요도-확인-2">속성 중요도 확인</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="decision-tree-결정-트리"> <a href="#decision-tree-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC" aria-labelledby="decision-tree-결정-트리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Decision Tree (결정 트리)</h2>
+<p>: 예/아니오로 답할 수 있는 어떤 질문들이 있고, 그 질문들의 답을 따라가면서 데이터를 분류하는 알고리즘</p>
+<h3 id="기본-개념"> <a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" aria-labelledby="기본-개념" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기본 개념</h3>
+<ul>
+<li>가장 위에 있는 질문 노드를 ‘root 노드’라고 하고, 트리의 가장 끝에 있는 분류 노드들을 ‘leaf 노드’라고 한다.</li>
+<li>leaf node는 사망/생존, or 팽귄/돌고래 이런 식으로 특정 예측값을 가지고 있고 (= 분류 노드) , 나머지 노드들은 예/아니오(True/False)로 답할 수 있는 질문들을 가지고 있다</li>
+</ul>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/machine_learning/decision_tree_example.png" alt="Decision_Tree_example" width="500"><br> (출처: javatpoint.com)</p>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*트리의 노드 만들기</strong></p>
+<ul>
+<li>여러 질문 노드와 분류 노드의 ‘지니 불순도’를 계산해서, 지니 불순도가 가장 낮은 질문을 노드로 만들어준다.</li>
+<li>질문 후보들보다 분류 노드(ex. ‘독감으로 분류’)의 지니 불순도가 낮으면 그냥 바로 분류해주는 단계로 넘어간다 (leaf node)</li>
+<li>ex) 독감 / 감기 분류: 특정 데이터셋을<br> 1) 모두 독감으로 분류(분류 노드)할 때의 지니 불순도가 0.49,<br> 2) ‘고열이 있나요?’ 질문 노드로 분류할 때의 지니 불순도가 0.34,<br> 3) ‘몸살이 있나요?’ 질문 노드로 분류할 때의 지니 불순도가 0.33이라면 ‘몸살’ 질문 노드를 골라준다!</li>
+<li>※질문노드의 지니불순도는 이로 인해 분류된 2개의 데이터셋의 지니 불순도의 평균으로 계산</li>
+<li>데이터가 숫자형인 경우(ex. 체온): 데이터를 정렬한 후, 각 연속된 데이터의 평균을 계산 → 이 평균을 이용해 질문을 하나씩 만듦 (ex. 36.4도가 넘나요?, 36.6도가 넘나요?,…) → 이 중 지니 불순도가 가장 낮은 질문을 선정</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*지니 불순도(Gini Impurity)</strong></p>
+<ul>
+<li>데이터셋의 데이터들이 얼마나 혼합되어 있는지 나타내는 수치.</li>
+<li>지니 불순도가 작을수록 데이터셋이 순수하다는 뜻.</li>
+<li>독감 &amp; 일반 감기 데이터가 섞여 있는 데이터셋의 지니 불순도: 1 - p<sub>flu</sub><sup>2</sup> - p<sub>not_flu</sub><sup>2</sup> (*p는 확률)<ul>
+<li>ex) 데이터 100개 중 70개가 독감 30개가 일반 감기 → 1 - 0.7<sup>2</sup> - 0.3<sup>2</sup> = 0.42</li>
+<li>ex) 50개 독감 50개 일반 감기 → 1 - 0.5<sup>2</sup> - 0.5<sup>2</sup> = 0.5</li>
+<li>ex) 100개 모두 독감 → 1 - 1.0<sup>2</sup> - 0.0<sup>2</sup> = 0</li>
+</ul>
+</li>
+<li>세 가지 class가 섞여있는 경우: 1 - p<sub>class1</sub><sup>2</sup> - p<sub>class2</sub><sup>2</sup> - p<sub>class3</sub><sup>2</sup>
+</li>
+</ul>
+<h3 id="scikit-learn으로-데이터-학습"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5" aria-labelledby="scikit-learn으로-데이터-학습" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 데이터 학습</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. 데이터 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 데이터 준비: KNN, Logistic Regression에서와 동일하게 iris data 사용
+</span><span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'class'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">sepal length (cm)</th>
+<th style="text-align: right">sepal width (cm)</th>
+<th style="text-align: right">petal length (cm)</th>
+<th style="text-align: right">petal width (cm)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5.1</td>
+<td style="text-align: right">3.5</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">4.9</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3.2</td>
+<td style="text-align: right">1.3</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">3.1</td>
+<td style="text-align: right">1.5</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3.6</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Class</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>2. train_test_split &amp; 학습</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">ravel</span><span class="p">()</span>  <span class="c1">#ravel(): 다차원 array를 1차원 array로 평평하게 펴주는 함수.
+</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>  
+</code></pre></div></div>
+<ul><li>max_depth: maximum depth of the tree. (트리가 몇 층까지 내려 가는지 = depth of tree)<ul>
+<li>max_depth를 설정해주지 않으면 모든 leaf가 pure해질 때까지 OR 모든 leaf가 min_samples_split보다 적은 양의 데이터를 가질 때까지 무한정 node가 생성된다</li>
+<li>depth가 너무 깊으면 training data에 과적합될 수 있기에, max_depth를 적절히 세팅해주면 좋다</li>
+</ul>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini',
+                       max_depth=4, max_features=None, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, presort='deprecated',
+                       random_state=None, splitter='best')
+</code></pre></div></div>
+<ul><li>criterion: split의 qulaity를 측정하는 방식. ‘gini’(=Gini impurity)와 ‘entropy’(=information gain) 두 가지 옵션이 있으며, gini가 default.<ul><li>gini와 entropy는 사실 계산의 차이가 크지는 않기에, 어떤 걸 사용하든지 큰 상관 없다</li></ul>
+</li></ul>
+<p><strong>3. test data로 성능 체크</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c1"># 어떻게 분류했나 확인
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 2, 0, 2, 2, 0, 2, 0, 1, 1, 1, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_test</span><span class="p">[</span><span class="s">'class'</span><span class="p">].</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1">## 실제 y_test와 비교
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 0, 2, 1, 0, 1, 0, 1, 1, 2, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 몇 퍼센트가 올바르게 분류되었는지 확인
+</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8666666666666667
+</code></pre></div></div>
+<p>약 87% 정도가 올바르게 분류되었다는 의미</p>
+<h3 id="tree-구조-확인"> <a href="#tree-%EA%B5%AC%EC%A1%B0-%ED%99%95%EC%9D%B8" aria-labelledby="tree-구조-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> tree 구조 확인</h3>
+<p>※ 결정트리는 분류 과정을 직관적으로 이해할 수 있고, 속성별 중요도를 쉽게 해석할 수 있다 <br> (정확도가 아주 높은 모델은 아니지만, 해석 및 적용이 쉽다는 것이 큰 장점!)</p>
+<ol>
+<li>sklearn.tree 활용<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+ <span class="n">tree</span><span class="p">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> 
+             <span class="n">feature_names</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">,</span>  
+             <span class="n">class_names</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">.</span><span class="n">target_names</span><span class="p">,</span>
+             <span class="n">filled</span> <span class="o">=</span> <span class="bp">True</span><span class="p">);</span>  <span class="c1"># 색을 칠해서 구분하겠다는 뜻
+</span></code></pre></div></div>
+<p><img src="../../../assets/images/machine_learning/decision_tree_shape1.png" alt="Decision_Tree_Shape_1"></p>
+</li>
+<li>dtreeviz 활용<ul><li>install해야 사용 가능 <a href="https://github.com/parrt/dtreeviz" target="_blank">https://github.com/parrt/dtreeviz</a>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">dtreeviz.trees</span> <span class="kn">import</span> <span class="n">dtreeviz</span>
+
+ <span class="n">viz</span> <span class="o">=</span> <span class="n">dtreeviz</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> 
+             <span class="n">iris_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span>   <span class="c1"># X값
+</span>             <span class="n">iris_data</span><span class="p">.</span><span class="n">target</span><span class="p">,</span>  <span class="c1"># y값: df 형태 말고 array 형태로 넣어주기
+</span>             <span class="n">target_name</span> <span class="o">=</span> <span class="s">"target"</span><span class="p">,</span>
+             <span class="n">feature_names</span> <span class="o">=</span> <span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">,</span>
+             <span class="n">class_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">target_names</span><span class="p">))</span>
+
+ <span class="n">viz</span>
+
+ <span class="c1"># +) viz.save("파일명.svg") 이렇게 해서 저장
+</span></code></pre></div></div>
+<p><img src="../../../assets/images/machine_learning/decision_tree.svg" alt="Decision_Tree_Shape_2" width="400"></p>
+</li>
+</ol>
+<h3 id="속성-중요도-확인"> <a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8" aria-labelledby="속성-중요도-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 속성 중요도 확인</h3>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*속성 중요도(Feature Importance)</strong></p>
+<ul><li>속성의 ‘평균 지니 감소(Mean Gini Decrease)’라고 부르기도 함</li></ul>
+<p>*계산하는 법:</p>
+<ol>
+<li>모든 질문 노드의 중요도(Node Importance)를 계산</li>
+<li>특정 속성의 중요도: <code class="language-plaintext highlighter-rouge">해당 속성 질문 노드의 중요도 합 / 모든 노드의 중요도 합</code><ul>
+<li>전체적으로 낮춰진 불순도에서, 특정 속성 하나가 불순도를 얼마나 낮췄는지 확인 → 그 속성의 중요한 정도를 계산하는 것!</li>
+<li>ex) ‘고열 여부’ 변수의 중요도: 고열 질문을 갖는 모든 노드의 중요도 합 / 트리 안에 있는 모든 노드의 중요도 합</li>
+</ul>
+</li>
+</ol>
+<p><strong>*노드 중요도(Node Importance)</strong></p>
+<ul>
+<li>특정 노드 전후로 불순도가 얼마나 낮아졌는지로 해당 노드의 중요도를 판단.</li>
+<li>나눠지는 데이터 셋들에 대해서 점점 더 알아간다, 또는 “더 많은 정보를 얻는다”라고 해서 이 수치를 정보 증가량 (information gain)이라고도 부름. (불순도가 낮아질수록 점점 데이터가 잘 나눠지고 있는 거니까)</li>
+</ul>
+<p>*계산하는 법:</p>
+<ul>
+<li>$ ni = \dfrac{n}{m}GI - \dfrac{n_{left}}{m}GI_{left} - \dfrac{n_{right}}{m}GI_{right} $<ul>
+<li>n: 중요도를 계산하려는 노드까지 오는 학습 데이터의 수</li>
+<li>GI: 이 노드까지 오는 데이터 셋의 불순도</li>
+<li>m: 전체 학습 데이터의 수</li>
+</ul>
+</li>
+<li>한 노드에서 데이터를 두 개로 나눴을 때, 데이터 수에 비례해서 불순도가 얼마나 줄어들었는지를 계산하는 것!</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*python으로 계산</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 속성들의 중요도를 확인
+</span><span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span>  <span class="c1"># numpy 배열로 정리되어서 나옴
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.04642857, 0.        , 0.        , 0.95357143])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># df를 만들어 importance가 큰 순서대로 정렬
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span><span class="p">)),</span> 
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'feature'</span><span class="p">,</span> <span class="s">'importance'</span><span class="p">]).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">feature</th>
+<th style="text-align: right">importance</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">petal length (cm)</td>
+<td style="text-align: right">0.953571</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">petal width (cm)</td>
+<td style="text-align: right">0.046429</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">sepal length (cm)</td>
+<td style="text-align: right">0.000000</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">sepal width (cm)</td>
+<td style="text-align: right">0.000000</td>
+</tr>
+</tbody>
+</table></div></div>
+<div class="code-example">
+<p>+) <code class="language-plaintext highlighter-rouge">zip(*iterable)</code>은 동일한 개수로 이루어진 자료형을 묶어 주는 역할을 하는 함수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s">"abc"</span><span class="p">,</span> <span class="s">"def"</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('a', 'd'), ('b', 'e'), ('c', 'f')]
+</code></pre></div></div>
+</div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Feature Importances'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'feature'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'RdPu'</span><span class="p">)</span>  <span class="c1"># palette 옵션: https://seaborn.pydata.org/generated/seaborn.color_palette.html#seaborn.color_palette
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/machine_learning/decision_tree_feature_importances.png" alt="Decision_Tree_Feature_Importances"></p>
+<h2 id="random-forest"> <a href="#random-forest" aria-labelledby="random-forest" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Random Forest</h2>
+<p>: 결정 트리 앙상블 알고리즘 중 하나. 수많은 트리들을 임의로 만들고, 이 모델들의 결과를 다수결 투표로 종합해서 예측하는 모델. (Bagging 방식의 앙상블 러닝)</p>
+<ul>
+<li>
+<strong>*Ensemble Learning</strong>: 하나의 모델을 쓰는 대신, 수많은 모델들을 만들고 이 모델들의 예측을 합쳐서 종합적인 예측을 하는 기법</li>
+<li>결정 트리 자체는 아주 성능이 좋은 모델은 아니지만, 앙상블 기법으로 사용하면 성능이 좋은 모델을 만들 수 있음</li>
+</ul>
+<h3 id="기본-개념-1"> <a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-1" aria-labelledby="기본-개념-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기본 개념</h3>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*Random Forest 모델의 작동 방식:</strong></p>
+<ol>
+<li>Bootstrapping으로 임의로 데이터셋을 만든다<ul>
+<li>Bootstrapping: 데이터셋에서 임의로 데이터를 골라와서 새로운 데이터셋을 만들어주는 방법. (※중복을 허용해서 데이터 임의 선택)</li>
+<li>+) Bagging: Bootstrap Aggregating의 약어. (bootsrap 데이터 셋을 만들어내고, 이를 활용한 모델들의 결정을 종합(aggregate)해서 예측하는 앙상블 기법을 의미)</li>
+<li>Bootstrap 데이터셋을 만드는 이유: 앙상블 기법을 사용할 때, 모델들을 다 똑같은 데이터셋으로 학습시키면 결과가 다 비슷하게 나와버릴 수도 있기에, 모델을 만들 때마다 각각 임의로 만든 bootstrap 데이터셋을 사용해서 학습시키는 것.</li>
+</ul>
+</li>
+<li>임의로 수많은 결정 트리를 만든다 (질문 노드들을 어느 정도는 임의로 만듦)<ul>
+<li>각 속성을 사용한 질문들의 지니 불순도를 모두 구하고 가장 낮은 것으로 노드를 만드는 대신, 여러 속성 중 2개 정도를 임의로 선택 (속성이 많으면 더 많이 고를 수도 있음)</li>
+<li>2개 중 불순도가 더 낮은 것으로 root 노드의 질문 선택</li>
+<li>그 다음에도 똑같이 속성 2개 정도를 임의로 선택해서 지니 불순도 낮을 걸 사용 … (반복)</li>
+</ul>
+</li>
+<li>이렇게 1, 2단계를 반복하다보면, 서로 조금씩 다른 결정 트리들을 많이 많들 수 있다.<br> → 이렇게 만든 트리들에 데이터를 넣은 후, 각 트리의 예측 값을 다수결 투표로 종합해서 최종 결정!<br> (ex. 40개의 트리는 ‘독감’이라고 예측, 60개의 트리는 ‘일반 감기’라고 예측 → 일반 감기라고 최종 예측)</li>
+</ol>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/machine_learning/random_forest_example.webp" alt="Random_Forest_example" width="600"><br> (출처: dinhanhthi.com)</p>
+<h3 id="scikit-learn으로-데이터-학습-1"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5-1" aria-labelledby="scikit-learn으로-데이터-학습-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 데이터 학습</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. 데이터 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'class'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">ravel</span><span class="p">()</span>  <span class="c1">#ravel(): 다차원 array를 1차원 array로 평평하게 펴주는 함수
+</span></code></pre></div></div>
+<p><strong>2. 학습</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+<ul><li>max_depth: 결정트리와 마찬가지로, 트리의 최대 깊이를 정하는 변수. 이 랜덤포레스트 모델이 만드는 모든 트리들의 최대 깊이를 정해줌.</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
+                       criterion='gini', max_depth=4, max_features='auto',
+                       max_leaf_nodes=None, max_samples=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+</code></pre></div></div>
+<ul>
+<li>bootstrap: False라고 하면 모든 tree에 다 whole dataset을 사용. (default=True)</li>
+<li>max_samples: bootstrap=True인 경우, 각 tree 학습을 위해 X에서 몇 개씩의 sample을 추출할 것인지<ul><li>None(default)인 경우, 자동으로 X.shape[0]개의 sample을 추출 <br> (ex. 이 경우, X_train.shape[0]=120이므로 각각 120개의 element가 담긴 sample을 구성)</li></ul>
+</li>
+<li>n_estimators: 몇 개의 결정트리를 만들어서 예측할 것인지 정해주는 변수. (default=100)</li>
+</ul>
+<p><strong>3. test data로 성능 체크</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># 어떻게 분류했나 확인
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 2, 0, 2, 1, 0, 2, 0, 1, 1, 1, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_test</span><span class="p">[</span><span class="s">'class'</span><span class="p">].</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1">## 실제 y_test와 비교
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 0, 2, 1, 0, 1, 0, 1, 1, 2, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 몇 퍼센트가 올바르게 분류되었는지 확인
+</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9
+</code></pre></div></div>
+<p>약 90% 정도가 올바르게 분류되었다는 의미</p>
+<h3 id="속성-중요도-확인-1"> <a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8-1" aria-labelledby="속성-중요도-확인-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 속성 중요도 확인</h3>
+<ul>
+<li>결정트리를 사용한 모델이기에, 결정 트리와 마찬가지로 평균 지니 감소를 이용해 속성 중요도 계산이 가능</li>
+<li>랜덤 포레스트에서의 속성 중요도는 그 안의 수많은 결정 트리들의 속성 중요도의 평균값</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 속성 중요도 확인 
+</span><span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.09846022, 0.01962833, 0.35241878, 0.52949267])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># df를 만들어 importance가 큰 순서대로 정렬
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span><span class="p">)),</span> 
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'feature'</span><span class="p">,</span> <span class="s">'importance'</span><span class="p">]).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">feature</th>
+<th style="text-align: right">importance</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">petal width (cm)</td>
+<td style="text-align: right">0.529493</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">petal length (cm)</td>
+<td style="text-align: right">0.352419</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">sepal length (cm)</td>
+<td style="text-align: right">0.098460</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">sepal width (cm)</td>
+<td style="text-align: right">0.019628</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Feature Importances'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'feature'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'RdPu'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/machine_learning/random_forest_feature_importances.png" alt="Random_Forest_Feature_Importances"></p>
+<ul><li>보통, random forest 모델이 decision tree 모델보다 각 feature를 골고루 반영해서 예측한다.<br> (does not depend highly on any specific set of features)</li></ul>
+<h2 id="adaboost"> <a href="#adaboost" aria-labelledby="adaboost" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> AdaBoost</h2>
+<p>: Adaptive Boosting. - Boosting 기법을 사용한 앙상블 러닝 알고리즘 중 하나.</p>
+<h3 id="기본-개념-2"> <a href="#%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-2" aria-labelledby="기본-개념-2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기본 개념</h3>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*Boosting 기법:</strong></p>
+<ul>
+<li>일부러 성능이 안좋은 모델(weak learner)을 사용</li>
+<li>더 먼저 만든 모델의 성능에 따라 뒤에 있는 모델이 사용할 데이터셋을 바꾼다</li>
+<li>모델별 성능의 차이를 반영해서 모델의 예측을 종합한다 (성능이 좋은 모델의 예측을 더 반영)</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*AdaBoost 작동 방식:</strong></p>
+<ol>
+<li>스텀프(stump)를 사용<ul><li>스텀프: root 노드 하나와 분류 노드 두 개를 갖는 얕은 결정 트리. 보통 50%보다 조금 나은 정도의 성능.</li></ul>
+</li>
+<li>특정 결정 스텀프가 분류한 결과를 보고, 맞게 분류한 애들은 중요도를 낮추고 틀리게 분류한 애들은 중요도를 높여준다</li>
+<li>다음 스텀프는 앞의 스텀프의 분류 결과에 따라 중요도가 조정된 데이터셋을 사용해 학습한다<ul><li>뒤의 스텀프가 앞의 스텀프의 실수를 더 잘 맞추게 되는 방향으로 만들어지는 것.</li></ul>
+</li>
+<li>수많은 스텀프를 만들어준 후에, 각 스텀프의 성능을 고려해 종합적으로 결과를 예측한다<ul><li>다수결로 결과를 결정하되, 성능이 좋은 결정 스텀프일수록 예측 의견의 비중을 높게 반영</li></ul>
+</li>
+</ol>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*stump의 성능 계산하기:</strong></p>
+<ul><li>$ \dfrac{1}{2}\log(\dfrac{1- total \, error}{total \, error}) $<ul>
+<li>total error: 잘못 분류한 데이터들의 중요도의 합</li>
+<li>늘 모든 데이터의 중요도의 합은 1로 유지되므로, total error의 최댓값은 1</li>
+<li>total error가 1인 경우 (=모든 데이터를 다 틀리게 예측한 경우) 성능이 무한하게 작아진다</li>
+<li>total error가 0인 경우 (=모든 데이터를 다 맞게 예측한 경우) 성능이 무한하게 커진다</li>
+<li>total error가 0.5인 경우 (= 딱 반만 맞게 예측한 경우) 성능은 0</li>
+</ul>
+</li></ul>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/machine_learning/adaboost_stump_error.png" alt="Adaboost_Stump_Error" width="500"><br> (출처: codeit)</p>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*stump 추가하기:</strong></p>
+<ol>
+<li>첫 스텀프는 결정트리를 만들 때처럼 지니불순도를 계산해서 root 노드를 고른다</li>
+<li>그 후 스텀프 추가하기:<ul>
+<li>각 데이터의 중요도를 가지고 범위를 만들어준다. <br> (ex. 첫번째 데이터는 중요도가 0.1 → 범위가 0 ~ 0.1, 두번째 데이터는 중요도가 0.2 → 범위가 0.1 ~ 0.3, 세번째 데이터는 중요도가 0.15 → 범위가 0.3 ~ 0.45, …)</li>
+<li>0과 1 사이의 임의의 숫자를 골라, 그 숫자가 속하는 범위의 데이터를 데이터셋에 추가한다</li>
+<li>※ 중요도가 높은 데이터는 범위도 크기 때문에 선택될 확률이 높아지는 것!</li>
+</ul>
+</li>
+</ol>
+<p>→ 새로운 데이터 셋은 전 스텀프들이 틀린, 중요도가 높은 데이터들이 확률적으로 더 많이 들어있기 때문에 얘네를 더 잘 맞출 수 있게 됨.</p>
+<p class="fs-1 lh-0"> </p>
+<p><strong>*데이터 중요도 바꾸기:</strong></p>
+<ol>
+<li>첫 스텀프를 만들 때는 모든 데이터의 중요도가 같다 (ex. 데이터가 10개면 각각의 중요도는 1/10)</li>
+<li>틀리게 분류한 데이터: $ weight_{new} = weight_{old} * e^{p_{tree}} $<ul>
+<li>$ e $: 자연상수. 2.71…</li>
+<li>$ p_{tree} $: 스텀프의 성능</li>
+</ul>
+</li>
+<li>맞게 분류한 데이터: $ weight_{new} = weight_{old} * e^{-p_{tree}} $</li>
+</ol>
+<ul>
+<li>성능이 0이면 $ weight_{new} $ = 1</li>
+<li>틀린 데이터는 $ weight_{old} $에 1보다 큰 값을 곱하게 되므로 원래보다 중요도가 커짐</li>
+<li>맞은 데이터는 $ weight_{old} $에 1보다 작은 값을 곱하게 되므로 원래보다 중요도가 작아짐</li>
+</ul>
+<h3 id="scikit-learn으로-데이터-학습-2"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%99%EC%8A%B5-2" aria-labelledby="scikit-learn으로-데이터-학습-2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 데이터 학습</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. 데이터 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'class'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">ravel</span><span class="p">()</span>  <span class="c1">#ravel(): 다차원 array를 1차원 array로 평평하게 펴주는 함수
+</span></code></pre></div></div>
+<p><strong>2. 학습</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div>
+<ul><li>n_estimators: 최대 몇 개의 결정 스텀프(stump)를 만들어서 예측할 것인지 정해주는 변수. 기본값은 50.</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None, learning_rate=1.0,
+                   n_estimators=100, random_state=None)
+</code></pre></div></div>
+<ul>
+<li>base_estimator: 어떤 estimator를 바탕으로 boosted ensemble을 구축할 것인지.<ul><li>default: None이며, None인 경우 max_depth=1의 DecisionTreeClassifier를 사용 (=결정 스텀프를 사용)</li></ul>
+</li>
+<li>learning_rate: 각 classifier의 기여도를 낮춰줄 수 있음. (float number를 입력)</li>
+</ul>
+<p><strong>3. test data로 성능 체크</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># 어떻게 분류했나 확인
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 2, 0, 2, 2, 0, 2, 0, 1, 1, 1, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_test</span><span class="p">[</span><span class="s">'class'</span><span class="p">].</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1">## 실제 y_test와 비교
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 0, 2, 1, 0, 1, 0, 1, 1, 2, 2, 2, 0, 0, 2, 2, 0, 0, 1, 2,
+       0, 1, 1, 2, 1, 1, 1, 2])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 몇 퍼센트가 올바르게 분류되었는지 확인
+</span><span class="n">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8666666666666667
+</code></pre></div></div>
+<p>약 87% 정도가 올바르게 분류되었다는 의미</p>
+<h3 id="속성-중요도-확인-2"> <a href="#%EC%86%8D%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84-%ED%99%95%EC%9D%B8-2" aria-labelledby="속성-중요도-확인-2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 속성 중요도 확인</h3>
+<ul>
+<li>결정트리를 사용한 모델이기에, 결정 트리와 마찬가지로 평균 지니 감소를 이용해 속성 중요도 계산이 가능</li>
+<li>에다부스트에서의 속성 중요도는 각 결정 스텀프들의 속성 중요도의 weighted average (각 스텀프의 성능 차이를 반영해 평균냄)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 속성 중요도 확인 
+</span><span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.17, 0.03, 0.39, 0.41])
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># df를 만들어 importance가 큰 순서대로 정렬
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span><span class="p">)),</span> 
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'feature'</span><span class="p">,</span> <span class="s">'importance'</span><span class="p">]).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">feature</th>
+<th style="text-align: right">importance</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">petal width (cm)</td>
+<td style="text-align: right">0.41</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">petal length (cm)</td>
+<td style="text-align: right">0.39</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">sepal length (cm)</td>
+<td style="text-align: right">0.17</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">sepal width (cm)</td>
+<td style="text-align: right">0.03</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Feature Importances'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'feature'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'importance'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'RdPu'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/machine_learning/adaboost_feature_importances.png" alt="AdaBoost_Feature_Importances"></p>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

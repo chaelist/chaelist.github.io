@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEM Salaries 2 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="STEM Salaries 2">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/kaggle/stem_salaries2/">
+<meta property="og:url" content="https://chaelist.github.io/docs/kaggle/stem_salaries2/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="STEM Salaries 2"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/kaggle/stem_salaries2/","@type":"WebPage","headline":"STEM Salaries 2","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link active">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/kaggle">Kaggle Dataset EDA</a></li>
+<li class="breadcrumb-nav-list-item"><span>STEM Salaries 2</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="stem-salaries-2"> <a href="#stem-salaries-2" aria-labelledby="stem-salaries-2" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> STEM Salaries 2</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC" id="markdown-toc-데이터-정리">데이터 정리</a><ol><li><a href="#company-%ED%91%9C%EA%B8%B0-%ED%86%B5%EC%9D%BC" id="markdown-toc-company-표기-통일">company 표기 통일</a></li></ol>
+</li>
+<li>
+<a href="#%EA%B8%B0%EA%B0%84%EB%B3%84-%EB%B9%84%EA%B5%90" id="markdown-toc-기간별-비교">기간별 비교</a><ol>
+<li><a href="#datetime-%ED%83%80%EC%9E%85-%EA%B0%80%EA%B3%B5" id="markdown-toc-datetime-타입-가공">datetime 타입 가공</a></li>
+<li><a href="#%EB%B6%84%EA%B8%B0%EB%B3%84-%EC%B6%94%EC%9D%B4-%EB%B9%84%EA%B5%90" id="markdown-toc-분기별-추이-비교">분기별 추이 비교</a></li>
+</ol>
+</li>
+<li>
+<a href="#basesalary-stock-bonus" id="markdown-toc-basesalary-stock-bonus">basesalary, stock, bonus</a><ol>
+<li><a href="#totalyearlycompensation%EA%B3%BC%EC%9D%98-%EA%B4%80%EA%B3%84" id="markdown-toc-totalyearlycompensation과의-관계">totalyearlycompensation과의 관계</a></li>
+<li><a href="#%EA%B8%B0%EC%97%85%EB%B3%84-salary-bonus-stock-grant-value" id="markdown-toc-기업별-salary-bonus-stock-grant-value">기업별 salary, bonus, stock grant value</a></li>
+</ol>
+</li>
+<li>
+<a href="#data-scientist-%EC%A0%95%EB%B3%B4-%ED%8C%8C%EC%95%85" id="markdown-toc-data-scientist-정보-파악">Data Scientist 정보 파악</a><ol>
+<li><a href="#%EB%B6%84%EA%B8%B0%EB%B3%84-%EC%B6%94%EC%9D%B4" id="markdown-toc-분기별-추이">분기별 추이</a></li>
+<li><a href="#gender-race-education" id="markdown-toc-gender-race-education">gender, race, education</a></li>
+<li><a href="#top-%EA%B8%B0%EC%97%85-%ED%8C%8C%EC%95%85" id="markdown-toc-top-기업-파악">Top 기업 파악</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<p><strong>*분석 대상 데이터셋: Data Science and STEM Salaries</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/jackogozaly/data-science-and-stem-salaries?select=Levels_Fyi_Salary_Data.csv" target="_blank">데이터셋 출처</a></li>
+<li>levels.fyi에서 가져온 62,642개의 salary data (Data Science &amp; STEM 직종)</li>
+<li>2017.06.07 ~ 2021.08.17의 기간에 기록된 약 1060개의 회사, 15개 job title에 대한 데이터</li>
+</ul>
+<h2 id="데이터-정리"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%A6%AC" aria-labelledby="데이터-정리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 정리</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 라이브러리 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="n">pio</span>
+
+<span class="n">pio</span><span class="p">.</span><span class="n">templates</span><span class="p">.</span><span class="n">default</span> <span class="o">=</span> <span class="s">"plotly_white"</span>  <span class="c1"># default template을 지정
+</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">salary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/Levels_Fyi_Salary_Data.csv'</span><span class="p">)</span>
+<span class="n">salary_df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">timestamp</th>
+<th style="text-align: left">company</th>
+<th style="text-align: left">level</th>
+<th style="text-align: left">title</th>
+<th style="text-align: right">totalyearlycompensation</th>
+<th style="text-align: left">location</th>
+<th style="text-align: right">yearsofexperience</th>
+<th style="text-align: right">yearsatcompany</th>
+<th style="text-align: right">tag</th>
+<th style="text-align: right">basesalary</th>
+<th style="text-align: right">stockgrantvalue</th>
+<th style="text-align: right">bonus</th>
+<th style="text-align: right">gender</th>
+<th style="text-align: right">otherdetails</th>
+<th style="text-align: right">cityid</th>
+<th style="text-align: right">dmaid</th>
+<th style="text-align: right">rowNumber</th>
+<th style="text-align: right">Masters_Degree</th>
+<th style="text-align: right">Bachelors_Degree</th>
+<th style="text-align: right">Doctorate_Degree</th>
+<th style="text-align: right">Highschool</th>
+<th style="text-align: right">Some_College</th>
+<th style="text-align: right">Race_Asian</th>
+<th style="text-align: right">Race_White</th>
+<th style="text-align: right">Race_Two_Or_More</th>
+<th style="text-align: right">Race_Black</th>
+<th style="text-align: right">Race_Hispanic</th>
+<th style="text-align: right">Race</th>
+<th style="text-align: right">Education</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">6/7/2017 11:33:27</td>
+<td style="text-align: left">Oracle</td>
+<td style="text-align: left">L3</td>
+<td style="text-align: left">Product Manager</td>
+<td style="text-align: right">127000</td>
+<td style="text-align: left">Redwood City, CA</td>
+<td style="text-align: right">1.5</td>
+<td style="text-align: right">1.5</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">107000</td>
+<td style="text-align: right">20000</td>
+<td style="text-align: right">10000</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">7392</td>
+<td style="text-align: right">807</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">6/10/2017 17:11:29</td>
+<td style="text-align: left">eBay</td>
+<td style="text-align: left">SE 2</td>
+<td style="text-align: left">Software Engineer</td>
+<td style="text-align: right">100000</td>
+<td style="text-align: left">San Francisco, CA</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">7419</td>
+<td style="text-align: right">807</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">6/11/2017 14:53:57</td>
+<td style="text-align: left">Amazon</td>
+<td style="text-align: left">L7</td>
+<td style="text-align: left">Product Manager</td>
+<td style="text-align: right">310000</td>
+<td style="text-align: left">Seattle, WA</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">155000</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">11527</td>
+<td style="text-align: right">819</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">nan</td>
+<td style="text-align: right">nan</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>불필요한 칼럼 삭제<ul>
+<li>cityid, dmaid, rowNumber 칼럼은 불필요하다고 판단</li>
+<li>Masters_Degree ~ Race_Hispanic 칼럼은 ‘Race’와 ‘Education’의 정보를 더미변수화해놓은 칼럼이므로 우선 삭제</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">drop_columns</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'cityid'</span><span class="p">:</span><span class="s">'Race_Hispanic'</span><span class="p">].</span><span class="n">columns</span>
+ <span class="n">salary_df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">'columns'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+<li>중복값 제거<ul><li>모든 컬럼이 중복되는 경우는 실수로 중복 기입된 것이라 간주, 하나의 row만 남기고 삭제</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="s">'중복 제거 이전: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">salary_df</span><span class="p">))</span>
+ <span class="n">salary_df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'중복 제거 이후: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">salary_df</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 중복 제거 이전:  62642
+ 중복 제거 이후:  62598
+</code></pre></div></div>
+</li>
+<li>
+<p>결측치 채우기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[[</span><span class="s">'gender'</span><span class="p">,</span> <span class="s">'Race'</span><span class="p">,</span> <span class="s">'Education'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[[</span><span class="s">'gender'</span><span class="p">,</span> <span class="s">'Race'</span><span class="p">,</span> <span class="s">'Education'</span><span class="p">]].</span><span class="n">fillna</span><span class="p">(</span><span class="s">'Unknown'</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>이상한 값 처리</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># gender == "Title: Senior Software Engineer"라고 기입되어 있던 행의 gender 값을 'Unknown'으로 바꿔줌
+</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10985</span><span class="p">,</span> <span class="s">'gender'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Unknown'</span>
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="company-표기-통일"> <a href="#company-%ED%91%9C%EA%B8%B0-%ED%86%B5%EC%9D%BC" aria-labelledby="company-표기-통일" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> company 표기 통일</h3>
+<ol>
+<li>공백을 제거하고 uppercase로 맞춰줌<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div></div>
+</li>
+<li>llc, org, ltd 등 뒤에 붙는 다양한 단어들을 지워줌<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' LLC'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'.ORG'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' LTD'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' CORPORATION'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' INC'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+ <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' MEDIA'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' GROUP'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' TECHNOLOGY'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' TECHNOLOGIES'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1081
+</code></pre></div></div>
+</li>
+<li>같은 회사인데 표기가 다른 경우를 함수로 만들어서 정리<ul><li>‘amazon.com’과 ‘amazon web services’처럼 계열사지만 다른 기업이라고 판단되는 경우는 그냥 둠</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">clean_company_names</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+     <span class="k">try</span><span class="p">:</span> 
+         <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'AMAZON.COM'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'AMAZON'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'ARISTA'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'ARISTA'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'BLOOMBERG'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'BLOOMBERG'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'BOOKING'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'BOOKING.COM'</span>    
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'DELOITTE CONSULTING'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'DELOITTE CONSULTING'</span>    
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'FORD'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'FORD'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'CADENCE'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'CADENCE'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'MCKINSEY'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'MCKINSEY &amp; COMPANY                
+         elif name.startswith('</span><span class="n">MOTOROLA</span><span class="s">'): final_name = '</span><span class="n">MOTOROLA</span><span class="s">'
+         elif name.startswith('</span><span class="n">NUANCE</span><span class="s">'): final_name = '</span><span class="n">NUANCE</span>          
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'COSTCO'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'COSTCO'</span>  
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'TOYOTA'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'TOYOTA'</span>      
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'WALMART'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'WALMART'</span> 
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'MOODY'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">"MOODY'S"</span>     
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'MACY'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">"MACY'S"</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'ERNST'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">"ERNST &amp; YOUNG"</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'JANE STREET'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'JANE STREET CAPITAL'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'LIBERTY MUTUAL'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'LIBERTY MUTUAL'</span>
+         <span class="k">elif</span> <span class="n">name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'SAMSUNG'</span><span class="p">):</span> <span class="n">final_name</span> <span class="o">=</span> <span class="s">'SAMSUNG'</span>
+         <span class="k">else</span><span class="p">:</span> <span class="n">final_name</span> <span class="o">=</span> <span class="n">name</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="n">final_name</span> <span class="o">=</span> <span class="n">name</span>
+     <span class="k">return</span> <span class="n">final_name</span>
+
+ <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">name</span><span class="p">:</span> <span class="n">clean_company_names</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</code></pre></div></div>
+<p>→ 최종적으로 정리 완료된 기업 수:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'company'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1060
+</code></pre></div></div>
+</li>
+</ol>
+<h2 id="기간별-비교"> <a href="#%EA%B8%B0%EA%B0%84%EB%B3%84-%EB%B9%84%EA%B5%90" aria-labelledby="기간별-비교" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기간별 비교</h2>
+<h3 id="datetime-타입-가공"> <a href="#datetime-%ED%83%80%EC%9E%85-%EA%B0%80%EA%B3%B5" aria-labelledby="datetime-타입-가공" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> datetime 타입 가공</h3>
+<ol>
+<li>
+<p>datetime 타입으로 변환</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'timestamp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">salary_df</span><span class="p">[</span><span class="s">'timestamp'</span><span class="p">])</span>
+</code></pre></div></div>
+<ul><li>timestamp 칼럼은 levels.fyi에 데이터가 기록된 시점을 의미</li></ul>
+</li>
+<li>
+<p>기간을 월별, 분기별로 묶어줌</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">salary_df</span><span class="p">[</span><span class="s">'yearmonth'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'timestamp'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'%Y%m'</span><span class="p">)</span>
+ <span class="n">salary_df</span><span class="p">[</span><span class="s">'yearquarter'</span><span class="p">]</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">[</span><span class="s">'timestamp'</span><span class="p">].</span><span class="n">dt</span><span class="p">.</span><span class="n">to_period</span><span class="p">(</span><span class="s">"Q"</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">'str'</span><span class="p">)</span>
+ <span class="n">salary_df</span><span class="p">[[</span><span class="s">'timestamp'</span><span class="p">,</span> <span class="s">'yearmonth'</span><span class="p">,</span> <span class="s">'yearquarter'</span><span class="p">]].</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">timestamp</th>
+<th style="text-align: right">yearmonth</th>
+<th style="text-align: left">yearquarter</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">2017-06-07 11:33:27</td>
+<td style="text-align: right">201706</td>
+<td style="text-align: left">2017Q2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">2017-06-10 17:11:29</td>
+<td style="text-align: right">201706</td>
+<td style="text-align: left">2017Q2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">2017-06-11 14:53:57</td>
+<td style="text-align: right">201706</td>
+<td style="text-align: left">2017Q2</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">2017-06-17 00:23:14</td>
+<td style="text-align: right">201706</td>
+<td style="text-align: left">2017Q2</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">2017-06-20 10:58:51</td>
+<td style="text-align: right">201706</td>
+<td style="text-align: left">2017Q2</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="분기별-추이-비교"> <a href="#%EB%B6%84%EA%B8%B0%EB%B3%84-%EC%B6%94%EC%9D%B4-%EB%B9%84%EA%B5%90" aria-labelledby="분기별-추이-비교" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 분기별 추이 비교</h3>
+<ol>
+<li>
+<p>분기별 평균 yearly compensation</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_sal</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'yearquarter'</span><span class="p">])[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">quarterly_sal</span> <span class="o">=</span> <span class="n">quarterly_sal</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">line</span><span class="p">(</span><span class="n">quarterly_sal</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'yearquarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span>
+             <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'yearquarter'</span><span class="p">:</span><span class="s">'posted quarter'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/90.embed"></iframe><ul><li>2018Q1 이후 평균 yearly compensation은 약간 하락세를 보임. 하지만 점점 사이트에 등록된 data 수가 증가하면서 yearly compensation의 평균값이 평균으로 회귀하는 것일 수도 있으므로… 평균 salary가 하락세라고 단정적으로 말하기는 어렵다.</li></ul>
+</li>
+<li>
+<p>분기별 등록된 data의 수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">salary_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'yearquarter'</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'yearquarter'</span><span class="p">:</span><span class="s">'posted quarter'</span><span class="p">},</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/92.embed"></iframe>
+</li>
+</ol>
+<h2 id="basesalary-stock-bonus"> <a href="#basesalary-stock-bonus" aria-labelledby="basesalary-stock-bonus" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> basesalary, stock, bonus</h2>
+<h3 id="totalyearlycompensation과의-관계"> <a href="#totalyearlycompensation%EA%B3%BC%EC%9D%98-%EA%B4%80%EA%B3%84" aria-labelledby="totalyearlycompensation과의-관계" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> totalyearlycompensation과의 관계</h3>
+<ul><li>totalyearlycompensation (연간 총소득)과 다른 변수들이 어떤 관계가 있는지 확인</li></ul>
+<ol>
+<li>
+<p>변수들 간의 상관관계를 파악</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">salary_df</span><span class="p">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/stem_salaries2_1.png" alt="heatmap_correlation"></p>
+<ul><li>basesalary와 stockgrantvalue가 가장 totalyearlycompensation과 상관관계가 강한 편</li></ul>
+</li>
+<li>
+<p>basesalary와 totalyearlycompensation 사이의 관계</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">salary_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'basesalary'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'totalyearlycompensation'</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s">'ols'</span><span class="p">,</span>
+                 <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span> <span class="o">=</span> <span class="p">[</span><span class="s">'gender'</span><span class="p">,</span> <span class="s">'Race'</span><span class="p">,</span> <span class="s">'Education'</span><span class="p">],</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">,</span>
+                 <span class="n">trendline_color_override</span><span class="o">=</span><span class="s">'peachpuff'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="../../../assets/images/kaggle/stem_salaries2_1.html"></iframe>
+</li>
+<li>
+<p>stockgrantvalue와 totalyearlycompensation 사이의 관계</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">salary_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'stockgrantvalue'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'totalyearlycompensation'</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s">'ols'</span><span class="p">,</span>
+                 <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span> <span class="o">=</span> <span class="p">[</span><span class="s">'gender'</span><span class="p">,</span> <span class="s">'Race'</span><span class="p">,</span> <span class="s">'Education'</span><span class="p">],</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">,</span>
+                 <span class="n">trendline_color_override</span><span class="o">=</span><span class="s">'peachpuff'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="../../../assets/images/kaggle/stem_salaries2_2.html"></iframe>
+</li>
+</ol>
+<h3 id="기업별-salary-bonus-stock-grant-value"> <a href="#%EA%B8%B0%EC%97%85%EB%B3%84-salary-bonus-stock-grant-value" aria-labelledby="기업별-salary-bonus-stock-grant-value" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기업별 salary, bonus, stock grant value</h3>
+<ol>
+<li>평균 yearly compensation이 높은 기업 top 10<ul><li>100명 이상의 기록이 있는 기업에 한해 분석 (수가 적으면 1명의 값에 영향을 너무 크게 받으므로)</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sal_comp</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">sal_comp</span> <span class="o">=</span> <span class="n">sal_comp</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">sal_comp</span> <span class="o">=</span> <span class="n">sal_comp</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'count &gt;= 100'</span><span class="p">)</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">sal_comp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> 
+             <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+             <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/53.embed"></iframe>
+</li>
+<li>평균 base salary가 높은 기업 top 10<ul>
+<li>100명 이상의 기록이 있는 기업에 한해 분석</li>
+<li>basesalary &gt; 0인 경우에 한해서 분석 (base salary가 없을 수는 없으므로, 0이라고 적힌 것은 결측치라고 간주)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">base_comp</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'basesalary &gt; 0'</span><span class="p">).</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'basesalary'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">base_comp</span> <span class="o">=</span> <span class="n">base_comp</span><span class="p">[</span><span class="s">'basesalary'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">base_comp</span> <span class="o">=</span> <span class="n">base_comp</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'count &gt;= 100'</span><span class="p">)</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">base_comp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> 
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average base salary'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/94.embed"></iframe><ul>
+<li>Netflix를 제외하고는 total yearly compensation과 순위가 많이 달라짐</li>
+<li>Netflix의 경우 total yearly compensation의 평균과 base salary의 평균이 크게 다르지 않다는 것을 알 수 있음</li>
+</ul>
+</li>
+<li>
+<p>변수 간 관계 파악: Netflix</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">salary_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'company == "NETFLIX"'</span><span class="p">).</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/stem_salaries2_2.png" alt="Neflix_heatmap_correlation"></p>
+<ul>
+<li>Netflix의 경우, total yearly compensation은 base salary와 가장 강한 관계를 보이고, stock grant value나 bonus와는 관계가 없다는 것이 확인됨</li>
+<li>Netflix는 stock grant나 bonus를 통해 보상을 크게 지급하기보다는 base salary 자체를 높게 가져가는 연봉 체계를 가지고 있는 것으로 추측됨</li>
+</ul>
+</li>
+<li>평균 bonus가 많은 기업 top 10<ul><li>100명 이상의 기록이 있는 기업에 한해 분석</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">bonus_comp</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'bonus'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">bonus_comp</span> <span class="o">=</span> <span class="n">bonus_comp</span><span class="p">[</span><span class="s">'bonus'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">bonus_comp</span> <span class="o">=</span> <span class="n">bonus_comp</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'count &gt;= 100'</span><span class="p">)</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bonus_comp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> 
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average bonus'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/96.embed"></iframe>
+</li>
+<li>
+<p>변수 간 관계 파악: Cruise</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">salary_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'company == "CRUISE"'</span><span class="p">).</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/stem_salaries2_3.png" alt="Cruise_heatmap_correlation"></p>
+<ul><li>Cruise의 경우, base salary뿐 아니라 stock grant value와 bonus도 totaly yearly compensation과 강한 관계를 보임</li></ul>
+</li>
+<li>평균 stock grant value가 많은 기업 top 10<ul><li>100명 이상의 기록이 있는 기업에 한해 분석</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">stock_comp</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'stockgrantvalue'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">stock_comp</span> <span class="o">=</span> <span class="n">stock_comp</span><span class="p">[</span><span class="s">'stockgrantvalue'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">stock_comp</span> <span class="o">=</span> <span class="n">stock_comp</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'count &gt;= 100'</span><span class="p">)</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stock_comp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> 
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span> <span class="c1"># hover했을 때의 제목 &amp; 정보 추가
+</span>         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average stock grant value'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 원래 오른쪽에 나오게 되는 colorbar를 숨김
+</span> <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/98.embed"></iframe>
+</li>
+<li>
+<p>변수 간 관계 파악: Snap</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">salary_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'company == "SNAP"'</span><span class="p">).</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/stem_salaries2_4.png" alt="Snap_heatmap_correlation"></p>
+<ul><li>다소 약하긴 하지만, stock grant value가 total yearly compensation과 어느 정도의 상관관계를 보임</li></ul>
+</li>
+<li>
+<p>변수 간 관계 파악: Lyft</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">salary_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'company == "LYFT"'</span><span class="p">).</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'pink_r'</span><span class="p">)</span>
+ <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/stem_salaries2_5.png" alt="Lyft_heatmap_correlation"></p>
+<ul><li>Lyft는 stock grant value가 total yearly compensation가 가장 강한 관계를 보임</li></ul>
+</li>
+</ol>
+<p>&gt;&gt; 결론: 기업마다 각자의 보상 체계에 따라, base salary가 total yearly compensation을 거의 결정하기도 하고, bonus나 stock grant value가 total yearly compensation의 많은 부분을 차지하기도 한다<br> (total yearly compensation과 각 변수 간의 관계는 기업에 따라 달라진다)</p>
+<h2 id="data-scientist-정보-파악"> <a href="#data-scientist-%EC%A0%95%EB%B3%B4-%ED%8C%8C%EC%95%85" aria-labelledby="data-scientist-정보-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Data Scientist 정보 파악</h2>
+<p>: 최근 유망한 직종인 Data Scientist에 대해 집중 탐구</p>
+<h3 id="분기별-추이"> <a href="#%EB%B6%84%EA%B8%B0%EB%B3%84-%EC%B6%94%EC%9D%B4" aria-labelledby="분기별-추이" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 분기별 추이</h3>
+<ol>
+<li>
+<p>분기별 data 수의 변화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">quarterly_ds_sal</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'yearquarter'</span><span class="p">])[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">quarterly_ds_sal</span> <span class="o">=</span> <span class="n">quarterly_ds_sal</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">quarterly_ds_sal</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'yearquarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'count'</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'yearquarter'</span><span class="p">:</span><span class="s">'posted quarter'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/100.embed"></iframe><ul>
+<li>2021Q3은 2021.08.17까지밖에 없어서 적은 것</li>
+<li>점점 data scientist에 대한 기록이 증가하는 것으로 보이나, 전반적으로 이 dataset에서는 직업에 관계 없이 최근 분기일수록 더 기록이 많아지기 때문에 data scientist에 대한 관심이 증가한 것이라고 해석하기는 어려움</li>
+</ul>
+</li>
+<li>분기별 data scientist 기록의 전체 대비 %<ul><li>data scientist 뿐 아니라 다른 data도 수가 같이 증가하므로, 전체 대비 %를 계산해봄</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">temp1</span> <span class="o">=</span> <span class="n">salary_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'yearquarter'</span><span class="p">])[[</span><span class="s">'timestamp'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+ <span class="n">temp1</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'timestamp'</span><span class="p">:</span><span class="s">'total_count'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">temp2</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'yearquarter'</span><span class="p">])[[</span><span class="s">'timestamp'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+ <span class="n">temp2</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'timestamp'</span><span class="p">:</span><span class="s">'ds_count'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+ <span class="n">temp3</span> <span class="o">=</span> <span class="n">temp1</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp2</span><span class="p">)</span>
+ <span class="n">temp3</span><span class="p">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+ <span class="n">temp3</span><span class="p">[</span><span class="s">'ds_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp3</span><span class="p">[</span><span class="s">'ds_count'</span><span class="p">]</span> <span class="o">/</span> <span class="n">temp3</span><span class="p">[</span><span class="s">'total_count'</span><span class="p">]</span>
+
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">temp3</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s">'yearquarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'ds_ratio'</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'yearquarter'</span><span class="p">:</span><span class="s">'posted quarter'</span><span class="p">},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">tickformat</span> <span class="o">=</span> <span class="s">',.2%'</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/102.embed"></iframe><ul>
+<li>2018년 Q4부터는 Data Scientist에 대한 기록이 꾸준히 전체의 4% 내외로 유지됨</li>
+<li>물론 levels.fyi에 기록되지 않은 데이터가 많겠지만, 주어진 데이터만 보면 Data Scientist의 수가 다른 STEM 직종에 비해 유독 증가하고 있다고 보기는 어려움</li>
+</ul>
+</li>
+<li>
+<p>분기별 data scientist의 평균 yearly compensation</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">quarterly_ds_sal</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'yearquarter'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'yearquarter'</span><span class="p">:</span><span class="s">'posted quarter'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/104.embed"></iframe><ul><li>2018Q2는 data 수가 너무 적으므로 제외하고 생각하면, 대체로 data scientist의 평균 yearly compensation은 비슷한 수준으로 유지됨</li></ul>
+</li>
+</ol>
+<h3 id="gender-race-education"> <a href="#gender-race-education" aria-labelledby="gender-race-education" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> gender, race, education</h3>
+<ol>
+<li>Gender별 기록 수<ul><li>levels.fyi에 기록된 데이터에만 한정된 분석이지만, Data Scientist라는 직업에 어느 성별이 더 많은지 대강 파악할 수 있음</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ds_salary</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'gender != "Unknown"'</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span>  <span class="c1"># Unkown은 제외하고 계산
+</span>             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/109.embed"></iframe><ul><li>남성이 3/4 이상을 차지</li></ul>
+</li>
+<li>
+<p>Race별 기록 수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ds_salary</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Race != "Unknown"'</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="s">'Race'</span><span class="p">,</span>  <span class="c1"># Unkown은 제외하고 계산
+</span>             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/111.embed"></iframe><ul><li>Asian이 과반수를 차지, 그 다음은 White</li></ul>
+</li>
+<li>
+<p>Education별 기록 수</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ds_salary</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Education != "Unknown"'</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="s">'Education'</span><span class="p">,</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/114.embed"></iframe><ul>
+<li>Master’s Degree 소지자가 과반수, 그 다음은 PhD</li>
+<li>석사 학위 이상을 소지한 사람이 유독 많은 직업군으로 보임<br> (cf. 전체 데이터 중에서는 학사 학위 소지자가 약 41.5%)</li>
+</ul>
+</li>
+<li>
+<p>Gender별 평균 yearly compensation</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ds_sal_gend</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'gender'</span><span class="p">)[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">ds_sal_gend</span> <span class="o">=</span> <span class="n">ds_sal_gend</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ds_sal_gend</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span>
+             <span class="n">hover_name</span><span class="o">=</span><span class="s">'gender'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span> 
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/116.embed"></iframe><ul><li>Male이 Female보다 다소 높지만, 차이가 아주 유의미하다고 보기는 어려울 듯 <br> (cf. 평균 차이를 t-test로 검정하면 p값은 0.02 정도)</li></ul>
+</li>
+<li>
+<p>Race별 평균 yearly compensation</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ds_sal_race</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Race'</span><span class="p">)[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">ds_sal_race</span> <span class="o">=</span> <span class="n">ds_sal_race</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ds_sal_race</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Race'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'Race'</span><span class="p">,</span>
+         <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'Race'</span><span class="p">:[</span><span class="s">'White'</span><span class="p">,</span> <span class="s">'Asian'</span><span class="p">,</span> <span class="s">'Black'</span><span class="p">,</span> <span class="s">'Hispanic'</span><span class="p">]},</span>
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'Race'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/118.embed"></iframe><ul><li>등록된 Data Scientist의 수는 Asian이 더 많지만, 연간 보상의 평균은 White가 Asian보다 다소 높음</li></ul>
+</li>
+<li>
+<p>Education별 평균 yearly compensation</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ds_sal_edu</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Education'</span><span class="p">)[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">ds_sal_edu</span> <span class="o">=</span> <span class="n">ds_sal_edu</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ds_sal_edu</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Education'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'Education'</span><span class="p">,</span>
+         <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'Education'</span><span class="p">:[</span><span class="s">'PhD'</span><span class="p">,</span> <span class="s">"Master's Degree"</span><span class="p">,</span> <span class="s">"Bachelor's Degree"</span><span class="p">,</span> <span class="s">'Some College'</span><span class="p">,</span> <span class="s">'Highschool'</span><span class="p">]},</span>
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'Education'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span>
+         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/120.embed"></iframe><ul><li>등록된 Data Scientist의 수는 Master’s Degree 소지자가 가장 많지만, 연간 보상의 평균은 PhD 소지자가 가장 높음</li></ul>
+</li>
+</ol>
+<h3 id="top-기업-파악"> <a href="#top-%EA%B8%B0%EC%97%85-%ED%8C%8C%EC%95%85" aria-labelledby="top-기업-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Top 기업 파악</h3>
+<ol>
+<li>
+<p>등록된 data scientist 수가 많은 기업 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ds_count</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'timestamp'</span><span class="p">]].</span><span class="n">count</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ds_count</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'timestamp'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'timestamp'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'timestamp'</span><span class="p">,</span> <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> 
+         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'timestamp'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/124.embed"></iframe><ul><li>가장 Data Scientist를 많이 고용하는 회사는 Amazon, Microsoft, Facebook이라고 추정 (회사의 규모와 비례하는 듯)</li></ul>
+</li>
+<li>
+<p>Salary Top 기업</p>
+<ul>
+<li>평균 yearly compensation이 높은 top 10 기업 파악</li>
+<li>20명 이상의 기록이 있는 기업에 한해 분석 (수가 적으면 평균이 1명의 영향을 크게 받으므로)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ds_sal_comp</span> <span class="o">=</span> <span class="n">ds_salary</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'company'</span><span class="p">])[[</span><span class="s">'totalyearlycompensation'</span><span class="p">]].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+ <span class="n">ds_sal_comp</span> <span class="o">=</span> <span class="n">ds_sal_comp</span><span class="p">[</span><span class="s">'totalyearlycompensation'</span><span class="p">].</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">ds_sal_comp</span> <span class="o">=</span> <span class="n">ds_sal_comp</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'count &gt;= 20'</span><span class="p">)</span>
+
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ds_sal_comp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> 
+         <span class="n">hover_name</span><span class="o">=</span><span class="s">'company'</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s">'count'</span><span class="p">],</span> <span class="c1"># hover했을 때의 제목 &amp; 정보 추가
+</span>         <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">'mean'</span><span class="p">:</span><span class="s">'average yearly compensation'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">:</span><span class="s">'data count'</span><span class="p">},</span>
+         <span class="n">color_continuous_scale</span> <span class="o">=</span> <span class="s">'Brwnyl'</span><span class="p">)</span>
+
+ <span class="n">fig</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_coloraxis_showscale</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 원래 오른쪽에 나오게 되는 colorbar를 숨김
+</span> <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/122.embed"></iframe><ul><li>가장 평균 yearly compensation이 높은 기업은 Netflix</li></ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>영화 리뷰 감성 분석 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="영화 리뷰 감성 분석">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_application/sentiment_analysis/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="영화 리뷰 감성 분석"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_application/sentiment_analysis/","@type":"WebPage","headline":"영화 리뷰 감성 분석","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link active">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_application">Machine Learning 응용</a></li>
+<li class="breadcrumb-nav-list-item"><span>영화 리뷰 감성 분석</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="영화-리뷰-감성-분석"> <a href="#%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EA%B0%90%EC%84%B1-%EB%B6%84%EC%84%9D" aria-labelledby="영화-리뷰-감성-분석" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 영화 리뷰 감성 분석</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li><a href="#%EA%B0%90%EC%84%B1%EB%B6%84%EC%84%9Dsentiment-analysis%EC%9D%B4%EB%9E%80" id="markdown-toc-감성분석sentiment-analysis이란">감성분석(Sentiment Analysis)이란?</a></li>
+<li>
+<a href="#%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EA%B0%90%EC%84%B1-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84" id="markdown-toc-영화-리뷰-감성-분석-준비">영화 리뷰 감성 분석: 준비</a><ol>
+<li><a href="#%EC%98%81%ED%99%94-%ED%8F%89%EC%A0%90---%EB%A6%AC%EB%B7%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84" id="markdown-toc-영화-평점---리뷰-데이터-준비">영화 평점 - 리뷰 데이터 준비</a></li>
+<li><a href="#%ED%95%99%EC%8A%B5%EC%9A%A9-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B0%80%EA%B3%B5" id="markdown-toc-학습용-데이터로-가공">학습용 데이터로 가공</a></li>
+</ol>
+</li>
+<li>
+<a href="#logistic-regression%EC%9C%BC%EB%A1%9C-%ED%95%99%EC%8A%B5" id="markdown-toc-logistic-regression으로-학습">Logistic Regression으로 학습</a><ol>
+<li><a href="#train_test_split--vector%ED%99%94" id="markdown-toc-train_test_split--vector화">train_test_split &amp; vector화</a></li>
+<li><a href="#%ED%95%99%EC%8A%B5--test-data-%EC%98%88%EC%B8%A1" id="markdown-toc-학습--test-data-예측">학습 &amp; test data 예측</a></li>
+<li><a href="#%EC%98%88%EC%B8%A1%EC%97%90-%EC%A4%91%EC%9A%94%ED%95%9C-%EC%97%AD%ED%95%A0%EC%9D%84-%ED%95%98%EB%8A%94-%EB%8B%A8%EC%96%B4%EB%93%A4-%ED%99%95%EC%9D%B8" id="markdown-toc-예측에-중요한-역할을-하는-단어들-확인">예측에 중요한 역할을 하는 단어들 확인</a></li>
+<li><a href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8C%93%EA%B8%80%EC%9D%98-%EA%B8%8D%EC%A0%95%EB%B6%80%EC%A0%95-%EC%98%88%EC%B8%A1%ED%95%B4%EB%B3%B4%EA%B8%B0" id="markdown-toc-새로운-댓글의-긍정부정-예측해보기">새로운 댓글의 긍정/부정 예측해보기</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="감성분석sentiment-analysis이란"> <a href="#%EA%B0%90%EC%84%B1%EB%B6%84%EC%84%9Dsentiment-analysis%EC%9D%B4%EB%9E%80" aria-labelledby="감성분석sentiment-analysis이란" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 감성분석(Sentiment Analysis)이란?</h2>
+<p>: 특정 주제에 대한 글의 감성/태도를 파악하는 것 (긍정 / 부정)</p>
+<ol>
+<li>ML-based (기계 학습 기반)<ul>
+<li>Supervised learning. (training data: 긍정/부정의 label이 있는 text 데이터)</li>
+<li>단점: 유사한 domain의 학습 데이터를 준비해야 하는데, 긍정-부정이 명확히 드러나 있는 학습 데이터를 만들기가 어렵다.</li>
+</ul>
+</li>
+<li>Lexicon-based (감성어 사전 기반)<ul>
+<li>Lexicon(감성어 사전)에 단어별로 감성 점수가 들어있다 (긍정적인 단어는 + 값, 부정적인 단어는 - 값)</li>
+<li>사전을 바탕으로 text의 전체적인 감성 점수를 매기고, 값이 0보다 크면 긍정 / 작으면 부정으로 해석</li>
+<li>단점: 사전을 만드는 것 자체가 어렵고, 사전이 있다고 해도 이걸 문서에 적용해서 정확한 감성점수를 계산하는 게 쉽지만은 않다. (ex. the movie was not fun → fun은 긍정이지만 not fun은 부정)</li>
+</ul>
+</li>
+</ol>
+<h2 id="영화-리뷰-감성-분석-준비"> <a href="#%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EA%B0%90%EC%84%B1-%EB%B6%84%EC%84%9D-%EC%A4%80%EB%B9%84" aria-labelledby="영화-리뷰-감성-분석-준비" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 영화 리뷰 감성 분석: 준비</h2>
+<p>: Machine Learning 기반 감성 분석을 위해, 긍정/부정이 구분되는 데이터인 영화 평점 &amp; 리뷰 데이터를 수집</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 사용할 library를 먼저 모두 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">konlpy</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>   <span class="c1"># tf-idf 방식을 사용하려면 대신 TfidfVectorizer를 import
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</code></pre></div></div>
+<h3 id="영화-평점---리뷰-데이터-준비"> <a href="#%EC%98%81%ED%99%94-%ED%8F%89%EC%A0%90---%EB%A6%AC%EB%B7%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84" aria-labelledby="영화-평점---리뷰-데이터-준비" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 영화 평점 - 리뷰 데이터 준비</h3>
+<p class="fs-1 lh-0"> </p>
+<p>⁣1. 네이버 영화 ‘현재 상영 영화’ 100개의 평점-리뷰 데이터 수집 (2021.03.30 기준)</p>
+<ul><li><a href="https://movie.naver.com/movie/running/current.nhn" target="_blank">https://movie.naver.com/movie/running/current.nhn</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## '네이버 영화'에서 직접 수집해 온 데이터를 dataframe으로 정리해 둠
+</span><span class="n">reviews_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">movie_num</th>
+<th style="text-align: left">movie_title</th>
+<th style="text-align: right">star</th>
+<th style="text-align: left">comment</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">191637</td>
+<td style="text-align: left">고질라 VS. 콩</td>
+<td style="text-align: right">10</td>
+<td style="text-align: left">시리즈 중 최고였던거 같아요;; 극장가서 보길 잘한듯</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">191637</td>
+<td style="text-align: left">고질라 VS. 콩</td>
+<td style="text-align: right">9</td>
+<td style="text-align: left">시원시원하게 두드려 패고 맞는 영화. 종종 봐줘야 마음이 상쾌해진다.</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">191637</td>
+<td style="text-align: left">고질라 VS. 콩</td>
+<td style="text-align: right">10</td>
+<td style="text-align: left">We need Kong, The world needs him.</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">191637</td>
+<td style="text-align: left">고질라 VS. 콩</td>
+<td style="text-align: right">10</td>
+<td style="text-align: left">방사능 왕도마뱀과 인류 조상 격 에이프의 환상적인 좌충우돌 액션 콜라보</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">191637</td>
+<td style="text-align: left">고질라 VS. 콩</td>
+<td style="text-align: right">10</td>
+<td style="text-align: left">콩 점프하고 고질라 수영하고 전투씬 나올때마다 포디로 보니까 ㄹㅇ 존잼임ㅋㅋ 님들아 꼭 나믿고 포디로 보셔라</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reviews_df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 170388 entries, 0 to 170387
+Data columns (total 4 columns):
+ #   Column       Non-Null Count   Dtype 
+---  ------       --------------   ----- 
+ 0   movie_num    170388 non-null  int64 
+ 1   movie_title  170388 non-null  object
+ 2   star         170388 non-null  int64 
+ 3   comment      170388 non-null  object
+dtypes: int64(2), object(2)
+</code></pre></div></div>
+<p>⁣2. comment에 내용이 없는 행 파악해서 삭제</p>
+<ul><li>평점만 있고 연결된 text가 없다면 감성 분석에 사용할 수 없음</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># comment에 내용이 없는 행 파악
+</span><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews_df</span><span class="p">[</span><span class="n">reviews_df</span><span class="p">[</span><span class="s">'comment'</span><span class="p">]</span> <span class="o">==</span> <span class="s">''</span><span class="p">]))</span>
+
+<span class="c1"># comment에 내용이 없는 행은 지워서 새 df에 저장
+</span><span class="n">reviews_with_comment_df</span> <span class="o">=</span> <span class="n">reviews_df</span><span class="p">[</span><span class="n">reviews_df</span><span class="p">[</span><span class="s">'comment'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">''</span><span class="p">]</span>
+<span class="n">reviews_with_comment_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews_with_comment_df</span><span class="p">))</span>  <span class="c1"># comment가 있는 리뷰의 수 
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5370
+165018
+</code></pre></div></div>
+<h3 id="학습용-데이터로-가공"> <a href="#%ED%95%99%EC%8A%B5%EC%9A%A9-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B0%80%EA%B3%B5" aria-labelledby="학습용-데이터로-가공" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 학습용 데이터로 가공</h3>
+<ol>
+<li>평점 8 이상 혹은 3 이하만 저장 (8 이상: 긍정적, 3 이하: 부정적)</li>
+<li>각 text를 tokenize한 후, 동사, 형용사, 명사만 저장 (konlpy의 Okt 사용)</li>
+</ol>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 텍스트를 tokenize해서 adjective, verb, noun만 추출하는 함수
+</span>
+<span class="k">def</span> <span class="nf">tokenize_korean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span> 
+  <span class="n">text_filtered</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[^,.?!\w\s]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+  <span class="n">okt</span> <span class="o">=</span> <span class="n">konlpy</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">Okt</span><span class="p">()</span> 
+  <span class="n">Okt_morphs</span> <span class="o">=</span> <span class="n">okt</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">text_filtered</span><span class="p">)</span> 
+
+  <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">Okt_morphs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Adjective'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Verb'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Noun'</span><span class="p">:</span>
+      <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+  <span class="n">words_str</span> <span class="o">=</span> <span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">words_str</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_texts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">star</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">reviews_with_comment_df</span><span class="p">[</span><span class="s">'star'</span><span class="p">],</span> <span class="n">reviews_with_comment_df</span><span class="p">[</span><span class="s">'comment'</span><span class="p">]):</span>
+  <span class="k">if</span> <span class="mi">4</span> <span class="o">&lt;=</span> <span class="n">star</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">:</span> 
+    <span class="k">continue</span>  
+     <span class="c1"># 평점이 4~7인 영화는 애매하기 때문에 학습데이터로 사용하지 않음
+</span>
+  <span class="n">tokenized_comment</span> <span class="o">=</span> <span class="n">tokenize_korean_text</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>  <span class="c1"># 위에서 만들었던 함수로 comment 쪼개기
+</span>  <span class="n">X_texts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokenized_comment</span><span class="p">)</span>
+
+  <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">star</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 평점이 8 이상이면(8,9,10) 값을 1로 지정 (positive)
+</span>    <span class="c1"># 평점이 3 이하이면(1,2,3) 값을 -1로 지정 (negative)
+</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'원래 text 수: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">reviews_with_comment_df</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'평점 3 이하 혹은 8 이상인 text 수: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_texts</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+<span class="k">print</span><span class="p">(</span><span class="n">X_texts</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>원래 text 수: 165018
+평점 3 이하 혹은 8 이상인 text 수: 149373
+['시리즈 중 최고 였던거 같아요 장가 보길 한듯', '시원시원하게 두드려 패 맞는 영화 종종 봐줘야 마음 상쾌해진다', '', '방사 능 왕 도마뱀 인류 조상 격 이프 환상 좌충우돌 액션 콜라보', '콩 점프 고질라 수영 전투씬 나올 때 포디 보 존잼임 님들 꼭 나 믿고 포디 보셔라']
+</code></pre></div></div>
+<h2 id="logistic-regression으로-학습"> <a href="#logistic-regression%EC%9C%BC%EB%A1%9C-%ED%95%99%EC%8A%B5" aria-labelledby="logistic-regression으로-학습" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logistic Regression으로 학습</h2>
+<h3 id="train_test_split--vector화"> <a href="#train_test_split--vector%ED%99%94" aria-labelledby="train_test_split--vector화" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> train_test_split &amp; vector화</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># train_test_split
+</span><span class="n">X_train_texts</span><span class="p">,</span> <span class="n">X_test_texts</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_texts</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CountVectorizer로 vector화
+</span><span class="n">tf_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">X_train_tf</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_texts</span><span class="p">)</span>  <span class="c1"># training data에 맞게 fit &amp; training data를 transform
+</span><span class="n">X_test_tf</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_texts</span><span class="p">)</span> <span class="c1"># test data를 transform
+</span>
+<span class="n">vocablist</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tf_vectorizer</span><span class="p">.</span><span class="n">vocabulary_</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>  <span class="c1"># 단어들을 번호 기준 내림차순으로 저장
+</span></code></pre></div></div>
+<p>*<a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank">CountVectorizer</a>: 각 단어의 frequency를 기반으로 text를 vector화.</p>
+<ul>
+<li>ngram_range: (1, 1) means only unigrams, (1, 2) means unigrams and bigrams, and (2, 2) means only bigrams. (default: (1,1))</li>
+<li>min_df: ignore terms that have a document frequency strictly lower than the given threshold. (default: 1)<ul>
+<li>float 값을 쓰면: document에 어느 정도 비율 아래로 들어 있으면 무시한다는 뜻</li>
+<li>int 값을 쓰면 (ex. 1): 절대적으로 몇 번 아래로 포함된 단어면 무시한다는 뜻 (1이면 1번도 안 나온 단어는 무시한다는 뜻)</li>
+</ul>
+</li>
+<li>
+<code class="language-plaintext highlighter-rouge">tf_vectorizer.fit_transform(X_train_texts)</code>:<ol>
+<li>fit: training data에 있는 각 단어별로 번호가 붙어서 저장됨</li>
+<li>transform: training data의 각 값마다, 어떤 단어가 몇 번 나오는지 데이터가 저장됨 <br> – ex) <code class="language-plaintext highlighter-rouge">(0, 2442) 1</code>이라고 하면 0번째 변수에 2442번 단어가 1번 나온다는 뜻</li>
+</ol>
+</li>
+<li>
+<code class="language-plaintext highlighter-rouge">tf_vectorizer.transform(X_train_texts)</code>:<ul><li>test data의 각 값마다, 어떤 단어가 몇 번 나오는지의 데이터가 저장됨 (단, fit_transform이 아니므로, 앞서 training data에 있던 단어들에 한해서 분석됨)</li></ul>
+</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## 확인해보기
+</span><span class="k">print</span><span class="p">(</span><span class="n">X_train_tf</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X_test_tf</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">vocablist</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (0, 48016)	1
+  (0, 30089)	2
+  (0, 1146)	1
+  (0, 68104)	1
+  (0, 57682)	1
+  (0, 1277)	1
+  (0, 34835)	1
+  (0, 51567)	1
+  (0, 172)	1
+  (0, 37975)	1 
+
+  (0, 1485)	1
+  (0, 15929)	1
+  (0, 64573)	1
+  (0, 66001)	1 
+
+['가가', '가각', '가감']
+</code></pre></div></div>
+<div class="code-example">
+<p><strong>+) Text Vectorization: TF와 TF-IDF 방식</strong></p>
+<ol>
+<li>TF (Term Frequency)<ul><li>text 내 단어별 frequency를 기반으로 vector를 형성</li></ul>
+<p><img src="../../../assets/images/machine_learning/vectorization_tf_example.png" alt="vectorization_tf_example" width="400"></p>
+<p class="fs-3">(+. 위와 같이, 각 문서의 단어를 나타내는 vector들로 만든 행렬을 DTM(Document Term Matrix)이라고 함)</p>
+</li>
+<li>TF-IDF (Term Frequency - Inverse Document Frequency)<ul>
+<li>특정 단어가 특정 문서의 uniqueness를 얼마나 나타내는가를 계산하기 위해 사용</li>
+<li>TF-IDF가 높을수록 해당 단어는 다른 문서에서는 적게 사용되고, 해당 문서에서 많이 사용되고 있다는 뜻으로, 해당 단어가 해당 문서의 uniqueness를 많이 나타낸다고 볼 수 있음.</li>
+</ul>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/machine_learning/vectorization_tfidf.png" alt="vectorization_tfidf" width="400"> <br> (출처: bloter)</p>
+</li>
+</ol>
+</div>
+<h3 id="학습--test-data-예측"> <a href="#%ED%95%99%EC%8A%B5--test-data-%EC%98%88%EC%B8%A1" aria-labelledby="학습--test-data-예측" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 학습 &amp; test data 예측</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">'l2'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tf</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># 학습
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LogisticRegression(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=100,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=0, solver='lbfgs', tol=0.0001, verbose=0,
+                   warm_start=False)
+</code></pre></div></div>
+<p>→ Test data 예측:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_tf</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Misclassified samples: {} out of {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">((</span><span class="n">y_test_pred</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">).</span><span class="nb">sum</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy: {:.2f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)))</span>  <span class="c1"># model.score(X_test_tf, y_test)로 계산해도 됨
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Misclassified samples: 2490 out of 29875
+Accuracy: 0.92
+</code></pre></div></div>
+<ul><li>92%를 잘 예측함!</li></ul>
+<h3 id="예측에-중요한-역할을-하는-단어들-확인"> <a href="#%EC%98%88%EC%B8%A1%EC%97%90-%EC%A4%91%EC%9A%94%ED%95%9C-%EC%97%AD%ED%95%A0%EC%9D%84-%ED%95%98%EB%8A%94-%EB%8B%A8%EC%96%B4%EB%93%A4-%ED%99%95%EC%9D%B8" aria-labelledby="예측에-중요한-역할을-하는-단어들-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 예측에 중요한 역할을 하는 단어들 확인</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coefficients</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">sorted_coefficients</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># coefficients(계수)가 큰 값부터 내림차순으로 정렬
+</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'긍정적인 단어 Top 10 (높은 평점과 상관관계가 강한 단어들)'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word_num</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="n">sorted_coefficients</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">'{0:}({1:.3f})'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">vocablist</span><span class="p">[</span><span class="n">word_num</span><span class="p">],</span> <span class="n">coef</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">부정적인 단어 Top 10 (낮은 평점과 상관관계가 강한 단어들)'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word_num</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="n">sorted_coefficients</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]:</span> 
+  <span class="k">print</span><span class="p">(</span><span class="s">'{0:}({1:.3f})'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">vocablist</span><span class="p">[</span><span class="n">word_num</span><span class="p">],</span> <span class="n">coef</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>긍정적인 단어 Top 10 (높은 평점과 상관관계가 강한 단어들)
+최고(2.163)
+여운(1.829)
+좋았습니다(1.626)
+재밌어요(1.617)
+좋았어요(1.524)
+재밌었어요(1.456)
+재밌게(1.435)
+좋아요(1.389)
+봤어요(1.330)
+최고다(1.317)
+
+부정적인 단어 Top 10 (낮은 평점과 상관관계가 강한 단어들)
+재미없다(-1.818)
+재미없어요(-1.836)
+게이(-1.842)
+재미없음(-1.936)
+쓰레기(-2.012)
+아깝다(-2.045)
+미화(-2.196)
+똥꼬(-2.597)
+노잼(-2.748)
+최악(-2.767)
+</code></pre></div></div>
+<h3 id="새로운-댓글의-긍정부정-예측해보기"> <a href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8C%93%EA%B8%80%EC%9D%98-%EA%B8%8D%EC%A0%95%EB%B6%80%EC%A0%95-%EC%98%88%EC%B8%A1%ED%95%B4%EB%B3%B4%EA%B8%B0" aria-labelledby="새로운-댓글의-긍정부정-예측해보기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 새로운 댓글의 긍정/부정 예측해보기</h3>
+<p>: 학습에 포함되지 않았던 영화인 ‘<a href="https://movie.naver.com/movie/bi/mi/point.nhn?code=118917" target="_blank">인턴</a>‘에서 댓글을 가져와서 테스트</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 긍정/부정 테스트용 함수 생성
+</span><span class="k">def</span> <span class="nf">guess_good_or_bad</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text_filtered</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'.'</span><span class="p">,</span> <span class="s">''</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">','</span><span class="p">,</span><span class="s">''</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"'"</span><span class="p">,</span><span class="s">""</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">'·'</span><span class="p">,</span> <span class="s">' '</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">'='</span><span class="p">,</span><span class="s">''</span><span class="p">)</span> 
+
+  <span class="n">okt</span> <span class="o">=</span> <span class="n">konlpy</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">Okt</span><span class="p">()</span> 
+  <span class="n">Okt_morphs</span> <span class="o">=</span> <span class="n">okt</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">text_filtered</span><span class="p">)</span> 
+
+  <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">Okt_morphs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Adjective'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Verb'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Noun'</span><span class="p">:</span>
+      <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+  <span class="n">words_str</span> <span class="o">=</span> <span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+  
+  <span class="n">new_text_tf</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="p">.</span><span class="n">transform</span><span class="p">([</span><span class="n">words_str</span><span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_text_tf</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'긍정'</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'부정'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>→ 리뷰 3개를 각각 테스트:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">guess_good_or_bad</span><span class="p">(</span><span class="s">'로버트 드니로가 첫출근 전날밤에 (다음날 입을) 옷과 신발을 준비하는 장면이 왜그렇게 가슴찡하던지..왠지 가슴설레고 긴장되고, 가기 싫었던 온갖 감정들이 15년만에 다시 기억이 나더군요 재밌고 따뜻한 영화입니다~'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>긍정
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">guess_good_or_bad</span><span class="p">(</span><span class="s">'시작하고 몇분간은 재밌을거같았다. 하지만 계속 진행될수록 뭔가 이상함과 뜬금없음과 ㅈ같음을 느꼈다. 난중에 감독이 여자인것을 알고 납득이 가버렸다.'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부정
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">guess_good_or_bad</span><span class="p">(</span><span class="s">'울컥... 한 영화...'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>긍정
+</code></pre></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

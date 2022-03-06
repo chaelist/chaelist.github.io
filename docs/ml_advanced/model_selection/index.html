@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Selection | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Model Selection">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_advanced/model_selection/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_advanced/model_selection/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Model Selection"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_advanced/model_selection/","@type":"WebPage","headline":"Model Selection","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link active">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_advanced">Machine Learning 심화</a></li>
+<li class="breadcrumb-nav-list-item"><span>Model Selection</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="model-selection"> <a href="#model-selection" aria-labelledby="model-selection" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Model Selection</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#k-%EA%B2%B9-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-k-fold-cross-validation" id="markdown-toc-k-겹-교차-검증-k-fold-cross-validation">k-겹 교차 검증 (k-fold cross validation)</a><ol>
+<li><a href="#k-%EA%B2%B9-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-%EB%B0%A9%EB%B2%95" id="markdown-toc-k-겹-교차-검증-방법">k-겹 교차 검증 방법</a></li>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84" id="markdown-toc-scikit-learn으로-구현">scikit-learn으로 구현</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%84%9C%EC%B9%98-grid-search" id="markdown-toc-그리드-서치-grid-search">그리드 서치 (Grid Search)</a><ol>
+<li><a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84-1" id="markdown-toc-scikit-learn으로-구현-1">scikit-learn으로 구현</a></li>
+<li><a href="#randomized-search" id="markdown-toc-randomized-search">Randomized Search</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="k-겹-교차-검증-k-fold-cross-validation"> <a href="#k-%EA%B2%B9-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-k-fold-cross-validation" aria-labelledby="k-겹-교차-검증-k-fold-cross-validation" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> k-겹 교차 검증 (k-fold cross validation)</h2>
+<p>: 머신 러닝 모델의 성능을 보다 정확하게 평가할 수 있는 방법.</p>
+<ul>
+<li>test set과 training set을 임의로 나눌 때, 어떻게 나뉘는지에 따라 딱 이 test set에서만 성능이 좋게 나올 수도 있고, 안좋게 나올 수도 있다. 이런 문제를 해결해주는 것이 교차 검증!</li>
+<li>k값은 데이터를 몇 세트로 나눌지를 의미. 데이터 수에 따라 다르지만, 가장 일반적으로 사용하는 숫자는 5</li>
+<li>+) 데이터가 많을수록 우연히 test set에서만 성능이 다르게 나올 확률이 적기 때문에 작은 k를 사용해도 된다</li>
+</ul>
+<h3 id="k-겹-교차-검증-방법"> <a href="#k-%EA%B2%B9-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-%EB%B0%A9%EB%B2%95" aria-labelledby="k-겹-교차-검증-방법" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> k-겹 교차 검증 방법</h3>
+<ol>
+<li>먼저 전체 데이터를 k 개의 같은 사이즈로 나눈다.<ul><li>ex) k=5, 데이터가 총 1000개가 있다면 이 데이터를 200개씩 5개의 셋으로 나눈다</li></ul>
+</li>
+<li>맨 처음에는 첫 번째 데이터 셋을 test test으로 사용하고, 나머지를 training set으로 사용</li>
+<li>그 다음에는 두 번째 데이터 셋을 test set으로 사용하고, 나머지 4개를 training set으로 사용해서 다시 모델을 학습시키고, 성능을 파악</li>
+<li>이 과정을 모든 데이터 셋에 반복 → 5개의 테스트 셋에 대한 각 성능 5개의 평균을 모델 성능으로 본다 <br> (모델의 성능을 여러 번 다른 데이터로 검증하기 때문에 평가에 대한 신뢰가 올라가는 것!)</li>
+</ol>
+<h3 id="scikit-learn으로-구현"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84" aria-labelledby="scikit-learn으로-구현" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 구현</h3>
+<ul><li>sklearn.model_selection.cross_val_score를 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>   <span class="c1"># 교차 검증을 해주는 함수
+</span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 경고 메시지 출력을 막는 코드 추가
+</span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="p">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">'ignore'</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="nb">FutureWarning</span><span class="p">)</span>
+</code></pre></div></div>
+<p><strong>*iris dataset 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Class'</span><span class="p">])</span>
+
+<span class="n">X</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">sepal length (cm)</th>
+<th style="text-align: right">sepal width (cm)</th>
+<th style="text-align: right">petal length (cm)</th>
+<th style="text-align: right">petal width (cm)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5.1</td>
+<td style="text-align: right">3.5</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">4.9</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3.2</td>
+<td style="text-align: right">1.3</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">3.1</td>
+<td style="text-align: right">1.5</td>
+<td style="text-align: right">0.2</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3.6</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Class</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>*LogisticRegression 모델로 교차 검증</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logistic_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">logistic_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># ravel(): 다차원 array를 1차원 array로 평평하게 펴주는 함수.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.96666667, 1.        , 0.93333333, 0.96666667, 1.        ])
+</code></pre></div></div>
+<ul><li>cross_val_score: 알아서 모델을 학습시켜서 k겹 교차검증을 해주고, 각 k개의 성능이 return된다<ul>
+<li>파라미터: k-겹 교차검증을 해줄 모델명, X값, y값, cv = k값을 결정.</li>
+<li>여기서는 cv=5니까 5겹 교차검증을 한다는 뜻.</li>
+</ul>
+</li></ul>
+<p><strong>→ cross_val_score의 결과로 return된 값들을 평균내준다</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 이렇게 평균낸 값을 해당 모델의 성능으로 생각
+</span><span class="n">np</span><span class="p">.</span><span class="n">average</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">logistic_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9733333333333334
+</code></pre></div></div>
+<h2 id="그리드-서치-grid-search"> <a href="#%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%84%9C%EC%B9%98-grid-search" aria-labelledby="그리드-서치-grid-search" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 그리드 서치 (Grid Search)</h2>
+<p>: 좋은 하이퍼파라미터를 고르는 방법 중 하나</p>
+<ol>
+<li>우선 정해줘야 하는 각 하이퍼파라미터에 넣어보고 싶은 후보 값을 몇 개씩 정해준다</li>
+<li>선택한 후보 값들의 모든 조합을 써서 학습을 시키고, 그중 성능이 가장 좋게 나오는 하이퍼파라미터 조합을 고른다</li>
+</ol>
+<h3 id="scikit-learn으로-구현-1"> <a href="#scikit-learn%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84-1" aria-labelledby="scikit-learn으로-구현-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scikit-learn으로 구현</h3>
+<ul><li>sklearn.model_selection.GridSearchCV를 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>   <span class="c1"># Grid Search를 쉽게 해주는 함수
+</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+<p><strong>1. boston housing 데이터 준비</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boston_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">load_boston</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="c1"># 입력변수를 6차항으로 바꾸기
+</span><span class="n">polynomial_transformer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># 2차항 변환기 준비
+</span><span class="n">polynomial_features</span> <span class="o">=</span> <span class="n">polynomial_transformer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">polynomial_transformer</span><span class="p">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># 바꾼 값들을 다시 X로 저장
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">polynomial_features</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">X</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">1</th>
+<th style="text-align: right">CRIM</th>
+<th style="text-align: right">ZN</th>
+<th style="text-align: right">INDUS</th>
+<th style="text-align: right">CHAS</th>
+<th style="text-align: right">NOX</th>
+<th style="text-align: right">RM</th>
+<th style="text-align: right">AGE</th>
+<th style="text-align: right">DIS</th>
+<th style="text-align: right">RAD</th>
+<th style="text-align: right">TAX</th>
+<th style="text-align: right">PTRATIO</th>
+<th style="text-align: right">B</th>
+<th style="text-align: right">LSTAT</th>
+<th style="text-align: right">CRIM^2</th>
+<th style="text-align: right">CRIM ZN</th>
+<th style="text-align: right">CRIM INDUS</th>
+<th style="text-align: right">CRIM CHAS</th>
+<th style="text-align: right">CRIM NOX</th>
+<th style="text-align: right">CRIM RM</th>
+<th style="text-align: right">CRIM AGE</th>
+<th style="text-align: right">CRIM DIS</th>
+<th style="text-align: right">CRIM RAD</th>
+<th style="text-align: right">CRIM TAX</th>
+<th style="text-align: right">CRIM PTRATIO</th>
+<th style="text-align: right">CRIM B</th>
+<th style="text-align: right">CRIM LSTAT</th>
+<th style="text-align: right">ZN^2</th>
+<th style="text-align: right">ZN INDUS</th>
+<th style="text-align: right">ZN CHAS</th>
+<th style="text-align: right">ZN NOX</th>
+<th style="text-align: right">ZN RM</th>
+<th style="text-align: right">ZN AGE</th>
+<th style="text-align: right">ZN DIS</th>
+<th style="text-align: right">ZN RAD</th>
+<th style="text-align: right">ZN TAX</th>
+<th style="text-align: right">ZN PTRATIO</th>
+<th style="text-align: right">ZN B</th>
+<th style="text-align: right">ZN LSTAT</th>
+<th style="text-align: right">INDUS^2</th>
+<th style="text-align: right">INDUS CHAS</th>
+<th style="text-align: right">INDUS NOX</th>
+<th style="text-align: right">INDUS RM</th>
+<th style="text-align: right">INDUS AGE</th>
+<th style="text-align: right">INDUS DIS</th>
+<th style="text-align: right">INDUS RAD</th>
+<th style="text-align: right">INDUS TAX</th>
+<th style="text-align: right">INDUS PTRATIO</th>
+<th style="text-align: right">INDUS B</th>
+<th style="text-align: right">INDUS LSTAT</th>
+<th style="text-align: right">CHAS^2</th>
+<th style="text-align: right">CHAS NOX</th>
+<th style="text-align: right">CHAS RM</th>
+<th style="text-align: right">CHAS AGE</th>
+<th style="text-align: right">CHAS DIS</th>
+<th style="text-align: right">CHAS RAD</th>
+<th style="text-align: right">CHAS TAX</th>
+<th style="text-align: right">CHAS PTRATIO</th>
+<th style="text-align: right">CHAS B</th>
+<th style="text-align: right">CHAS LSTAT</th>
+<th style="text-align: right">NOX^2</th>
+<th style="text-align: right">NOX RM</th>
+<th style="text-align: right">NOX AGE</th>
+<th style="text-align: right">NOX DIS</th>
+<th style="text-align: right">NOX RAD</th>
+<th style="text-align: right">NOX TAX</th>
+<th style="text-align: right">NOX PTRATIO</th>
+<th style="text-align: right">NOX B</th>
+<th style="text-align: right">NOX LSTAT</th>
+<th style="text-align: right">RM^2</th>
+<th style="text-align: right">RM AGE</th>
+<th style="text-align: right">RM DIS</th>
+<th style="text-align: right">RM RAD</th>
+<th style="text-align: right">RM TAX</th>
+<th style="text-align: right">RM PTRATIO</th>
+<th style="text-align: right">RM B</th>
+<th style="text-align: right">RM LSTAT</th>
+<th style="text-align: right">AGE^2</th>
+<th style="text-align: right">AGE DIS</th>
+<th style="text-align: right">AGE RAD</th>
+<th style="text-align: right">AGE TAX</th>
+<th style="text-align: right">AGE PTRATIO</th>
+<th style="text-align: right">AGE B</th>
+<th style="text-align: right">AGE LSTAT</th>
+<th style="text-align: right">DIS^2</th>
+<th style="text-align: right">DIS RAD</th>
+<th style="text-align: right">DIS TAX</th>
+<th style="text-align: right">DIS PTRATIO</th>
+<th style="text-align: right">DIS B</th>
+<th style="text-align: right">DIS LSTAT</th>
+<th style="text-align: right">RAD^2</th>
+<th style="text-align: right">RAD TAX</th>
+<th style="text-align: right">RAD PTRATIO</th>
+<th style="text-align: right">RAD B</th>
+<th style="text-align: right">RAD LSTAT</th>
+<th style="text-align: right">TAX^2</th>
+<th style="text-align: right">TAX PTRATIO</th>
+<th style="text-align: right">TAX B</th>
+<th style="text-align: right">TAX LSTAT</th>
+<th style="text-align: right">PTRATIO^2</th>
+<th style="text-align: right">PTRATIO B</th>
+<th style="text-align: right">PTRATIO LSTAT</th>
+<th style="text-align: right">B^2</th>
+<th style="text-align: right">B LSTAT</th>
+<th style="text-align: right">LSTAT^2</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.00632</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">2.31</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.538</td>
+<td style="text-align: right">6.575</td>
+<td style="text-align: right">65.2</td>
+<td style="text-align: right">4.09</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">296</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">4.98</td>
+<td style="text-align: right">3.99424e-05</td>
+<td style="text-align: right">0.11376</td>
+<td style="text-align: right">0.0145992</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.00340016</td>
+<td style="text-align: right">0.041554</td>
+<td style="text-align: right">0.412064</td>
+<td style="text-align: right">0.0258488</td>
+<td style="text-align: right">0.00632</td>
+<td style="text-align: right">1.87072</td>
+<td style="text-align: right">0.096696</td>
+<td style="text-align: right">2.50841</td>
+<td style="text-align: right">0.0314736</td>
+<td style="text-align: right">324</td>
+<td style="text-align: right">41.58</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">9.684</td>
+<td style="text-align: right">118.35</td>
+<td style="text-align: right">1173.6</td>
+<td style="text-align: right">73.62</td>
+<td style="text-align: right">18</td>
+<td style="text-align: right">5328</td>
+<td style="text-align: right">275.4</td>
+<td style="text-align: right">7144.2</td>
+<td style="text-align: right">89.64</td>
+<td style="text-align: right">5.3361</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1.24278</td>
+<td style="text-align: right">15.1883</td>
+<td style="text-align: right">150.612</td>
+<td style="text-align: right">9.4479</td>
+<td style="text-align: right">2.31</td>
+<td style="text-align: right">683.76</td>
+<td style="text-align: right">35.343</td>
+<td style="text-align: right">916.839</td>
+<td style="text-align: right">11.5038</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.289444</td>
+<td style="text-align: right">3.53735</td>
+<td style="text-align: right">35.0776</td>
+<td style="text-align: right">2.20042</td>
+<td style="text-align: right">0.538</td>
+<td style="text-align: right">159.248</td>
+<td style="text-align: right">8.2314</td>
+<td style="text-align: right">213.532</td>
+<td style="text-align: right">2.67924</td>
+<td style="text-align: right">43.2306</td>
+<td style="text-align: right">428.69</td>
+<td style="text-align: right">26.8917</td>
+<td style="text-align: right">6.575</td>
+<td style="text-align: right">1946.2</td>
+<td style="text-align: right">100.598</td>
+<td style="text-align: right">2609.62</td>
+<td style="text-align: right">32.7435</td>
+<td style="text-align: right">4251.04</td>
+<td style="text-align: right">266.668</td>
+<td style="text-align: right">65.2</td>
+<td style="text-align: right">19299.2</td>
+<td style="text-align: right">997.56</td>
+<td style="text-align: right">25877.9</td>
+<td style="text-align: right">324.696</td>
+<td style="text-align: right">16.7281</td>
+<td style="text-align: right">4.09</td>
+<td style="text-align: right">1210.64</td>
+<td style="text-align: right">62.577</td>
+<td style="text-align: right">1623.32</td>
+<td style="text-align: right">20.3682</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">296</td>
+<td style="text-align: right">15.3</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">4.98</td>
+<td style="text-align: right">87616</td>
+<td style="text-align: right">4528.8</td>
+<td style="text-align: right">117482</td>
+<td style="text-align: right">1474.08</td>
+<td style="text-align: right">234.09</td>
+<td style="text-align: right">6072.57</td>
+<td style="text-align: right">76.194</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">1976.56</td>
+<td style="text-align: right">24.8004</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.02731</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">6.421</td>
+<td style="text-align: right">78.9</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">9.14</td>
+<td style="text-align: right">0.000745836</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.193082</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0128084</td>
+<td style="text-align: right">0.175358</td>
+<td style="text-align: right">2.15476</td>
+<td style="text-align: right">0.135652</td>
+<td style="text-align: right">0.05462</td>
+<td style="text-align: right">6.60902</td>
+<td style="text-align: right">0.486118</td>
+<td style="text-align: right">10.8393</td>
+<td style="text-align: right">0.249613</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">49.9849</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3.31583</td>
+<td style="text-align: right">45.3965</td>
+<td style="text-align: right">557.823</td>
+<td style="text-align: right">35.1174</td>
+<td style="text-align: right">14.14</td>
+<td style="text-align: right">1710.94</td>
+<td style="text-align: right">125.846</td>
+<td style="text-align: right">2806.08</td>
+<td style="text-align: right">64.6198</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.219961</td>
+<td style="text-align: right">3.01145</td>
+<td style="text-align: right">37.0041</td>
+<td style="text-align: right">2.32957</td>
+<td style="text-align: right">0.938</td>
+<td style="text-align: right">113.498</td>
+<td style="text-align: right">8.3482</td>
+<td style="text-align: right">186.146</td>
+<td style="text-align: right">4.28666</td>
+<td style="text-align: right">41.2292</td>
+<td style="text-align: right">506.617</td>
+<td style="text-align: right">31.8937</td>
+<td style="text-align: right">12.842</td>
+<td style="text-align: right">1553.88</td>
+<td style="text-align: right">114.294</td>
+<td style="text-align: right">2548.49</td>
+<td style="text-align: right">58.6879</td>
+<td style="text-align: right">6225.21</td>
+<td style="text-align: right">391.904</td>
+<td style="text-align: right">157.8</td>
+<td style="text-align: right">19093.8</td>
+<td style="text-align: right">1404.42</td>
+<td style="text-align: right">31315.4</td>
+<td style="text-align: right">721.146</td>
+<td style="text-align: right">24.6721</td>
+<td style="text-align: right">9.9342</td>
+<td style="text-align: right">1202.04</td>
+<td style="text-align: right">88.4144</td>
+<td style="text-align: right">1971.44</td>
+<td style="text-align: right">45.3993</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">484</td>
+<td style="text-align: right">35.6</td>
+<td style="text-align: right">793.8</td>
+<td style="text-align: right">18.28</td>
+<td style="text-align: right">58564</td>
+<td style="text-align: right">4307.6</td>
+<td style="text-align: right">96049.8</td>
+<td style="text-align: right">2211.88</td>
+<td style="text-align: right">316.84</td>
+<td style="text-align: right">7064.82</td>
+<td style="text-align: right">162.692</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">3627.67</td>
+<td style="text-align: right">83.5396</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.02729</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7.07</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.469</td>
+<td style="text-align: right">7.185</td>
+<td style="text-align: right">61.1</td>
+<td style="text-align: right">4.9671</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">242</td>
+<td style="text-align: right">17.8</td>
+<td style="text-align: right">392.83</td>
+<td style="text-align: right">4.03</td>
+<td style="text-align: right">0.000744744</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.19294</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.012799</td>
+<td style="text-align: right">0.196079</td>
+<td style="text-align: right">1.66742</td>
+<td style="text-align: right">0.135552</td>
+<td style="text-align: right">0.05458</td>
+<td style="text-align: right">6.60418</td>
+<td style="text-align: right">0.485762</td>
+<td style="text-align: right">10.7203</td>
+<td style="text-align: right">0.109979</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">49.9849</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3.31583</td>
+<td style="text-align: right">50.798</td>
+<td style="text-align: right">431.977</td>
+<td style="text-align: right">35.1174</td>
+<td style="text-align: right">14.14</td>
+<td style="text-align: right">1710.94</td>
+<td style="text-align: right">125.846</td>
+<td style="text-align: right">2777.31</td>
+<td style="text-align: right">28.4921</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.219961</td>
+<td style="text-align: right">3.36976</td>
+<td style="text-align: right">28.6559</td>
+<td style="text-align: right">2.32957</td>
+<td style="text-align: right">0.938</td>
+<td style="text-align: right">113.498</td>
+<td style="text-align: right">8.3482</td>
+<td style="text-align: right">184.237</td>
+<td style="text-align: right">1.89007</td>
+<td style="text-align: right">51.6242</td>
+<td style="text-align: right">439.003</td>
+<td style="text-align: right">35.6886</td>
+<td style="text-align: right">14.37</td>
+<td style="text-align: right">1738.77</td>
+<td style="text-align: right">127.893</td>
+<td style="text-align: right">2822.48</td>
+<td style="text-align: right">28.9555</td>
+<td style="text-align: right">3733.21</td>
+<td style="text-align: right">303.49</td>
+<td style="text-align: right">122.2</td>
+<td style="text-align: right">14786.2</td>
+<td style="text-align: right">1087.58</td>
+<td style="text-align: right">24001.9</td>
+<td style="text-align: right">246.233</td>
+<td style="text-align: right">24.6721</td>
+<td style="text-align: right">9.9342</td>
+<td style="text-align: right">1202.04</td>
+<td style="text-align: right">88.4144</td>
+<td style="text-align: right">1951.23</td>
+<td style="text-align: right">20.0174</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">484</td>
+<td style="text-align: right">35.6</td>
+<td style="text-align: right">785.66</td>
+<td style="text-align: right">8.06</td>
+<td style="text-align: right">58564</td>
+<td style="text-align: right">4307.6</td>
+<td style="text-align: right">95064.9</td>
+<td style="text-align: right">975.26</td>
+<td style="text-align: right">316.84</td>
+<td style="text-align: right">6992.37</td>
+<td style="text-align: right">71.734</td>
+<td style="text-align: right">154315</td>
+<td style="text-align: right">1583.1</td>
+<td style="text-align: right">16.2409</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.03237</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">6.998</td>
+<td style="text-align: right">45.8</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">394.63</td>
+<td style="text-align: right">2.94</td>
+<td style="text-align: right">0.00104782</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0705666</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0148255</td>
+<td style="text-align: right">0.226525</td>
+<td style="text-align: right">1.48255</td>
+<td style="text-align: right">0.196233</td>
+<td style="text-align: right">0.09711</td>
+<td style="text-align: right">7.18614</td>
+<td style="text-align: right">0.605319</td>
+<td style="text-align: right">12.7742</td>
+<td style="text-align: right">0.0951678</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">4.7524</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.99844</td>
+<td style="text-align: right">15.2556</td>
+<td style="text-align: right">99.844</td>
+<td style="text-align: right">13.2156</td>
+<td style="text-align: right">6.54</td>
+<td style="text-align: right">483.96</td>
+<td style="text-align: right">40.766</td>
+<td style="text-align: right">860.293</td>
+<td style="text-align: right">6.4092</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.209764</td>
+<td style="text-align: right">3.20508</td>
+<td style="text-align: right">20.9764</td>
+<td style="text-align: right">2.77649</td>
+<td style="text-align: right">1.374</td>
+<td style="text-align: right">101.676</td>
+<td style="text-align: right">8.5646</td>
+<td style="text-align: right">180.741</td>
+<td style="text-align: right">1.34652</td>
+<td style="text-align: right">48.972</td>
+<td style="text-align: right">320.508</td>
+<td style="text-align: right">42.4233</td>
+<td style="text-align: right">20.994</td>
+<td style="text-align: right">1553.56</td>
+<td style="text-align: right">130.863</td>
+<td style="text-align: right">2761.62</td>
+<td style="text-align: right">20.5741</td>
+<td style="text-align: right">2097.64</td>
+<td style="text-align: right">277.649</td>
+<td style="text-align: right">137.4</td>
+<td style="text-align: right">10167.6</td>
+<td style="text-align: right">856.46</td>
+<td style="text-align: right">18074.1</td>
+<td style="text-align: right">134.652</td>
+<td style="text-align: right">36.7503</td>
+<td style="text-align: right">18.1866</td>
+<td style="text-align: right">1345.81</td>
+<td style="text-align: right">113.363</td>
+<td style="text-align: right">2392.33</td>
+<td style="text-align: right">17.8229</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">666</td>
+<td style="text-align: right">56.1</td>
+<td style="text-align: right">1183.89</td>
+<td style="text-align: right">8.82</td>
+<td style="text-align: right">49284</td>
+<td style="text-align: right">4151.4</td>
+<td style="text-align: right">87607.9</td>
+<td style="text-align: right">652.68</td>
+<td style="text-align: right">349.69</td>
+<td style="text-align: right">7379.58</td>
+<td style="text-align: right">54.978</td>
+<td style="text-align: right">155733</td>
+<td style="text-align: right">1160.21</td>
+<td style="text-align: right">8.6436</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.06905</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2.18</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.458</td>
+<td style="text-align: right">7.147</td>
+<td style="text-align: right">54.2</td>
+<td style="text-align: right">6.0622</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">222</td>
+<td style="text-align: right">18.7</td>
+<td style="text-align: right">396.9</td>
+<td style="text-align: right">5.33</td>
+<td style="text-align: right">0.0047679</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.150529</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.0316249</td>
+<td style="text-align: right">0.4935</td>
+<td style="text-align: right">3.74251</td>
+<td style="text-align: right">0.418595</td>
+<td style="text-align: right">0.20715</td>
+<td style="text-align: right">15.3291</td>
+<td style="text-align: right">1.29123</td>
+<td style="text-align: right">27.4059</td>
+<td style="text-align: right">0.368036</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">4.7524</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.99844</td>
+<td style="text-align: right">15.5805</td>
+<td style="text-align: right">118.156</td>
+<td style="text-align: right">13.2156</td>
+<td style="text-align: right">6.54</td>
+<td style="text-align: right">483.96</td>
+<td style="text-align: right">40.766</td>
+<td style="text-align: right">865.242</td>
+<td style="text-align: right">11.6194</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.209764</td>
+<td style="text-align: right">3.27333</td>
+<td style="text-align: right">24.8236</td>
+<td style="text-align: right">2.77649</td>
+<td style="text-align: right">1.374</td>
+<td style="text-align: right">101.676</td>
+<td style="text-align: right">8.5646</td>
+<td style="text-align: right">181.78</td>
+<td style="text-align: right">2.44114</td>
+<td style="text-align: right">51.0796</td>
+<td style="text-align: right">387.367</td>
+<td style="text-align: right">43.3265</td>
+<td style="text-align: right">21.441</td>
+<td style="text-align: right">1586.63</td>
+<td style="text-align: right">133.649</td>
+<td style="text-align: right">2836.64</td>
+<td style="text-align: right">38.0935</td>
+<td style="text-align: right">2937.64</td>
+<td style="text-align: right">328.571</td>
+<td style="text-align: right">162.6</td>
+<td style="text-align: right">12032.4</td>
+<td style="text-align: right">1013.54</td>
+<td style="text-align: right">21512</td>
+<td style="text-align: right">288.886</td>
+<td style="text-align: right">36.7503</td>
+<td style="text-align: right">18.1866</td>
+<td style="text-align: right">1345.81</td>
+<td style="text-align: right">113.363</td>
+<td style="text-align: right">2406.09</td>
+<td style="text-align: right">32.3115</td>
+<td style="text-align: right">9</td>
+<td style="text-align: right">666</td>
+<td style="text-align: right">56.1</td>
+<td style="text-align: right">1190.7</td>
+<td style="text-align: right">15.99</td>
+<td style="text-align: right">49284</td>
+<td style="text-align: right">4151.4</td>
+<td style="text-align: right">88111.8</td>
+<td style="text-align: right">1183.26</td>
+<td style="text-align: right">349.69</td>
+<td style="text-align: right">7422.03</td>
+<td style="text-align: right">99.671</td>
+<td style="text-align: right">157530</td>
+<td style="text-align: right">2115.48</td>
+<td style="text-align: right">28.4089</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">])</span>
+<span class="n">y</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">MEDV</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">24.0</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">21.6</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">34.7</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">33.4</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">36.2</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<p>+) 데이터 셔플</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># boston housing 데이터는 미리 셔플하지 않으면 교차검증할 때 score값이 매우 낮게 나옴
+# 이처럼, 데이터가 특정 순서에 따라 정렬되어 있는 경우 셔플해서 사용하는 게 좋다
+</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">shuffled_data</span> <span class="o">=</span> <span class="n">joined_data</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">shuffled_X</span> <span class="o">=</span> <span class="n">shuffled_data</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">shuffled_y</span> <span class="o">=</span> <span class="n">shuffled_data</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+<p><strong>2. hyperparameter 후보 정리</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Grid Search를 통해 성능을 테스트해보고 싶은 hyperparameter를 dictionary 형태로 적어준다
+# key: parameter명, value: 테스트해볼 값들의 리스트
+</span><span class="n">hyper_parameter</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'alpha'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s">'max_iter'</span><span class="p">:</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong>3. Grid Search</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lasso_model</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">()</span>  <span class="c1">## hyperparameter를 우선 하나도 넣지 않고 모델을 만든다
+</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lasso_model</span><span class="p">,</span> <span class="n">hyper_parameter</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1"># 검증할 모델, 검증할 hyperparameter들을 적어준 dictionary를 적어줌
+</span>    <span class="c1"># cv는 성능을 몇 겹 교차검증으로 평가할지 정하는 파라미터. cv=5면 5겹 교차검증을 하겠다는 의미. (cv=5가 default)
+</span>
+<span class="n">grid_search</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">shuffled_X</span><span class="p">,</span> <span class="n">shuffled_y</span><span class="p">)</span>  <span class="c1"># 일반적인 모델을 학습시키듯이 fit()에 X, y를 써주면 된다
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GridSearchCV(cv=5, error_score=nan,
+             estimator=Lasso(alpha=1.0, copy_X=True, fit_intercept=True,
+                             max_iter=1000, normalize=False, positive=False,
+                             precompute=False, random_state=None,
+                             selection='cyclic', tol=0.0001, warm_start=False),
+             iid='deprecated', n_jobs=None,
+             param_grid={'alpha': [0.001, 0.001, 0.01, 0.1, 1],
+                         'max_iter': [500, 1000, 1500, 2000, 3000]},
+             pre_dispatch='2*n_jobs', refit=True, return_train_score=False,
+             scoring=None, verbose=0)
+</code></pre></div></div>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">refit=True</code>가 default setting이라 여러 hyperparameter 조합을 모두 학습시켜본 후 모델을 최적의 조합으로 다시 학습시켜준다.</li></ul>
+<p><strong>4. 최적의 hyperparameter 조합 확인</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid_search</span><span class="p">.</span><span class="n">best_params_</span>   <span class="c1">## 최적의 hyperparameter를 찾아줌
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'alpha': 0.1, 'max_iter': 3000}
+</code></pre></div></div>
+<p>+) best 조합의 score를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid_search</span><span class="p">.</span><span class="n">best_score_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8425712188051439
+</code></pre></div></div>
+<p>+) score가 높은 Top 5 조합과 그 평균점수 확인</p>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">cv_results_</code>로 테스트된 각 조합별로, 각 교차검증 회별 점수와 평균점수 등을 모두 확인할 수 있다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">grid_search</span><span class="p">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<span class="n">scores_df</span><span class="p">[</span><span class="n">scores_df</span><span class="p">[</span><span class="s">'rank_test_score'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">][[</span><span class="s">'params'</span><span class="p">,</span> <span class="s">'mean_test_score'</span><span class="p">,</span> <span class="s">'rank_test_score'</span><span class="p">]]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">params</th>
+<th style="text-align: right">mean_test_score</th>
+<th style="text-align: right">rank_test_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">16</td>
+<td style="text-align: left">{‘alpha’: 0.1, ‘max_iter’: 1000}</td>
+<td style="text-align: right">0.836727</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">17</td>
+<td style="text-align: left">{‘alpha’: 0.1, ‘max_iter’: 1500}</td>
+<td style="text-align: right">0.838901</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">18</td>
+<td style="text-align: left">{‘alpha’: 0.1, ‘max_iter’: 2000}</td>
+<td style="text-align: right">0.840577</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">19</td>
+<td style="text-align: left">{‘alpha’: 0.1, ‘max_iter’: 3000}</td>
+<td style="text-align: right">0.842571</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">24</td>
+<td style="text-align: left">{‘alpha’: 1, ‘max_iter’: 3000}</td>
+<td style="text-align: right">0.834124</td>
+<td style="text-align: right">5</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="randomized-search"> <a href="#randomized-search" aria-labelledby="randomized-search" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Randomized Search</h3>
+<ul>
+<li>hyperparameter grid가 커질수록 Grid Search는 느려진다</li>
+<li>그렇기에, 가능한 모든 조합을 시도하는 대신, random하게 grid 안 여러 조합을 적당히 건너뛰면서 시도하면 시간을 크게 단축할 수 있다</li>
+<li>Randomized Search를 활용하면 최적의 조합을 건너뛸 확률도 약간 존재하지만, 대체로 빠른 시간 내에 최적에 가까운 조합을 찾아낼 수 있다. (같은 시간 내에 더 많은 hyperparameter를 조정 가능)</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import RandomizedSearchCV
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+<span class="c1"># GridSearch에서 활용했던 lasso_model와 hyper_parameter를 그대로 활용
+</span><span class="n">lasso_model</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">()</span> 
+
+<span class="n">hyper_parameter</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'alpha'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s">'max_iter'</span><span class="p">:</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Randomized Search 모델을 만들고 fit
+</span><span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">lasso_model</span><span class="p">,</span> <span class="n">hyper_parameter</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">random_search</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">shuffled_X</span><span class="p">,</span> <span class="n">shuffled_y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RandomizedSearchCV(cv=5, error_score=nan,
+                   estimator=Lasso(alpha=1.0, copy_X=True, fit_intercept=True,
+                                   max_iter=1000, normalize=False,
+                                   positive=False, precompute=False,
+                                   random_state=None, selection='cyclic',
+                                   tol=0.0001, warm_start=False),
+                   iid='deprecated', n_iter=10, n_jobs=None,
+                   param_distributions={'alpha': [0.001, 0.001, 0.01, 0.1, 1],
+                                        'max_iter': [500, 1000, 1500, 2000,
+                                                     3000]},
+                   pre_dispatch='2*n_jobs', random_state=None, refit=True,
+                   return_train_score=False, scoring=None, verbose=0)
+</code></pre></div></div>
+<p><strong>*최적의 hyperparameter 조합 확인</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">random_search</span><span class="p">.</span><span class="n">best_params_</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'max_iter': 3000, 'alpha': 0.1}
+</code></pre></div></div>
+<p>+) best 조합의 score를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">random_search</span><span class="p">.</span><span class="n">best_score_</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8425712188051439
+</code></pre></div></div>
+<p>+) score가 높은 Top 5 조합과 그 평균점수 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">random_search</span><span class="p">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<span class="n">scores_df</span><span class="p">[</span><span class="n">scores_df</span><span class="p">[</span><span class="s">'rank_test_score'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">][[</span><span class="s">'params'</span><span class="p">,</span> <span class="s">'mean_test_score'</span><span class="p">,</span> <span class="s">'rank_test_score'</span><span class="p">]]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">params</th>
+<th style="text-align: right">mean_test_score</th>
+<th style="text-align: right">rank_test_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">{‘max_iter’: 1000, ‘alpha’: 0.001}</td>
+<td style="text-align: right">0.820117</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">{‘max_iter’: 500, ‘alpha’: 0.01}</td>
+<td style="text-align: right">0.824949</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">{‘max_iter’: 3000, ‘alpha’: 0.1}</td>
+<td style="text-align: right">0.842571</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">6</td>
+<td style="text-align: left">{‘max_iter’: 1000, ‘alpha’: 0.001}</td>
+<td style="text-align: right">0.820117</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">7</td>
+<td style="text-align: left">{‘max_iter’: 3000, ‘alpha’: 0.001}</td>
+<td style="text-align: right">0.820963</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">8</td>
+<td style="text-align: left">{‘max_iter’: 3000, ‘alpha’: 0.001}</td>
+<td style="text-align: right">0.820963</td>
+<td style="text-align: right">3</td>
+</tr>
+</tbody>
+</table></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

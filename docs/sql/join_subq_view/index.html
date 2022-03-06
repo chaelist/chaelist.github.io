@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조인, 서브쿼리, 뷰 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="조인, 서브쿼리, 뷰">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/sql/join_subq_view/">
+<meta property="og:url" content="https://chaelist.github.io/docs/sql/join_subq_view/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="조인, 서브쿼리, 뷰"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/sql/join_subq_view/","@type":"WebPage","headline":"조인, 서브쿼리, 뷰","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link active">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/sql">SQL</a></li>
+<li class="breadcrumb-nav-list-item"><span>조인, 서브쿼리, 뷰</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="조인-서브쿼리-뷰"> <a href="#%EC%A1%B0%EC%9D%B8-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-%EB%B7%B0" aria-labelledby="조인-서브쿼리-뷰" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 조인, 서브쿼리, 뷰</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%95%A9%EC%B9%98%EA%B8%B0" id="markdown-toc-테이블-합치기">테이블 합치기</a><ol>
+<li><a href="#%EA%B2%B0%ED%95%A9%EC%97%B0%EC%82%B0-join" id="markdown-toc-결합연산-join">결합연산 (JOIN)</a></li>
+<li><a href="#%EA%B8%B0%ED%83%80-%EB%8B%A4%EC%96%91%ED%95%9C-join%EB%93%A4" id="markdown-toc-기타-다양한-join들">기타 다양한 JOIN들</a></li>
+<li><a href="#%EC%A7%91%ED%95%A9%EC%97%B0%EC%82%B0-union-%EB%93%B1" id="markdown-toc-집합연산-union-등">집합연산 (UNION 등)</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-subquery" id="markdown-toc-서브쿼리-subquery">서브쿼리 (SubQuery)</a><ol>
+<li><a href="#%EB%B9%84%EC%83%81%EA%B4%80-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%ACnon-correlated-subquery" id="markdown-toc-비상관-서브쿼리non-correlated-subquery">비상관 서브쿼리(Non-correlated Subquery)</a></li>
+<li><a href="#%EC%83%81%EA%B4%80-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%ACcorrelated-subquery" id="markdown-toc-상관-서브쿼리correlated-subquery">상관 서브쿼리(Correlated Subquery)</a></li>
+</ol>
+</li>
+<li><a href="#%EB%B7%B0-view" id="markdown-toc-뷰-view">뷰 (View)</a></li>
+</ol></details><hr>
+<h2 id="테이블-합치기"> <a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%95%A9%EC%B9%98%EA%B8%B0" aria-labelledby="테이블-합치기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 테이블 합치기</h2>
+<h3 id="결합연산-join"> <a href="#%EA%B2%B0%ED%95%A9%EC%97%B0%EC%82%B0-join" aria-labelledby="결합연산-join" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 결합연산 (JOIN)</h3>
+<p>: 테이블을 가로 방향으로 붙이는 연산</p>
+<ol>
+<li>LEFT OUTER JOIN: 왼쪽 테이블을 기준으로 합쳐짐 (왼쪽 테이블에 존재하는 row만 보여짐)<ul><li>ex. 만약 왼쪽 테이블 값(ex. 꽃무늬 원피스)와 연결되는 값이 오른쪽에 2개 이상이라면(ex. 리뷰1, 리뷰2) → 왼쪽 테이블에는 해당 값이 여러 번 표시될 수 있음</li></ul>
+</li>
+<li>RIGHT OUTER JOIN: 오른쪽 테이블을 기준으로 합쳐짐 (오른쪽 테이블에 존재하는 row만 보여짐)</li>
+<li>INNER JOIN: 왼쪽, 오른쪽 테이블 모두에 존재하는 row만 추려서 합쳐짐 (교집합 개념)</li>
+</ol>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ex) item 테이블을 기준으로, stock 테이블을 join</span>
+<span class="c1">-- item 테이블의 id 칼럼과 stock 데이블의 item_id 칼럼을 key로 해서 join</span>
+<span class="k">SELECT</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">stock</span><span class="p">.</span><span class="n">item_id</span><span class="p">,</span>
+    <span class="n">stock</span><span class="p">.</span><span class="n">inventory_count</span>
+<span class="k">FROM</span> <span class="n">item</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">stock</span>
+<span class="k">ON</span> <span class="n">item</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">stock</span><span class="p">.</span><span class="n">item_id</span><span class="p">;</span>
+</code></pre></div></div>
+<p>+) 테이블에 alias 붙이기</p>
+<ul>
+<li>JOIN할 때는 테이블에 alias를 붙여서 사용하는 경우가 많다. (간결하게 작성하기 위함)</li>
+<li>※주의: 한 번 테이블에 alias를 붙였으면, 다른 모든 절에서 그 테이블은 그 alias로만 표현해야 함. (원래의 테이블 이름이랑 섞어서 나타낼 수 없음)</li>
+</ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">item_id</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">inventory_count</span>
+<span class="k">FROM</span> <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">stock</span> <span class="k">AS</span> <span class="n">s</span>
+<span class="k">ON</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">item_id</span><span class="p">;</span>
+</code></pre></div></div>
+<p>+) 테이블 3개 JOIN하기</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">.</span><span class="n">item_id</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">star</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="k">comment</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">mem_id</span><span class="p">,</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">email</span>
+<span class="k">FROM</span> 
+    <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">review</span> <span class="k">AS</span> <span class="n">r</span>
+        <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span>
+    <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m</span>
+        <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">mem_id</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">id</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span> <span class="k">ASC</span><span class="p">;</span>
+</code></pre></div></div>
+<h3 id="기타-다양한-join들"> <a href="#%EA%B8%B0%ED%83%80-%EB%8B%A4%EC%96%91%ED%95%9C-join%EB%93%A4" aria-labelledby="기타-다양한-join들" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기타 다양한 JOIN들</h3>
+<ol>
+<li>NATURAL JOIN<ul>
+<li>두 테이블에서 같은 이름의 컬럼을 찾아서 자동으로 그것들을 조인 조건으로 설정하고, INNER JOIN을 해준다</li>
+<li>다만, NATURAL JOIN을 할 수 있는 경우라도 직관적으로 해석 가능한 SQL문을 위해서 ON으로 조인 조건을 명시해주는 것이 더 좋다</li>
+</ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> 
+     <span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">player_name</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span><span class="p">,</span> 
+     <span class="n">t</span><span class="p">.</span><span class="n">team_name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">region</span> 
+ <span class="k">FROM</span> <span class="n">player</span> <span class="k">AS</span> <span class="n">p</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">team</span> <span class="k">AS</span> <span class="n">t</span>
+ <span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">team_name</span><span class="p">;</span>
+
+ <span class="c1">--위와 같은 INNER JOIN을 아래와 같이 구현하는 것도 가능:</span>
+ <span class="k">SELECT</span> 
+     <span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">player_name</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span><span class="p">,</span> 
+     <span class="n">t</span><span class="p">.</span><span class="n">team_name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">region</span> 
+ <span class="k">FROM</span> <span class="n">player</span> <span class="k">AS</span> <span class="n">p</span> <span class="k">NATURAL</span> <span class="k">JOIN</span> <span class="n">team</span> <span class="k">AS</span> <span class="n">t</span>
+</code></pre></div></div>
+</li>
+<li>CROSS JOIN<ul><li>두 테이블의 row들의 모든 조합을 보여주는 JOIN<br> (두 테이블의 카르테시안 곱(Cartesian Product)을 구하는 것)</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 가능한 모든 shirts와 pants의 조합을 보고 싶은 경우:</span>
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shirts</span> <span class="k">CROSS</span> <span class="k">JOIN</span> <span class="n">pants</span>
+</code></pre></div></div>
+</li>
+<li>Self Join<ul><li>자기 자신과 JOIN하는 방식. (한 테이블을 자기 자신과 다시 JOIN해주는 것)</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 회사 구성원 정보가 담긴 테이블 → 자기 자신과 join해서 각 직원의 상사 정보를 찾아본다</span>
+ <span class="k">SELECT</span> <span class="n">employee</span> <span class="k">AS</span> <span class="n">e1</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">employee</span> <span class="k">AS</span> <span class="n">e2</span>
+ <span class="k">ON</span> <span class="n">e1</span><span class="p">.</span><span class="n">boss</span> <span class="o">=</span> <span class="n">e2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>FULL OUTER JOIN<ul><li>두 테이블의 LEFT OUTER JOIN 결과와 RIGHT OUTER JOIN 결과를 합쳐주는 JOIN. 두 결과에 모두 존재하는 row들(두 테이블에 공통으로 존재하던 row들)은 한번만 표현해준다 (합집합의 개념)</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span> 
+ <span class="k">FROM</span> <span class="n">player</span> <span class="k">AS</span> <span class="n">p</span> <span class="k">FULL</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">team</span> <span class="k">AS</span> <span class="n">t</span>
+ <span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">team_name</span><span class="p">;</span>
+</code></pre></div></div>
+<p>※ Oracle에서는 위와 같이 <code class="language-plaintext highlighter-rouge">FULL OUTER JOIN</code> 연산자가 지원되지만, MySQL에서는 지원되지 않는다.<br> → LEFT OUTER JOIN과 RIGHT OUTER JOIN을 UNION해서 계산하면 됨!</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span>
+ <span class="k">FROM</span> <span class="n">player</span> <span class="k">AS</span> <span class="n">p</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">team</span> <span class="k">AS</span> <span class="n">t</span>
+ <span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">team_name</span>
+ <span class="k">UNION</span>
+ <span class="k">SELECT</span> <span class="o">*</span>
+ <span class="k">FROM</span> <span class="n">player</span> <span class="k">AS</span> <span class="n">p</span> <span class="k">RIGHT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">team</span> <span class="k">AS</span> <span class="n">t</span>
+ <span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">team_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">team_name</span>
+</code></pre></div></div>
+</li>
+<li>Non-Equi Join<ul>
+<li>Equi: Equality Condition (동등 조건)</li>
+<li>Non-Equi Join: 등호(=)가 아닌 다른 조건을 사용하는 JOIN.</li>
+</ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 특정 회원이 가입한 날(sign_up_date)보다 이후에 올라온 상품들을 확인</span>
+ <span class="k">SELECT</span> <span class="o">*</span> 
+ <span class="k">FROM</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span>
+ <span class="k">ON</span> <span class="n">m</span><span class="p">.</span><span class="n">sign_up_date</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">.</span><span class="n">registration_date</span>   <span class="c1">-- 부등호(&lt;)로 비교</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">sign_up_date</span> <span class="k">ASC</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="집합연산-union-등"> <a href="#%EC%A7%91%ED%95%A9%EC%97%B0%EC%82%B0-union-%EB%93%B1" aria-labelledby="집합연산-union-등" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 집합연산 (UNION 등)</h3>
+<p>: 테이블을 세로 방향으로 합치는 연산 (※ 같은 종류의 테이블끼리만 가능)<br> +) 서로 다른 종류의 테이블의 경우, 조회하는 컬럼을 일치시키면 집합 연산이 가능해진다</p>
+<ol>
+<li>A ∩ B (INTERSECT): A와 B에 모두 존재하는 row만 출력<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span>    <span class="c1">-- 기존 item 테이블</span>
+ <span class="k">INTERSECT</span> 
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item_new</span>  <span class="c1">-- 새로 업데이트된 item 테이블</span>
+</code></pre></div></div>
+</li>
+<li>A - B (MINUS): A에는 존재하지만 B에는 존재하지 않는 row만 출력<ul><li>MINUS 연산자 대신 EXCEPT 연산자를 사용해도 된다</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span> 
+ <span class="n">MINUS</span> 
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item_new</span>
+</code></pre></div></div>
+</li>
+<li>A ∪ B (UNION): A와 B에 존재하는 row를 모두 출력하되, 공통으로 존재하는 row는 중복을 제거하고 하나만 표시 (합집합의 개념)<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span> 
+ <span class="k">UNION</span> 
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item_new</span>
+</code></pre></div></div>
+</li>
+<li>UNION ALL: A와 B에 존재하는 row를 모두 출력 (중복을 제거하지 않고 그냥 합쳐줌)<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span> 
+ <span class="k">UNION</span> <span class="k">ALL</span> 
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item_new</span>
+</code></pre></div></div>
+</li>
+</ol>
+<p>※ MySQL 8.0에서는 UNION, UNION ALL 연산자만 지원 (Oracle에서는 모두 지원)</p>
+<p><br></p>
+<p>+) JOIN으로도 집합연산을 유사하게 수행 가능</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+	<span class="k">old</span><span class="p">.</span><span class="n">id</span> <span class="k">AS</span> <span class="n">old_id</span><span class="p">,</span>
+	<span class="k">old</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">old_name</span><span class="p">,</span>
+    <span class="k">new</span><span class="p">.</span><span class="n">id</span> <span class="k">AS</span> <span class="n">new_id</span><span class="p">,</span>
+    <span class="k">new</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">new_name</span>
+<span class="k">FROM</span> <span class="n">item</span> <span class="k">AS</span> <span class="k">old</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">item_new</span> <span class="k">AS</span> <span class="k">new</span>
+<span class="k">ON</span> <span class="k">old</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">new</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span> <span class="k">new</span><span class="p">.</span><span class="n">id</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<ul>
+<li>이렇게 하면 왼쪽 테이블에는 있지만 오른쪽 테이블에는 없는 row를 확인 가능 (기존 item 테이블엔 정보가 있었지만 오른쪽 새 테이블에선 누락된 것들 확인)</li>
+<li>+) 위 예시처럼 JOIN할 때의 key가 되는 두 테이블 내 칼럼의 이름이 같으면 ON 대신 <strong>USING</strong>을 써도 된다!<br> (<code class="language-plaintext highlighter-rouge">ON old.id = new.id</code> 대신 <code class="language-plaintext highlighter-rouge">USING(id)</code>라고 사용 가능)</li>
+</ul>
+<h2 id="서브쿼리-subquery"> <a href="#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-subquery" aria-labelledby="서브쿼리-subquery" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 서브쿼리 (SubQuery)</h2>
+<p>: SQL문 안에 부품처럼 들어가는 SELECT문 (전체 SQL문 안에 있는 또 다른 SQL문의 개념)</p>
+<ul><li>※ 서브쿼리는 꼭 ( ) 안에 써줘야 함!</li></ul>
+<h3 id="비상관-서브쿼리non-correlated-subquery"> <a href="#%EB%B9%84%EC%83%81%EA%B4%80-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%ACnon-correlated-subquery" aria-labelledby="비상관-서브쿼리non-correlated-subquery" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 비상관 서브쿼리(Non-correlated Subquery)</h3>
+<p>: 서브쿼리의 SQL절만 독립적으로 써도 실행되는 쿼리.</p>
+<ol>
+<li>단일값을 반환하는 서브쿼리 (스칼라 서브쿼리)<ul>
+<li>
+<p>ex1) SELECT절에서 사용:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">-- 각 상품의 price와 쉽게 비교할 수 있도록, 별도로 AVG(price) 값을 가져와서 출력</span>
+  <span class="k">SELECT</span> 
+      <span class="n">id</span><span class="p">,</span> 
+      <span class="n">name</span><span class="p">,</span> 
+      <span class="n">price</span><span class="p">,</span>
+      <span class="p">(</span><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">item</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_price</span>
+  <span class="k">FROM</span> <span class="n">item</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>ex2) WHERE절에서 사용:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">-- 가장 높은 가격을 가진 상품을 출력</span>
+  <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span>
+  <span class="k">FROM</span> <span class="n">item</span>
+  <span class="k">WHERE</span> <span class="n">price</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">item</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>ex3) HAVING절에서 사용:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">-- 전체 star 평균보다 작은 avg_star를 갖는 group만 출력</span>
+  <span class="k">SELECT</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">star</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_star</span>
+  <span class="k">FROM</span> <span class="n">item</span> <span class="k">as</span> <span class="n">i</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">review</span> <span class="k">AS</span> <span class="n">r</span>
+  <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span>
+  <span class="k">HAVING</span> <span class="n">avg_star</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">star</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">review</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+</ul>
+</li>
+<li>리스트가 결과로 나오는 서브쿼리<br> (하나의 column &amp; 여러 row의 형태가 반환되는 서브쿼리)<ul><li>리스트 형태의 결과가 나오는 서브쿼리는 IN, ANY, ALL 등과 함께 사용 가능</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 리뷰 수가 3개 이상인 item의 정보만 출력</span>
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span>
+ <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> 
+     <span class="p">(</span><span class="k">SELECT</span> <span class="n">item_id</span>
+     <span class="k">FROM</span> <span class="n">review</span>
+     <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">item_id</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>테이블이 결과로 나오는 서브쿼리<ul><li>※ 이런 식으로 서브쿼리로 가져온 ‘<u>derived table</u>‘을 사용할 때는, 반드시 alias를 붙여줘야 한다!</li></ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 지역별 리뷰 수를 count한 후, 평균값, 최댓값, 최솟값을 출력 </span>
+ <span class="k">SELECT</span> 
+     <span class="k">AVG</span><span class="p">(</span><span class="n">review_count</span><span class="p">),</span>
+     <span class="k">MAX</span><span class="p">(</span><span class="n">review_count</span><span class="p">),</span>
+     <span class="k">MIN</span><span class="p">(</span><span class="n">review_count</span><span class="p">)</span>
+ <span class="k">FROM</span>
+     <span class="p">(</span><span class="k">SELECT</span>
+         <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">region</span><span class="p">,</span>
+         <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">review_count</span>
+     <span class="k">FROM</span> <span class="n">review</span> <span class="k">as</span> <span class="n">r</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m</span>
+     <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">mem_id</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">id</span>
+     <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+     <span class="k">HAVING</span> <span class="n">region</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AS</span> <span class="n">review_count_summary</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="상관-서브쿼리correlated-subquery"> <a href="#%EC%83%81%EA%B4%80-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%ACcorrelated-subquery" aria-labelledby="상관-서브쿼리correlated-subquery" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 상관 서브쿼리(Correlated Subquery)</h3>
+<p>: 독립적으로는 실행되지 않고, 바깥 SQL절과 관계를 맺고 있는 서브쿼리.</p>
+<ol>
+<li>
+<p>EXISTS와 함께 사용</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 리뷰가 달린 상품들만 조회</span>
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span>
+     <span class="k">WHERE</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">review</span> <span class="k">WHERE</span> <span class="n">review</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+</code></pre></div></div>
+<ul><li>해석:<br> (1) 일단 item 테이블의 첫 번째 row를 생각<br> (2) 그 row의 id(item.id) 값과 같은 값을 item_id(review.item_id) 컬럼에 가진 review 테이블의 row가 있는지 조회<br> (3) 만약에 존재하면(EXISTS)<br> (4) WHERE 절은 True가 되고, (1)에서 생각했던 item 테이블의 row는 조회 대상이 된다<br> (5) item 테이블의 모든 row에 대해 순차적으로 (2)~(4)를 반복한 후 대상 row들만 출력해준다</li></ul>
+</li>
+<li>
+<p>NOT EXISTS 사용 (EXISTS의 반대 경우)</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 리뷰가 달리지 않은 상품들만 조회</span>
+ <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span>
+ <span class="k">WHERE</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">review</span> <span class="k">WHERE</span> <span class="n">review</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>EXISTS, NOT EXISTS 없는 상관 서브쿼리</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- member 테이블을 조회하면서, 특정 회원과 같은 해에 태어난 회원들 중 가장 작은 키를 가진 회원의 키 정보를 담은 컬럼을 오른쪽 끝에 추가</span>
+ <span class="k">SELECT</span> <span class="o">*</span><span class="p">,</span>
+     <span class="p">(</span><span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+     <span class="k">FROM</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m2</span> <span class="k">WHERE</span> <span class="n">birthday</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">height</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+     <span class="k">AND</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">m1</span><span class="p">.</span><span class="n">birthday</span><span class="p">)</span> <span class="o">=</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">m2</span><span class="p">.</span><span class="n">birthday</span><span class="p">))</span> <span class="k">AS</span> <span class="n">min_height_in_the_year</span>
+ <span class="k">FROM</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m1</span>
+ <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">min_height_in_the_year</span> <span class="k">ASC</span><span class="p">;</span>
+</code></pre></div></div>
+<ul><li>*해석:<br> (1) 일단 birthday 컬럼과 height 컬럼에 둘다 값이 있는 회원들만 대상으로 해야하기 때문에 ‘birthday IS NOT NULL AND height IS NOT NULL’ 조건을 걸어둠<br> (2) member 테이블의 첫 번째 row를 생각<br> (3) 그 row에 대해서 같은 YEAR(birthday) 값을 가진 row들을 찾는다<br> (4) 그 다음 해당 row들 중 height의 최솟값을 구한다</li></ul>
+</li>
+</ol>
+<p>+) 서브쿼리를 중첩해서 사용하는 것도 가능하지만 (서브쿼리 안에 또 다른 서브쿼리), 가독성이 떨어지므로 ‘뷰’를 활용하는 것이 나을 수 있다</p>
+<h2 id="뷰-view"> <a href="#%EB%B7%B0-view" aria-labelledby="뷰-view" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 뷰 (View)</h2>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">CREATE VIEW 뷰_이름 AS 특정한_SQL문</code>의 구조로 ‘뷰’를 생성해두고, 필요할 때마다 원래 있는 테이블인 것처럼 자연스럽게 가져다 쓰면 된다</li>
+<li>매번 특정한 방식으로 JOIN / 서브쿼리를 사용해서 구성해야 하는 테이블이 있다면, 미리 VIEW로 저장해두고 쓰면 좋다</li>
+</ul>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- VIEW 생성해두기</span>
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">three_tables_joined</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">star</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_star</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">count_star</span>
+<span class="k">FROM</span> <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">review</span> <span class="k">AS</span> <span class="n">r</span> <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span>
+	<span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">member</span> <span class="k">AS</span> <span class="n">m</span> <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">mem_id</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span> <span class="n">m</span><span class="p">.</span><span class="n">gender</span> <span class="o">=</span> <span class="s1">'f'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">i</span><span class="p">.</span><span class="n">ithree_tables_joinedd</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">AVG</span><span class="p">(</span><span class="n">star</span><span class="p">)</span> <span class="k">DESC</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+<p>→ 위와 같이 view를 생성해두면, 서브쿼리를 중첩해서 써야 했던 구문을 아래와 같이 짧게 쓸 수 있다:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">three_tables_joined</span>
+<span class="k">WHERE</span> <span class="n">avg_star</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">avg_star</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">three_tables_joined</span><span class="p">);</span>
+<span class="c1">-- VIEW는 다른 평범한 table처럼 가져다 사용하면 된다</span>
+</code></pre></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

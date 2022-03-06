@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon Bestselling Books | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Amazon Bestselling Books">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/">
+<meta property="og:url" content="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Amazon Bestselling Books"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/kaggle/amazon_bestsellers/","@type":"WebPage","headline":"Amazon Bestselling Books","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link active">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/kaggle">Kaggle Dataset EDA</a></li>
+<li class="breadcrumb-nav-list-item"><span>Amazon Bestselling Books</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="amazon-bestselling-books"> <a href="#amazon-bestselling-books" aria-labelledby="amazon-bestselling-books" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Amazon Bestselling Books</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85" id="markdown-toc-데이터-파악">데이터 파악</a><ol>
+<li><a href="#%EA%B0%92%EC%9D%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" id="markdown-toc-값의-분포-확인">값의 분포 확인</a></li>
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%82%AC%EC%A0%84-%EC%B2%98%EB%A6%AC" id="markdown-toc-데이터-사전-처리">데이터 사전 처리</a></li>
+<li><a href="#%EC%A4%91%EB%B3%B5%EA%B0%92-%ED%99%95%EC%9D%B8" id="markdown-toc-중복값-확인">중복값 확인</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%B1%85%EB%B3%84-bestselling-%ED%9A%9F%EC%88%98-%EB%B9%84%EA%B5%90" id="markdown-toc-책별-bestselling-횟수-비교">책별 bestselling 횟수 비교</a><ol>
+<li><a href="#bestselling-%ED%9A%9F%EC%88%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" id="markdown-toc-bestselling-횟수-분포-확인">bestselling 횟수 분포 확인</a></li>
+<li><a href="#bestselling-%ED%9A%9F%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" id="markdown-toc-bestselling-횟수가-많은-책-확인">bestselling 횟수가 많은 책 확인</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%B1%85%EB%B3%84-bestselling-%ED%9A%9F%EC%88%98-%EB%B9%84%EA%B5%90-1" id="markdown-toc-책별-bestselling-횟수-비교-1">책별 bestselling 횟수 비교</a><ol>
+<li><a href="#%EC%9E%91%EA%B0%80%EB%AA%85-%ED%91%9C%EA%B8%B0-%ED%99%95%EC%9D%B8" id="markdown-toc-작가명-표기-확인">작가명 표기 확인</a></li>
+<li><a href="#bestselling-%ED%9A%9F%EC%88%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8-1" id="markdown-toc-bestselling-횟수-분포-확인-1">bestselling 횟수 분포 확인</a></li>
+<li><a href="#bestselling-%ED%9A%9F%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%9E%91%EA%B0%80-%ED%99%95%EC%9D%B8" id="markdown-toc-bestselling-횟수가-많은-작가-확인">bestselling 횟수가 많은 작가 확인</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%97%B0%EB%8F%84%EB%B3%84-%EB%B3%80%ED%99%94-%ED%99%95%EC%9D%B8" id="markdown-toc-연도별-변화-확인">연도별 변화 확인</a><ol>
+<li><a href="#%EC%97%B0%EB%8F%84%EB%B3%84-%EC%9E%A5%EB%A5%B4%EB%B3%84-%EB%B9%84%EC%A4%91" id="markdown-toc-연도별-장르별-비중">연도별 장르별 비중</a></li>
+<li><a href="#%EC%97%B0%EB%8F%84%EB%B3%84-rating-review-price-%ED%8F%89%EA%B7%A0%EC%9D%98-%EB%B3%80%ED%99%94" id="markdown-toc-연도별-rating-review-price-평균의-변화">연도별 Rating, Review, Price 평균의 변화</a></li>
+</ol>
+</li>
+<li>
+<a href="#rating-review-price-%EC%83%81%EC%9C%84%EA%B6%8C-%EB%8F%84%EC%84%9C-%ED%99%95%EC%9D%B8" id="markdown-toc-rating-review-price-상위권-도서-확인">Rating, Review, Price 상위권 도서 확인</a><ol>
+<li><a href="#user-rating%EC%9D%B4-%EB%86%92%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" id="markdown-toc-user-rating이-높은-책-확인">User Rating이 높은 책 확인</a></li>
+<li><a href="#review%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" id="markdown-toc-review가-많은-책-확인">Review가 많은 책 확인</a></li>
+<li><a href="#price%EA%B0%80-%EB%86%92%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" id="markdown-toc-price가-높은-책-확인">Price가 높은 책 확인</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<p><strong>*분석 대상 데이터셋: Amazon Bestselling Books</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/sootersaalu/amazon-top-50-bestselling-books-2009-2019?select=bestsellers+with+categories.csv" target="_blank">데이터셋 출처</a></li>
+<li>2009년 ~ 2019년의 Amazon’s Top 50 bestselling books 데이터 (11년 * 50 = 550권)</li>
+<li>한 책이 여러 해에 걸친 bestseller였다면, 여러 번 중복되어 포함되어 있음 (중복을 제외하고 계산하면 총 351권)</li>
+<li>같은 책이여도 User Rating, Price, Reviews 정보가 달라지는 경우도 있음</li>
+<li>Columns (7개): ‘Name’, ‘Author’, ‘User Rating’, ‘Reviews’, ‘Price’, ‘Year’, ‘Genre’</li>
+</ul>
+<h2 id="데이터-파악"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8C%8C%EC%95%85" aria-labelledby="데이터-파악" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 파악</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 라이브러리 import
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="n">stats</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">books_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/bestsellers with categories.csv'</span><span class="p">)</span>
+<span class="n">books_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+<th style="text-align: right">Year</th>
+<th style="text-align: left">Genre</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">10-Day Green Smoothie Cleanse</td>
+<td style="text-align: left">JJ Smith</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">17350</td>
+<td style="text-align: right">8</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Non Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">11/22/63: A Novel</td>
+<td style="text-align: left">Stephen King</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">2052</td>
+<td style="text-align: right">22</td>
+<td style="text-align: right">2011</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">12 Rules for Life: An Antidote to Chaos</td>
+<td style="text-align: left">Jordan B. Peterson</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">18979</td>
+<td style="text-align: right">15</td>
+<td style="text-align: right">2018</td>
+<td style="text-align: left">Non Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">1984 (Signet Classics)</td>
+<td style="text-align: left">George Orwell</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">21424</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">2017</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">5,000 Awesome Facts (About Everything!) (National Geographic Kids)</td>
+<td style="text-align: left">National Geographic Kids</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">7665</td>
+<td style="text-align: right">12</td>
+<td style="text-align: right">2019</td>
+<td style="text-align: left">Non Fiction</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="값의-분포-확인"> <a href="#%EA%B0%92%EC%9D%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" aria-labelledby="값의-분포-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 값의 분포 확인</h3>
+<ol>
+<li>
+<p>null값 여부, data type 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;class 'pandas.core.frame.DataFrame'&gt;
+ RangeIndex: 550 entries, 0 to 549
+ Data columns (total 7 columns):
+ #   Column       Non-Null Count  Dtype  
+ ---  ------       --------------  -----  
+ 0   Name         550 non-null    object 
+ 1   Author       550 non-null    object 
+ 2   User Rating  550 non-null    float64
+ 3   Reviews      550 non-null    int64  
+ 4   Price        550 non-null    int64  
+ 5   Year         550 non-null    int64  
+ 6   Genre        550 non-null    object 
+ dtypes: float64(1), int64(3), object(3)
+ memory usage: 30.2+ KB
+</code></pre></div></div>
+</li>
+<li>
+<p>숫자형 컬럼: 값의 분포를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">[[</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="s">'Reviews'</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">]].</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: right">550.00</td>
+<td style="text-align: right">550.00</td>
+<td style="text-align: right">550.00</td>
+</tr>
+<tr>
+<td style="text-align: left">mean</td>
+<td style="text-align: right">4.62</td>
+<td style="text-align: right">11953.28</td>
+<td style="text-align: right">13.10</td>
+</tr>
+<tr>
+<td style="text-align: left">std</td>
+<td style="text-align: right">0.23</td>
+<td style="text-align: right">11731.13</td>
+<td style="text-align: right">10.84</td>
+</tr>
+<tr>
+<td style="text-align: left">min</td>
+<td style="text-align: right">3.30</td>
+<td style="text-align: right">37.00</td>
+<td style="text-align: right">0.00</td>
+</tr>
+<tr>
+<td style="text-align: left">25%</td>
+<td style="text-align: right">4.50</td>
+<td style="text-align: right">4058.00</td>
+<td style="text-align: right">7.00</td>
+</tr>
+<tr>
+<td style="text-align: left">50%</td>
+<td style="text-align: right">4.70</td>
+<td style="text-align: right">8580.00</td>
+<td style="text-align: right">11.00</td>
+</tr>
+<tr>
+<td style="text-align: left">75%</td>
+<td style="text-align: right">4.80</td>
+<td style="text-align: right">17253.25</td>
+<td style="text-align: right">16.00</td>
+</tr>
+<tr>
+<td style="text-align: left">max</td>
+<td style="text-align: right">4.90</td>
+<td style="text-align: right">87841.00</td>
+<td style="text-align: right">105.00</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>Price의 최솟값이 0 → bestselling books 명단이므로 실제 가격이 0일리는 없다고 생각. (가격이 0 = 사은품이라고 간주할 수 있는데, 그렇다면 bestselling 명단에 올리지 않았을 것.)</li></ul>
+</li>
+<li>
+<p>unique한 값 수 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">.</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Name           351
+ Author         248
+ User Rating     14
+ Reviews        346
+ Price           40
+ Year            11
+ Genre            2
+ dtype: int64
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="데이터-사전-처리"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%82%AC%EC%A0%84-%EC%B2%98%EB%A6%AC" aria-labelledby="데이터-사전-처리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 사전 처리</h3>
+<ol>
+<li>Price 컬럼의 0값 채워주기<ul>
+<li>bestselling books 명단이므로 Price가 0일리는 없다고 생각. → 0인 값은 아마 조사 과정에서 누락된 것이라 생각됨</li>
+<li>0값 = 결측치로 간주하고, 해당 책이 속한 연도 &amp; 장르의 Price 평균값으로 채워넣어준다</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">[</span><span class="n">books_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Price가 0인 row: 총 12개
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+<th style="text-align: right">Year</th>
+<th style="text-align: left">Genre</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">42</td>
+<td style="text-align: left">Cabin Fever (Diary of a Wimpy Kid, Book 6)</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">4505</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2011</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">71</td>
+<td style="text-align: left">Diary of a Wimpy Kid: Hard Luck, Book 8</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">6812</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2013</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">116</td>
+<td style="text-align: left">Frozen (Little Golden Book)</td>
+<td style="text-align: left">RH Disney</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3642</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">193</td>
+<td style="text-align: left">JOURNEY TO THE ICE P</td>
+<td style="text-align: left">RH Disney</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">978</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">Little Blue Truck</td>
+<td style="text-align: left">Alice Schertle</td>
+<td style="text-align: right">4.9</td>
+<td style="text-align: right">1884</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">358</td>
+<td style="text-align: left">The Constitution of the United States</td>
+<td style="text-align: left">Delegates of the Constitutional</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">2774</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Non Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">381</td>
+<td style="text-align: left">The Getaway</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">5836</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2017</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">461</td>
+<td style="text-align: left">The Short Second Life of Bree Tanner: An Eclipse Novella (The Twilight Saga)</td>
+<td style="text-align: left">Stephenie Meyer</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">2122</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2010</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">505</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2013</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">506</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">507</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2015</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">508</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 0값(결측치로 간주) 처리: 해당 책이 속한 연도 &amp; 장르의 Price 평균값으로 대체</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">zero_price_index</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">[</span><span class="n">books_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">].</span><span class="n">index</span>
+
+ <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">zero_price_index</span><span class="p">:</span>
+     <span class="n">year</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'Year'</span><span class="p">]</span>
+     <span class="n">genre</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'Genre'</span><span class="p">]</span>
+     <span class="n">avg_price</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">[(</span><span class="n">books_df</span><span class="p">[</span><span class="s">'Genre'</span><span class="p">]</span> <span class="o">==</span> <span class="n">genre</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">books_df</span><span class="p">[</span><span class="s">'Year'</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">)][</span><span class="s">'Price'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>
+     <span class="n">books_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_price</span>
+
+ <span class="n">books_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zero_price_index</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+<th style="text-align: right">Year</th>
+<th style="text-align: left">Genre</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">42</td>
+<td style="text-align: left">Cabin Fever (Diary of a Wimpy Kid, Book 6)</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">4505</td>
+<td style="text-align: right">11.619</td>
+<td style="text-align: right">2011</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">71</td>
+<td style="text-align: left">Diary of a Wimpy Kid: Hard Luck, Book 8</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">6812</td>
+<td style="text-align: right">10.7083</td>
+<td style="text-align: right">2013</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">116</td>
+<td style="text-align: left">Frozen (Little Golden Book)</td>
+<td style="text-align: left">RH Disney</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3642</td>
+<td style="text-align: right">10.1724</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">193</td>
+<td style="text-align: left">JOURNEY TO THE ICE P</td>
+<td style="text-align: left">RH Disney</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">978</td>
+<td style="text-align: right">10.5232</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">Little Blue Truck</td>
+<td style="text-align: left">Alice Schertle</td>
+<td style="text-align: right">4.9</td>
+<td style="text-align: right">1884</td>
+<td style="text-align: right">10.8861</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">358</td>
+<td style="text-align: left">The Constitution of the United States</td>
+<td style="text-align: left">Delegates of the Constitutional</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">2774</td>
+<td style="text-align: right">13.5161</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Non Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">381</td>
+<td style="text-align: left">The Getaway</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">5836</td>
+<td style="text-align: right">8.83333</td>
+<td style="text-align: right">2017</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">461</td>
+<td style="text-align: left">The Short Second Life of Bree Tanner: An Eclipse Novella (The Twilight Saga)</td>
+<td style="text-align: left">Stephenie Meyer</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">2122</td>
+<td style="text-align: right">9.7</td>
+<td style="text-align: right">2010</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">505</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">11.1545</td>
+<td style="text-align: right">2013</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">506</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">11.2614</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">507</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">9.35294</td>
+<td style="text-align: right">2015</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">508</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">26234</td>
+<td style="text-align: right">12.6316</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>string 데이터 처리<ul><li>Name과 Author의 경우, 앞 뒤 공백 때문에 다르게 인식될 가능성을 없애기 위해 strip()을 해준다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+ <span class="n">books_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">]</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="중복값-확인"> <a href="#%EC%A4%91%EB%B3%B5%EA%B0%92-%ED%99%95%EC%9D%B8" aria-labelledby="중복값-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 중복값 확인</h3>
+<ol>
+<li>중복값 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 모든 열이 중복된 값이 포함되어 있나 확인
+</span> <span class="n">books_df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 0
+</code></pre></div></div>
+</li>
+<li>
+<p>같은 책이 여러 번 나온 경우도 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 제목과 작가만 중복되는 값이 몇 개인지 체크
+</span> <span class="n">books_df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Author'</span><span class="p">]).</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 199
+</code></pre></div></div>
+</li>
+<li>
+<p>같은 책이면 User Rating, Price, Reviews 정보가 같은지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">nunique_df</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Name'</span><span class="p">])[[</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">,</span> <span class="s">'Reviews'</span><span class="p">,</span> <span class="s">'Year'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">nunique_df</span><span class="p">[(</span><span class="n">nunique_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">nunique_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">nunique_df</span><span class="p">[</span><span class="s">'Reviews'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Price</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Year</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">104</td>
+<td style="text-align: left">Gone Girl</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">193</td>
+<td style="text-align: left">Quiet: The Power of Introverts in a World That Can’t Stop Talking</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">240</td>
+<td style="text-align: left">The Fault in Our Stars</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">248</td>
+<td style="text-align: left">The Girl on the Train</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">258</td>
+<td style="text-align: left">The Help</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">263</td>
+<td style="text-align: left">The Immortal Life of Henrietta Lacks</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">322</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">328</td>
+<td style="text-align: left">Unbroken: A World War II Story of Survival, Resilience, and Redemption</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">4</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>같은 책이여도 해에 따라 User Rating, Price, Reviews 정보가 달라지는 경우도 있음 <br> (To Kill a Mockingbird는 내가 임의로 Price를 채워넣었으므로 제외)</li></ul>
+</li>
+</ol>
+<h2 id="책별-bestselling-횟수-비교"> <a href="#%EC%B1%85%EB%B3%84-bestselling-%ED%9A%9F%EC%88%98-%EB%B9%84%EA%B5%90" aria-labelledby="책별-bestselling-횟수-비교" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 책별 bestselling 횟수 비교</h2>
+<p>: 각 책별로, 몇 번 bestseller에 이름을 올렸는지 횟수를 계산</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yearly_count</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Genre'</span><span class="p">,</span> <span class="s">'Author'</span><span class="p">])[[</span><span class="s">'Year'</span><span class="p">]].</span><span class="n">count</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">yearly_count</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">yearly_count</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Genre</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">Year</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">191</td>
+<td style="text-align: left">Publication Manual of the American Psychological Association, 6th Edition</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">American Psychological Association</td>
+<td style="text-align: right">10</td>
+</tr>
+<tr>
+<td style="text-align: right">209</td>
+<td style="text-align: left">StrengthsFinder 2.0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Gallup</td>
+<td style="text-align: right">9</td>
+</tr>
+<tr>
+<td style="text-align: right">178</td>
+<td style="text-align: left">Oh, the Places You’ll Go!</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: left">Dr. Seuss</td>
+<td style="text-align: right">8</td>
+</tr>
+<tr>
+<td style="text-align: right">310</td>
+<td style="text-align: left">The Very Hungry Caterpillar</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: left">Eric Carle</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Stephen R. Covey</td>
+<td style="text-align: right">7</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="bestselling-횟수-분포-확인"> <a href="#bestselling-%ED%9A%9F%EC%88%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8" aria-labelledby="bestselling-횟수-분포-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> bestselling 횟수 분포 확인</h3>
+<ol>
+<li>
+<p>최댓값, 최솟값, 사분위값 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="n">yearly_count</span><span class="p">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             Year
+ count  351.000000
+ mean     1.566952
+ std      1.271868
+ min      1.000000
+ 25%      1.000000
+ 50%      1.000000
+ 75%      2.000000
+ max     10.000000
+</code></pre></div></div>
+</li>
+<li>분포 시각화<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">yearly_count</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers1.png" alt="bestselling_year_count_book"></p>
+</li>
+<li>한 번만 포함된 비율 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">one_year_percentage</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count</span><span class="p">[</span><span class="n">yearly_count</span><span class="p">[</span><span class="s">'Year'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'한 해만 bestseller에 포함된 책의 비율: </span><span class="si">{</span><span class="n">one_year_percentage</span> <span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="s">%'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 한 해만 bestseller에 포함된 책의 비율: 73%
+</code></pre></div></div>
+</li>
+</ol>
+<p>&gt;&gt; 최대 10번이나 bestseller에 포함된 책도 있지만, 보통은 1~2번 bestseller에 포함되는 정도가 일반적. <br> (73%가 1번만 이름을 올림)</p>
+<h3 id="bestselling-횟수가-많은-책-확인"> <a href="#bestselling-%ED%9A%9F%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" aria-labelledby="bestselling-횟수가-많은-책-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> bestselling 횟수가 많은 책 확인</h3>
+<ol>
+<li>
+<p>Top 10 책 시각화: 가장 많이 bestseller에 올라온 책이 어떤 것인지</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">yearly_count</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers2.png" alt="bestselling_count_top10_books"></p>
+<ul><li>가장 많이 bestseller에 포함된 책 10권 중 7권은 Non-Fiction</li></ul>
+</li>
+<li>
+<p>bestseller에 많이 올라온 책들의 연도별 bestselling 여부를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">books_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Author'</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'count'</span><span class="p">).</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pivot_df</span><span class="p">,</span> <span class="n">yearly_count</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'Name'</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+</ol>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">2009</th>
+<th style="text-align: right">2010</th>
+<th style="text-align: right">2011</th>
+<th style="text-align: right">2012</th>
+<th style="text-align: right">2013</th>
+<th style="text-align: right">2014</th>
+<th style="text-align: right">2015</th>
+<th style="text-align: right">2016</th>
+<th style="text-align: right">2017</th>
+<th style="text-align: right">2018</th>
+<th style="text-align: right">2019</th>
+<th style="text-align: left">Genre</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">Year</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">191</td>
+<td style="text-align: left">Publication Manual of the American Psychological Association, 6th Edition</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">American Psychological Association</td>
+<td style="text-align: right">10</td>
+</tr>
+<tr>
+<td style="text-align: right">209</td>
+<td style="text-align: left">StrengthsFinder 2.0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Gallup</td>
+<td style="text-align: right">9</td>
+</tr>
+<tr>
+<td style="text-align: right">178</td>
+<td style="text-align: left">Oh, the Places You’ll Go!</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: left">Dr. Seuss</td>
+<td style="text-align: right">8</td>
+</tr>
+<tr>
+<td style="text-align: right">310</td>
+<td style="text-align: left">The Very Hungry Caterpillar</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: left">Eric Carle</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Stephen R. Covey</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: right">243</td>
+<td style="text-align: left">The Four Agreements: A Practical Guide to Personal Freedom (A Toltec Wisdom Book)</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Don Miguel Ruiz</td>
+<td style="text-align: right">6</td>
+</tr>
+<tr>
+<td style="text-align: right">140</td>
+<td style="text-align: left">Jesus Calling: Enjoying Peace in His Presence (with Scripture References)</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Sarah Young</td>
+<td style="text-align: right">6</td>
+</tr>
+<tr>
+<td style="text-align: right">281</td>
+<td style="text-align: left">The Official SAT Study Guide</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">The College Board</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">322</td>
+<td style="text-align: left">To Kill a Mockingbird</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: left">Harper Lee</td>
+<td style="text-align: right">5</td>
+</tr>
+<tr>
+<td style="text-align: right">216</td>
+<td style="text-align: left">The 5 Love Languages: The Secret to Love That Lasts</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: left">Gary Chapman</td>
+<td style="text-align: right">5</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>연속으로 계속 bestseller에 올라온 경우만 있는 건 아니고, bestseller에 올라오지 않은 해가 중간에 끼어 있는 책들도 존재함 (ex. To Kill a Mockingbird)</li></ul>
+<h2 id="책별-bestselling-횟수-비교-1"> <a href="#%EC%B1%85%EB%B3%84-bestselling-%ED%9A%9F%EC%88%98-%EB%B9%84%EA%B5%90-1" aria-labelledby="책별-bestselling-횟수-비교-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 책별 bestselling 횟수 비교</h2>
+<h3 id="작가명-표기-확인"> <a href="#%EC%9E%91%EA%B0%80%EB%AA%85-%ED%91%9C%EA%B8%B0-%ED%99%95%EC%9D%B8" aria-labelledby="작가명-표기-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 작가명 표기 확인</h3>
+<p>: 같은 작가인데 이름이 다르게 표기된 경우가 있는지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">books_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span> <span class="c1">## 작가명 표기를 정리하기 전에는 중복 제외하고 248개 
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>248
+</code></pre></div></div>
+<ol>
+<li>
+<p>각 작가의 성(공백 기준으로 가장 뒷부분만 추출)만 분리해서 별도의 df로 저장</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df_copy</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">[[</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Author'</span><span class="p">]]</span>
+
+ <span class="n">books_df_copy</span><span class="p">[</span><span class="s">'Author_Last_Name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">books_df_copy</span> <span class="p">[</span><span class="s">'Author'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">rsplit</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">books_df_copy</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: left">Author_Last_Name</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">10-Day Green Smoothie Cleanse</td>
+<td style="text-align: left">JJ Smith</td>
+<td style="text-align: left">Smith</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">11/22/63: A Novel</td>
+<td style="text-align: left">Stephen King</td>
+<td style="text-align: left">King</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">12 Rules for Life: An Antidote to Chaos</td>
+<td style="text-align: left">Jordan B. Peterson</td>
+<td style="text-align: left">Peterson</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">1984 (Signet Classics)</td>
+<td style="text-align: left">George Orwell</td>
+<td style="text-align: left">Orwell</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">5,000 Awesome Facts (About Everything!) (National Geographic Kids)</td>
+<td style="text-align: left">National Geographic Kids</td>
+<td style="text-align: left">Kids</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>같은 성에 2개 이상의 작가명이 존재하는 경우만 따로 저장</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">authors_unique_df</span> <span class="o">=</span> <span class="n">books_df_copy</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Author_Last_Name'</span><span class="p">])[[</span><span class="s">'Author'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">authors_unique_df</span><span class="p">[</span><span class="n">authors_unique_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Author_Last_Name</th>
+<th style="text-align: right">Author</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: left">Association</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">20</td>
+<td style="text-align: left">Brown</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">26</td>
+<td style="text-align: left">Campbell</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">39</td>
+<td style="text-align: left">Collins</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">63</td>
+<td style="text-align: left">Gaines</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">121</td>
+<td style="text-align: left">M.D.</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">122</td>
+<td style="text-align: left">MD</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">125</td>
+<td style="text-align: left">Martin</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">164</td>
+<td style="text-align: left">Press</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">175</td>
+<td style="text-align: left">Roth</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">176</td>
+<td style="text-align: left">Rowling</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">191</td>
+<td style="text-align: left">Smith</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">221</td>
+<td style="text-align: left">Young</td>
+<td style="text-align: right">2</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>last name이 2개 이상으로 나온 Author 이름만 알파벳 순으로 뽑아서 확인 (같은 작가인데 표기가 다른 경우가 있는지)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">last_name_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">authors_unique_df</span><span class="p">[</span><span class="n">authors_unique_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">][</span><span class="s">'Author_Last_Name'</span><span class="p">])</span>
+ <span class="nb">sorted</span><span class="p">(</span><span class="n">books_df_copy</span><span class="p">[</span><span class="n">books_df_copy</span><span class="p">[</span><span class="s">'Author_Last_Name'</span><span class="p">].</span><span class="n">isin</span><span class="p">(</span><span class="n">last_name_list</span><span class="p">)][</span><span class="s">'Author'</span><span class="p">].</span><span class="n">unique</span><span class="p">())</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ['American Psychiatric Association', 'American Psychological Association',
+ 'Bessel van der Kolk M.D.', 'Brené Brown', 'Chip Gaines', 'Craig Smith',
+ 'Dan Brown', 'Daniel James Brown', 'David Perlmutter MD', 'Dr. Steven R Gundry MD',
+ 'Emily Winfield Martin', 'Geneen Roth', 'George R. R. Martin', 'George R.R. Martin',
+ 'Ian K. Smith M.D.', 'J. K. Rowling', 'J.K. Rowling', 'JJ Smith', 'Jennifer Smith',
+ 'Jim Collins', 'Joanna Gaines', 'Joel Fuhrman MD', 'Margaret Wise Brown',
+ 'Mark Hyman M.D.', 'Paper Peony Press', 'Pretty Simple Press', 'Rod Campbell',
+ 'Sarah Young', 'Suzanne Collins', 'Thomas Campbell', 'Veronica Roth', 'William P. Young']
+</code></pre></div></div>
+</li>
+<li>
+<p>공백 처리로 인해 다르게 인식되는 작가명을 수정해줌</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># J.K.Rowling과 George R.R.Martin의 경우, 중간 공백으로 인해 다르게 표기된 경우가 있음 → 수정해줌
+</span>
+ <span class="n">books_df</span><span class="p">.</span><span class="n">replace</span><span class="p">({</span><span class="s">'Author'</span><span class="p">:</span> <span class="p">{</span><span class="s">'J.K. Rowling'</span><span class="p">:</span> <span class="s">'J. K. Rowling'</span><span class="p">,</span> <span class="s">'George R.R. Martin'</span><span class="p">:</span> <span class="s">'George R. R. Martin'</span><span class="p">}},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+</code></pre></div></div>
+<p>→ 중복 제외 작가 수가 246명으로 줄어듦:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">books_df</span><span class="p">[</span><span class="s">'Author'</span><span class="p">].</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 246
+</code></pre></div></div>
+</li>
+</ol>
+<h3 id="bestselling-횟수-분포-확인-1"> <a href="#bestselling-%ED%9A%9F%EC%88%98-%EB%B6%84%ED%8F%AC-%ED%99%95%EC%9D%B8-1" aria-labelledby="bestselling-횟수-분포-확인-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> bestselling 횟수 분포 확인</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yearly_count2</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Author'</span><span class="p">])[[</span><span class="s">'Year'</span><span class="p">]].</span><span class="n">count</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">yearly_count2</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">yearly_count2</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">Year</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">118</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">12</td>
+</tr>
+<tr>
+<td style="text-align: right">224</td>
+<td style="text-align: left">Suzanne Collins</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">195</td>
+<td style="text-align: left">Rick Riordan</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">92</td>
+<td style="text-align: left">Gary Chapman</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">11</td>
+<td style="text-align: left">American Psychological Association</td>
+<td style="text-align: right">10</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>최댓값, 최솟값, 사분위값 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">print</span><span class="p">(</span><span class="n">yearly_count2</span><span class="p">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             Year
+ count  246.000000
+ mean     2.235772
+ std      2.080350
+ min      1.000000
+ 25%      1.000000
+ 50%      1.000000
+ 75%      2.000000
+ max     12.000000
+</code></pre></div></div>
+</li>
+<li>분포 시각화<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">yearly_count2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers3.png" alt="bestselling_year_count_author"></p>
+</li>
+<li>1~2번 포함된 비율 확인<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">one_year_percentage2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count2</span><span class="p">[</span><span class="n">yearly_count2</span><span class="p">[</span><span class="s">'Year'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'한 해만 bestseller에 포함된 작가의 비율: </span><span class="si">{</span><span class="n">one_year_percentage2</span> <span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="s">%'</span><span class="p">)</span>
+
+ <span class="n">one_year_percentage2_2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count2</span><span class="p">[</span><span class="n">yearly_count2</span><span class="p">[</span><span class="s">'Year'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">yearly_count2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'두 해 동안 bestseller에 포함된 작가의 비율: </span><span class="si">{</span><span class="n">one_year_percentage2_2</span> <span class="p">:.</span><span class="mi">0</span><span class="n">f</span><span class="si">}</span><span class="s">%'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 한 해만 bestseller에 포함된 작가의 비율: 53%
+ 두 해 동안 bestseller에 포함된 작가의 비율: 24%
+</code></pre></div></div>
+<p>&gt;&gt; 최대 12번이나 bestseller에 포함된 작가도 있지만, 보통은 1~2번 bestseller에 포함되는 정도가 일반적.<br> (과반수가 1번만 이름을 올렸고, 77%가 2번 이하로 이름을 올림)</p>
+</li>
+</ol>
+<h3 id="bestselling-횟수가-많은-작가-확인"> <a href="#bestselling-%ED%9A%9F%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%9E%91%EA%B0%80-%ED%99%95%EC%9D%B8" aria-labelledby="bestselling-횟수가-많은-작가-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> bestselling 횟수가 많은 작가 확인</h3>
+<ol>
+<li>
+<p>Top 10 작가 시각화: 가장 많이 bestseller에 올라온 작가가 누구인지</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">yearly_count2</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Author'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers4.png" alt="bestselling_count_top10_authors"></p>
+<ul><li>유명한 시리즈물을 발표한 작가들이 주로 상위권에 포진.<ul>
+<li>Jeff Kinney: Diary of a Wimpy Kids 시리즈</li>
+<li>Suzanne Collins: The Hunger Game 시리즈</li>
+<li>Rick Riordan: The Heroes of Olympus &amp; The Kane Chronicles 시리즈</li>
+<li>J. K. Rowling: Harry Potter 시리즈</li>
+<li>Stephenie Meyer: Twilight 시리즈</li>
+</ul>
+</li></ul>
+</li>
+<li>
+<p>bestseller에 많이 올라온 작가들의 연도별 bestselling 분포를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pivot_df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">books_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">'Author'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s">'count'</span><span class="p">).</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">pd</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pivot_df2</span><span class="p">,</span> <span class="n">yearly_count2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'Author'</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">2009</th>
+<th style="text-align: right">2010</th>
+<th style="text-align: right">2011</th>
+<th style="text-align: right">2012</th>
+<th style="text-align: right">2013</th>
+<th style="text-align: right">2014</th>
+<th style="text-align: right">2015</th>
+<th style="text-align: right">2016</th>
+<th style="text-align: right">2017</th>
+<th style="text-align: right">2018</th>
+<th style="text-align: right">2019</th>
+<th style="text-align: right">Year</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">118</td>
+<td style="text-align: left">Jeff Kinney</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">12</td>
+</tr>
+<tr>
+<td style="text-align: right">224</td>
+<td style="text-align: left">Suzanne Collins</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">195</td>
+<td style="text-align: left">Rick Riordan</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">92</td>
+<td style="text-align: left">Gary Chapman</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: right">11</td>
+<td style="text-align: left">American Psychological Association</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">10</td>
+</tr>
+<tr>
+<td style="text-align: right">73</td>
+<td style="text-align: left">Dr. Seuss</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">9</td>
+</tr>
+<tr>
+<td style="text-align: right">90</td>
+<td style="text-align: left">Gallup</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">9</td>
+</tr>
+<tr>
+<td style="text-align: right">111</td>
+<td style="text-align: left">J. K. Rowling</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">8</td>
+</tr>
+<tr>
+<td style="text-align: right">197</td>
+<td style="text-align: left">Rob Elliott</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">8</td>
+</tr>
+<tr>
+<td style="text-align: right">219</td>
+<td style="text-align: left">Stephenie Meyer</td>
+<td style="text-align: right">6</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">7</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>Suzanne Collins, Rick Riordan, J. K. Rowling, Stephenie Meyer: 시리즈물로 유명한 작가여서인지, 대체로 특정 기간 내에 복수의 책이 한번에 bestseller에 올라옴</li></ul>
+</li>
+</ol>
+<h2 id="연도별-변화-확인"> <a href="#%EC%97%B0%EB%8F%84%EB%B3%84-%EB%B3%80%ED%99%94-%ED%99%95%EC%9D%B8" aria-labelledby="연도별-변화-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 연도별 변화 확인</h2>
+<h3 id="연도별-장르별-비중"> <a href="#%EC%97%B0%EB%8F%84%EB%B3%84-%EC%9E%A5%EB%A5%B4%EB%B3%84-%EB%B9%84%EC%A4%91" aria-labelledby="연도별-장르별-비중" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 연도별 장르별 비중</h3>
+<p>: 연도별로, 어떤 장르의 책이 bestseller로 이름을 더 많이 올렸는지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">groupby_df1</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Year'</span><span class="p">,</span> <span class="s">'Genre'</span><span class="p">])[[</span><span class="s">'Name'</span><span class="p">]].</span><span class="n">count</span><span class="p">().</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">groupby_df1</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'Name'</span><span class="p">:</span><span class="s">'Count'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">groupby_df1</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Year</th>
+<th style="text-align: left">Genre</th>
+<th style="text-align: right">Count</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2009</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: right">24</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2009</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: right">26</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2010</td>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: right">20</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">2010</td>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: right">30</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 시각화:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">groupby_df1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Count'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers5.png" alt="yearly_bestselling_genre"></p>
+<ul><li>2014년을 제외하면 대체로 Non-Fiction이 더 많이 bestseller에 포함되는 경향</li></ul>
+<h3 id="연도별-rating-review-price-평균의-변화"> <a href="#%EC%97%B0%EB%8F%84%EB%B3%84-rating-review-price-%ED%8F%89%EA%B7%A0%EC%9D%98-%EB%B3%80%ED%99%94" aria-labelledby="연도별-rating-review-price-평균의-변화" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 연도별 Rating, Review, Price 평균의 변화</h3>
+<ol>
+<li>연도별 장르별 User Rating 평균의 차이<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">books_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers6.png" alt="yearly_user_rating"></p>
+<ul>
+<li>대체로 큰 차이가 없으나, 2017년 이후부터는 Fiction 장르의 평균 User Rating이 올라가면서 Non-Fiction 장르와 다소 차이가 벌어짐</li>
+<li>Fiction 장르가 대체로 User Rating의 편차가 큼 (보다 취향이 갈리는 장르이기 때문이라고 추정)</li>
+</ul>
+</li>
+<li>연도별 장르별 Reviews 평균의 차이<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">books_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Reviews'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers7.png" alt="yearly_reviews"></p>
+<ul>
+<li>특히 2012 ~ 2016년 사이에 장르 간 평균 Review 수가 큰 차이를 보임</li>
+<li>2017 ~ 2018년은 거의 평균의 차이가 없다고 봐도 무방하나, 2019년부터 다시 Fiction 장르의 평균 Review수가 증가하는 경향을 보여, 향후 추이를 지켜봐야 할 것으로 생각됨</li>
+</ul>
+</li>
+<li>연도별 장르별 Price 평균의 차이<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+ <span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">books_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers8.png" alt="yearly_price"></p>
+<ul>
+<li>2010 ~ 2014년 사이의 bestseller들은 대체로 Non-Fiction이 Fiction보다 다소 높은 가격을 보이나, 2015년 이후에는 별 차이를 보이지 않음</li>
+<li>Non-Fiction 장르가 대체로 Price의 편차가 큼 (학술 도서 중에는 상당히 비싼 가격의 책들도 있기 때문이라고 추정)</li>
+</ul>
+</li>
+</ol>
+<h2 id="rating-review-price-상위권-도서-확인"> <a href="#rating-review-price-%EC%83%81%EC%9C%84%EA%B6%8C-%EB%8F%84%EC%84%9C-%ED%99%95%EC%9D%B8" aria-labelledby="rating-review-price-상위권-도서-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rating, Review, Price 상위권 도서 확인</h2>
+<p>: 전기간의 모든 bestselling 책 중, rating, review, price가 높은 책들이 어떤 것들인지 확인</p>
+<ul><li>※ 대체로 같은 책은 rating, review, price가 동일한 경우가 많으므로, 같은 책의 경우 가장 최근 record 하나만 남겨서 분석에 활용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 연도순으로 내림차순 정렬
+</span><span class="n">books_df_sorted</span> <span class="o">=</span> <span class="n">books_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># 중복된 행들 중 가장 위에 있는 행만 남기고 다 삭제 
+</span><span class="n">unique_books_df</span> <span class="o">=</span> <span class="n">books_df_sorted</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Author'</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">unique_books_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'books_df: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">books_df</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'unique_books_df: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_books_df</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>books_df:  550
+unique_books_df:  351
+</code></pre></div></div>
+<p>+) 평균 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Genre'</span><span class="p">])[[</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="s">'Reviews'</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">]].</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">Genre</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: right">4.61563</td>
+<td style="text-align: right">13111.1</td>
+<td style="text-align: right">12.0938</td>
+</tr>
+<tr>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: right">4.60366</td>
+<td style="text-align: right">7001.66</td>
+<td style="text-align: right">13.7016</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 표준편차 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_books_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Genre'</span><span class="p">])[[</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="s">'Reviews'</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">]].</span><span class="n">std</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">Genre</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">Fiction</td>
+<td style="text-align: right">0.274388</td>
+<td style="text-align: right">13312.2</td>
+<td style="text-align: right">9.54815</td>
+</tr>
+<tr>
+<td style="text-align: left">Non Fiction</td>
+<td style="text-align: right">0.177815</td>
+<td style="text-align: right">7241.59</td>
+<td style="text-align: right">10.369</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 변수간 상관관계 체크</p>
+<ul><li>Rating이 높은 책이 Review도 높고, Price도 높은 등의 관계가 있는지 파악하기 위함</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">unique_books_df</span><span class="p">[[</span><span class="s">'User Rating'</span><span class="p">,</span> <span class="s">'Reviews'</span><span class="p">,</span> <span class="s">'Price'</span><span class="p">]].</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers15.png" alt="books_corr"></p>
+<ul><li>변수간 전혀 상관관계가 존재하지 않음</li></ul>
+<h3 id="user-rating이-높은-책-확인"> <a href="#user-rating%EC%9D%B4-%EB%86%92%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" aria-labelledby="user-rating이-높은-책-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> User Rating이 높은 책 확인</h3>
+<ol>
+<li>
+<p>User Rating이 4.9(=최댓값)인 책들 중에 Fiction과 Non Fiction이 몇 권씩 포함되어 있는지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">unique_books_df</span><span class="p">[</span><span class="n">unique_books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">,</span> 
+                     <span class="n">order</span><span class="o">=</span><span class="n">unique_books_df</span><span class="p">[</span><span class="n">unique_books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Genre'</span><span class="p">])[[</span><span class="s">'Name'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">().</span><span class="n">index</span><span class="p">)</span>
+
+
+ <span class="c1"># data label을 각각의 bar 위에 추가
+</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">plot</span><span class="p">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="n">unique_books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Genre'</span><span class="p">])[[</span><span class="s">'Name'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">()[</span><span class="s">'Name'</span><span class="p">]):</span>
+     <span class="n">plot</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.375</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers9.png" alt="top_rating_books_per_genre"></p>
+<ul>
+<li>최고점인 4.9점을 받은 책 중에서는 약 78.6%가 Fiction</li>
+<li>Fiction이 장르 특성상 호불호가 더 명확하기 때문인 듯 (Fiction이 더 표준편차가 큼)</li>
+</ul>
+</li>
+<li>
+<p>연도별로, User Rating이 4.9(=최댓값)인 책들이 몇 권씩 포함되어 있는지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># unique_books_df 대신 books_df를 활용
+</span>
+ <span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">books_df</span><span class="p">[</span><span class="n">books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">,</span> 
+                     <span class="n">order</span><span class="o">=</span><span class="n">books_df</span><span class="p">[</span><span class="n">books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Year'</span><span class="p">])[[</span><span class="s">'Name'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">().</span><span class="n">index</span><span class="p">)</span>
+
+
+ <span class="c1"># data label을 각각의 bar 위에 추가
+</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">plot</span><span class="p">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">books_df</span><span class="p">[</span><span class="n">books_df</span><span class="p">[</span><span class="s">'User Rating'</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.9</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Year'</span><span class="p">])[[</span><span class="s">'Name'</span><span class="p">]].</span><span class="n">nunique</span><span class="p">()[</span><span class="s">'Name'</span><span class="p">]):</span>
+     <span class="n">plot</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.27</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.7</span><span class="p">))</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers10.png" alt="top_rating_books_per_year"></p>
+<ul><li>해가 지날수록 bestseller들의 평균 Rating이 높아지는 경향이 있어서 그런 듯</li></ul>
+</li>
+<li>
+<p>4.9점 Rating의 bestseller를 2권 이상 보유한 작가들을 확인</p>
+<pre><code class="language-pytohon"> unique_books_df[unique_books_df['User Rating'] == 4.9].groupby(['Author'])[['Name']].count().sort_values(by='Name', ascending=False).head()
+</code></pre>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">Name</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">Dav Pilkey</td>
+<td style="text-align: right">6</td>
+</tr>
+<tr>
+<td style="text-align: left">J. K. Rowling</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: left">Rush Limbaugh</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: left">Alice Schertle</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: left">Lin-Manuel Miranda</td>
+<td style="text-align: right">1</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>2권 이상의 bestseller가 4.9점을 받은 작가의 경우, 모두 시리즈물</li></ul>
+</li>
+</ol>
+<h3 id="review가-많은-책-확인"> <a href="#review%EA%B0%80-%EB%A7%8E%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" aria-labelledby="review가-많은-책-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Review가 많은 책 확인</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Review 가장 많은 Top 10 책 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">unique_books_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Reviews'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">'Reviews'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples_r'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers11.png" alt="top_reviews_books_per_genre"></p>
+<ul>
+<li>Top 10 중 한 권만 Non-Fiction 장르</li>
+<li>특히 2012 ~ 2016을 중심으로 Review가 높은 Fiction 장르 책이 많았기 때문인 듯</li>
+</ul>
+<h3 id="price가-높은-책-확인"> <a href="#price%EA%B0%80-%EB%86%92%EC%9D%80-%EC%B1%85-%ED%99%95%EC%9D%B8" aria-labelledby="price가-높은-책-확인" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Price가 높은 책 확인</h3>
+<ol>
+<li>Price가 가장 높은 Top 10 책 시각화<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">unique_books_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers12.png" alt="top_price_books_per_genre"></p>
+<ul>
+<li>4권이 Fiction, 6권이 Non-Fiction</li>
+<li>다만, Fiction 중 가장 가격이 높은 2개의 상품은 Twilight과 Harry Potter 시리즈 세트 판매 상품</li>
+</ul>
+</li>
+<li>
+<p>Fiction 중 시리즈 세트 판매 상품들을 판별</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">condition1</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'Saga Collection'</span><span class="p">)</span>
+ <span class="n">condition2</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'Boxed Set'</span><span class="p">)</span>
+ <span class="n">condition3</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'Box Set'</span><span class="p">)</span>
+ <span class="n">condition4</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'Fifty Shades of Grey / '</span><span class="p">)</span>
+ <span class="n">condition5</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="s">'Name'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'A Game of Thrones /'</span><span class="p">)</span>
+
+ <span class="n">unique_books_df</span><span class="p">[</span><span class="n">condition1</span> <span class="o">|</span> <span class="n">condition2</span> <span class="o">|</span> <span class="n">condition3</span> <span class="o">|</span> <span class="n">condition4</span> <span class="o">|</span> <span class="n">condition5</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Author</th>
+<th style="text-align: right">User Rating</th>
+<th style="text-align: right">Reviews</th>
+<th style="text-align: right">Price</th>
+<th style="text-align: right">Year</th>
+<th style="text-align: left">Genre</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">130</td>
+<td style="text-align: left">Harry Potter Paperback Box Set (Books 1-7)</td>
+<td style="text-align: left">J. K. Rowling</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">13471</td>
+<td style="text-align: right">52</td>
+<td style="text-align: right">2016</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">187</td>
+<td style="text-align: left">A Game of Thrones / A Clash of Kings / A Storm of Swords / A Feast of Crows / A Dance with Dragons</td>
+<td style="text-align: left">George R. R. Martin</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">19735</td>
+<td style="text-align: right">30</td>
+<td style="text-align: right">2014</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">212</td>
+<td style="text-align: left">Game of Thrones Boxed Set: A Game of Thrones/A Clash of Kings/A Storm of Swords/A Feast for Crows</td>
+<td style="text-align: left">George R. R. Martin</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">5594</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">2013</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">228</td>
+<td style="text-align: left">The Hunger Games Trilogy Boxed Set (1)</td>
+<td style="text-align: left">Suzanne Collins</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">16949</td>
+<td style="text-align: right">30</td>
+<td style="text-align: right">2012</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">251</td>
+<td style="text-align: left">Fifty Shades Trilogy (Fifty Shades of Grey / Fifty Shades Darker / Fifty Shades Freed)</td>
+<td style="text-align: left">E L James</td>
+<td style="text-align: right">4.5</td>
+<td style="text-align: right">13964</td>
+<td style="text-align: right">32</td>
+<td style="text-align: right">2012</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">300</td>
+<td style="text-align: left">Percy Jackson and the Olympians Paperback Boxed Set (Books 1-3)</td>
+<td style="text-align: left">Rick Riordan</td>
+<td style="text-align: right">4.8</td>
+<td style="text-align: right">548</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2010</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+<tr>
+<td style="text-align: right">330</td>
+<td style="text-align: left">The Twilight Saga Collection</td>
+<td style="text-align: left">Stephenie Meyer</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3801</td>
+<td style="text-align: right">82</td>
+<td style="text-align: right">2009</td>
+<td style="text-align: left">Fiction</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>시리즈 세트 판매 상품을 제외한 Price Top 10<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">temp</span> <span class="o">=</span> <span class="n">unique_books_df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">condition1</span> <span class="o">|</span> <span class="n">condition2</span> <span class="o">|</span> <span class="n">condition3</span> <span class="o">|</span> <span class="n">condition4</span> <span class="o">|</span> <span class="n">condition5</span><span class="p">)]</span>
+
+ <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  
+ <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">temp</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Name'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers16.png" alt="top_prices_books_without_series"></p>
+<ul><li>Fiction 3권, Non-Fiction 7권</li></ul>
+</li>
+<li>
+<p>시리즈 세트 판매 상품을 제외한 Price 분포를 파악</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'box'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers13.png" alt="books_prices_without_series"></p>
+</li>
+<li>
+<p>시리즈 세트 판매 상품을 제외한 장르별 평균 차이를 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'Genre'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Price'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'Purples'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/kaggle/amazon_bestsellers14.png" alt="books_avg_price_without_series"></p>
+<p>→ 독립표본 t-test로 평균의 차이가 유의미한지 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">temp_fiction_df</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s">'Genre'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Fiction'</span><span class="p">]</span>
+ <span class="n">temp_non_fiction_df</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s">'Genre'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Non Fiction'</span><span class="p">]</span>
+
+ <span class="c1"># Levene의 등분산 검정 
+</span> <span class="n">lev_result</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">levene</span><span class="p">(</span><span class="n">temp_fiction_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">],</span> <span class="n">temp_non_fiction_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">])</span>
+ <span class="k">print</span><span class="p">(</span><span class="s">'LeveneResult(F) : %.2f </span><span class="se">\n</span><span class="s">p-value : %.3f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">lev_result</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> LeveneResult(F) : 2.50 
+ p-value : 0.115
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 등분산인 독립표본 t-test 실행 
+</span> <span class="n">t_result</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">temp_fiction_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">],</span> <span class="n">temp_non_fiction_df</span><span class="p">[</span><span class="s">'Price'</span><span class="p">],</span> <span class="n">equal_var</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+ <span class="k">print</span><span class="p">(</span><span class="s">'t statistic : %.2f </span><span class="se">\n</span><span class="s">p-value : %.3f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_result</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> t statistic : -2.67 
+ p-value : 0.008
+</code></pre></div></div>
+<ul><li>소설 시리즈 세트 판매 상품을 제외하면, Non-Fiction의 가격이 대체로 다소 높은 편이라고 할 수 있을 듯</li></ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Network Analysis | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Social Network Analysis">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/network_analysis/social_network/">
+<meta property="og:url" content="https://chaelist.github.io/docs/network_analysis/social_network/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Social Network Analysis"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/network_analysis/social_network/","@type":"WebPage","headline":"Social Network Analysis","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link active">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/network_analysis">Network Analysis</a></li>
+<li class="breadcrumb-nav-list-item"><span>Social Network Analysis</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="social-network-analysis"> <a href="#social-network-analysis" aria-labelledby="social-network-analysis" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Social Network Analysis</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#harry-potter-network-analysis" id="markdown-toc-harry-potter-network-analysis">Harry Potter Network Analysis</a><ol>
+<li><a href="#network-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84" id="markdown-toc-network-데이터-준비">Network 데이터 준비</a></li>
+<li><a href="#%EC%9D%B8%EB%AC%BC-%EA%B0%84-%EA%B4%80%EA%B3%84-graph-%EC%83%9D%EC%84%B1" id="markdown-toc-인물-간-관계-graph-생성">인물 간 관계 Graph 생성</a></li>
+<li><a href="#circos-plot%EC%9C%BC%EB%A1%9C-%EC%8B%9C%EA%B0%81%ED%99%94" id="markdown-toc-circos-plot으로-시각화">Circos Plot으로 시각화</a></li>
+<li><a href="#%EA%B0%80%EC%9E%A5-%EA%B0%80%EA%B9%8C%EC%9A%B4-%EC%9D%B8%EB%AC%BC-10%EB%AA%85-%EC%B0%BE%EA%B8%B0" id="markdown-toc-가장-가까운-인물-10명-찾기">가장 가까운 인물 10명 찾기</a></li>
+</ol>
+</li>
+<li>
+<a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-%ED%99%95%EC%9D%B8-hp-17" id="markdown-toc-인물의-중요도-변화-확인-hp-17">인물의 중요도 변화 확인 (HP 1~7)</a><ol>
+<li><a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-degree-centrality" id="markdown-toc-인물의-중요도-변화-degree-centrality">인물의 중요도 변화: Degree Centrality</a></li>
+<li><a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-betweenness-centrality" id="markdown-toc-인물의-중요도-변화-betweenness-centrality">인물의 중요도 변화: Betweenness Centrality</a></li>
+<li><a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-eigenvector-centrality" id="markdown-toc-인물의-중요도-변화-eigenvector-centrality">인물의 중요도 변화: Eigenvector Centrality</a></li>
+<li><a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-pagerank" id="markdown-toc-인물의-중요도-변화-pagerank">인물의 중요도 변화: PageRank</a></li>
+<li><a href="#correlation-between-different-measures" id="markdown-toc-correlation-between-different-measures">Correlation between different measures</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<p>*Social Network Analysis: 사람들로 이루어진 네트워크, 즉 사람들 간의 관계를 분석.</p>
+<h2 id="harry-potter-network-analysis"> <a href="#harry-potter-network-analysis" aria-labelledby="harry-potter-network-analysis" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Harry Potter Network Analysis</h2>
+<p>: 예시로, 소설 &lt; Harry Potter &gt; 시리즈 속 인물들을 바탕으로 Social Network를 구현해 봄.<br> (→ 실제 사람들 사이의 관계에도 유사한 분석을 적용 가능)</p>
+<h3 id="network-데이터-준비"> <a href="#network-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84" aria-labelledby="network-데이터-준비" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Network 데이터 준비</h3>
+<ul>
+<li>
+<a href="https://github.com/harrisonpim/bookworm" target="_blank">bookwarm</a> library를 사용: 책 text를 바탕으로 인물 간 관계 데이터를 구성.</li>
+<li>source, target, value(=weight) 3개의 칼럼으로 구성. (방향성은 없지만 편의상 source와 target으로 나눔)</li>
+<li>우선은 1권 &lt; Harry Potter and the Philosopher’s Stone &gt; 데이터만 사용</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 미리 bookwarm library를 사용해서 구축해 놓은 인물 간 관계 데이터
+</span><span class="n">book1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter1.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book1</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">source</th>
+<th style="text-align: left">target</th>
+<th style="text-align: right">value</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">vernon</td>
+<td style="text-align: left">petunia</td>
+<td style="text-align: right">24</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">vernon</td>
+<td style="text-align: left">dudley</td>
+<td style="text-align: right">29</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">vernon</td>
+<td style="text-align: left">harry</td>
+<td style="text-align: right">75</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">vernon</td>
+<td style="text-align: left">hagrid</td>
+<td style="text-align: right">6</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">vernon</td>
+<td style="text-align: left">marge</td>
+<td style="text-align: right">21</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="인물-간-관계-graph-생성"> <a href="#%EC%9D%B8%EB%AC%BC-%EA%B0%84-%EA%B4%80%EA%B3%84-graph-%EC%83%9D%EC%84%B1" aria-labelledby="인물-간-관계-graph-생성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물 간 관계 Graph 생성</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="n">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Create an empty graph object
+</span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="c1"># Iterate through the DataFrame &amp; add edges
+</span><span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">book1</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="p">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s">'source'</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="s">'target'</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="n">edge</span><span class="p">[</span><span class="s">'value'</span><span class="p">])</span>
+
+<span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>  <span class="c1"># turn off axis 
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp1_network1.png" alt="HP1_Graph1"></p>
+<ul><li>※ 이렇게 node가 너무 많은 경우 뭉친 부분이 잘 안 보인다</li></ul>
+<h3 id="circos-plot으로-시각화"> <a href="#circos-plot%EC%9C%BC%EB%A1%9C-%EC%8B%9C%EA%B0%81%ED%99%94" aria-labelledby="circos-plot으로-시각화" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Circos Plot으로 시각화</h3>
+<ul>
+<li>nxviz의 Circos Plot을 사용: node가 많아 graph가 뭉치는 현상을 해결</li>
+<li>+) 각 node의 Degree Centrality 계산, Centrality에 따라 색을 다르게 해서 그리기</li>
+<li>+) Centrality 값에 따라 node를 정렬해서 중요도 높은 node 순으로 판별 가능하게 하기</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># degree centrality 계산
+</span><span class="n">deg_cen</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># 각 node에 'centrality' attribute 넣어주기
+</span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s">'centrality'</span><span class="p">]</span> <span class="o">=</span> <span class="n">deg_cen</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+
+
+<span class="c1"># centrality 값의 크기를 색으로 구분해 circos plot 그리기
+</span><span class="kn">import</span> <span class="nn">nxviz</span> <span class="k">as</span> <span class="n">nv</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">CircosPlot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                  <span class="n">node_label_layout</span><span class="o">=</span><span class="s">"rotation"</span><span class="p">,</span>   <span class="c1"># node끼리 서로 가리지 않도록 label를 rotate
+</span>                  <span class="n">node_color</span><span class="o">=</span><span class="s">'centrality'</span><span class="p">,</span>   <span class="c1"># centrality 값을 기반으로 색을 구분
+</span>                  <span class="n">node_order</span><span class="o">=</span><span class="s">'centrality'</span><span class="p">,</span>   <span class="c1"># centrality 값 순서대로 정렬
+</span>                  <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">c</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp1_network2.png" alt="HP1_Graph2"></p>
+<h3 id="가장-가까운-인물-10명-찾기"> <a href="#%EA%B0%80%EC%9E%A5-%EA%B0%80%EA%B9%8C%EC%9A%B4-%EC%9D%B8%EB%AC%BC-10%EB%AA%85-%EC%B0%BE%EA%B8%B0" aria-labelledby="가장-가까운-인물-10명-찾기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 가장 가까운 인물 10명 찾기</h3>
+<p>: 특정 node와 연결된 edge의 weight가 큰 인물 순서대로 정렬해 찾기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 네트워크 G 안에서 특정 노드(name) 사이의 weight가 큰 neighbor 순서대로 10명 출력하는 함수
+</span><span class="k">def</span> <span class="nf">find_ten_closest</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>  
+    <span class="n">neighbors_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">.</span><span class="n">neighbors</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">"</span><span class="p">))</span>
+    
+    <span class="n">temp_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors_list</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">G</span><span class="p">.</span><span class="n">edges</span><span class="p">[</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="n">n</span><span class="p">][</span><span class="s">'weight'</span><span class="p">]</span>
+        <span class="n">temp_dict</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span>
+    
+    <span class="n">sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">temp_dict</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sorted_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]:</span>  <span class="c1"># 1~10위
+</span>        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s">:  </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+
+<span class="c1"># harry와 가장 가까운 인물 top10과 weight 출력 - 1권 기준
+</span><span class="n">find_ten_closest</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">'harry'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ron:  367
+hagrid:  183
+hermione:  177
+snape:  94
+draco:  90
+quirrell:  87
+dudley:  84
+dumbledore:  83
+vernon:  75
+neville:  66
+</code></pre></div></div>
+<h2 id="인물의-중요도-변화-확인-hp-17"> <a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-%ED%99%95%EC%9D%B8-hp-17" aria-labelledby="인물의-중요도-변화-확인-hp-17" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물의 중요도 변화 확인 (HP 1~7)</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="n">nx</span>
+
+<span class="c1"># 미리 bookwarm library를 사용해서 만들어 둔 인물 간 관계 데이터: 1권~7권
+</span><span class="n">book1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter1.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter2.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter3.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book4</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter4.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book5</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter5.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book6</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter6.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">book7</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'harrypotter/network_HarryPotter7.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># 각 book으로부터 네트워크를 만들어 G_books list에 append
+</span><span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">book1</span><span class="p">,</span> <span class="n">book2</span><span class="p">,</span> <span class="n">book3</span><span class="p">,</span> <span class="n">book4</span><span class="p">,</span> <span class="n">book5</span><span class="p">,</span> <span class="n">book6</span><span class="p">,</span> <span class="n">book7</span><span class="p">]</span>
+<span class="n">G_books</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
+    <span class="n">G_book</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">book</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">G_book</span><span class="p">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s">'source'</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="s">'target'</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="n">edge</span><span class="p">[</span><span class="s">'value'</span><span class="p">])</span>
+    <span class="n">G_books</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">G_book</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="인물의-중요도-변화-degree-centrality"> <a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-degree-centrality" aria-labelledby="인물의-중요도-변화-degree-centrality" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물의 중요도 변화: Degree Centrality</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating a list of degree centrality of all the books
+</span><span class="n">evol</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">G_books</span><span class="p">]</span>
+ 
+<span class="c1"># Creating a DataFrame from the list of degree centralities in all the books
+</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Book1'</span><span class="p">,</span> <span class="s">'Book2'</span><span class="p">,</span> <span class="s">'Book3'</span><span class="p">,</span> <span class="s">'Book4'</span><span class="p">,</span> <span class="s">'Book5'</span><span class="p">,</span> <span class="s">'Book6'</span><span class="p">,</span> <span class="s">'Book7'</span><span class="p">]</span>
+<span class="n">degree_evol_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">evol</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 모든 책에 모든 캐릭터가 있는 게 아니므로, N/A는 0으로 채워줌
+</span>
+<span class="c1"># 각 책의 중요도 top 5 인물 선택
+</span><span class="n">set_of_char</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>   <span class="c1"># 1~7권
+</span>    <span class="n">set_of_char</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">degree_evol_df</span><span class="p">.</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">].</span><span class="n">index</span><span class="p">))</span> 
+            <span class="c1"># |=는 왼쪽과 오른쪽의 합집합을 왼쪽에 assign해주는 역할
+</span><span class="n">list_of_char</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_of_char</span><span class="p">)</span>
+
+<span class="c1"># Evolution of Top Characters 시각화
+</span><span class="n">degree_evol_df</span><span class="p">[</span><span class="n">list_of_char</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp_evolution1.png" alt="HP_Evolution_of_Top_Characters_1"></p>
+<h3 id="인물의-중요도-변화-betweenness-centrality"> <a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-betweenness-centrality" aria-labelledby="인물의-중요도-변화-betweenness-centrality" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물의 중요도 변화: Betweenness Centrality</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating a list of betweenness centrality of all the books
+</span><span class="n">evol</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">)</span> <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">G_books</span><span class="p">]</span>
+
+<span class="c1"># Making a DataFrame from the list
+</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Book1'</span><span class="p">,</span> <span class="s">'Book2'</span><span class="p">,</span> <span class="s">'Book3'</span><span class="p">,</span> <span class="s">'Book4'</span><span class="p">,</span> <span class="s">'Book5'</span><span class="p">,</span> <span class="s">'Book6'</span><span class="p">,</span> <span class="s">'Book7'</span><span class="p">]</span>
+<span class="n">betweenness_evol_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">evol</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 각 책의 중요도 top 5 인물 선택
+</span><span class="n">set_of_char</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>   <span class="c1"># 1~7권
+</span>    <span class="n">set_of_char</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">betweenness_evol_df</span><span class="p">.</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">].</span><span class="n">index</span><span class="p">))</span>  
+<span class="n">list_of_char</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_of_char</span><span class="p">)</span>
+
+<span class="c1"># Evolution of Top Characters 시각화
+</span><span class="n">betweenness_evol_df</span><span class="p">[</span><span class="n">list_of_char</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp_evolution2.png" alt="HP_Evolution_of_Top_Characters_2"></p>
+<h3 id="인물의-중요도-변화-eigenvector-centrality"> <a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-eigenvector-centrality" aria-labelledby="인물의-중요도-변화-eigenvector-centrality" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물의 중요도 변화: Eigenvector Centrality</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating a list of eigenvector centrality of all the books
+</span><span class="n">evol</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">)</span> <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">G_books</span><span class="p">]</span>
+
+<span class="c1"># Making a DataFrame from the list
+</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Book1'</span><span class="p">,</span> <span class="s">'Book2'</span><span class="p">,</span> <span class="s">'Book3'</span><span class="p">,</span> <span class="s">'Book4'</span><span class="p">,</span> <span class="s">'Book5'</span><span class="p">,</span> <span class="s">'Book6'</span><span class="p">,</span> <span class="s">'Book7'</span><span class="p">]</span>
+<span class="n">eigenvector_evol_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">evol</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 각 책의 중요도 top 5 인물 선택
+</span><span class="n">set_of_char</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>   <span class="c1"># 1~7권
+</span>    <span class="n">set_of_char</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">eigenvector_evol_df</span><span class="p">.</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">].</span><span class="n">index</span><span class="p">))</span>
+<span class="n">list_of_char</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_of_char</span><span class="p">)</span>
+
+<span class="c1"># Evolution of Top Characters 시각화
+</span><span class="n">eigenvector_evol_df</span><span class="p">[</span><span class="n">list_of_char</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp_evolution3.png" alt="HP_Evolution_of_Top_Characters_3"></p>
+<h3 id="인물의-중요도-변화-pagerank"> <a href="#%EC%9D%B8%EB%AC%BC%EC%9D%98-%EC%A4%91%EC%9A%94%EB%8F%84-%EB%B3%80%ED%99%94-pagerank" aria-labelledby="인물의-중요도-변화-pagerank" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 인물의 중요도 변화: PageRank</h3>
+<ul>
+<li>PageRank는 Eigenvector Centrality를 기반으로 node의 ranking을 매기는 알고리즘</li>
+<li>Google에서 web page 간의 link 관계를 바탕으로 ranking을 매기는 방법으로 고안된 방식</li>
+<li>원래는 directed graph를 위해 디자인된 알고리즘이지만 undirected graph에서도 활용 가능</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating a list of pagerank of all the characters in all the books
+</span><span class="n">evol</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">G_books</span><span class="p">]</span>
+
+<span class="c1"># Making a DataFrame from the list
+</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Book1'</span><span class="p">,</span> <span class="s">'Book2'</span><span class="p">,</span> <span class="s">'Book3'</span><span class="p">,</span> <span class="s">'Book4'</span><span class="p">,</span> <span class="s">'Book5'</span><span class="p">,</span> <span class="s">'Book6'</span><span class="p">,</span> <span class="s">'Book7'</span><span class="p">]</span>
+<span class="n">pagerank_evol_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">evol</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 각 책의 중요도 top 5 인물 선택
+</span><span class="n">set_of_char</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>   <span class="c1"># 1~7권
+</span>    <span class="n">set_of_char</span> <span class="o">|=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">pagerank_evol_df</span><span class="p">.</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">].</span><span class="n">index</span><span class="p">))</span>
+<span class="n">list_of_char</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_of_char</span><span class="p">)</span>
+
+<span class="c1"># Evolution of Top Characters 시각화
+</span><span class="n">pagerank_evol_df</span><span class="p">[</span><span class="n">list_of_char</span><span class="p">].</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="../../../assets/images/social_network/hp_evolution4.png" alt="HP_Evolution_of_Top_Characters_4"></p>
+<ul><li>Eigenvector Centrality로 계산했을 때와 매우 유사한 결과</li></ul>
+<h3 id="correlation-between-different-measures"> <a href="#correlation-between-different-measures" aria-labelledby="correlation-between-different-measures" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Correlation between different measures</h3>
+<p>4개의 Centrality 계산 방식끼리 얼마나 유사한 결과를 내는지 비교</p>
+<ol>
+<li>Correlation 계산: 1권 기준<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># List of 4 centrality scores of all the characters in book 1
+</span> <span class="n">measures</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+
+ <span class="c1"># DataFrame 만들어서 Correlation 계산
+</span> <span class="n">cor</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">measures</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'PageRank'</span><span class="p">,</span> <span class="s">'Eigenvector'</span><span class="p">,</span> <span class="s">'Betweenness'</span><span class="p">,</span> <span class="s">'Degree'</span><span class="p">])</span>
+ <span class="n">cor</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">corr</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">PageRank</th>
+<th style="text-align: right">Eigenvector</th>
+<th style="text-align: right">Betweenness</th>
+<th style="text-align: right">Degree</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">PageRank</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.936511</td>
+<td style="text-align: right">0.932695</td>
+<td style="text-align: right">0.957365</td>
+</tr>
+<tr>
+<td style="text-align: left">Eigenvector</td>
+<td style="text-align: right">0.936511</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.880642</td>
+<td style="text-align: right">0.970408</td>
+</tr>
+<tr>
+<td style="text-align: left">Betweenness</td>
+<td style="text-align: right">0.932695</td>
+<td style="text-align: right">0.880642</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.926985</td>
+</tr>
+<tr>
+<td style="text-align: left">Degree</td>
+<td style="text-align: right">0.957365</td>
+<td style="text-align: right">0.970408</td>
+<td style="text-align: right">0.926985</td>
+<td style="text-align: right">1</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul><li>1권에서는 4개의 인물 중요도 계산 방식이 모두 서로 유사한 결과를 냄</li></ul>
+<p class="fs-1 lh-0"> </p>
+</li>
+<li>Correlation 계산: 3권 기준<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Creating a list of all centrality of all the characters in book 3
+</span> <span class="n">measures</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="s">'weight'</span><span class="p">),</span> 
+             <span class="n">nx</span><span class="p">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G_books</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
+
+ <span class="c1"># DataFrame 만들어서 Correlation 계산
+</span> <span class="n">cor</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">measures</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'PageRank'</span><span class="p">,</span> <span class="s">'Eigenvector'</span><span class="p">,</span> <span class="s">'Betweenness'</span><span class="p">,</span> <span class="s">'Degree'</span><span class="p">])</span>
+ <span class="n">cor</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">corr</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">PageRank</th>
+<th style="text-align: right">Eigenvector</th>
+<th style="text-align: right">Betweenness</th>
+<th style="text-align: right">Degree</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">PageRank</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.946001</td>
+<td style="text-align: right">0.508885</td>
+<td style="text-align: right">0.908312</td>
+</tr>
+<tr>
+<td style="text-align: left">Eigenvector</td>
+<td style="text-align: right">0.946001</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.561182</td>
+<td style="text-align: right">0.925465</td>
+</tr>
+<tr>
+<td style="text-align: left">Betweenness</td>
+<td style="text-align: right">0.508885</td>
+<td style="text-align: right">0.561182</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.705608</td>
+</tr>
+<tr>
+<td style="text-align: left">Degree</td>
+<td style="text-align: right">0.908312</td>
+<td style="text-align: right">0.925465</td>
+<td style="text-align: right">0.705608</td>
+<td style="text-align: right">1</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul>
+<li>3권에서는 인물 중요도 계산에서 유독 Betweenness Centrality가 다른 방법들과 차이를 보임</li>
+<li>PageRank와 Eigenvector Centrality 방식이 특히 유사한 결과를 냄</li>
+</ul>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

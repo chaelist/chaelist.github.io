@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regular Expressions | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Regular Expressions">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/data_handling/regular_expressions/">
+<meta property="og:url" content="https://chaelist.github.io/docs/data_handling/regular_expressions/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Regular Expressions"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/data_handling/regular_expressions/","@type":"WebPage","headline":"Regular Expressions","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link active">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/data_handling">Data Handling</a></li>
+<li class="breadcrumb-nav-list-item"><span>Regular Expressions</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="regular-expressions"> <a href="#regular-expressions" aria-labelledby="regular-expressions" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Regular Expressions</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9Dregular-expressions" id="markdown-toc-정규-표현식regular-expressions">정규 표현식(Regular Expressions)</a><ol>
+<li><a href="#--%EB%AC%B8%EC%9E%90-%ED%81%B4%EB%9E%98%EC%8A%A4character-class" id="markdown-toc---문자-클래스character-class">[ ]: 문자 클래스(character class)</a></li>
+<li><a href="#%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%AC%B8%EC%9E%90-%ED%81%B4%EB%9E%98%EC%8A%A4" id="markdown-toc-자주-사용하는-문자-클래스">자주 사용하는 문자 클래스</a></li>
+<li><a href="#%EA%B0%81-%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%98-%EC%9D%98%EB%AF%B8" id="markdown-toc-각-표현식의-의미">각 표현식의 의미</a></li>
+</ol>
+</li>
+<li>
+<a href="#re-%EB%AA%A8%EB%93%88" id="markdown-toc-re-모듈">re 모듈</a><ol>
+<li><a href="#research" id="markdown-toc-research">re.search()</a></li>
+<li><a href="#refindall" id="markdown-toc-refindall">re.findall()</a></li>
+<li><a href="#resub" id="markdown-toc-resub">re.sub()</a></li>
+<li><a href="#recompile" id="markdown-toc-recompile">re.compile()</a></li>
+</ol>
+</li>
+<li><a href="#%EC%B6%94%EA%B0%80-%ED%99%9C%EC%9A%A9-tip" id="markdown-toc-추가-활용-tip">추가 활용 Tip</a></li>
+</ol></details><hr>
+<h2 id="정규-표현식regular-expressions"> <a href="#%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9Dregular-expressions" aria-labelledby="정규-표현식regular-expressions" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 정규 표현식(Regular Expressions)</h2>
+<p>: 메타 문자(meta characters)를 적절히 활용해 복잡한 문자열을 처리하는 기법</p>
+<ul><li>메타 문자: . ^ $ * + ? { } [ ] \ | ( )</li></ul>
+<h3 id="--문자-클래스character-class"> <a href="#--%EB%AC%B8%EC%9E%90-%ED%81%B4%EB%9E%98%EC%8A%A4character-class" aria-labelledby="--문자-클래스character-class" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [ ]: 문자 클래스(character class)</h3>
+<p>: <i>”[ ] 사이의 문자들과 매치”</i>라는 의미</p>
+<ol>
+<li>
+<code class="language-plaintext highlighter-rouge">[abc]</code>: “a, b, c 중 한 개의 문자와 매치”라는 의미<ul>
+<li>“a”는 정규식과 일치하는 문자인 “a”가 있으므로 매치되는 부분이 존재</li>
+<li>“before”는 정규식과 일치하는 문자인 “b”가 있으므로 매치되는 부분이 존재</li>
+<li>“dude”는 정규식과 일치하는 문자 “a”, “b”, “c” 중 어느 하나도 포함하지 않으므로 매치되지 않음</li>
+</ul>
+</li>
+<li>[ ] 안의 두 문자 사이에 하이픈(-)을 이용하면 두 문자 사이의 범위(from - to)를 의미<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">[a-z]</code>: a~z의 모든 알파벳</li>
+<li>
+<code class="language-plaintext highlighter-rouge">[0-5]</code>: 012345</li>
+<li>
+<code class="language-plaintext highlighter-rouge">[a-zA-Z]</code>: 알파벳 모두</li>
+<li>
+<code class="language-plaintext highlighter-rouge">[0-9]</code>: 숫자 모두</li>
+</ul>
+</li>
+<li>[ ] 안에 ^를 넣으면, 반대(not)의 의미가 됨<ul><li>
+<code class="language-plaintext highlighter-rouge">[^0-9]</code>: 숫자가 아닌 문자만 매치됨</li></ul>
+</li>
+</ol>
+<h3 id="자주-사용하는-문자-클래스"> <a href="#%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%AC%B8%EC%9E%90-%ED%81%B4%EB%9E%98%EC%8A%A4" aria-labelledby="자주-사용하는-문자-클래스" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 자주 사용하는 문자 클래스</h3>
+<p>: 아래와 같이 자주 사용하는 정규식은 별도의 표기법으로 표현이 가능하다</p>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">\d</code> - 숫자와 매치. [0-9]와 동일</li>
+<li>
+<code class="language-plaintext highlighter-rouge">\D</code> - 숫자가 아닌 것과 매치. [^0-9]와 동일</li>
+<li>
+<code class="language-plaintext highlighter-rouge">\s</code> - whitespace character와 매치, [ \t\n\r\f\v]와 동일 (맨 앞의 빈 칸은 공백(space)를 의미)</li>
+<li>
+<code class="language-plaintext highlighter-rouge">\S</code> - non-whitespace character과 매치, [^ \t\n\r\f\v]와 동일</li>
+<li>
+<code class="language-plaintext highlighter-rouge">\w</code> - alphanumeric(문자+숫자) &amp; underscore(_)와 매치, [a-zA-Z0-9_]와 동일</li>
+<li>
+<code class="language-plaintext highlighter-rouge">\W</code> - alphanumeric(문자+숫자) &amp; underscore(_)가 아닌 것과 매치, [^a-zA-Z0-9_]와 동일</li>
+</ul>
+<p>(※ 각각, 대문자로 사용된 것은 소문자의 반대)</p>
+<h3 id="각-표현식의-의미"> <a href="#%EA%B0%81-%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%98-%EC%9D%98%EB%AF%B8" aria-labelledby="각-표현식의-의미" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 각 표현식의 의미</h3>
+<ol>
+<li>
+<strong>Dot(.)</strong>: 줄바꿈 문자인 \n을 제외한 모든 문자와 매치됨을 의미<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">a.b</code>: “a + 모든 문자 + b”라는 뜻<ul>
+<li>“aab”, “a0b” 모두 <code class="language-plaintext highlighter-rouge">a.b</code>와 매치된다</li>
+<li>“abc”는 a와 b 사이에 어떤 문자도 없으므로 매치되지 않는다</li>
+</ul>
+</li>
+<li>cf) <code class="language-plaintext highlighter-rouge">a[.]b</code>: “a + . + b”라는 뜻. “a.b”와만 매치된다</li>
+</ul>
+</li>
+<li>
+<strong>반복(*)</strong>: 0번 이상 반복된다는 의미<ul><li>
+<code class="language-plaintext highlighter-rouge">ca*t</code>: * 바로 앞의 문자 ‘a’가 0번 이상 반복된다는 뜻 (a는 없어도 됨)<ul><li>“ct”, “cat”, “caaat” 모두 <code class="language-plaintext highlighter-rouge">ca*t</code>와 매치된다 (0번도 가능)</li></ul>
+</li></ul>
+</li>
+<li>
+<strong>반복(+)</strong>: 1번 이상 반복된다는 의미<ul><li>
+<code class="language-plaintext highlighter-rouge">ca+t</code>: + 바로 앞의 문자 ‘a’가 1번 이상 반복된다는 뜻 (무조건 a가 있어야 함)<ul><li>“cat”, “caaat”은 <code class="language-plaintext highlighter-rouge">ca*t</code>와 매치, 하지만 “ct”처럼 a가 한 번도 없는 것은 매치되지 않는다</li></ul>
+</li></ul>
+</li>
+<li>
+<strong>{m,n}</strong>: m~n번 반복된다는 의미 (반복 횟수를 제한)<ul><li>
+<code class="language-plaintext highlighter-rouge">ca{2,5}t</code>: {m,n} 바로 앞의 문자 a가 2번~5번 반복된다는 뜻<ul><li>“caat”, “caaat”, “caaaat”, “caaaaat” 모두 <code class="language-plaintext highlighter-rouge">ca{2,5}t</code>와 매칭된다</li></ul>
+</li></ul>
+</li>
+<li>
+<strong>?</strong>: 있어도 되고 없어도 된다는 의미 (0번 or 1번 있으면 됨)<ul><li>
+<code class="language-plaintext highlighter-rouge">ab?c</code>: “a + b(있어도 되고 없어도 됨) + c”라는 뜻<ul>
+<li>“abc”, “ac” 모두 매치된다</li>
+<li>“abbc” 등 b가 2번 이상이면 매치되지 않는다</li>
+</ul>
+</li></ul>
+</li>
+<li>
+<strong>^</strong>: Matches the beginning of a line<ul><li>
+<code class="language-plaintext highlighter-rouge">^X</code>라고 하면 X로 시작하는 아이들만 매치됨<ul><li>“Xylophone”은 <code class="language-plaintext highlighter-rouge">^X</code>와 매칭된다 (case sensitive하므로 반드시 대문자 X여야 매칭)</li></ul>
+</li></ul>
+</li>
+<li>
+<strong>$</strong>: $: Matches the end of a line<ul><li>
+<code class="language-plaintext highlighter-rouge">X$</code>라고 하면 X로 끝나는 아이들만 매치됨<ul><li>“AdEX”는 <code class="language-plaintext highlighter-rouge">X$</code>와 매칭된다</li></ul>
+</li></ul>
+</li>
+<li>
+<strong>( )</strong>: Indicates where string extraction is to start &amp; to end<ul><li>
+<code class="language-plaintext highlighter-rouge">^From (\S+@\S+)</code>라고 하면, ‘From’으로 시작하는 <code class="language-plaintext highlighter-rouge">\S+@\S+</code>들을 찾아주되, ( ) 안의 부분만 extract.<ul><li>“From chaelist@github.com”이라는 string이 있다면, 이 중 “chaelist@github.com”만 extract.</li></ul>
+</li></ul>
+</li>
+</ol>
+<h2 id="re-모듈"> <a href="#re-%EB%AA%A8%EB%93%88" aria-labelledby="re-모듈" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re 모듈</h2>
+<p>: 파이썬에서 정규 표현식을 지원하는 re(regular expression) 모듈</p>
+<h3 id="research"> <a href="#research" aria-labelledby="research" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re.search()</h3>
+<p>: 특정 string이 해당 regular expression과 매칭되는지 여부에 따라 True/False를 return</p>
+<ul><li>if문과 함께 사용해서 원하는 string들만 읽어올 때 사용하면 유용함</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span>  <span class="c1"># import해줘야 사용 가능
+</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s">'From chaelist@github.com'</span><span class="p">,</span> <span class="s">'hi'</span><span class="p">,</span> <span class="s">'From me'</span><span class="p">,</span> <span class="s">'nice to meet you'</span><span class="p">,</span> <span class="s">'From CYC'</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span> 
+  <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">'^From'</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>     <span class="c1">## if line.starswith('From'): 과 동일
+</span>    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>From chaelist@github.com 
+From me
+From CYC
+</code></pre></div></div>
+<h3 id="refindall"> <a href="#refindall" aria-labelledby="refindall" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re.findall()</h3>
+<p>: 해당 regular expression에 매칭되는 portions of string을 extract.</p>
+<ul><li>매치되는 부분을 모두 리스트로 저장해 return</li></ul>
+<p class="text-grey-dk-000"><em>(※ <code class="language-plaintext highlighter-rouge">re.search()</code> returns a <u>True/False</u>, <code class="language-plaintext highlighter-rouge">re.findall()</code> returns the <u>matching strings</u>)</em></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="s">'My 2 favorite numbers are 19 and 42'</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'[0-9]+'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># 숫자(0-9)가 1번 이상 반복되는 부분을 모두 찾으므로, [2, 19, 42]가 return됨
+</span><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'[AEIOU]+'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># A, E, I, O, U 중 하나가 1번 이상 반복되는 부분을 찾는데, 없으므로 빈 리스트 return
+</span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['2', '19', '42']
+[]
+</code></pre></div></div>
+<h3 id="resub"> <a href="#resub" aria-labelledby="resub" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re.sub()</h3>
+<p>: 패턴에 일치되는 문자열을 다른 문자열로 바꿔준다</p>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">re.sub(pattern, repl, string)</code>의 형태로 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># re.sub() 간단한 버전
+</span><span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'\d{4}'</span><span class="p">,</span> <span class="s">'XXXX'</span><span class="p">,</span> <span class="s">'010-1256-9999'</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>010-XXXX-XXXX
+</code></pre></div></div>
+<p>+) count 추가:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># re.sub(pattern, repl, string, count)
+</span><span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s">'Hello'</span><span class="p">,</span> <span class="n">repl</span><span class="o">=</span><span class="s">'Bye'</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s">'Hello, Hello, Hello Everybody.'</span><span class="p">))</span>
+<span class="c1">## 일치하는 문자열이 3개이지만 count=2로 한정되어 있으면 딱 2개까지만 변환됨
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bye, Bye, Hello Everybody.
+</code></pre></div></div>
+<p>+) <strong>re.subn()</strong>: re.sub()와 매우 유사하지만, 치환된 문자열과 함께 치환된 개수도 return해준다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">subn</span><span class="p">(</span><span class="s">'\d{4}'</span><span class="p">,</span> <span class="s">'XXXX'</span><span class="p">,</span> <span class="s">'010-1234-5678'</span><span class="p">))</span> <span class="c1">## 치환 결과와 치환된 개수를 element로 하는 tuple 반환
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('010-XXXX-XXXX', 2)
+</code></pre></div></div>
+<h3 id="recompile"> <a href="#recompile" aria-labelledby="recompile" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> re.compile()</h3>
+<p>: 특정 정규표현식을 컴파일해두고 사용하는 방식</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="s">'My 2 favorite numbers are 19 and 42'</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'[0-9]+'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">'[0-9]+'</span><span class="p">)</span>  <span class="c1"># 이렇게 re.compile을 통해 특정 정규표현식을 저장해두고, 
+</span><span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># 여기에 .findall('문자열')을 해줘도 re.findall('정규표현식', '문자열')과 동일.
+</span><span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['2', '19', '42']
+['2', '19', '42']
+</code></pre></div></div>
+<p>※ 결론: 아래 1번과 2번은 완전히 동일한 결과를 낸다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1번
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'정규표현식'</span><span class="p">,</span> <span class="s">'문자열'</span><span class="p">)</span>
+
+<span class="c1"># 2번
+</span><span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">'정규표현식'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'문자열'</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="추가-활용-tip"> <a href="#%EC%B6%94%EA%B0%80-%ED%99%9C%EC%9A%A9-tip" aria-labelledby="추가-활용-tip" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 추가 활용 Tip</h2>
+<ol>
+<li>( ) 사용해서 더 precise하게 찾기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">x</span> <span class="o">=</span> <span class="s">'From stephan.marquard@uct.ac.za Sat Jan  5 09:14:26 2008'</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'^From (\S+@\S+)'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  
+   <span class="c1">## From으로 시작(^) &amp; space &amp; 1개 이상(+)의 Non-whitespace character(\S) &amp; @ &amp; 1개 이상(+)의 Non-whitespace character(\S)
+</span>   <span class="c1">## 이 중, () 안에 있는 부분만 추출한다. ('From '는 추출X)
+</span>  <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ['stephan.marquard@uct.ac.za']
+</code></pre></div></div>
+</li>
+<li>주의할 점: Greedy Matching<ul>
+<li>The repeat characters (* and +) push outward in both directions (greedy) to match the largest possible string (*나 + 같은 ‘반복’ 문자를 쓰면, 가능한 가장 크게 매칭되려는 경향이 있다)</li>
+<li>+?, *? 이런 식으로 ?를 뒤에 붙여주면 non-greedy matching이 가능</li>
+</ul>
+<p class="text-grey-dk-000 fs-3">*Greedy Matching 예시</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">x</span> <span class="o">=</span> <span class="s">'From: Using the : character'</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'^F.+:'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># From:도 매칭되고, 이를 포함하는 From: Using the :도 매칭될 때, 범위가 더 큰 후자로 매칭되게 됨.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ['From: Using the :']
+</code></pre></div></div>
+<p class="text-grey-dk-000 fs-3">*Non-Greedy Matching 예시</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">x</span> <span class="o">=</span> <span class="s">'From: Using the : character'</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'^F.+?:'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+ <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># +?로 해주면 non-greedy한 매칭방식이므로, 가장 빨리 찾아지는 From:을 return하고 끝내게 됨
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ['From:']
+</code></pre></div></div>
+</li>
+<li>Escape Character (예외 문자)<ul>
+<li>정규식에서 쓰는 문자인데 그냥 실제 그 모양 그대로의 의미를 담고 싶으면, \를 앞에 붙여주면 된다</li>
+<li>ex) $(dollar sign) 그 자체를 써야 한다면, <code class="language-plaintext highlighter-rouge">\$</code> 이렇게 표시.</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">x</span> <span class="o">=</span> <span class="s">'We just received $10.00 for cookies.'</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'\$[0-9]+'</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># \$: 실제 $ 사인과 매칭되는 것을 찾으라는 의미
+</span> <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ['$10']
+</code></pre></div></div>
+</li>
+<li>정규표현식을 테스트할 수 있는 사이트: <a href="https://regexr.com/" target="_blank">https://regexr.com/</a>
+</li>
+</ol>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

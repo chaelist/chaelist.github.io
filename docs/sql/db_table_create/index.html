@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>데이터베이스 &amp; 테이블 구축 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="데이터베이스 &amp; 테이블 구축">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/sql/db_table_create/">
+<meta property="og:url" content="https://chaelist.github.io/docs/sql/db_table_create/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="데이터베이스 &amp; 테이블 구축"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/sql/db_table_create/","@type":"WebPage","headline":"데이터베이스 &amp; 테이블 구축","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link active">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/sql">SQL</a></li>
+<li class="breadcrumb-nav-list-item"><span>데이터베이스 &amp; 테이블 구축</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="데이터베이스--테이블-구축"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4--%ED%85%8C%EC%9D%B4%EB%B8%94-%EA%B5%AC%EC%B6%95" aria-labelledby="데이터베이스--테이블-구축" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터베이스 &amp; 테이블 구축</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%83%9D%EC%84%B1" id="markdown-toc-데이터베이스-생성">데이터베이스 생성</a></li>
+<li>
+<a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%9D%EC%84%B1" id="markdown-toc-테이블-생성">테이블 생성</a><ol>
+<li><a href="#%EC%B9%BC%EB%9F%BC%EC%9D%98-%EC%86%8D%EC%84%B1" id="markdown-toc-칼럼의-속성">칼럼의 속성</a></li>
+<li><a href="#%EC%B9%BC%EB%9F%BC%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85" id="markdown-toc-칼럼의-데이터-타입">칼럼의 데이터 타입</a></li>
+</ol>
+</li>
+<li><a href="#%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-row-%EC%B6%94%EA%B0%80%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EC%82%AD%EC%A0%9C" id="markdown-toc-테이블에-row-추가업데이트삭제">테이블에 row 추가/업데이트/삭제</a></li>
+</ol></details><hr>
+<h2 id="데이터베이스-생성"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%83%9D%EC%84%B1" aria-labelledby="데이터베이스-생성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터베이스 생성</h2>
+<ul>
+<li>CREATE DATABASE로 생성<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="err">데이터베이스명</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>+) 이미 저장되어 있는 데이터베이스명으로 또 생성할 경우의 error 피하기:<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="err">데이터베이스명</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+</ul>
+<h2 id="테이블-생성"> <a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%9D%EC%84%B1" aria-labelledby="테이블-생성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 테이블 생성</h2>
+<ul>
+<li>CREATE TABLE로 생성<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`데이터베이스명`</span><span class="p">.</span><span class="nv">`테이블명`</span> <span class="p">(</span>
+      <span class="nv">`id`</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+      <span class="nv">`name`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="nv">`follower_count`</span> <span class="nb">INT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">));</span>
+</code></pre></div></div>
+</li>
+<li>테이블 역시, <code class="language-plaintext highlighter-rouge">CREATE TABLE IF NOT EXISTS</code>로 작성하면 이미 저장된 이름으로 중복 생성할 때의 error를 피할 수 있다</li>
+<li>어떤 데이터베이스 내에 생성할지 명확히 표시했다면, <code class="language-plaintext highlighter-rouge">CREATE TABLE 테이블명</code>이라고만 적는 것도 가능<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="nv">`테이블명`</span> <span class="p">(</span>
+      <span class="nv">`id`</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+      <span class="nv">`name`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="nv">`follower_count`</span> <span class="nb">INT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">));</span>
+</code></pre></div></div>
+</li>
+<li>※ backtick(`): 식별자(identifier)임을 나타내기 위해 사용하는 기호<ul>
+<li>identifier: 데이터베이스, 테이블, 칼럼 등의 object에 붙는 이름</li>
+<li>식별자를 `로 감싸주지 않아도 실행에는 문제가 없음. 이름임을 확실히 드러내고 싶어서 써주는 경우가 많을 뿐.</li>
+<li>cf) ‘(작은 따옴표)나 “(큰 따옴표)는 문자열 값을 나타낼 때 사용되니, `와 구분해서 사용</li>
+</ul>
+</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<h3 id="칼럼의-속성"> <a href="#%EC%B9%BC%EB%9F%BC%EC%9D%98-%EC%86%8D%EC%84%B1" aria-labelledby="칼럼의-속성" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 칼럼의 속성</h3>
+<ul>
+<li>PRIMARY KEY(PK): 해당 테이블에서 각 row를 식별할 수 있게 해주는 칼럼. 테이블별로 1개씩만 지정 가능하다</li>
+<li>NOT NULL(NN): 칼럼에 NULL값을 허용하지 않겠다는 제한 조건 PRIMARY KEY는 반드시 NOT NULL이여야 한다</li>
+<li>AUTO_INCREMENT(AI): 따로 값을 입력해주지 않아도 자동으로 칼럼의 값이 1씩 늘어난다.<ul><li>PRIMARY KEY로 쓰는 칼럼(ex.id 칼럼)의 경우, AUTO_INCREMENT 속성을 달아주는 것이 편하다</li></ul>
+</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<h3 id="칼럼의-데이터-타입"> <a href="#%EC%B9%BC%EB%9F%BC%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85" aria-labelledby="칼럼의-데이터-타입" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 칼럼의 데이터 타입</h3>
+<p class="fs-1 lh-0"> </p>
+<p><strong>1. Numeric types (숫자형 타입)</strong></p>
+<p>1) 정수형 타입</p>
+<ul>
+<li>TINYINT: 작은 범위의 정수를 저장할 때 쓰는 데이터 타입<ul>
+<li>최소 -128 ~ 쵀대 127까지의 정수를 저장 가능</li>
+<li>※ <code class="language-plaintext highlighter-rouge">SIGNED</code>: 양수-0-음수 / <code class="language-plaintext highlighter-rouge">UNSIGNED</code>: 0-양수를 의미</li>
+<li>TINYINT SIGNED: -128 ~ 127</li>
+<li>TINYINT UNSIGNED: 0 ~ 255</li>
+<li>*그냥 TINYINT라고만 하면 SIGNED가 붙은 것으로 간주하는 것이 default.</li>
+</ul>
+</li>
+<li>SMALLINT<ul>
+<li>SMALLINT SIGNED: -32768 ~ 32767</li>
+<li>SMALLINT UNSIGNED : 0 ~ 65535</li>
+</ul>
+</li>
+<li>MEDIUMINT<ul>
+<li>MEDIUMINT SIGNED : -8388608 ~ 8388607</li>
+<li>MEDIUMINT UNSIGNED : 0 ~ 16777215</li>
+</ul>
+</li>
+<li>INT<ul>
+<li>INT SIGNED : -2147483648 ~ 2147483647</li>
+<li>INT UNSIGNED : 0 ~ 4294967295</li>
+</ul>
+</li>
+<li>BIGINT<ul>
+<li>BIGINT SIGNED : -9223372036854775808 ~ 9223372036854775807</li>
+<li>BIGINT UNSIGNED : 0 ~ 18446744073709551615</li>
+</ul>
+</li>
+</ul>
+<p>2) 실수형 타입</p>
+<ul>
+<li>DECIMAL: 보통 DECIMAL(M, D)의 형식으로 나타내는데, M은 최대로 쓸 수 있는 전체 숫자의 자리수, D는 최대로 쓸 수 있는 소수점 뒤 자리수를 의미<ul>
+<li>ex) DECIMAL (5, 2)라면 -999.99 부터 999.99 까지의 실수가 가능</li>
+<li>M은 최대 65, D는 30까지의 값을 가질 수 있다</li>
+<li>DECIMAL이라는 단어 대신 DEC, NUMERIC, FIXED를 써도 된다</li>
+</ul>
+</li>
+<li>FLOAT<ul>
+<li>-3.402823466E+38 ~ -1.175494351E-38, 0, 1.175494351E-38 ~ 3.402823466E+38 범위의 실수들을 나타낼 수 있는 데이터 타입</li>
+<li>fyi) -3.402823466E+38 은 (-3.402823466) X (10의 38제곱), -1.175494351E-38 은 (-1.175494351) X (10의 38제곱 분의 1)</li>
+</ul>
+</li>
+<li>DOUBLE<ul><li>-1.7976931348623157E+308 ~ -2.2250738585072014E-308, 0, .2250738585072014E-308 ~ 1.7976931348623157E+308 범위의 실수들을 나타낼 수 있는 데이터 타입</li></ul>
+</li>
+</ul>
+<p><strong>2. 날짜 및 시간 타입 (Date and Time Types)</strong></p>
+<ul>
+<li>DATE: 날짜를 저장하는 데이터 타입<ul><li>
+<code class="language-plaintext highlighter-rouge">YYYY-MM-DD</code> 형식으로 표기 - ex. ‘2020-03-26’</li></ul>
+</li>
+<li>DATETIME: 날짜와 시간을 저장하는 데이터 타입<ul><li>
+<code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS</code> 형식으로 표기 - ex. ‘2020-03-26 09:30:27’</li></ul>
+</li>
+<li>TIMESTAMP: 날짜와 시간을 저장하는 데이터 타입<ul><li>DATETIME과 마찬가지로 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS</code> 형식으로 표기</li></ul>
+<div class="code-example">
+<p>※ DATETIME과 TIMESTAMP의 차이</p>
+<ul>
+<li>TIMESTAMP는 타임 존(time_zone) 정보도 함께 저장한다는 점에서 DATETIME과 차별화된다</li>
+<li>ex) <code class="language-plaintext highlighter-rouge">SET time_zone = '-11:00';</code> 이렇게 시간대를 UTC-11로 바꿔주면 DATETIME으로 저정한 시간은 그대로지만, TIMESTAMP로 저장한 시간은 바뀜 (TIMESTAMP로 저장할 당시에는 UTC+9 시간대로 저장됨)</li>
+<li>*UTC (Coordinated Universal Time): 국제 사회에서 통용되는 표준 시간 체계로 ‘국제 표준시’라고도 함. 영국 런던이 기준. → 한국은 UTC+9 시간대</li>
+</ul>
+</div>
+</li>
+<li>TIME: 시간을 나타내는 데이터 타입.<ul><li>
+<code class="language-plaintext highlighter-rouge">HH:MM:SS</code>의 형식으로 표기 - ex. ‘09:27:31’</li></ul>
+</li>
+</ul>
+<p><strong>3. 문자열 타입 (String type)</strong></p>
+<ul>
+<li>CHAR: 문자열을 나타내는 기본 타입으로, Character의 줄임말<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">CHAR(30)</code> 이런식으로 표기하는데, 괄호 안의 숫자는 문자를 최대 몇 자까지 저장할 수 있는지를 의미 <br> (30이라고 쓰면 최대 30자의 문자열을 저장할 수 있다는 뜻)</li>
+<li>() 안에는 0부터 255까지의 숫자를 적을 수 있음</li>
+</ul>
+</li>
+<li>VARCHAR: CHAR처럼 문자열의 최대 길이를 지정할 수 있는 문자열 타입 - ex. <code class="language-plaintext highlighter-rouge">VARCHAR(30)</code><ul><li>() 안에 최소 0부터 최대 65,535 (216 − 1)를 쓸 수 있다</li></ul>
+<div class="code-example">
+<p>※ CHAR와 VARCHAR의 차이</p>
+<ul>
+<li>VARCHAR는 ‘가변 길이 타입’ – VARCHAR이라는 단어 자체가 가변 문자열(varying character)의 줄임말</li>
+<li>CHAR는 ‘고정 길이 타입’</li>
+<li>
+<code class="language-plaintext highlighter-rouge">CHAR(10)</code>은 어떤 길이의 문자열이 저장되더라도 항상 그 값이 10만큼의 저장 용량을 차지하는 반면, <code class="language-plaintext highlighter-rouge">VARCHAR(10)</code>의 경우 만약 값이 ‘Hello’와 같이 5자라면 저장 용량도 5만큼만 차지한다 <br> (저장 용량이 설정된 최대 길이에 맞게 고정되는 게 아니라 실제 저장된 값에 맞게 최적화되는 것!)</li>
+<li>대신, VARCHAR 타입으로 값이 저장될 때는 해당 값의 사이즈를 나타내는 부분(1byte 또는 2byte)이 저장 용량에 추가된다 → 값의 길이가 크게 변하지 않을 컬럼에는 CHAR 타입을 사용하고, 길이가 들쑥날쑥할 컬럼에는 VARCHAR 타입을 쓰는 게 좋다</li>
+</ul>
+</div>
+</li>
+<li>TEXT: 문자열을 저장하는 데이터 타입으로 최대 65,535자까지 저장 가능<ul><li>VARCHAR와 내부 구현 면에서 일부 차이가 있어서, 보통 길이가 긴 문자열은 TEXT계열의 타입으로 저장 (메시지, 댓글 등)</li></ul>
+</li>
+<li>MEDIUM TEXT: 16,777,215 (2<sup>24</sup> − 1) 자까지 저장 가능</li>
+<li>LONGTEXT: 4,294,967,295 (2<sup>32</sup> − 1) 자까지 저장 가능</li>
+</ul>
+<p class="fs-1 lh-0"> </p>
+<h2 id="테이블에-row-추가업데이트삭제"> <a href="#%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-row-%EC%B6%94%EA%B0%80%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EC%82%AD%EC%A0%9C" aria-labelledby="테이블에-row-추가업데이트삭제" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 테이블에 row 추가/업데이트/삭제</h2>
+<p class="fs-1 lh-0"> </p>
+<p><strong>1. 테이블에 row 추가</strong></p>
+<ul>
+<li>
+<p><code class="language-plaintext highlighter-rouge">INSERT INTO 테이블명 (칼럼명 나열) VALUES (추가할 값들 나열)</code>;의 구조로 작성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">members</span>
+      <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="n">sign_up_date</span><span class="p">)</span>
+      <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Chaelist'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'chaechae@chaelist.com'</span><span class="p">,</span> <span class="s1">'010-1234-5678'</span><span class="p">,</span> <span class="s1">'2015-05-22'</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>모든 칼럼에 값이 있는 row를 추가한다면 아래와 같이 칼럼명은 제외하고 적어도 된다:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">members</span>
+      <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Chaelist'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'chaechae@chaelist.com'</span><span class="p">,</span> <span class="s1">'010-1234-5678'</span><span class="p">,</span> <span class="s1">'2015-05-22'</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>일부 칼럼에만 값을 추가해줄 경우, 해당 row의 나머지 column은 NULL값으로 채워진다. (NOT NULL 제약이 없는 경우)</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">members</span>
+      <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">sign_up_date</span><span class="p">)</span>
+      <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Chaelist'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'2015-05-22'</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>AUTO_INCREMENT 속성을 갖는 칼럼 ‘id’의 경우, 값을 입력해주지 않아도 자동으로 이전 값보다 1 큰 수가 할당된다</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">members</span>
+      <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">sign_up_date</span><span class="p">)</span>
+      <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Honu'</span><span class="p">,</span> <span class="s1">'M'</span><span class="p">,</span> <span class="s1">'honu@racoon.com'</span><span class="p">,</span> <span class="s1">'2016-01-19'</span><span class="p">);</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>여러 row를 삽입할 경우, INSERT INTO문을 계속 적어주는 대신 각각을 tuple로 묶어서 나열해줄 수 있다</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">food_menu</span>
+      <span class="p">(</span><span class="n">menu</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">ingredient</span><span class="p">)</span>
+      <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'떡볶이'</span><span class="p">,</span> <span class="mi">4500</span><span class="p">,</span> <span class="s1">'어묵, 떡, 양파..'</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">'참치김밥'</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">'참치, 김, 단무지..'</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">'오므라이스'</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="s1">'달걀, 양파, 애호박..'</span><span class="p">);</span>
+</code></pre></div></div>
+<ul><li>INSERT INTO문을 여러 번 반복해서 써주는 것보다, 각각을 tuple로 묶어서 하나의 쿼리로 넣어주는 것이 속도가 빠르다 (한번에 다량의 데이터를 넣을 때는 확연한 속도 차이를 보임)</li></ul>
+</li>
+</ul>
+<p><strong>2. row 정보 업데이트</strong></p>
+<ul>
+<li>
+<p><code class="language-plaintext highlighter-rouge">UPDATE 테이블명 SET 변경할 컬럼 정보 WHERE 조건;</code>의 구조로 작성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">UPDATE</span> <span class="n">members</span> <span class="k">SET</span> <span class="n">phone</span> <span class="o">=</span> <span class="s1">'010-8765-4321'</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>같은 row의 정보를 한 번에 2개 이상 바꿀 때는 SET 뒤에 나열해주면 됨</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">UPDATE</span> <span class="n">members</span> 
+      <span class="k">SET</span> <span class="n">phone</span> <span class="o">=</span> <span class="s1">'010-8765-4321'</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'ChaeChae'</span> 
+      <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>※ 정보를 업데이트할 때는, WHERE절을 잘 적어주는 것이 중요하다<ul><li>ex) <code class="language-plaintext highlighter-rouge">UPDATE members SET name = 'ChaeChae'</code>라고만 적으면 ‘name’ 칼럼의 모든 값이 다 변경됩</li></ul>
+</li>
+<li>+) workbench에서 safe update 모드가 설정되어 있으면, primary key 외의 컬럼을 WHERE 절에서 사용하는 UPDATE문은 실행이 안된다.<ul><li>MySQL인 경우, [MYSQLWorkbench &gt; Preferences 클릭 &gt; SQL Editor 선택 &gt; 아래 Others 부분에 ‘Safe Updates’에 체크되어 있는 것을 해제]한 후 재접속하면 primary key 외의 컬럼으로도 접근해서 UPDATE 가능.</li></ul>
+</li>
+</ul>
+<p>+) 컬럼의 기존 값을 기준으로 값 업데이트하기</p>
+<ul><li>
+<p>ex) 기말고사 성적에 채점 오류가 있었어서, 모든 row의 score에 +3을 해줘야 하는 상황:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">UPDATE</span> <span class="n">final_exam_result</span> <span class="k">SET</span> <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="c1">-- 이렇게 해주면 모든 row의 점수가 3씩 더해져서 저장됨</span>
+</code></pre></div></div>
+</li></ul>
+<p><strong>3. row 삭제</strong></p>
+<ul>
+<li>
+<p><code class="language-plaintext highlighter-rouge">DELETE FROM 테이블명 WHERE 조건;</code>의 구조로 작성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</code></pre></div></div>
+</li>
+<li>
+<p>※ 업데이트할 때와 마찬가지로, DELETE할 때에도 WHERE절을 신경써야 한다</p>
+<ul><li>ex) <code class="language-plaintext highlighter-rouge">DELETE FROM memebers;</code>라고만 하면 테이블의 모든 row가 삭제되어 버린다</li></ul>
+</li>
+</ul>
+<div class="code-example">
+<p>+) 물리 삭제 vs 논리 삭제</p>
+<ul>
+<li>물리 삭제: 삭제해야 할 row를 물리적으로 ‘DELETE’해서 없애버리는 것<ul><li>ex) <code class="language-plaintext highlighter-rouge">DELETE FROM order WHERE id = 4;</code>
+</li></ul>
+</li>
+<li>논리 삭제: DELETE 대신, ‘삭제 여부’ 컬럼을 별도로 만들어서, ‘YES’와 같이 값을 업데이트해줘서 row가 삭제되었음을 표시해주는 것<ul><li>ex) <code class="language-plaintext highlighter-rouge">UPDATE order SET cancelled = 'Y' WHERE id = 4;</code>
+</li></ul>
+</li>
+<li>추후 분석에 활용할 수 있도록 데이터를 남겨두고 싶을 때는 논리 삭제를 이용하는 것이 좋다<ul><li>ex) 사용자가 주문을 취소한 경우, 아예 row 자체를 삭제해버리기보다 row는 그대로 두고 취소된 주문임을 명시해주는 방식을 사용하면 추후에 취소된 주문 데이터를 따로 모아서 분석 가능</li></ul>
+</li>
+<li>다만, 논리 삭제 방식으로 삭제하면 <br> 1) 삭제되지 않은 유효한 row들만 조회할 때 WHERE절에 매번 별도 조건을 넣어줘야 하며,<br> 2) 삭제된 row여도 실제 DELETE된 것은 아니기에 DB 용량을 계속 차지한다는 단점이 있다</li>
+</ul>
+</div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

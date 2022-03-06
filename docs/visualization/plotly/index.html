@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plotly | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Plotly">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/visualization/plotly/">
+<meta property="og:url" content="https://chaelist.github.io/docs/visualization/plotly/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Plotly"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/visualization/plotly/","@type":"WebPage","headline":"Plotly","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link active">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/visualization">데이터 시각화</a></li>
+<li class="breadcrumb-nav-list-item"><span>Plotly</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="plotly"> <a href="#plotly" aria-labelledby="plotly" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Plotly</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li><a href="#bar-graph" id="markdown-toc-bar-graph">Bar graph</a></li>
+<li>
+<a href="#scatter-plot" id="markdown-toc-scatter-plot">Scatter Plot</a><ol>
+<li><a href="#dot-plot" id="markdown-toc-dot-plot">Dot Plot</a></li>
+<li><a href="#bubble-chart" id="markdown-toc-bubble-chart">Bubble Chart</a></li>
+</ol>
+</li>
+<li><a href="#line-chart" id="markdown-toc-line-chart">Line Chart</a></li>
+<li>
+<a href="#pie-graph" id="markdown-toc-pie-graph">Pie Graph</a><ol>
+<li><a href="#treemap" id="markdown-toc-treemap">Treemap</a></li>
+<li><a href="#sunburst-chart" id="markdown-toc-sunburst-chart">Sunburst Chart</a></li>
+</ol>
+</li>
+<li>
+<a href="#statistical-charts" id="markdown-toc-statistical-charts">Statistical Charts</a><ol>
+<li><a href="#box-plot" id="markdown-toc-box-plot">Box Plot</a></li>
+<li><a href="#strip-plot" id="markdown-toc-strip-plot">Strip Plot</a></li>
+<li><a href="#violin-plot" id="markdown-toc-violin-plot">Violin Plot</a></li>
+<li><a href="#histogram" id="markdown-toc-histogram">Histogram</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<p><a href="https://plotly.com/python/" target="_blank"><strong>*Plotly</strong></a><br> : 세련된 opensource interactive graphing library.</p>
+<p><a href="https://medium.com/plotly/introducing-plotly-express-808df010143d" target="_blank"><strong>*Plotly Express</strong></a><br> : easy-to-use, high-level visualization library <br> (Plotly와 Plotly Express의 관계는 Matplotlib과 Seaborn의 관계와 유사)</p>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">pip install plotly</code>로 설치해서 사용</li></ul>
+<p><a href="https://chart-studio.plotly.com/feed/#/" target="_blank"><strong>*Chart Studio</strong></a><br> : plotly로 시각화한 차트를 chart studio에 upload하면 쉽게 web 상에 embed할 수 있다</p>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">pip install chart_studio</code>로 설치</li>
+<li>username과 api_key를 활용해 연결:<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">chart_studio</span>
+
+  <span class="n">username</span> <span class="o">=</span> <span class="s">''</span>  <span class="c1"># 자신의 username (plotly account를 만들어야 함)
+</span>  <span class="n">api_key</span> <span class="o">=</span> <span class="s">''</span>    <span class="c1"># 자신의 api key (settings &gt; regenerate key)
+</span>
+  <span class="n">chart_studio</span><span class="p">.</span><span class="n">tools</span><span class="p">.</span><span class="n">set_credentials_file</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+</code></pre></div></div>
+</li>
+<li>작성한 차트를 upload하는 코드:<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">chart_studio</span><span class="p">.</span><span class="n">plotly</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s">'파일이름'</span><span class="p">,</span> <span class="n">auto_open</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># fig: 작성한 차트를 저장한 변수
+</span>  <span class="c1">## 위 코드를 실행하면 새로운 window로 해당 차트의 링크가 열리고, notebook에도 link를 아래에 return해줌
+</span></code></pre></div></div>
+</li>
+</ul>
+<h2 id="bar-graph"> <a href="#bar-graph" aria-labelledby="bar-graph" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Bar graph</h2>
+<ul><li><a href="https://plotly.com/python/bar-charts/" target="_blank">https://plotly.com/python/bar-charts/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 필요한 library를 import
+</span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="n">pio</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">pio</span><span class="p">.</span><span class="n">templates</span><span class="p">.</span><span class="n">default</span> <span class="o">=</span> <span class="s">"plotly_white"</span>  <span class="c1"># default template을 지정 (지정하지 않으면 기본은 'plotly')
+</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bills_df</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">tips</span><span class="p">()</span>  <span class="c1"># plotly express에서 제공되는 기본 data 사용
+</span><span class="n">bills_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">total_bill</th>
+<th style="text-align: right">tip</th>
+<th style="text-align: left">sex</th>
+<th style="text-align: left">smoker</th>
+<th style="text-align: left">day</th>
+<th style="text-align: left">time</th>
+<th style="text-align: right">size</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">16.99</td>
+<td style="text-align: right">1.01</td>
+<td style="text-align: left">Female</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Sun</td>
+<td style="text-align: left">Dinner</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">10.34</td>
+<td style="text-align: right">1.66</td>
+<td style="text-align: left">Male</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Sun</td>
+<td style="text-align: left">Dinner</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">21.01</td>
+<td style="text-align: right">3.5</td>
+<td style="text-align: left">Male</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Sun</td>
+<td style="text-align: left">Dinner</td>
+<td style="text-align: right">3</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">23.68</td>
+<td style="text-align: right">3.31</td>
+<td style="text-align: left">Male</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Sun</td>
+<td style="text-align: left">Dinner</td>
+<td style="text-align: right">2</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">24.59</td>
+<td style="text-align: right">3.61</td>
+<td style="text-align: left">Female</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Sun</td>
+<td style="text-align: left">Dinner</td>
+<td style="text-align: right">4</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>
+<p>daily average bills per sex</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bills_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'day'</span><span class="p">,</span> <span class="s">'sex'</span><span class="p">])[[</span><span class="s">'total_bill'</span><span class="p">]].</span><span class="n">mean</span><span class="p">().</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s">'Average Bills per Day'</span><span class="p">,</span> <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/1.embed"></iframe><ul>
+<li>연속적이지 않은 color palette는 <code class="language-plaintext highlighter-rouge">color_discrete_sequence</code> 옵션으로 지정</li>
+<li>보통 discrete_sequence에는 px.colors.qualitative에 있는 색을 넣지만, px.colors.sequential / px.colors.diverging / px.colors.cyclical에 있는 색을 넣어도 괜찮다</li>
+<li>color로 구분을 넣으면 default로 누적 그래프 형태로 시각화됨</li>
+</ul>
+</li>
+<li>
+<p>daily average bills per sex (2)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bills_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'day'</span><span class="p">,</span> <span class="s">'sex'</span><span class="p">])[[</span><span class="s">'total_bill'</span><span class="p">]].</span><span class="n">mean</span><span class="p">().</span><span class="n">reset_index</span><span class="p">(),</span>
+             <span class="n">x</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> 
+             <span class="n">title</span><span class="o">=</span><span class="s">'Average Bills per Day'</span><span class="p">,</span> <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">,</span>
+             <span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">)</span>  <span class="c1"># 양 옆으로 놓이는 구조  # barmode='stack'라고 하면 누적 (dafault setting)
+</span> <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/3.embed"></iframe><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">barmode='group'</code> 옵션을 추가해주면 그룹별 값이 위아래 대신 양옆으로 배치됨</li>
+<li>
+<code class="language-plaintext highlighter-rouge">height</code> 옵션으로 크기를 지정해주는 것도 가능 (+. <code class="language-plaintext highlighter-rouge">width</code> 옵션도 가능)</li>
+</ul>
+</li>
+<li>
+<p>daily total bills per sex</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s">'Total Bills per Day'</span><span class="p">,</span> <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="600" height="400" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/5.embed"></iframe><ul><li>seaborn에서는 전체 data를 넣어서 bar graph를 그리면 default로 평균값을 시각화해주는 반면, plotly express는 전체 data의 그대로 합산해서 시각화해준다</li></ul>
+</li>
+<li>
+<p>category별로 영역을 나누어 그리기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'smoker'</span><span class="p">,</span> <span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span>
+             <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Safe</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s">'plotly'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="450" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/7.embed"></iframe><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">facet_col</code> 옵션을 통해 특정 그룹별로 영역을 나눠서 시각화할 수 있다</li>
+<li>
+<code class="language-plaintext highlighter-rouge">template</code> 옵션을 통해 각 그래프별 template을 별도로 지정할 수도 있다 <br> (원래 default는 ‘plotly’지만, 위에서 default template을 ‘plotly_white’로 지정해두었으므로, 해당 그래프에서는 ‘plotly’ template을 사용하기 위해 옵션을 별도로 지정)</li>
+</ul>
+</li>
+</ol>
+<h2 id="scatter-plot"> <a href="#scatter-plot" aria-labelledby="scatter-plot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Scatter Plot</h2>
+<ul><li><a href="https://plotly.com/python/line-and-scatter/" target="_blank">https://plotly.com/python/line-and-scatter/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris_df</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">iris</span><span class="p">()</span>
+<span class="n">iris_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">sepal_length</th>
+<th style="text-align: right">sepal_width</th>
+<th style="text-align: right">petal_length</th>
+<th style="text-align: right">petal_width</th>
+<th style="text-align: left">species</th>
+<th style="text-align: right">species_id</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">5.1</td>
+<td style="text-align: right">3.5</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+<td style="text-align: left">setosa</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">4.9</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+<td style="text-align: left">setosa</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: right">3.2</td>
+<td style="text-align: right">1.3</td>
+<td style="text-align: right">0.2</td>
+<td style="text-align: left">setosa</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">4.6</td>
+<td style="text-align: right">3.1</td>
+<td style="text-align: right">1.5</td>
+<td style="text-align: right">0.2</td>
+<td style="text-align: left">setosa</td>
+<td style="text-align: right">1</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">5</td>
+<td style="text-align: right">3.6</td>
+<td style="text-align: right">1.4</td>
+<td style="text-align: right">0.2</td>
+<td style="text-align: left">setosa</td>
+<td style="text-align: right">1</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>
+<p>기본 scatter plot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iris_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sepal_width'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'sepal_length'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'species'</span><span class="p">,</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Safe</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/9.embed"></iframe>
+</li>
+<li>
+<p>trendline을 포함한 scatter plot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'tip'</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s">'ols'</span><span class="p">,</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel1</span><span class="p">,</span>
+                 <span class="n">trendline_color_override</span><span class="o">=</span><span class="s">'gold'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/11.embed"></iframe><ul><li>
+<code class="language-plaintext highlighter-rouge">trendline='ols'</code> 옵션을 통해 선형회귀선을 함께 시각화</li></ul>
+</li>
+</ol>
+<h3 id="dot-plot"> <a href="#dot-plot" aria-labelledby="dot-plot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dot Plot</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gapminder_df</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">gapminder</span><span class="p">()</span>
+<span class="n">gapminder_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">country</th>
+<th style="text-align: left">continent</th>
+<th style="text-align: right">year</th>
+<th style="text-align: right">lifeExp</th>
+<th style="text-align: right">pop</th>
+<th style="text-align: right">gdpPercap</th>
+<th style="text-align: left">iso_alpha</th>
+<th style="text-align: right">iso_num</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Afghanistan</td>
+<td style="text-align: left">Asia</td>
+<td style="text-align: right">1952</td>
+<td style="text-align: right">28.801</td>
+<td style="text-align: right">8425333</td>
+<td style="text-align: right">779.445</td>
+<td style="text-align: left">AFG</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Afghanistan</td>
+<td style="text-align: left">Asia</td>
+<td style="text-align: right">1957</td>
+<td style="text-align: right">30.332</td>
+<td style="text-align: right">9240934</td>
+<td style="text-align: right">820.853</td>
+<td style="text-align: left">AFG</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Afghanistan</td>
+<td style="text-align: left">Asia</td>
+<td style="text-align: right">1962</td>
+<td style="text-align: right">31.997</td>
+<td style="text-align: right">10267083</td>
+<td style="text-align: right">853.101</td>
+<td style="text-align: left">AFG</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Afghanistan</td>
+<td style="text-align: left">Asia</td>
+<td style="text-align: right">1967</td>
+<td style="text-align: right">34.02</td>
+<td style="text-align: right">11537966</td>
+<td style="text-align: right">836.197</td>
+<td style="text-align: left">AFG</td>
+<td style="text-align: right">4</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: left">Afghanistan</td>
+<td style="text-align: left">Asia</td>
+<td style="text-align: right">1972</td>
+<td style="text-align: right">36.088</td>
+<td style="text-align: right">13079460</td>
+<td style="text-align: right">739.981</td>
+<td style="text-align: left">AFG</td>
+<td style="text-align: right">4</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ scatter plot에 categorical axis를 넣어서 시각화 (dot plot)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"continent=='Americas'"</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="s">'lifeExp'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s">'year'</span><span class="p">,</span>
+                <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s">'Burgyl'</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/13.embed"></iframe><ul><li>연속적인 color palette는 <code class="language-plaintext highlighter-rouge">color_continuous_scale</code> 옵션으로 지정</li></ul>
+<h3 id="bubble-chart"> <a href="#bubble-chart" aria-labelledby="bubble-chart" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Bubble Chart</h3>
+<p>: scatter plot에서 size option을 지정해 시각화하면 된다</p>
+<ol>
+<li>
+<p>2007년의 gdpPercap과 liefExp의 관계를 시각화 (bubble size: population)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"year == 2007"</span><span class="p">),</span> 
+                 <span class="n">x</span><span class="o">=</span><span class="s">'gdpPercap'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'lifeExp'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">'pop'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'continent'</span><span class="p">,</span>
+                 <span class="n">hover_name</span><span class="o">=</span><span class="s">'country'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/15.embed"></iframe><ul><li>
+<code class="language-plaintext highlighter-rouge">hover_name</code> 옵션을 통해 마우스를 hover할 때 우선적으로 보여지는 정보를 지정</li></ul>
+</li>
+<li>
+<p>x값을 log 변환해 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"year == 2007"</span><span class="p">),</span> 
+                 <span class="n">x</span><span class="o">=</span><span class="s">'gdpPercap'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'lifeExp'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">'pop'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'continent'</span><span class="p">,</span>
+                 <span class="n">hover_name</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">log_x</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/17.embed"></iframe><ul>
+<li>x값과 y값의 더 명확한 관계를 시각화하기 위해 <code class="language-plaintext highlighter-rouge">log_x=True</code> 옵션을 지정</li>
+<li>더 bubble의 size를 구분하기 쉽도록 <code class="language-plaintext highlighter-rouge">size_max=60</code> 옵션으로 bubble size를 조정</li>
+</ul>
+</li>
+</ol>
+<h2 id="line-chart"> <a href="#line-chart" aria-labelledby="line-chart" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Line Chart</h2>
+<ul><li><a href="https://plotly.com/python/line-charts/" target="_blank">https://plotly.com/python/line-charts/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">line</span><span class="p">(</span><span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"continent == 'Oceania'"</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s">'year'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'lifeExp'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span>
+              <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel1</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/19.embed"></iframe><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">symbol='country'</code> 옵션을 통해 각 국가별 marker의 모양을 다르게 지정</li>
+<li>각 그룹별 marker 모양을 구분하지 않고 모두 동일한 marker로 표시하고 싶으면 <code class="language-plaintext highlighter-rouge">symbol</code> 옵션 대신 <code class="language-plaintext highlighter-rouge">markers=True</code> 옵션을 추가해주면 된다</li>
+</ul>
+<h2 id="pie-graph"> <a href="#pie-graph" aria-labelledby="pie-graph" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pie Graph</h2>
+<ul><li><a href="https://plotly.com/python/pie-charts/" target="_blank">https://plotly.com/python/pie-charts/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2007년 gapminder 수치 중, Asia 지역의 국가별 population 비중을 시각화
+</span>
+<span class="n">temp_df</span> <span class="o">=</span> <span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"year == 2007"</span><span class="p">).</span><span class="n">query</span><span class="p">(</span><span class="s">"continent == 'Asia'"</span><span class="p">)</span>
+<span class="c1"># population이 가장 많은 top 15 국가를 제외하고는 다 'Other countries'로 처리
+</span><span class="n">temp_df</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'pop'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">temp_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">15</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Other countries'</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">pie</span><span class="p">(</span><span class="n">temp_df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'pop'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s">'country'</span><span class="p">,</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Antique</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/21.embed"></iframe><h3 id="treemap"> <a href="#treemap" aria-labelledby="treemap" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Treemap</h3>
+<ul><li><a href="https://plotly.com/python/treemaps/" target="_blank">https://plotly.com/python/treemaps/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_df</span> <span class="o">=</span> <span class="n">gapminder_df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"year == 2007"</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">treemap</span><span class="p">(</span><span class="n">temp_df</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="n">px</span><span class="p">.</span><span class="n">Constant</span><span class="p">(</span><span class="s">'world'</span><span class="p">),</span> <span class="s">'continent'</span><span class="p">,</span> <span class="s">'country'</span><span class="p">],</span> 
+                <span class="n">values</span><span class="o">=</span><span class="s">'pop'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'lifeExp'</span><span class="p">,</span> <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s">'RdBu'</span><span class="p">,</span>
+                <span class="n">color_continuous_midpoint</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">average</span><span class="p">(</span><span class="n">temp_df</span><span class="p">[</span><span class="s">'lifeExp'</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">temp_df</span><span class="p">[</span><span class="s">'pop'</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">25</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/23.embed"></iframe><h3 id="sunburst-chart"> <a href="#sunburst-chart" aria-labelledby="sunburst-chart" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sunburst Chart</h3>
+<ul><li><a href="https://plotly.com/python/sunburst-charts/" target="_blank">https://plotly.com/python/sunburst-charts/</a></li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">sunburst</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s">'day'</span><span class="p">,</span> <span class="s">'time'</span><span class="p">,</span> <span class="s">'sex'</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="s">'tip'</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s">'time'</span><span class="p">,</span> <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="500" height="450" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/25.embed"></iframe><h2 id="statistical-charts"> <a href="#statistical-charts" aria-labelledby="statistical-charts" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Statistical Charts</h2>
+<h3 id="box-plot"> <a href="#box-plot" aria-labelledby="box-plot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Box Plot</h3>
+<ul><li><a href="https://plotly.com/python/box-plots/" target="_blank">https://plotly.com/python/box-plots/</a></li></ul>
+<ol>
+<li>
+<p>기본 box plot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">box</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'smoker'</span><span class="p">,</span> 
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/29.embed"></iframe>
+</li>
+<li>
+<p>각 point를 함께 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">box</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'smoker'</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="s">'all'</span><span class="p">,</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/32.embed"></iframe><ul><li>
+<code class="language-plaintext highlighter-rouge">points='all'</code> 옵션을 지정하면 box plot 옆에 모든 point를 함께 시각화해줌 (default: <code class="language-plaintext highlighter-rouge">points='outliers'</code>)</li></ul>
+</li>
+</ol>
+<h3 id="strip-plot"> <a href="#strip-plot" aria-labelledby="strip-plot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strip Plot</h3>
+<ul><li><a href="https://plotly.com/python/strip-charts/" target="_blank">https://plotly.com/python/strip-charts/</a></li></ul>
+<ol>
+<li>
+<p>기본 strip plot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">strip</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'smoker'</span><span class="p">,</span> 
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/34.embed"></iframe>
+</li>
+<li>
+<p>category별로 세분화해 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">strip</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'time'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> 
+             <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]},</span>
+             <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Safe</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s">'plotly'</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/36.embed"></iframe>
+</li>
+</ol>
+<h3 id="violin-plot"> <a href="#violin-plot" aria-labelledby="violin-plot" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Violin Plot</h3>
+<ul><li><a href="https://plotly.com/python/violin/" target="_blank">https://plotly.com/python/violin/</a></li></ul>
+<ol>
+<li>
+<p>기본 violin plot</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">violin</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'smoker'</span><span class="p">,</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/38.embed"></iframe>
+</li>
+<li>
+<p>box, points 옵션 지정</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">violin</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="s">'all'</span><span class="p">,</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/40.embed"></iframe><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">points='all'</code> 옵션을 지정하면 violin plot 옆에 모든 point를 함께 시각화해줌</li>
+<li>
+<code class="language-plaintext highlighter-rouge">box=True</code> 옵션을 지정하면 violin plot 안에 box plot를 함께 시각화해줌</li>
+</ul>
+</li>
+</ol>
+<h3 id="histogram"> <a href="#histogram" aria-labelledby="histogram" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Histogram</h3>
+<ul><li><a href="https://plotly.com/python/histograms/" target="_blank">https://plotly.com/python/histograms/</a></li></ul>
+<ol>
+<li>
+<p>기본 histogram</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/42.embed"></iframe><ul><li>
+<code class="language-plaintext highlighter-rouge">nbins</code> 옵션으로 number of bins를 조절</li></ul>
+</li>
+<li>
+<p>categorical data를 넣으면 count plot처럼 작용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'day'</span><span class="p">,</span> <span class="n">category_orders</span><span class="o">=</span><span class="p">{</span><span class="s">'day'</span><span class="p">:[</span><span class="s">'Thur'</span><span class="p">,</span> <span class="s">'Fri'</span><span class="p">,</span> <span class="s">'Sat'</span><span class="p">,</span> <span class="s">'Sun'</span><span class="p">]})</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/44.embed"></iframe><ul><li>x값에 categorical data를 넣으면 각 카테고리별 수를 세어서 시각화해줌 (count plot)</li></ul>
+</li>
+<li>
+<p>histogram과 각 값의 분포를 함께 시각화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">bills_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'total_bill'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'tip'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'sex'</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="s">'box'</span><span class="p">,</span>
+                 <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">Pastel</span><span class="p">)</span>
+ <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<iframe width="700" height="500" frameborder="0" scrolling="no" src="//plotly.com/~chaeyun1248/46.embed"></iframe><ul>
+<li>
+<code class="language-plaintext highlighter-rouge">marginal='box'</code> 옵션을 추가하면 각 값의 분포를 box plot으로 함께 시각화해줌 <br> (marginal: box, violin, rug 중에 선택 가능)</li>
+<li>참고: <a href="https://plotly.com/python/distplot/" target="_blank">Combined statistical representations</a>
+</li>
+</ul>
+</li>
+</ol>
+<p><br></p>
+<p>+) 참고용 링크들</p>
+<ul>
+<li><a href="https://plotly.com/python/discrete-color/" target="_blank">color_discrete_sequence</a></li>
+<li><a href="https://plotly.com/python/builtin-colorscales/#builtin-sequential-color-scales" target="_blank">color_continuous_scale</a></li>
+<li>
+<a href="https://plotly.com/python-api-reference/generated/plotly.express.colors.html" target="_blank">colors in plotly express</a> – <code class="language-plaintext highlighter-rouge">plotly.express.colors.sequential.swatches()</code>와 같은 코드로 색 종류 확인 가능</li>
+<li><a href="https://plotly.com/python/setting-graph-size/#adjusting-height-width--margins-with-plotly-express" target="_blank">adjusting size</a></li>
+<li><a href="https://plotly.com/python/hover-text-and-formatting/" target="_blank">hovermode and hover labels</a></li>
+<li><a href="https://plotly.com/python/templates/" target="_blank">templates</a></li>
+<li>
+<a href="https://plotly.com/python/static-image-export/" target="_blank">image export</a> / <a href="https://plotly.com/python/interactive-html-export/" target="_blank">html export</a>
+</li>
+<li><a href="https://plotly.com/python-api-reference/plotly.express.html#px" target="_blank">plotly.express python api reference</a></li>
+</ul>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

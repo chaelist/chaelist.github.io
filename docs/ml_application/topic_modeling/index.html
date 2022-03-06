@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic Modeling (LDA) | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Topic Modeling (LDA)">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/ml_application/topic_modeling/">
+<meta property="og:url" content="https://chaelist.github.io/docs/ml_application/topic_modeling/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Topic Modeling (LDA)"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/ml_application/topic_modeling/","@type":"WebPage","headline":"Topic Modeling (LDA)","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link active">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/ml_application">Machine Learning 응용</a></li>
+<li class="breadcrumb-nav-list-item"><span>Topic Modeling (LDA)</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="topic-modeling-lda"> <a href="#topic-modeling-lda" aria-labelledby="topic-modeling-lda" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Topic Modeling (LDA)</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#topic-modeling%EC%9D%B4%EB%9E%80" id="markdown-toc-topic-modeling이란">Topic Modeling이란?</a><ol>
+<li><a href="#%EC%9E%A0%EC%9E%AC-%EB%94%94%EB%A6%AC%ED%81%B4%EB%A0%88-%ED%95%A0%EB%8B%B9latent-dirichlet-allocation-lda" id="markdown-toc-잠재-디리클레-할당latent-dirichlet-allocation-lda">잠재 디리클레 할당(Latent Dirichlet Allocation, LDA)</a></li>
+<li><a href="#lda%EC%9D%98-%EC%88%98%ED%96%89-%EA%B3%BC%EC%A0%95" id="markdown-toc-lda의-수행-과정">LDA의 수행 과정</a></li>
+</ol>
+</li>
+<li>
+<a href="#lda-scikit-learn" id="markdown-toc-lda-scikit-learn">LDA: scikit-learn</a><ol>
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84-%EC%95%B1-%EB%A6%AC%EB%B7%B0" id="markdown-toc-데이터-준비-앱-리뷰">데이터 준비: 앱 리뷰</a></li>
+<li><a href="#tokenization-%ED%95%9C%EA%B8%80-%ED%98%95%ED%83%9C%EC%86%8C-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EC%AA%BC%EA%B0%9C%EA%B8%B0" id="markdown-toc-tokenization-한글-형태소-단위로-쪼개기">Tokenization (한글 형태소 단위로 쪼개기)</a></li>
+<li><a href="#vectorization--lda" id="markdown-toc-vectorization--lda">Vectorization &amp; LDA</a></li>
+<li><a href="#lda-%EC%8B%9C%EA%B0%81%ED%99%94-pyldavis" id="markdown-toc-lda-시각화-pyldavis">LDA 시각화: pyLDAvis</a></li>
+<li><a href="#%EB%AC%B8%EC%84%9C%EB%B3%84-%ED%86%A0%ED%94%BD-%ED%95%A0%EB%8B%B9" id="markdown-toc-문서별-토픽-할당">문서별 토픽 할당</a></li>
+<li><a href="#%ED%86%A0%ED%94%BD%EB%B3%84-%EC%A0%95%EB%A6%AC" id="markdown-toc-토픽별-정리">토픽별 정리</a></li>
+</ol>
+</li>
+<li>
+<a href="#lda-gensim" id="markdown-toc-lda-gensim">LDA: gensim</a><ol>
+<li><a href="#tokenization" id="markdown-toc-tokenization">Tokenization</a></li>
+<li><a href="#vectorization--lda-1" id="markdown-toc-vectorization--lda-1">Vectorization &amp; LDA</a></li>
+<li><a href="#lda-%EC%8B%9C%EA%B0%81%ED%99%94-pyldavis-1" id="markdown-toc-lda-시각화-pyldavis-1">LDA 시각화: pyLDAvis</a></li>
+<li><a href="#%EB%AC%B8%EC%84%9C%EB%B3%84-%ED%86%A0%ED%94%BD-%ED%95%A0%EB%8B%B9-1" id="markdown-toc-문서별-토픽-할당-1">문서별 토픽 할당</a></li>
+</ol>
+</li>
+</ol></details><hr>
+<h2 id="topic-modeling이란"> <a href="#topic-modeling%EC%9D%B4%EB%9E%80" aria-labelledby="topic-modeling이란" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Topic Modeling이란?</h2>
+<p>: 문서에서 주제(topic)을 추출하는 기법</p>
+<ul>
+<li>관련이 높은 단어들끼리 묶어 토픽을 구성 → 단어의 조합으로 토픽의 핵심을 정의 가능</li>
+<li>각 문서가 어떤 단어들로 구성되는지에 따라 가장 유사한 토픽으로 문서를 할당</li>
+</ul>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/ml_applied/topic_modeling.jpeg" alt="Topic_Modeling" width="500"><br> (출처: medium.com/@connectwithghosh)</p>
+<h3 id="잠재-디리클레-할당latent-dirichlet-allocation-lda"> <a href="#%EC%9E%A0%EC%9E%AC-%EB%94%94%EB%A6%AC%ED%81%B4%EB%A0%88-%ED%95%A0%EB%8B%B9latent-dirichlet-allocation-lda" aria-labelledby="잠재-디리클레-할당latent-dirichlet-allocation-lda" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 잠재 디리클레 할당(Latent Dirichlet Allocation, LDA)</h3>
+<p>: 대표적인 토픽 모델링 기법. 다수의 문서에서 잠재적으로 의미 있는 토픽을 발견하는 절차적 확률 분포 모델</p>
+<ul>
+<li>단어들의 집합이 어떤 토픽들로 묶인다고 가정하고, 이 단어들이 각각의 토픽에 구성될 확률을 계산하여 결과 값을 토픽에 해당할 가능성이 높은 단어들의 집합으로 추출하는 방식</li>
+<li>문서의 다양성에 비해 토픽의 수를 너무 적게 지정하거나, 하나의 문서에 다양한 주제가 혼용되어 있는 경우에는 토픽끼리 겹치는 결과가 나올 수 있다. 토픽 수를 정밀하게 지정하는 것이 중요!</li>
+</ul>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/ml_applied/lda_example1.png" alt="LDA_example_1" width="300"><br> (출처: bookdown.org/Maxine/tidy-text-mining/)</p>
+<h3 id="lda의-수행-과정"> <a href="#lda%EC%9D%98-%EC%88%98%ED%96%89-%EA%B3%BC%EC%A0%95" aria-labelledby="lda의-수행-과정" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LDA의 수행 과정</h3>
+<ol>
+<li>토픽의 개수 k를 정한다</li>
+<li>모든 문서의 모든 단어를 k개의 토픽 중 하나에 랜덤으로 할당한다<ul><li>이 작업이 끝나면 각 문서는 토픽의 분포를 가지며, 토픽은 단어의 분포를 갖게 된다</li></ul>
+</li>
+<li>모든 문서의 모든 단어에 대해 아래 과정을 반복:<ul><li>단어 w 외에 다른 단어들은 모두 올바른 토픽에 할당되어 있다고 가정하고, <br> 1) 단어 w가 속한 문서 doc1의 단어들이 어떤 토픽에 해당하는지, <br> 2) 전체 문서에서 단어 w가 보통 어떤 토픽에 속해 있는지<br> 두 가지 기준을 참고하여 w에 토픽을 재할당한다</li></ul>
+</li>
+</ol>
+<p class="fs-2 text-grey-dk-000">(참고자료: <a href="https://wikidocs.net/book/2155" target="_blank">딥러닝을 이용한 자연어 처리 입문</a>)</p>
+<p class="fs-2 text-grey-dk-000"><img src="../../../assets/images/ml_applied/lda_example2.png" alt="LDA_example_2" width="600"><br> (출처: donghwa-kim.github.io)</p>
+<h2 id="lda-scikit-learn"> <a href="#lda-scikit-learn" aria-labelledby="lda-scikit-learn" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LDA: scikit-learn</h2>
+<ul><li>sklearn.decomposition.LatentDirichletAllocation을 사용</li></ul>
+<h3 id="데이터-준비-앱-리뷰"> <a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84-%EC%95%B1-%EB%A6%AC%EB%B7%B0" aria-labelledby="데이터-준비-앱-리뷰" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 데이터 준비: 앱 리뷰</h3>
+<ul><li>google play store에서 ‘Netflix’의 2020.1.1~2021.5.28 사이의 1점 리뷰를 수집 (총 4242개)</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## 직접 수집해 온 데이터를 dataframe으로 정리해 둠
+</span><span class="n">review_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Score</th>
+<th style="text-align: left">Content</th>
+<th style="text-align: left">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">사기</td>
+<td style="text-align: left">2021-05-28 13:04:04</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">갤럭시s6입니다. 잘 되다가 한번씩 무한로딩 걸립니다. 근데 무한로딩 한번 걸리면…</td>
+<td style="text-align: left">2021-05-28 11:30:37</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">로딩이 너무 느려서 자꾸 멈춰. 사운드는 나오는데 영상이 멈추는 경우도 있고, 그러다…</td>
+<td style="text-align: left">2021-05-28 08:15:41</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">언제까지 로드 중만 뜰지 궁금함 빈센조 7화 보다가 다시 보려니까 무한로딩,, 내가…</td>
+<td style="text-align: left">2021-05-28 01:12:33</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">아까까진 잘 되다 갑자기 튕기더니 그 다음부터는 폰을 끄고 다시 켜서 들어가도 디바이스…</td>
+<td style="text-align: left">2021-05-27 19:37:03</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="tokenization-한글-형태소-단위로-쪼개기"> <a href="#tokenization-%ED%95%9C%EA%B8%80-%ED%98%95%ED%83%9C%EC%86%8C-%EB%8B%A8%EC%9C%84%EB%A1%9C-%EC%AA%BC%EA%B0%9C%EA%B8%B0" aria-labelledby="tokenization-한글-형태소-단위로-쪼개기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Tokenization (한글 형태소 단위로 쪼개기)</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">konlpy</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># tokenization 함수를 만들어둠
+</span><span class="k">def</span> <span class="nf">tokenize_korean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[^,.?!\w\s]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1">## ,.?!와 문자+숫자+_(\w)와 공백(\s)만 남김  # 앞에 r을 붙여주면 deprecation warning이 안뜸 (raw string으로 declare)
+</span>    
+    <span class="n">okt</span> <span class="o">=</span> <span class="n">konlpy</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">Okt</span><span class="p">()</span>
+    <span class="n">Okt_morphs</span> <span class="o">=</span> <span class="n">okt</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>   <span class="c1"># stem=True로 설정하면 동사원형으로 바꿔서 return
+</span>    
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">Okt_morphs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Adjective'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Verb'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Noun'</span><span class="p">:</span>  <span class="c1"># 이 경우에는 형용사, 동사, 명사만 남김
+</span>            <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="n">words_str</span> <span class="o">=</span> <span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">words_str</span>
+
+
+<span class="c1"># review_df['Content']를 하나씩 tokenize해서 list로 저장
+</span><span class="n">tokenized_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">review_df</span><span class="p">[</span><span class="s">'Content'</span><span class="p">]:</span>
+    <span class="n">tokenized_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokenize_korean_text</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4242
+사기
+</code></pre></div></div>
+<p>+) 단어가 1-2개만 포함된 corpus는 삭제</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">drop_corpus</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">)):</span>
+    <span class="n">corpus</span> <span class="o">=</span> <span class="n">tokenized_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">corpus</span><span class="p">.</span><span class="n">split</span><span class="p">()))</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>   <span class="c1"># 같은 단어 1-2개만 반복되는 corpus도 지우기 위해 set()을 사용
+</span>        <span class="n">review_df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">drop_corpus</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">corpus</span> <span class="ow">in</span> <span class="n">drop_corpus</span><span class="p">:</span>
+    <span class="n">tokenized_list</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+
+<span class="n">review_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">review_df</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3936
+3936
+</code></pre></div></div>
+<h3 id="vectorization--lda"> <a href="#vectorization--lda" aria-labelledby="vectorization--lda" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vectorization &amp; LDA</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+</code></pre></div></div>
+<p>⁣1. vector화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#LDA 는 Count기반의 Vectorizer만 적용 
+</span><span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># 2개의 문서 미만으로 등장하는 단어는 제외, 전체의 10% 이상으로 자주 등장하는 단어는 제외
+</span>    <span class="c1"># bigram도 포함
+</span>
+<span class="n">feat_vect</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'CountVectorizer Shape:'</span><span class="p">,</span> <span class="n">feat_vect</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CountVectorizer Shape: (3936, 1000)
+</code></pre></div></div>
+<p>⁣2. 토픽모델링: LDA</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>  <span class="c1"># 토픽 수는 6개로 설정
+</span><span class="n">lda</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feat_vect</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LatentDirichletAllocation(batch_size=128, doc_topic_prior=None,
+             evaluate_every=-1, learning_decay=0.7,
+             learning_method='batch', learning_offset=10.0,
+             max_doc_update_iter=100, max_iter=10, mean_change_tol=0.001,
+             n_components=6, n_jobs=None, n_topics=None, perp_tol=0.1,
+             random_state=None, topic_word_prior=None,
+             total_samples=1000000.0, verbose=0)
+</code></pre></div></div>
+<p>⁣3. 토픽별 연관어 출력</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">display_topics</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">num_top_words</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">topic_index</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">components_</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Topic #'</span><span class="p">,</span> <span class="n">topic_index</span><span class="p">)</span>
+
+        <span class="c1"># components_ array에서 가장 값이 큰 순으로 정렬했을 때, 그 값의 array index를 반환. 
+</span>        <span class="n">topic_word_indexes</span> <span class="o">=</span> <span class="n">topic</span><span class="p">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">top_indexes</span><span class="o">=</span><span class="n">topic_word_indexes</span><span class="p">[:</span><span class="n">num_top_words</span><span class="p">]</span>
+        
+        <span class="c1"># top_indexes대상인 index별로 feature_names에 해당하는 word feature 추출 후 join으로 concat
+</span>        <span class="n">feature_concat</span> <span class="o">=</span> <span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_indexes</span><span class="p">])</span>                
+        <span class="k">print</span><span class="p">(</span><span class="n">feature_concat</span><span class="p">)</span>
+
+<span class="c1"># CountVectorizer객체내의 전체 word들의 명칭을 get_features_names( )를 통해 추출
+</span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="p">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+
+<span class="c1"># Topic별 가장 연관도가 높은 word를 10개만 추출
+</span><span class="n">display_topics</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Topic # 0
+무료 가입 했는데 해지 아니 이용 환불 사용 계정 해서
+Topic # 1
+자막 영화 재생 영상 넷플릭스 소리 문제 나오고 기능 드라마
+Topic # 2
+로딩 자꾸 플립 진짜 화질 내고 무한 무한 로딩 보는데 입니다
+Topic # 3
+안됨 해주세요 노트 실행 깔아도 삭제 갑자기 어플 시청 다운
+Topic # 4
+영상 재생 해결 소리 해주세요 안되요 멈추고 제발 개선 에러
+Topic # 5
+로그인 실행 설치 어플 삭제 했는데 안되고 안되네요 해도 고객
+</code></pre></div></div>
+<h3 id="lda-시각화-pyldavis"> <a href="#lda-%EC%8B%9C%EA%B0%81%ED%99%94-pyldavis" aria-labelledby="lda-시각화-pyldavis" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LDA 시각화: pyLDAvis</h3>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">pip install pyLDAvis</code>로 설치해서 사용</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyLDAvis.sklearn</span>  <span class="c1"># sklearn의 ldamodel에 최적화된 라이브러리
+</span>
+<span class="n">pyLDAvis</span><span class="p">.</span><span class="n">enable_notebook</span><span class="p">()</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">pyLDAvis</span><span class="p">.</span><span class="n">sklearn</span><span class="p">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">feat_vect</span><span class="p">,</span> <span class="n">count_vectorizer</span><span class="p">)</span>
+<span class="n">pyLDAvis</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="n">vis</span><span class="p">)</span>
+</code></pre></div></div>
+<p><a href="../../../assets/images/ml_applied/Netflix_AppReviews_TopicModeling.html" target="_blank"><img src="../../../assets/images/ml_applied/TopicModeling.png" alt="TopicModeling"></a></p>
+<p class="fs-2 text-grey-dk-000">(이미지를 클릭하면 html로 구현된 버전으로 확인 가능)</p>
+<h3 id="문서별-토픽-할당"> <a href="#%EB%AC%B8%EC%84%9C%EB%B3%84-%ED%86%A0%ED%94%BD-%ED%95%A0%EB%8B%B9" aria-labelledby="문서별-토픽-할당" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 문서별 토픽 할당</h3>
+<p>⁣1. 각 문서별로 가장 가까운 topic으로 할당</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 문서별로, 가장 확률이 높은 topic으로 할당해줌
+</span>
+<span class="n">doc_topic</span> <span class="o">=</span> <span class="n">lda</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">feat_vect</span><span class="p">)</span>
+
+<span class="n">doc_per_topic_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">doc_topic</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">topic_most_pr</span> <span class="o">=</span> <span class="n">doc_topic</span><span class="p">[</span><span class="n">n</span><span class="p">].</span><span class="n">argmax</span><span class="p">()</span>
+    <span class="n">topic_pr</span> <span class="o">=</span> <span class="n">doc_topic</span><span class="p">[</span><span class="n">n</span><span class="p">].</span><span class="nb">max</span><span class="p">()</span>
+    <span class="n">doc_per_topic_list</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">topic_most_pr</span><span class="p">,</span> <span class="n">topic_pr</span><span class="p">])</span>
+    
+<span class="n">doc_topic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">doc_per_topic_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Doc_Num'</span><span class="p">,</span> <span class="s">'Topic'</span><span class="p">,</span> <span class="s">'Percentage'</span><span class="p">])</span>
+
+<span class="n">doc_topic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Doc_Num</th>
+<th style="text-align: right">Topic</th>
+<th style="text-align: right">Percentage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.735108</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.455361</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0.544513</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.241815</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.880451</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 실제 review 내용과 join</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doc_topic_df</span> <span class="o">=</span> <span class="n">doc_topic_df</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">review_df</span><span class="p">)</span>
+<span class="n">doc_topic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Doc_Num</th>
+<th style="text-align: right">Topic</th>
+<th style="text-align: right">Percentage</th>
+<th style="text-align: right">Score</th>
+<th style="text-align: left">Content</th>
+<th style="text-align: left">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.735108</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">갤럭시s6입니다. 잘 되다가 한번씩 무한로딩 걸립니다. 근데 무한로딩 한번 걸리면…</td>
+<td style="text-align: left">2021-05-28 11:30:37</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.455361</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">로딩이 너무 느려서 자꾸 멈춰. 사운드는 나오는데 영상이 멈추는 경우도 있고, 그러다…</td>
+<td style="text-align: left">2021-05-28 08:15:41</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0.544513</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">언제까지 로드 중만 뜰지 궁금함 빈센조 7화 보다가 다시 보려니까 무한로딩,, 내가…</td>
+<td style="text-align: left">2021-05-28 01:12:33</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.241815</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">아까까진 잘 되다 갑자기 튕기더니 그 다음부터는 폰을 끄고 다시 켜서 들어가도 디바이스…</td>
+<td style="text-align: left">2021-05-27 19:37:03</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.880451</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">무한로딩중……빠른 문제해결 부탁드립니다.</td>
+<td style="text-align: left">2021-05-27 17:22:05</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>⁣2. 토픽별 문서 수 계산</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doc_topic_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Topic'</span><span class="p">)[[</span><span class="s">'Doc_Num'</span><span class="p">]].</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right">Topic</th>
+<th style="text-align: right">Doc_Num</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">654</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">818</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">600</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">531</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">702</td>
+</tr>
+<tr>
+<td style="text-align: right">5</td>
+<td style="text-align: right">631</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>⁣3. 토픽별로, 가장 높은 확률로 할당된 문서 top 3 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_topic_df</span><span class="p">[</span><span class="s">'Topic'</span><span class="p">].</span><span class="n">unique</span><span class="p">())):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Topic #'</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="s">'-----------------------------'</span><span class="p">)</span>
+    <span class="n">top_pr_topics</span> <span class="o">=</span> <span class="n">doc_topic_df</span><span class="p">[</span><span class="n">doc_topic_df</span><span class="p">[</span><span class="s">'Topic'</span><span class="p">]</span> <span class="o">==</span> <span class="n">topic</span><span class="p">].</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Percentage'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">top_pr_topics</span><span class="p">[</span><span class="s">'Content'</span><span class="p">].</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">top_pr_topics</span><span class="p">[</span><span class="s">'Content'</span><span class="p">].</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">top_pr_topics</span><span class="p">[</span><span class="s">'Content'</span><span class="p">].</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Topic # 0 -----------------------------
+혼자 사용해서 베이직 요금제를 선택했는데 첫달 무료로 사용하면서 스탠다드로 쓸수 있게 해준다 해서 스탠다드로 한달 사용하고 그 다음달 베이직으로 바꿨는데 스탠다드 요금 나옴. 문의전화 하니까 데이터 상 내가 베이직으로 바꾼후 바로 스탠다드로 다시 바꿨다함 그런적 없다 하니 데이터상 그렇기 때문에 어쩔수 없다 함 베이직으로 바뀐시간과 스탠다드로 바뀐시간이 동일하며 초까지는 안나와서 모르겠으나 시간과 분이 일치하므로 몇초이내에 바꿨을거라 함. 난 베이직으로 바꾸고 스탠다드로 바로 바꾼적 없다 하니까 내가 베이직으로 바꾼후 베이직으로 바뀐걸 계정 들어가서 한번더 확인 안했으니 내 잘못이라 함. 나도 모르게 멤버십 바뀔수 있으니 결제될 때마다 베이직 스탠다드 확인하란 얘긴가요?
+카드결재 주의하시고 해지도 조심하세요. 계정이 두개라 한개만 결재했는데 한달후보니 두개다 결재돼고 결재 5일전에 해지했는데 또 결재돼고 전화했더니 두계정결재 건은 내가 아직모르는 상태라고 상담사가 말도 안해주고 한번만 환불 가능하다고 요번 해지 결재건만 환불 처리 해줍디다. 한개정만 카드결재하고 한달 시청해는데 다른한개정은 정지상태인데 왜 결재돼냐고요.
+오늘 넷플릭스 처음 이용 해봤는데 회원가입하고 첫 달 무료라면서 카드 등록하니까 바로 돈 빠져나가는 거 뭡니까? 당황해서 다급히 멤버십 해지.했는데도 돈 도 안들어오고... 사기 당해서 기분 나쁘네요.... 첫 달 무료라니 뭐라니 이런 거짓말은.하지 마세요... 당한 입장으로서 엄청 별로입니다... 
+
+Topic # 1 -----------------------------
+넷플릭스에 올라오는 작품들은 만족스럽고 작품성이 뛰어난데 한글 번역은 왜 그따위인가요? 분명 본문은 그런 내용이 아닌데 혐오적 표현을 쓴다던가.. 아니 대체 영어를 한글로 번역하면서 부인은 남편한테 존대쓰고 남편은 부인한테 반말 쓰는 80년대적 발상은 어디서 나온 거죠?? 캐릭터 성격상 꼬박꼬박 존대 쓰고 반말 쓰는게 어색한데도 죽어도 놓질 못하시네요,, 이제는 영어 영화는 그냥 보고 스페인이나 프랑스 영화같은건 영어로 번역해서 보고 있는데.. 제발 그 글러먹은 사상좀 어디 버리고 와주세요 번역가님. 번역 신고 기능이 있어서 계속 신고할래도 본질이 글러먹은 것 같아서 평점 기능에 남겨봅니다
+자체 제작하는 콘텐츠, 들여오는 영화나 드라마 모두 좋아요 콘텐츠 면에선 모두 만족합니다 그러나 자막이나 번역에 심각한 오의역이 존재하는 경우를 많이 보았어요. 예를 들어 드라마 글리 자막의 경우 주인공이 눈에 돌을 맞아 거의 실명할 뻔 하는 사건이 나오는데 이를 눈에 소금을 맞았다고 잘못 번역이 되어 있습니다.. 이럴 경우 영화나 드라마에 심각한 영향을 끼칠 것 같아요 또 이 정도의 오역이 아니어도 심심한 오류를 많이 보았습니다 자막이나 번역에 조금 더 힘써 주셨으면 합니다.
+정말 잘 사용하고 있다가 최근에 업데이트 이후 v50s 듀얼스크린 재생이 되지를 않습니다. 영상 재생 중에 카카오톡이나 인터넷 검색 등 멀티 기능을 활용할 수 있었는데 지금은 환경설정 창만 내려도 영상이 정지가 되네요. 하루빨리 다시 예전처럼 영상이 지속적으로 재생될 수 있도록 조치해 주시면 대단히 감사드리겠습니다. 
+
+Topic # 2 -----------------------------
+저도제트플립사용자입니다 제트플립 사용자는 전부 그러나봐요 저도 로딩만뜨고 넘어가질않는데 문제해결과 안내공지가 있어야하지않을까여? 왠 돈받고 저질서비스임?
+제트플립 사용자인데 업데이트하고 갑자기 무한로딩... 못보고있는데 다른 리뷰들도 제트플립 안된다고 하네요... 돈은 돈대로 나가는데 보지는 못하고 이거 무슨 상황입니까?
+저도 아래 리뷰처럼 제트플립 사용자인데 무한로드 반복하고 그 어느 컨텐츠 하나 재생이 안됩니다. 이거 뭐 며칠동안 돈날려먹으란것도 아니고 보상도 안바라니까 해결이나 빨리해줘요. 
+
+Topic # 3 -----------------------------
+핸드폰을 시청후 껐을때 다른기기로 재시청을하면 기존에 시청했던 프로그램 시간대로 다시 재시청이 가능한데 어는 순간부터는 기기마다 시청했던 시간대로만 재시청이 가능해지네요 다른기기로 재시청시 기존에 시청했던 시간대로 시청할수있게끔 업데이트좀 부탁드려요 아니면 설정 방법좀 알려주세요
+내가 찜한 콘텐츠 눌러도 확인해보면 추가 안되어있고 예전에는 찜한 콘텐츠삭제하는것도 됐었는데 지금은 왜 안될까요? 다 본건 지우고 새로 볼 것만 추가해두고 싶은데 삭제했다가 다시 깔아도 안되고 제가 뭘 어떻게 해요.
+갤럭시 노트10+ 유저입니다. 501-109??오류메시지 뜨면서 앱실행이 2주째 안되고있고 매달 결재는 되는상황입니다. 업뎃하라해서 다했고.. 뭡니까 이게.. 환불이라도 해주던가 앱 제대로 관리하던가! 환불해줘요 !!! 
+
+Topic # 4 -----------------------------
+아니 오늘 업데이트하라해서 했는데 30초마다 영상이 중지되네요ㅡㅡ 어제까지만 해도 아니 업뎃전까지만 해도 멀쩡했는데 왜 이러는거죠? 영상이 중지되서 다시 보려고 하면 재생 버튼은 눌리지도 않아요. 그래서 다시 창 끄고 영상 누르고 30초후에 중지. 또 끄고 영상 누르고. 개선좀해주세요 쉬는날 넷플 보려는데 오류때문에 시간 다날렸어요
+영상이 자꾸 끊겨요 원래도 잠깐씩 끊긴 적이 있긴 했지만 오늘은 좀 심하네요... 아예 한 장면에서 계속 멈추고 10초 전이나 10초 후로 돌려도 영상 시간만 가고 앱을 아예 닫았다가 다시 들어가도 똑같아요 영상은 멈추고 소리만 들릴 때도 많고 너무 화나네요 ㅠ 고쳐 주세요 제발
+아니 저만 이런가요? 한 일주일 전부터 영상 재생하면 한 10초?은 재생되다가 갑자기 화면 멈추고 소리만 나오네요ㅡㅡ 해결책좀요 제발ㅡㅡ 
+
+Topic # 5 -----------------------------
+ㅡㅡ저기요 결제정보변경해서 결제했더니ㅡㅡ계정정보를불러올수없다길래 로그아웃했다다시로그인하려하니 로그인도안되고ㅡㅡ삭제했다 다시깔아도안되고 고객센터연결도안되고 홈페이지도안들어가지고 뭡니까?
+넷플릭스에 접속할 수 없습니다? 방금 전까지만 해도 됐었는데.... 갑자기 접속이 안되길래 휴대폰 껐켰, 어플 삭제 후 재설치, 데이터 삭제 등 할 수 있는건 다 했는데 여전히 먹통이네요...
+장난하는것도 아니고 결제하니까 안들어가집니다. 재설치 하려고 지웠다 설치중인데 설치도 계속 안되고 있네요. 뭐하자는건지 개선이 안되고 있는데 어쩌자는 겁니까? 
+</code></pre></div></div>
+<h3 id="토픽별-정리"> <a href="#%ED%86%A0%ED%94%BD%EB%B3%84-%EC%A0%95%EB%A6%AC" aria-labelledby="토픽별-정리" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 토픽별 정리</h3>
+<ul><li>keywords, 문서 예시 등을 통해 토픽을 정의/설명하면 토픽 모델링의 결과에서 인사이트를 끌어내는 데 도움이 된다. 하지만 모든 토픽이 정확히 설명 가능하게 분류되지는 않을 수 있으므로 주의.</li></ul>
+<div class="code-example">
+<p>*Topic #0: “결제 관련 불만 사항 - 무료 가입 후 자동 결재, 해지/환불 절차에 대한 불만”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 무료 가입 했는데 해지 아니 이용 환불 사용 계정 해서</li>
+<li>문서 예시: “카드결재 주의하시고 해지도 조심하세요. 계정이 두개라 한개만 결재했는데 한달후보니 두개다 결재돼고 결재 5일전에 해지했는데 또 결재돼고”, “오늘 넷플릭스 처음 이용 해봤는데 회원가입하고 첫 달 무료라면서 카드 등록하니까 바로 돈 빠져나가는 거 뭡니까?”</li>
+</ul>
+<p>*Topic #1: “자막 및 영상 기능 관련 불만 사항 - 자막 오류, 오역, 기능상의 결함에 대한 불만”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 자막 영화 재생 영상 넷플릭스 소리 문제 나오고 기능 드라마</li>
+<li>문서 예시: “넷플릭스에 올라오는 작품들은 만족스럽고 작품성이 뛰어난데 한글 번역은 왜 그따위인가요?”, “자막이나 번역에 심각한 오의역이 존재하는 경우를 많이 보았어요.”, “업데이트 이후 v50s 듀얼스크린 재생이 되지를 않습니다.”</li>
+</ul>
+<p>*Topic #2: “무한 로딩 문제 - 특정 기종(제트플립) 관련 문제가 다수”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 로딩 자꾸 플립 진짜 화질 내고 무한 무한 로딩 보는데 입니다</li>
+<li>문서 예시: “제트플립 사용자는 전부 그러나봐요 저도 로딩만뜨고 넘어가질않는데”, “제트플립 사용자인데 업데이트하고 갑자기 무한로딩…”</li>
+</ul>
+<p>*Topic #3: “다양한 주제의 불만 사항 및 요청 사항”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 안됨 해주세요 노트 실행 깔아도 삭제 갑자기 어플 시청 다운</li>
+<li>문서 예시: “다른기기로 재시청시 기존에 시청했던 시간대로 시청할수있게끔 업데이트좀 부탁드려요”, “내가 찜한 콘텐츠 눌러도 확인해보면 추가 안되어있고 예전에는 찜한 콘텐츠삭제하는것도 됐었는데 지금은 왜 안될까요?”</li>
+<li>※ 찜하기, 알림, 이어보기 등 특정 기능 관련, 앱 실행 오류 관련… 다양한 주제가 mix된 토픽 - 하나로 정의하기 어렵다</li>
+</ul>
+<p>*Topic #4: “영상 재생 관련 불만 사항 - 재생 경험에서의 불쾌감”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 영상 재생 해결 소리 해주세요 안되요 멈추고 제발 개선 에러</li>
+<li>문서 예시: “아니 오늘 업데이트하라해서 했는데 30초마다 영상이 중지되네요”, “영상이 자꾸 끊겨요 원래도 잠깐씩 끊긴 적이 있긴 했지만 오늘은 좀 심하네요”</li>
+<li>Topic #2와 유사 (pyLDAvis로 시각화한 Intertopic Distance Map에서도 유사하게 나타남)</li>
+</ul>
+<p>*Topic #5: “접속 장애 관련 불만 사항 - 접속 불가, 로그인 불가 등의 문제”</p>
+<ul class="fs-3 text-grey-dk-000">
+<li>keywords: 로그인 실행 설치 어플 삭제 했는데 안되고 안되네요 해도 고객</li>
+<li>문서 예시: “넷플릭스에 접속할 수 없습니다? 방금 전까지만 해도 됐었는데”, “장난하는것도 아니고 결제하니까 안들어가집니다. 재설치 하려고 지웠다 설치중인데 설치도 계속 안되고 있네요”</li>
+</ul>
+</div>
+<h2 id="lda-gensim"> <a href="#lda-gensim" aria-labelledby="lda-gensim" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LDA: gensim</h2>
+<ul>
+<li>gensim.models.ldamodel.LdaModel을 사용</li>
+<li>gensim: 자연어 처리에 특화된 라이브러리</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## sklearn을 활용한 LDA에서와 같은 데이터를 사용
+</span>
+<span class="n">review_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Score</th>
+<th style="text-align: left">Content</th>
+<th style="text-align: left">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">사기</td>
+<td style="text-align: left">2021-05-28 13:04:04</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">갤럭시s6입니다. 잘 되다가 한번씩 무한로딩 걸립니다. 근데 무한로딩 한번 걸리면…</td>
+<td style="text-align: left">2021-05-28 11:30:37</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">로딩이 너무 느려서 자꾸 멈춰. 사운드는 나오는데 영상이 멈추는 경우도 있고, 그러다…</td>
+<td style="text-align: left">2021-05-28 08:15:41</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">언제까지 로드 중만 뜰지 궁금함 빈센조 7화 보다가 다시 보려니까 무한로딩,, 내가…</td>
+<td style="text-align: left">2021-05-28 01:12:33</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">아까까진 잘 되다 갑자기 튕기더니 그 다음부터는 폰을 끄고 다시 켜서 들어가도 디바이스…</td>
+<td style="text-align: left">2021-05-27 19:37:03</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="tokenization"> <a href="#tokenization" aria-labelledby="tokenization" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Tokenization</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">konlpy</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">tokenize_korean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s">'[^,.?!\w\s]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    
+    <span class="n">okt</span> <span class="o">=</span> <span class="n">konlpy</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">Okt</span><span class="p">()</span>
+    <span class="n">Okt_morphs</span> <span class="o">=</span> <span class="n">okt</span><span class="p">.</span><span class="n">pos</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">Okt_morphs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Adjective'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Verb'</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">==</span> <span class="s">'Noun'</span><span class="p">:</span>
+            <span class="n">words</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="c1">## word를 이어붙인 string 형태가 아닌 word의 list를 return해주는 게 sklearn lda 준비 과정과의 차이
+</span>            
+    <span class="k">return</span> <span class="n">words</span>
+
+
+<span class="n">tokenized_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">review_df</span><span class="p">[</span><span class="s">'Content'</span><span class="p">]:</span>
+    <span class="n">tokenized_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokenize_korean_text</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4242
+['사기']
+</code></pre></div></div>
+<p>+) 단어가 1-2개만 포함된 corpus는 삭제</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">drop_corpus</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">)):</span>
+    <span class="n">corpus</span> <span class="o">=</span> <span class="n">tokenized_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">corpus</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>   <span class="c1"># corpus 자체가 list 형태인게 sklearn lda 준비 과정과의 차이
+</span>        <span class="n">review_df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">drop_corpus</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">corpus</span> <span class="ow">in</span> <span class="n">drop_corpus</span><span class="p">:</span>
+    <span class="n">tokenized_list</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+
+<span class="n">review_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="vectorization--lda-1"> <a href="#vectorization--lda-1" aria-labelledby="vectorization--lda-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vectorization &amp; LDA</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># bigram 생성에 필요한 library
+</span><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Phrases</span>
+<span class="kn">from</span> <span class="nn">gensim.models.phrases</span> <span class="kn">import</span> <span class="n">Phraser</span>
+
+<span class="c1"># vectorize &amp; lda에 필요한 library
+</span><span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span>
+<span class="kn">from</span> <span class="nn">gensim.models.ldamodel</span> <span class="kn">import</span> <span class="n">LdaModel</span>
+</code></pre></div></div>
+<p>⁣1. bigram을 포함하기 위한 추가 세팅</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Build the bigram models
+</span><span class="n">bigram</span> <span class="o">=</span> <span class="n">Phrases</span><span class="p">(</span><span class="n">tokenized_list</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">bigram_mod</span> <span class="o">=</span> <span class="n">Phraser</span><span class="p">(</span><span class="n">bigram</span><span class="p">)</span>
+ 
+<span class="c1"># See example
+</span><span class="k">print</span><span class="p">(</span><span class="n">bigram_mod</span><span class="p">[</span><span class="n">tokenized_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['갤럭시', '입니다', '잘_되다가', '한번', '무한_로딩', '걸립니다', '무한_로딩', '한번', '걸리면', '한', '주간', '넷플릭스', '앱', '아예', '켜지지가', '않습니다', '원인', '모르겠고', '이럴', '때', '피씨', '봐', '야해서', '번거롭습니다']
+</code></pre></div></div>
+<ul><li>
+<a href="https://radimrehurek.com/gensim/models/phrases.html" target="_blank">gensim.models.Phrases</a>: 자동으로 ngram colloation을 detect하는 모델. Phrases를 반복 사용하면 bigram뿐 아니라 trigram과 그 이상도 생성 가능<ul>
+<li>min_count: 최소한 min_count보다 많이 등장한 token이 대상</li>
+<li>threshold: default는 10, 값이 작을수록 덜 빈번한 단어 조합이더라도 bigram으로 생성해준다. 아주 빈번하게 사용되는 최소한의 bigram만 만들고자 하면 threshold를 높여주면 된다</li>
+</ul>
+</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># tokenized_list의 모든 문서에 대해 bigram을 생성해줌
+</span><span class="n">words_bigram</span> <span class="o">=</span> <span class="p">[</span><span class="n">bigram_mod</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">tokenized_list</span><span class="p">]</span>
+</code></pre></div></div>
+<p>⁣2. vector화</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="p">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">words_bigram</span><span class="p">)</span>  <span class="c1"># 각 단어에 번호를 할당해줌
+</span>    <span class="c1"># bigram 포함하는 과정을 생략하고 싶으면, 그냥 바로 여기에 tokenized_list를 넣어주면 됨
+</span>
+<span class="n">dictionary</span><span class="p">.</span><span class="n">filter_extremes</span><span class="p">(</span><span class="n">no_below</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">no_above</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>   
+    <span class="c1"># 2개의 문서 미만으로 등장하는 단어는 제외, 전체의 5% 이상으로 자주 등장하는 단어는 제외
+</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="p">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">words_bigram</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 첫번째 corpus를 테스트로 출력: 몇 번째 단어가 몇 번 나왔는지 저장되어 있음
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(0, 1), (1, 1), (2, 1), (3, 1), (4, 1), (5, 2), (6, 1), (7, 1), (8, 1), (9, 1), (10, 1), (11, 1), (12, 1), (13, 1), (14, 1), (15, 1), (16, 1), (17, 2)]
+</code></pre></div></div>
+<p>⁣3. LDA 모델 학습 &amp; 연관어 확인</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ldamodel</span> <span class="o">=</span> <span class="n">LdaModel</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">id2word</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># 토픽 수: 6
+</span>
+<span class="n">ldamodel</span><span class="p">.</span><span class="n">print_topics</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># num_words=10이 default
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(0,
+  '0.011*"로그인" + 0.006*"안" + 0.006*"고객_센터" + 0.006*"환불" + 0.006*"해도" + 0.005*"하면" + 0.005*"잘"'),
+ (1,
+  '0.009*"앱_실행" + 0.009*"안되네요" + 0.008*"이" + 0.008*"결재" + 0.008*"다운" + 0.007*"안되요" + 0.007*"디바이스_오류"'),
+ (2,
+  '0.014*"뭐" + 0.010*"가입" + 0.010*"영화" + 0.009*"했는데" + 0.008*"무료" + 0.007*"어떻게" + 0.006*"해지"'),
+ (3,
+  '0.022*"화질" + 0.017*"자막" + 0.008*"영화" + 0.007*"제발" + 0.006*"없고" + 0.006*"볼" + 0.005*"생각"'),
+ (4,
+  '0.009*"무한_로딩" + 0.008*"삭제" + 0.007*"안됩니다" + 0.007*"입니다" + 0.007*"해결" + 0.007*"로딩" + 0.007*"문제"'),
+ (5,
+  '0.011*"돈_내고" + 0.009*"안" + 0.009*"제발" + 0.008*"보는데" + 0.006*"자막" + 0.006*"문제" + 0.006*"아니고"')]
+</code></pre></div></div>
+<ul><li>
+<a href="https://radimrehurek.com/gensim/models/ldamodel.html" target="_blank">LdaModel의 파라미터</a>:<ul>
+<li>passes: Number of passes through the corpus during training. (default: 1)</li>
+<li>iterations: Maximum number of iterations through the corpus when inferring the topic distribution of a corpus. (default: 50)</li>
+<li>corpus 수가 적으면 passes를 높여주는 것이 유용할 수 있고, 시간만 충분하다면 iterations를 높여주면 더 학습이 잘 된다 (iterations가 낮으면 제대로 수렴하기 전에 학습이 종료될 수 있음)</li>
+</ul>
+</li></ul>
+<h3 id="lda-시각화-pyldavis-1"> <a href="#lda-%EC%8B%9C%EA%B0%81%ED%99%94-pyldavis-1" aria-labelledby="lda-시각화-pyldavis-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LDA 시각화: pyLDAvis</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyLDAvis.gensim</span>  <span class="c1"># gensim의 ldamodel에 최적화된 라이브러리
+</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">pyLDAvis</span><span class="p">.</span><span class="n">gensim</span><span class="p">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">ldamodel</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">)</span>
+<span class="n">pyLDAvis</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="n">vis</span><span class="p">)</span>
+</code></pre></div></div>
+<p><a href="../../../assets/images/ml_applied/Netflix_AppReviews_TopicModeling_Gensim.html" target="_blank"><img src="../../../assets/images/ml_applied/TopicModeling_Gensim.png" alt="TopicModeling_Gensim"></a></p>
+<p class="fs-2 text-grey-dk-000">(이미지를 클릭하면 html로 구현된 버전으로 확인 가능)</p>
+<h3 id="문서별-토픽-할당-1"> <a href="#%EB%AC%B8%EC%84%9C%EB%B3%84-%ED%86%A0%ED%94%BD-%ED%95%A0%EB%8B%B9-1" aria-labelledby="문서별-토픽-할당-1" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 문서별 토픽 할당</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doc_per_topic_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="p">)):</span>
+    <span class="n">doc_topic</span> <span class="o">=</span> <span class="n">ldamodel</span><span class="p">[</span><span class="n">corpus</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span>
+    <span class="n">doc_topic</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">doc_topic</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">topic_most_pr</span> <span class="o">=</span> <span class="n">doc_topic</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">topic_pr</span> <span class="o">=</span> <span class="n">doc_topic</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">doc_per_topic_list</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">topic_most_pr</span><span class="p">,</span> <span class="n">topic_pr</span><span class="p">])</span>
+    
+<span class="n">doc_topic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">doc_per_topic_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Doc_Num'</span><span class="p">,</span> <span class="s">'Topic'</span><span class="p">,</span> <span class="s">'Percentage'</span><span class="p">])</span>
+
+<span class="c1"># 실제 review 내용과 join
+</span><span class="n">doc_topic_df</span> <span class="o">=</span> <span class="n">doc_topic_df</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">review_df</span><span class="p">)</span>  
+
+<span class="n">doc_topic_df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Doc_Num</th>
+<th style="text-align: right">Topic</th>
+<th style="text-align: right">Percentage</th>
+<th style="text-align: right">Score</th>
+<th style="text-align: left">Content</th>
+<th style="text-align: left">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0.959966</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">갤럭시s6입니다. 잘 되다가 한번씩 무한로딩 걸립니다. 근데 무한로딩 한번 걸리면…</td>
+<td style="text-align: left">2021-05-28 11:30:37</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0.955639</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">로딩이 너무 느려서 자꾸 멈춰. 사운드는 나오는데 영상이 멈추는 경우도 있고, 그러다…</td>
+<td style="text-align: left">2021-05-28 08:15:41</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">2</td>
+<td style="text-align: right">0</td>
+<td style="text-align: right">0.836514</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">언제까지 로드 중만 뜰지 궁금함 빈센조 7화 보다가 다시 보려니까 무한로딩,, 내가…</td>
+<td style="text-align: left">2021-05-28 01:12:33</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: right">3</td>
+<td style="text-align: right">1</td>
+<td style="text-align: right">0.976007</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">아까까진 잘 되다 갑자기 튕기더니 그 다음부터는 폰을 끄고 다시 켜서 들어가도 디바이스…</td>
+<td style="text-align: left">2021-05-27 19:37:03</td>
+</tr>
+<tr>
+<td style="text-align: right">4</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">4</td>
+<td style="text-align: right">0.83286</td>
+<td style="text-align: right">1</td>
+<td style="text-align: left">무한로딩중……빠른 문제해결 부탁드립니다.</td>
+<td style="text-align: left">2021-05-27 17:22:05</td>
+</tr>
+</tbody>
+</table></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>

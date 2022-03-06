@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="shortcut icon" href="https://chaelist.github.io/assets/images/cat.png" type="image/x-icon">
+<link rel="stylesheet" href="https://chaelist.github.io/assets/css/just-the-docs-default.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ6H6890X3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QJ6H6890X3'); </script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="https://chaelist.github.io/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pandas 기초 | chaelist</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Pandas 기초">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="chaelist’s blog">
+<meta property="og:description" content="chaelist’s blog">
+<link rel="canonical" href="https://chaelist.github.io/docs/pandas/pandas_basics/">
+<meta property="og:url" content="https://chaelist.github.io/docs/pandas/pandas_basics/">
+<meta property="og:site_name" content="chaelist">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Pandas 기초"> <script type="application/ld+json"> {"description":"chaelist’s blog","url":"https://chaelist.github.io/docs/pandas/pandas_basics/","@type":"WebPage","headline":"Pandas 기초","@context":"https://schema.org"}</script>
+</head>
+<body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewbox="0 0 24 24"><title>Search</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewbox="0 0 24 24"><title>Menu</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
+<div class="site-header"> <a href="https://chaelist.github.io/" class="site-title lh-tight"> chaelist </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+</div>
+<nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
+<li class="nav-list-item"><a href="https://chaelist.github.io/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/python_basics" class="nav-list-link">Python 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/numbers_list_string/" class="nav-list-link">Numbers, List, String</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/dictionary_tuple_set/" class="nav-list-link">Dictionary, Tuple, Set</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/controlflow/" class="nav-list-link">Control Flow (제어문)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/python_basics/function_module/" class="nav-list-link">Function &amp; Module</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/data_handling" class="nav-list-link">Data Handling</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_input_output/" class="nav-list-link">파일 읽고 쓰기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/file_folder_handling/" class="nav-list-link">파일 &amp; 폴더 다루기</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/regular_expressions/" class="nav-list-link">Regular Expressions</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/useful_functions/" class="nav-list-link">유용한 Python 내장함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/data_handling/datetime/" class="nav-list-link">Datetime 다루기</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/numpy" class="nav-list-link">Numpy</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_basics/" class="nav-list-link">Numpy 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/numpy/numpy_arithmetics/" class="nav-list-link">Numpy 연산과 통계</a></li>
+</ul>
+</li>
+<li class="nav-list-item active">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/pandas" class="nav-list-link">Pandas</a><ul class="nav-list ">
+<li class="nav-list-item active"><a href="https://chaelist.github.io/docs/pandas/pandas_basics/" class="nav-list-link active">Pandas 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_modifying/" class="nav-list-link">Pandas 데이터 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_data_analysis/" class="nav-list-link">Pandas 데이터 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_merge_group/" class="nav-list-link">Pandas 데이터 결합 &amp; 요약</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/pandas/pandas_str_dt_con/" class="nav-list-link">Pandas str, dt, 조건문</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/visualization" class="nav-list-link">데이터 시각화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/pandas_plot/" class="nav-list-link">Pandas plot() 함수</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/seaborn/" class="nav-list-link">Seaborn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/matplotlib/" class="nav-list-link">Matplotlib</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/visualization/plotly/" class="nav-list-link">Plotly</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/webscraping" class="nav-list-link">Web Scraping</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/requests_beautifulsoup/" class="nav-list-link">Requests &amp; BeautifulSoup</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/selenium/" class="nav-list-link">Selenium</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/image_api/" class="nav-list-link">Image 수집 &amp; API 활용</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/twitter_api/" class="nav-list-link">Twitter 데이터 수집</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/webscraping/app_review/" class="nav-list-link">App Review 수집</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/text_analysis" class="nav-list-link">Text 분석</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/english_text/" class="nav-list-link">빈도 분석 (English)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/text_analysis/korean_text/" class="nav-list-link">빈도 분석 (한글)</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/network_analysis" class="nav-list-link">Network Analysis</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/network_basics/" class="nav-list-link">Network Analysis 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/social_network/" class="nav-list-link">Social Network Analysis</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/network_analysis/semantic_network/" class="nav-list-link">Semantic Network Analysis</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_basics" class="nav-list-link">Machine Learning 기초</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/linear_regression/" class="nav-list-link">기초 &amp; Linear Regression</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification1/" class="nav-list-link">Classification 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/classification2/" class="nav-list-link">Classification 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/clustering/" class="nav-list-link">Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_basics/deep_learning/" class="nav-list-link">Deep Learning 기초</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_advanced" class="nav-list-link">Machine Learning 심화</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/regularization/" class="nav-list-link">Regularization</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/preprocessing/" class="nav-list-link">데이터 전처리</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_advanced/model_selection/" class="nav-list-link">Model Selection</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/ml_application" class="nav-list-link">Machine Learning 응용</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/sentiment_analysis/" class="nav-list-link">영화 리뷰 감성 분석</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/news_clustering/" class="nav-list-link">뉴스 기사 Clustering</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/time_series/" class="nav-list-link">시계열 데이터 예측</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/topic_modeling/" class="nav-list-link">Topic Modeling (LDA)</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/logistics/" class="nav-list-link">물류 최적화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/ml_application/image_processing/" class="nav-list-link">이미지 / 동영상 처리</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/sql" class="nav-list-link">SQL</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_basics/" class="nav-list-link">데이터 조회 기초</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/select_advanced/" class="nav-list-link">데이터 조회 심화</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/join_subq_view/" class="nav-list-link">조인, 서브쿼리, 뷰</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/db_table_create/" class="nav-list-link">데이터베이스 &amp; 테이블 구축</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/modify_table/" class="nav-list-link">테이블 가공</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/sql/foreign_key_pymysql/" class="nav-list-link">Foreign Key &amp; Python 연결</a></li>
+</ul>
+</li>
+<li class="nav-list-item">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://chaelist.github.io/docs/kaggle" class="nav-list-link">Kaggle Dataset EDA</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/youtube_trending/" class="nav-list-link">YouTube Trending Videos</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/amazon_bestsellers/" class="nav-list-link">Amazon Bestselling Books</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/customer_churn/" class="nav-list-link">Telco Customer Churn</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding/" class="nav-list-link">Kiva Crowdfunding 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/kiva_crowdfunding2/" class="nav-list-link">Kiva Crowdfunding 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries/" class="nav-list-link">STEM Salaries 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/stem_salaries2/" class="nav-list-link">STEM Salaries 2</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce/" class="nav-list-link">UK Ecommerce Data 1</a></li>
+<li class="nav-list-item "><a href="https://chaelist.github.io/docs/kaggle/uk_ecommerce2/" class="nav-list-link">UK Ecommerce Data 2</a></li>
+</ul>
+</li>
+</ul></nav><footer class="site-footer"></footer>
+</div>
+<div class="main" id="top">
+<div id="main-header" class="main-header"><div class="search">
+<div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search chaelist" aria-label="Search chaelist" autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+</div>
+<div id="search-results" class="search-results"></div>
+</div></div>
+<div id="main-content-wrap" class="main-content-wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
+<li class="breadcrumb-nav-list-item"><a href="https://chaelist.github.io/docs/pandas">Pandas</a></li>
+<li class="breadcrumb-nav-list-item"><span>Pandas 기초</span></li>
+</ol></nav><div id="main-content" class="main-content" role="main">
+<h1 class="no_toc" id="pandas-기초"> <a href="#pandas-%EA%B8%B0%EC%B4%88" aria-labelledby="pandas-기초" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pandas 기초</h1>
+<p><br></p>
+<details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
+<li>
+<a href="#pandas-dataframe-%EB%A7%8C%EB%93%A4%EA%B8%B0" id="markdown-toc-pandas-dataframe-만들기">Pandas DataFrame 만들기</a><ol>
+<li><a href="#from-lists-of-lists-array-of-arrays-list-of-series" id="markdown-toc-from-lists-of-lists-array-of-arrays-list-of-series">From lists of lists, array of arrays, list of series</a></li>
+<li><a href="#from-dict-of-lists-dict-of-arrays-dict-of-series" id="markdown-toc-from-dict-of-lists-dict-of-arrays-dict-of-series">From dict of lists, dict of arrays, dict of series</a></li>
+<li><a href="#from-list-of-dicts" id="markdown-toc-from-list-of-dicts">From list of dicts</a></li>
+</ol>
+</li>
+<li><a href="#dataframe-%EB%B3%B5%EC%82%AC%EB%B3%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0" id="markdown-toc-dataframe-복사본-만들기">DataFrame 복사본 만들기</a></li>
+<li>
+<a href="#csv-excel-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B7%A8%EA%B8%89" id="markdown-toc-csv-excel-데이터-취급">CSV, Excel 데이터 취급</a><ol>
+<li><a href="#csv-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EA%B3%A0-%EC%93%B0%EA%B8%B0" id="markdown-toc-csv-파일-읽고-쓰기">CSV 파일 읽고 쓰기</a></li>
+<li><a href="#excel-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EA%B3%A0-%EC%93%B0%EA%B8%B0" id="markdown-toc-excel-파일-읽고-쓰기">Excel 파일 읽고 쓰기</a></li>
+</ol>
+</li>
+<li>
+<a href="#indexing--slicing" id="markdown-toc-indexing--slicing">Indexing &amp; Slicing</a><ol>
+<li><a href="#indexing" id="markdown-toc-indexing">Indexing</a></li>
+<li><a href="#slicing" id="markdown-toc-slicing">Slicing</a></li>
+<li><a href="#%EC%A1%B0%EA%B1%B4%EC%9C%BC%EB%A1%9C-indexing" id="markdown-toc-조건으로-indexing">조건으로 Indexing</a></li>
+<li><a href="#%EC%88%AB%EC%9E%90-%EC%9C%84%EC%B9%98-%EA%B8%B0%EB%B0%98-indexing--slicing" id="markdown-toc-숫자-위치-기반-indexing--slicing">숫자 위치 기반 Indexing &amp; Slicing</a></li>
+</ol>
+</li>
+<li><a href="#%EC%A1%B0%EA%B1%B4-indexing-query-%ED%95%A8%EC%88%98" id="markdown-toc-조건-indexing-query-함수">조건 indexing: Query 함수</a></li>
+<li><a href="#pdset_option" id="markdown-toc-pdset_option">pd.set_option()</a></li>
+</ol></details><hr>
+<p class="text-purple-300">*Pandas: 데이터 분석 목적으로 널리 사용되는 라이브러리</p>
+<h2 id="pandas-dataframe-만들기"> <a href="#pandas-dataframe-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-labelledby="pandas-dataframe-만들기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pandas DataFrame 만들기</h2>
+<h3 id="from-lists-of-lists-array-of-arrays-list-of-series"> <a href="#from-lists-of-lists-array-of-arrays-list-of-series" aria-labelledby="from-lists-of-lists-array-of-arrays-list-of-series" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> From lists of lists, array of arrays, list of series</h3>
+<p>: 2차원 리스트, 2차원 numpy array, pandas Series를 담고 있는 리스트로 DataFrame을 만들기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>    <span class="c1"># import해야 사용 가능; 보통 pd로 줄여서 import
+</span>
+<span class="c1"># 2차원 리스트
+</span><span class="n">two_dimensional_list</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">86</span><span class="p">],</span> <span class="p">[</span><span class="s">'Abby'</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="s">'Cornelia'</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">91</span><span class="p">],</span> <span class="p">[</span><span class="s">'Kai'</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">75</span><span class="p">]]</span>
+
+<span class="c1"># 2차원 numpy array
+</span><span class="n">two_dimensional_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">two_dimensional_list</span><span class="p">)</span>
+
+<span class="c1"># pandas series를 담고 있는 리스트
+</span><span class="n">list_of_series</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'Emily'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">86</span><span class="p">]),</span> 
+    <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'Abby'</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">31</span><span class="p">]),</span> 
+    <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'Cornelia'</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">91</span><span class="p">]),</span> 
+    <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'Kai'</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="c1"># 아래 셋은 모두 동일한 결과 반환
+</span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">two_dimensional_list</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">two_dimensional_array</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">list_of_series</span><span class="p">)</span>
+
+<span class="n">df1</span>  <span class="c1">## 따로 column과 row(index)에 대한 설정이 없으면 그냥 0, 1, 2, ... 순서로 값이 매겨짐
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">0</th>
+<th style="text-align: right">1</th>
+<th style="text-align: right">2</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) 추가: 칼럼명과 index명을 지어주기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">two_dimensional_list</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">86</span><span class="p">],</span> <span class="p">[</span><span class="s">'Abby'</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="s">'Cornelia'</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">91</span><span class="p">],</span> <span class="p">[</span><span class="s">'Kai'</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">75</span><span class="p">]]</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">two_dimensional_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">],</span> 
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">])</span>
+<span class="n">my_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: right">french_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">a</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: left">b</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: left">c</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: left">d</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="from-dict-of-lists-dict-of-arrays-dict-of-series"> <a href="#from-dict-of-lists-dict-of-arrays-dict-of-series" aria-labelledby="from-dict-of-lists-dict-of-arrays-dict-of-series" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> From dict of lists, dict of arrays, dict of series</h3>
+<p>: 파이썬 사전(dictionary)으로 DataFrame 만들기</p>
+<ul><li>사전의 key로는 column 이름을 쓰고, 그 column에 해당하는 리스트, numpy array, 혹은 pandas Series를 사전의 value로 넣어주면 된다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="s">'Abby'</span><span class="p">,</span> <span class="s">'Cornelia'</span><span class="p">,</span> <span class="s">'Kai'</span><span class="p">]</span>
+<span class="n">french_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<span class="n">math_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">86</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+
+<span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="n">names</span><span class="p">,</span> 
+    <span class="s">'french_score'</span><span class="p">:</span> <span class="n">french_scores</span><span class="p">,</span> 
+    <span class="s">'math_score'</span><span class="p">:</span> <span class="n">math_scores</span>
+<span class="p">}</span>
+
+<span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> 
+    <span class="s">'french_score'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">french_scores</span><span class="p">),</span> 
+    <span class="s">'math_score'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">math_scores</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">dict3</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> 
+    <span class="s">'french_score'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">french_scores</span><span class="p">),</span> 
+    <span class="s">'math_score'</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">math_scores</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="c1"># 아래 셋은 모두 동일한 결과 반환
+</span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dict2</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dict3</span><span class="p">)</span>
+
+<span class="n">df1</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: right">french_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-1 lh-0"> </p>
+<p>+) <strong>DataFrame.from_dict()</strong><br> : from_dict()를 이용하면 dictionary 형태의 데이터를 row 방향이나 column 방향 중 어떤식으로든 DataFrame으로 만들 수 있다.</p>
+<ul>
+<li>(default) dictionary의 key를 column으로:<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="s">'Abby'</span><span class="p">,</span> <span class="s">'Cornelia'</span><span class="p">,</span> <span class="s">'Kai'</span><span class="p">],</span> 
+      <span class="s">'french_score'</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">88</span><span class="p">],</span> 
+      <span class="s">'math_score'</span><span class="p">:</span> <span class="p">[</span><span class="mi">86</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>   <span class="c1"># pd.DataFrame(data)과 동일한 결과
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: right">french_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>dictionary의 key를 row로:<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">'row1'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">86</span><span class="p">],</span>
+      <span class="s">'row2'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Abby'</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span>
+      <span class="s">'row3'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Cornelia'</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">91</span><span class="p">],</span>
+      <span class="s">'row4'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Kai'</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: right">french_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">row1</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">row2</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">row3</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">row4</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ul>
+<h3 id="from-list-of-dicts"> <a href="#from-list-of-dicts" aria-labelledby="from-list-of-dicts" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> From list of dicts</h3>
+<p>: 사전이 담긴 리스트로 DataFrame 만들기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Emily'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">:</span> <span class="mi">86</span><span class="p">},</span>
+    <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Abby'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
+    <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Cornelia'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">:</span> <span class="mi">68</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">:</span> <span class="mi">91</span><span class="p">},</span>
+    <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'Kai'</span><span class="p">,</span> <span class="s">'french_score'</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="s">'math_score'</span><span class="p">:</span> <span class="mi">75</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: right">french_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>※ 알아둘 사실:</p>
+<ul>
+<li>Dictionary는 data의 순서가 없기 때문에 입력 순서대로 column이 만들어지는 것은 아니다.</li>
+<li>반면, lists, arrays, series는 순서가 있는 자료구조이기 때문에, 입력한 순서대로 column을 만들어 준다.</li>
+</ul>
+<h2 id="dataframe-복사본-만들기"> <a href="#dataframe-%EB%B3%B5%EC%82%AC%EB%B3%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-labelledby="dataframe-복사본-만들기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DataFrame 복사본 만들기</h2>
+<ul>
+<li>a = b 방식: 원본 데이터가 변하면 똑같이 변하는 ‘깊은 복사’</li>
+<li>
+<code class="language-plaintext highlighter-rouge">df.copy()</code> 방식: 복사 당시의 상태만 복사되는 ‘얕은 복사’</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s">'Kim'</span><span class="p">,</span> <span class="mi">23</span><span class="p">],</span> <span class="p">[</span><span class="s">'Lee'</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>  <span class="p">[</span><span class="s">'Chung'</span><span class="p">,</span> <span class="mi">28</span><span class="p">]],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">])</span>
+<span class="n">a</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">Name</th>
+<th style="text-align: right">Age</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Kim</td>
+<td style="text-align: right">23</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Lee</td>
+<td style="text-align: right">12</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Chung</td>
+<td style="text-align: right">28</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-3 text-grey-dk-000"># 두 가지 방식으로 각각 복사하기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">just_copy</span> <span class="o">=</span> <span class="n">a</span>   <span class="c1">## a = b 방식의 '깊은 복사'
+</span><span class="n">pandas_copy</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1">## 복사 당시의 상태만 복사하는 '얕은 복사'
+</span></code></pre></div></div>
+<p class="fs-3 text-grey-dk-000"># 원본 데이터 변경해보기</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">just_copy</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>  <span class="c1"># 단순히 a = b 방식으로 한 '깊은 복사'의 경우, 원데이터가 변하면 함께 따라 변한다
+</span><span class="k">print</span><span class="p">(</span><span class="n">pandas_copy</span><span class="p">)</span>  <span class="c1"># a를 바꾸기 전 상태를 보존하려면, 이렇게 df.copy() 방식을 써야 한다
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Name  Age
+0  변경됨!   23
+1  변경됨!   12
+2  변경됨!   28 
+
+   Name  Age
+0  변경됨!   23
+1  변경됨!   12
+2  변경됨!   28 
+
+    Name  Age
+0    Kim   23
+1    Lee   12
+2  Chung   28
+</code></pre></div></div>
+<h2 id="csv-excel-데이터-취급"> <a href="#csv-excel-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B7%A8%EA%B8%89" aria-labelledby="csv-excel-데이터-취급" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CSV, Excel 데이터 취급</h2>
+<h3 id="csv-파일-읽고-쓰기"> <a href="#csv-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EA%B3%A0-%EC%93%B0%EA%B8%B0" aria-labelledby="csv-파일-읽고-쓰기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CSV 파일 읽고 쓰기</h3>
+<ol>
+<li>CSV 파일을 DataFrame으로 읽어오기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'경로/파일명.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>  
+                 <span class="c1"># 같은 폴더 안에 있는 파일은 '파일명.csv'라고만 써줘도 됨
+</span></code></pre></div></div>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">header=1</code>이라고 하면 파일의 두번째 행(index_num=1)이 header로 설정됨 (첫번째 행은 읽어오지 않음)<ul><li>
+<code class="language-plaintext highlighter-rouge">header=None</code>이라고 하면 첫 행이 header가 되는 대신 0부터 시작하는 숫자로 header가 채워짐 (default: csv 파일의 첫 행이 header로 들어감)</li></ul>
+</li>
+<li>
+<code class="language-plaintext highlighter-rouge">index_col=0</code>이라고 하면 첫 번째 열이 index로 설정됨 (default: None)<ul><li>
+<code class="language-plaintext highlighter-rouge">index_col='열이름'</code> 이런 식으로 열의 이름을 직접 str으로 넣어줘도 된다</li></ul>
+</li>
+<li>한글 등 글자가 깨질 때는 <code class="language-plaintext highlighter-rouge">encoding='utf-8'</code>과 같이 인코딩 방식을 설정해줄 수도 있다</li>
+</ul>
+</li>
+<li>DataFrame을 CSV 파일로 내보내기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'경로/파일명.cvs'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>   <span class="c1"># 같은 폴더 안으로 저장하려면 '파일명.csv'라고만 써줘도 됨
+</span></code></pre></div></div>
+<ul>
+<li>읽어올 때와 마찬가지로, <code class="language-plaintext highlighter-rouge">encoding='utf-8'</code>과 같은 옵션도 지정 가능</li>
+<li>
+<code class="language-plaintext highlighter-rouge">index=False</code>라고 하면 index는 저장되지 않음 (보통 index는 0부터 시작하는 숫자로 채워지기에, 굳이 저장하지 않아도 되는 경우가 많음)</li>
+</ul>
+</li>
+</ol>
+<h3 id="excel-파일-읽고-쓰기"> <a href="#excel-%ED%8C%8C%EC%9D%BC-%EC%9D%BD%EA%B3%A0-%EC%93%B0%EA%B8%B0" aria-labelledby="excel-파일-읽고-쓰기" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Excel 파일 읽고 쓰기</h3>
+<ol>
+<li>Excel 파일을 DataFrame으로 읽어오기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'파일명.xlsx'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'Sheet2'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="s">"C:X"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
+ <span class="c1"># index_col=1이나 header=2 같은 방식으로 어느 열을 index로 가져갈건지, 어느 행을 header로 삼을건지 지정 가능.
+</span> <span class="c1"># usecols='C:X' 혹은 usecols='A,C,D' 이런 식으로해서 사용할 열 지정 가능
+</span></code></pre></div></div>
+<ul>
+<li>
+<code class="language-plaintext highlighter-rouge">sheet_name='Sheet2'</code>는 파일에서 Sheet2만 가져오겠다는 의미.<ul><li>sheet_name에는 int/str/list를 넣어줄 수 있다 (ex. <code class="language-plaintext highlighter-rouge">sheet_name=0</code>, <code class="language-plaintext highlighter-rouge">sheet_name=[0, 1, "Sheet5"]</code>)</li></ul>
+</li>
+<li>
+<code class="language-plaintext highlighter-rouge">usecols='C:X</code>는 C~X까지의 열을 가져오겠다는 의미. (C, X도 포함)<ul><li>
+<code class="language-plaintext highlighter-rouge">usecols='A,C,D'</code>이렇게 지정하는 것도 가능. (A, C, D 열만 가져오겠다는 의미)</li></ul>
+</li>
+<li>
+<code class="language-plaintext highlighter-rouge">index_col</code>이나 <code class="language-plaintext highlighter-rouge">header</code>, <code class="language-plaintext highlighter-rouge">encoding</code>은 read_csv에서와 같은 기능</li>
+</ul>
+</li>
+<li>DataFrame을 Excel 파일로 내보내기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s">'파일명.xlsx'</span><span class="p">)</span>
+</code></pre></div></div>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">encoding='utf-8'</code>이나 <code class="language-plaintext highlighter-rouge">index=False</code>와 같은 옵션 추가 가능</li></ul>
+</li>
+<li>여러 개의 DataFrame을 서로 다른 시트로 해서 Excel 파일로 저장<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s">'파일명.xlsx'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'xlsxwriter'</span><span class="p">)</span>
+
+ <span class="c1"># Write each dataframe to a different worksheet.
+</span> <span class="n">df1</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'df1'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>  <span class="c1"># encoding='utf-8'은 옵션.
+</span> <span class="n">df2</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'df2'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
+ <span class="n">df3</span><span class="p">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s">'df3'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
+
+
+ <span class="c1"># Close the Pandas Excel writer and output the Excel file.
+</span> <span class="n">writer</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div></div>
+</li>
+</ol>
+<h2 id="indexing--slicing"> <a href="#indexing--slicing" aria-labelledby="indexing--slicing" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Indexing &amp; Slicing</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iphone_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data/iphone.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">## 데이터 출처: codeit
+</span><span class="n">iphone_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+<h3 id="indexing"> <a href="#indexing" aria-labelledby="indexing" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Indexing</h3>
+<p>: <code class="language-plaintext highlighter-rouge">.loc[행 방향, 열 방향]</code></p>
+<ol>
+<li>행 방향 &amp; 열 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## iPhone X의 메모리 가져오기
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'iPhone X'</span><span class="p">,</span> <span class="s">'메모리'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> '3GB'
+</code></pre></div></div>
+</li>
+<li>행 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## iPhone X에 대한 모든 정보 가져오기
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'iPhone X'</span><span class="p">,</span> <span class="p">:]</span>      <span class="c1">## iphone_df.loc['iPhone X'] 이렇게 써도 동일한 결과.
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 출시일        2017-11-03
+ 디스플레이             5.8
+ 메모리               3GB
+ 출시 버전        iOS 11.1
+ Face ID           Yes
+ Name: iPhone X, dtype: object
+</code></pre></div></div>
+<p class="fs-3">※ 하나의 행/열만 추출하면 ‘Pandas Series’ 형태로 가져와짐</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">type</span><span class="p">(</span><span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'iPhone X'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pandas.core.series.Series
+</code></pre></div></div>
+</li>
+<li>행 방향 - 2개 이상<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># iPhone X와 iPhone 8에 대한 정보 가져오기
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="s">'iPhone X'</span><span class="p">,</span> <span class="s">'iPhone 8'</span><span class="p">]]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+</tbody>
+</table></div></div>
+<p class="fs-3">※ 두 개 이상의 행/열을 추출하면 ‘Pandas DataFrame’ 형태로 가져와짐</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">type</span><span class="p">(</span><span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="s">'iPhone X'</span><span class="p">,</span> <span class="s">'iPhone 8'</span><span class="p">]])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pandas.core.frame.DataFrame
+</code></pre></div></div>
+</li>
+<li>열 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 각 iPhone 모델에 대한 출시일 정보만 다 가져오기
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'출시일'</span><span class="p">]</span>     <span class="c1">## iphone_df['출시일'] 이렇게 써도 동일한 결과. (loc 사용X)
+</span></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> iPhone 7         2016-09-16
+ iPhone 7 Plus    2016-09-16
+ iPhone 8         2017-09-22
+ iPhone 8 Plus    2017-09-22
+ iPhone X         2017-11-03
+ iPhone XS        2018-09-21
+ iPhone XS Max    2018-09-21
+ Name: 출시일, dtype: object
+</code></pre></div></div>
+<p>*사실 열 방향 indexing은 <code class="language-plaintext highlighter-rouge">iphone_df['출시일']</code>과 같이 loc을 사용하지 않는 게 더 간단하다</p>
+</li>
+<li>열 방향 - 2개 이상<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 출시일과 디스플레이 정보 가져오기
+</span> <span class="n">iphone_df</span><span class="p">[[</span><span class="s">'출시일'</span><span class="p">,</span> <span class="s">'디스플레이'</span><span class="p">]]</span>   <span class="c1">## iphone_df.loc[:,['출시일', '디스플레이']] 이렇게 써도 동일한 결과.
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">4.7</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="slicing"> <a href="#slicing" aria-labelledby="slicing" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Slicing</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iphone_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>행 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># iPhone 8부터 iPhone XS까지의 모든 row 반환
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'iPhone 8'</span><span class="p">:</span><span class="s">'iPhone XS'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>열 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 메모리부터 Face ID까지의 column 반환
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'메모리'</span><span class="p">:</span><span class="s">'Face ID'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>※ 주의! indexing과 다르게, slicing은 loc을 안쓰고 직접할 수는 없음!</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># loc 안쓰고 column을 slicing하려고 하면 아래와 같이 이상하게 뜬다
+</span> <span class="n">iphone_df</span><span class="p">[</span><span class="s">'메모리'</span><span class="p">:</span><span class="s">'Face ID'</span><span class="p">]</span> 
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table><tbody><tr>
+<td>출시일</td>
+<td>디스플레이</td>
+<td>메모리</td>
+<td>출시 버전</td>
+<td>Face ID</td>
+</tr></tbody></table></div></div>
+</li>
+<li>행 방향 &amp; 열 방향<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">## row, column 모두 slicing하기
+</span> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'iPhone 7'</span><span class="p">:</span><span class="s">'iPhone X'</span><span class="p">,</span> <span class="s">'메모리'</span><span class="p">:</span><span class="s">'Face ID'</span><span class="p">]</span>  <span class="c1">#순서는 무조건 row 다음 column
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="조건으로-indexing"> <a href="#%EC%A1%B0%EA%B1%B4%EC%9C%BC%EB%A1%9C-indexing" aria-labelledby="조건으로-indexing" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 조건으로 Indexing</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iphone_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>디스플레이가 5인치 이상인 스마트폰 정보만 추출하기<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'디스플레이'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>FaceID가 가능한 스마트폰 정보만 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">iphone_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'Face ID'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>디스플레이가 5인치 이상 “AND” FaceID가 가능한 스마트폰 정보 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'디스플레이'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'Face ID'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">)</span>
+ <span class="n">iphone_df</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span>  <span class="c1"># iphone_df.loc[condition]과 동일한 결과
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>디스플레이가 5인치 이상 “OR” FaceID가 가능한 스마트폰 정보 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'디스플레이'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">iphone_df</span><span class="p">[</span><span class="s">'Face ID'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">)</span>
+ <span class="n">iphone_df</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h3 id="숫자-위치-기반-indexing--slicing"> <a href="#%EC%88%AB%EC%9E%90-%EC%9C%84%EC%B9%98-%EA%B8%B0%EB%B0%98-indexing--slicing" aria-labelledby="숫자-위치-기반-indexing--slicing" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 숫자 위치 기반 Indexing &amp; Slicing</h3>
+<p>: <code class="language-plaintext highlighter-rouge">.iloc[행 방향, 열 방향]</code></p>
+<p class="fs-3">※ iloc: integer + location. 숫자 기반으로 위치에 접근해 indexing할 때는 iloc 사용</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iphone_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: left">출시일</th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: left">2016-09-16</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 10.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">4.7</td>
+<td style="text-align: left">2GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: left">2017-09-22</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: left">2017-11-03</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: left">2018-09-21</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+<td style="text-align: left">Yes</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>3번째 행 &amp; 4번째 열의 값 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">iphone_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 'No'
+</code></pre></div></div>
+</li>
+<li>2번째,4번째 행 &amp; 2번째,5번째 열 추출<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">iphone_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">Face ID</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 7 Plus</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">No</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">No</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>iloc으로 slicing<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">iphone_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: left"> </th>
+<th style="text-align: right">디스플레이</th>
+<th style="text-align: left">메모리</th>
+<th style="text-align: left">출시 버전</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: left">iPhone 8 Plus</td>
+<td style="text-align: right">5.5</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.0</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone X</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">3GB</td>
+<td style="text-align: left">iOS 11.1</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS</td>
+<td style="text-align: right">5.8</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+</tr>
+<tr>
+<td style="text-align: left">iPhone XS Max</td>
+<td style="text-align: right">6.5</td>
+<td style="text-align: left">4GB</td>
+<td style="text-align: left">iOS 12.0</td>
+</tr>
+</tbody>
+</table></div></div>
+<ul>
+<li>행: 4번째 행(index_num=3)부터 끝까지</li>
+<li>열: 2번째 열(index_num=1)부터 4번째 열(index_num=3)까지<ul>
+<li>1:4로 slicing했으니 5번째 열(index_num=4)는 포함되지 않는다 (list에서의 slicing과 동일)</li>
+<li>cf) <code class="language-plaintext highlighter-rouge">iphone_df.loc['iPhone 8':'iPhone XS']</code>에서는 iPhone8에서 iPhone XS까지 양 끝 모두 포함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="조건-indexing-query-함수"> <a href="#%EC%A1%B0%EA%B1%B4-indexing-query-%ED%95%A8%EC%88%98" aria-labelledby="조건-indexing-query-함수" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 조건 indexing: Query 함수</h2>
+<ul><li>
+<code class="language-plaintext highlighter-rouge">df.loc[]</code>을 활용해 조건으로 indexing하는 것과 동일하지만, 더 간결한 문법으로 작성할 수 있다<br> (<code class="language-plaintext highlighter-rouge">df.query()</code> 함수도 결국은 <code class="language-plaintext highlighter-rouge">df.loc[]</code>의 형태로 구현됨)</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Emily'</span><span class="p">,</span> <span class="s">'Abby'</span><span class="p">,</span> <span class="s">'Cornelia'</span><span class="p">,</span> <span class="s">'Kai'</span><span class="p">],</span> 
+    <span class="s">'group'</span><span class="p">:</span> <span class="p">[</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">],</span>
+    <span class="s">'english_score'</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">88</span><span class="p">],</span> 
+    <span class="s">'math_score'</span><span class="p">:</span> <span class="p">[</span><span class="mi">86</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: left">Emily</td>
+<td style="text-align: left">A</td>
+<td style="text-align: right">50</td>
+<td style="text-align: right">86</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: left">B</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: left">A</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: left">C</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+<ol>
+<li>
+<p>비교 연산자(==, &gt;, &lt;, != 등)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'english_score &gt; 80'</span><span class="p">)</span> 
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: left">B</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: left">C</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>
+<p>in, not in</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'group in ["B", "C"]'</span><span class="p">)</span>   <span class="c1"># df.query('group == ["B", "C"]')  이렇게 작성해도 동일
+</span></code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: left">B</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: left">C</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>and(&amp;), or(|)<ul><li>각 조건을 괄호로 명확히 구분해주는 것이 좋다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'(group == "A") &amp; (math_score &gt; 90)'</span><span class="p">)</span> 
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: left">A</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr></tbody>
+</table></div></div>
+</li>
+<li>index를 지칭<ul>
+<li>index에 이름이 있다면 그 이름(df.index.name)을 기록해줘야 함</li>
+<li>만약 칼럼 중에도 ‘index’라는 칼럼이 있으면 그 칼럼으로 연산됨</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">'index &gt;= 2'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: left">Cornelia</td>
+<td style="text-align: left">A</td>
+<td style="text-align: right">68</td>
+<td style="text-align: right">91</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: left">C</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+<li>f-string 사용<ul><li>f-string을 사용하면 외부 변수를 기준으로도 indexing할 수 있다</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">english_score_mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'english_score'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># 73.75
+</span>
+ <span class="n">df</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s">'english_score &gt;= </span><span class="si">{</span><span class="n">english_score_mean</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: left">name</th>
+<th style="text-align: left">group</th>
+<th style="text-align: right">english_score</th>
+<th style="text-align: right">math_score</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: left">Abby</td>
+<td style="text-align: left">B</td>
+<td style="text-align: right">89</td>
+<td style="text-align: right">31</td>
+</tr>
+<tr>
+<td style="text-align: right">3</td>
+<td style="text-align: left">Kai</td>
+<td style="text-align: left">C</td>
+<td style="text-align: right">88</td>
+<td style="text-align: right">75</td>
+</tr>
+</tbody>
+</table></div></div>
+</li>
+</ol>
+<h2 id="pdset_option"> <a href="#pdset_option" aria-labelledby="pdset_option" class="anchor-heading"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> pd.set_option()</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'Num'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">1000000000</span><span class="p">})</span>
+<span class="n">num_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Num</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">-4.69191e+08</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">-2.64508e+08</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">9.69347e+08</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>→ 위와 같이 숫자가 너무 커서 scientific notation으로 나오는 경우 / 혹은 소수점 밑 자리가 너무 길게 표시되어서 복잡한 경우, <code class="language-plaintext highlighter-rouge">set_option</code>으로 float display format을 변경해두면 유용하다:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'display.float_format'</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">'%.2f'</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>  
+<span class="c1"># float type 숫자는 소수점 두번째자리까지만 표시하겠다는 의미
+</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num_df</span>
+</code></pre></div></div>
+<div class="code-example"><div class="table-wrapper"><table>
+<thead><tr>
+<th style="text-align: right"> </th>
+<th style="text-align: right">Num</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align: right">0</td>
+<td style="text-align: right">1139992755.31</td>
+</tr>
+<tr>
+<td style="text-align: right">1</td>
+<td style="text-align: right">1196549705.47</td>
+</tr>
+<tr>
+<td style="text-align: right">2</td>
+<td style="text-align: right">777867250.54</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>+) <code class="language-plaintext highlighter-rouge">reset_option</code>을 활용하면 설정해둔 option을 초기화할 수 있다:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">reset_option</span><span class="p">(</span><span class="s">'display.float_format'</span><span class="p">)</span>
+</code></pre></div></div>
+<hr>
+<footer><p class="text-small text-grey-dk-000 mb-0">Copyright © 2021 Chaeyun.<br>This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a Jekyll theme.</p></footer>
+</div>
+</div>
+<div class="search-overlay"></div>
+</div>
+</body>
+</html>
