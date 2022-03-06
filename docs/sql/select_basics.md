@@ -166,6 +166,11 @@ DESCRIBE 테이블명;
     -- address에 ‘고양시’가 포함되어 있는 모든 행과 매칭
     SELECT * FROM tablename WHERE address LIKE '%고양시%'; 
     ```
+    - +) NOT LIKE 매칭도 가능
+    ```sql
+    -- address가 ‘서울’로 시작하지 않는 모든 행과 매칭
+    SELECT * FROM tablename WHERE address NOT LIKE '서울%';
+    ```
     - %: 임의의 길이를 가진 문자열을 나타냄 (0자도 포함)
     - _: 문자 하나를 의미
     ```sql
@@ -250,7 +255,7 @@ DESCRIBE 테이블명;
 
 ## DATE 데이터 타입 다루기
 
-1. YEAR, MONTH, DAYOFMONTH 추출
+1. YEAR, MONTH, DAYOFMONTH, DAYOFWEEK
     - YEAR 함수: 날짜에서 연도만 추출
     ```sql
     -- 1992년에 태어난 회원 데이터만 조회
@@ -266,21 +271,42 @@ DESCRIBE 테이블명;
     -- 각 달의 후반부(15일~31일)에 가입한 회원 데이터만 조회
     SELECT * FROM tablename WHERE DAYOFMONTH(sign_up_day) BETWEEN 15 AND 31; 
     ```
+    - DAYOFWEEK 함수: 날짜에서 요일을 추출
+    ```sql
+    -- 토요일에 가입한 회원 데이터만 조회 (1: 일요일, 2: 월요일, ..., 7: 토요일)
+    SELECT * FROM tablename WHERE DAYOFWEEK(sign_up_day) = 7; 
+    ```
+
 
 1. 날짜 간 차이 구하기: DATEDIFF
-- DATEDIFF(날짜 a, 날짜 b) → '날짜 a - 날짜 b'를 해서 그 차이 일수를 알려준다
-- ex) DATEDIFF(’2018-01-05’, ’2018-01-03’)의 값은 2
-```sql
--- 가입한 날로부터 2019.01.01까지의 기간을 함께 조회
-SELECT email, sign_up_day, DATEDIFF(sign_up_day, ‘2019-01-01’) FROM tablename;
-```
-- +) CURDATE(): 오늘 날짜를 구하는 함수
-```sql
--- 가입한 날로부터 오늘 날짜까지의 기간을 함께 조회
-SELECT email, sign_up_day, DATEDIFF(sign_up_day, CURDATE()) FROM tablename;
-```
-- +) `DATEDIFF(날짜 a, 날짜 b) / 365` 이렇게 계산하면 기간을 ‘연(year)’ 단위로 확인할 수 있음
+    - DATEDIFF(날짜 a, 날짜 b) → '날짜 a - 날짜 b'를 해서 그 차이 일수를 알려준다
+    - ex) DATEDIFF(’2018-01-05’, ’2018-01-03’)의 값은 2
+    ```sql
+    -- 가입한 날로부터 2019.01.01까지의 기간을 함께 조회
+    SELECT email, sign_up_day, DATEDIFF(sign_up_day, ‘2019-01-01’) FROM tablename;
+    ```
+    - +) CURDATE(): 오늘 날짜를 구하는 함수
+    ```sql
+    -- 가입한 날로부터 오늘 날짜까지의 기간을 함께 조회
+    SELECT email, sign_up_day, DATEDIFF(sign_up_day, CURDATE()) FROM tablename;
+    ```
+    - +) `DATEDIFF(날짜 a, 날짜 b) / 365` 이렇게 계산하면 기간을 ‘연(year)’ 단위로 확인할 수 있음
+    - +) `DATEDIFF(날짜 a, 날짜 b)`는 `날짜 a - 날짜 b`와 동일 (어느 날짜가 더 큰지 아는 경우, 단순 빼기로도 계산 가능)
 
+
+1. DATE_FORMAT(datetime, 'custom_format')
+    - datetime 포맷의 날짜를 원하는 형태로 출력해줌
+    ```sql
+    -- 로그인 날짜를 '2022-03-04'와 같은 포맷으로 출력
+    SELECT DATE_FORMAT(login_date, '%Y-%m-%d') FROM tablename;
+    ```
+
+1. STR_TO_DATE(date_string, 'assigned_format')
+- 문자열 포맷으로 담긴 날짜를 datetime 포맷으로 변환해준다. 문자열 날짜가 어떤 형태로 담겨있는지 그 형식을 잘 적어줘야 함.
+    ```sql
+    -- '20220304'와 같은 형식의 문자열로 담겨 있던 로그인 날짜를 datetime으로 바꿔서 출력
+    SELECT STR_TO_DATE(login_date_str, '%Y%m%d') FROM tablename;
+    ```
 
 
 ## ORDER BY: 데이터 정렬
@@ -300,6 +326,7 @@ SELECT * FROM tablename ORDER BY height ASC;
 SELECT * FROM tablename ORDER BY height DESC;
 ```
 - +) null값은 가장 작은 값으로  취급됨
+- +) TEXT 타입 칼럼의 경우, ASC으로 정렬하면 알파벳 순서대로 정렬됨
 
 - +) 여러 기준을 두고 정렬: 'ORDER BY 기준1, 기준2' 이렇게 쓰면 기준1부터 우선 정렬됨
 ```sql

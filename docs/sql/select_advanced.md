@@ -41,12 +41,17 @@ SELECT COUNT(email) FROM tablename;
 -- 키의 최댓값 구하기
 SELECT MAX(height) FROM tablename;
 ``` 
+    - +) GREATEST(칼럼1, 칼럼2, 칼럼3): 각 row에서, 가장 큰 값을 가진 칼럼의 값을 찾아줌.   
+        (cf. MAX는 특정 칼럼 내의 최댓값을 계산)
 
 1. MIN 
 ```sql
 -- 키의 최솟값 구하기
 SELECT MIN(height) FROM tablename;
 ```
+    - +) LEAST(칼럼1, 칼럼2, 칼럼3): 각 row에서, 가장 작은 값을 가진 칼럼의 값을 찾아줌.   
+        (cf. MIN는 특정 칼럼 내의 최솟값을 계산)
+
 
 1. AVG
 ```sql
@@ -66,6 +71,8 @@ SELECT SUM(age) FROM tablename;
 SELECT STD(age) FROM tablename;
 ```
 
+
+
 ### 산술 함수
 : 특정 칼럼의 각 row마다 실행되는 함수
 1. ABS: 절대값을 구하는 함수
@@ -75,6 +82,9 @@ SELECT STD(age) FROM tablename;
 1. FLOOR: 내림을 해주는 함수
 1. ROUND: 반올림을 해주는 함수
     - ex) `ROUND(값, 1)`이라고 하면 소수점 첫번째 자리까지 반올림해서 출력
+    - +) ROUND는 소수점 둘째자리의 수를 기반으로 반올림을 해주는 반면, `TRUNCATE(값, 1)`이라고 하면 소수점 첫번째 자리까지 내림을 해서 출력해준다 (그냥 단순하게 둘째자리부터는 버림)
+1. POW: 제곱을 해주는 함수
+    - ex) `POW(값, 2)`라고 하면 제곱, `POW(값, 3)`이라고 하변 세제곱
 
 +) 그 외 다양한 산술 함수: [https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html){: target="_blank"}
 
@@ -86,6 +96,17 @@ SELECT STD(age) FROM tablename;
 SELECT SUBSTRING(address, 3, 3) FROM tablename;
 -- '서울특별시 중구 서소문로 00'와 같은 주소 → '특별시'라고 출력됨 (3번째 위치에서부터 3개의 글자만 추출)
 ```
+
+1. LEFT, RIGHT: 좌우 몇 개의 글자만 잘라서 추출해주는 함수
+
+    ```sql
+    -- address 중 왼쪽으로부터 2개의 글자만 잘라서 추출 (ex. '서울특별시 신촌로'라면 '서울'만 추출)
+    SELECT LEFT(address, 2) FROM tablename;
+    ``` 
+    ```sql
+    -- address 중 오른쪽으로부터 3개의 글자만 잘라서 추출 (ex. '서울특별시 신촌로'라면 '신촌로'만 추출)
+    SELECT RIGHT(address, 3) FROM tablename;
+    ``` 
 
 1. LENGTH(): 문자열의 길이를 구해줌
 ```sql
@@ -99,7 +120,6 @@ SELECT LENGTH(address) FROM tablename;
     -- `안드로메다 128행성`이라는 주소 → CHAR_LENGTH()의 결과는 11
     ```
     
-
 1. UPPER, LOWER
     ```sql
     -- 모든 문자를 대문자로 변환
@@ -131,6 +151,18 @@ SELECT LENGTH(address) FROM tablename;
     - LTRIM(word): 왼쪽 공백 삭제
     - RTRIM(word): 오른쪽 공백 삭제
     - TRIM(word): 왼쪽, 오른쪽 양쪽 공백 모두 삭제
+
+1. REPLACE(칼럼, '문자1', '문자2'): 특정 칼럼에서 문자1을 문자2로 모두 대체해줌
+    ```sql
+    -- address에서 '서울'이라는 모든 문자를 '부산'으로 변경해서 출력
+    SELECT REPLACE(address, '서울', '부산') FROM tablename;
+    ```
+    - +) INT 타입에도 그대로 적용 가능:
+    ```sql
+    -- 정수형 타입인 'salary'에서 숫자 중간 중간에 들어가는 0을 모두 삭제해서 출력
+    SELECT REPLACE(salary, '0', '') FROM tablename;
+    ```
+
 
 
 ## Null값 다루기 & 중복 제거
